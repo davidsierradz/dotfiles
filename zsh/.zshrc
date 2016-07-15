@@ -49,7 +49,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found Completion dirhistory python)
+plugins=(git common-aliases command-not-found dirhistory sudo vagrant)
 
 # User configuration
 
@@ -84,6 +84,12 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 ### CUSTOM
+
+# custom aliases
+alias ll='ls -lAFh'      #long list
+
+# enable completition for hidden files .
+_comp_options+=(globdots)
 
 # want your terminal to support 256 color schemes? I do ...
 export TERM="xterm-256color"
