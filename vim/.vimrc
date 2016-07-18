@@ -9,8 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'flazz/vim-colorschemes'  " nice colors!
-
+Plugin 'altercation/vim-colors-solarized'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -30,10 +29,12 @@ filetype plugin indent on    " required
 " give us 256 color schemes!
 set term=screen-256color
 set list
-set listchars=tab:▸\ ,eol:¬
-colorscheme wombat256i
+set listchars=tab:▸\ ,eol:¬,trail:·
 " Show line numbers
 set number
-syntax enable " Turn on syntax highlighting
 set hidden " Leave hidden buffers open
 set history=100 "by default Vim saves your last 8 commands.  We can handle more
+syntax enable
+set background=dark
+colorscheme solarized
+
