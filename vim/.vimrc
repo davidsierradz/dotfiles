@@ -38,3 +38,17 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" Text width ruler
+set colorcolumn=81
+highlight ColorColumn ctermbg=magenta
+
+" Disable text wrap
+set nowrap
+
+" Set default window width
+"if exists("+lines")
+"    set lines=11
+"endif
+"if exists("+columns")
+"  set columns=85
+"endif
