@@ -92,7 +92,10 @@ alias ll='ls -lAFh'      #long list
 _comp_options+=(globdots)
 
 # want your terminal to support 256 color schemes? I do ...
-export TERM="xterm-256color"
+export TERM=xterm-256color
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
+
+# dircolors
+eval "$(dircolors ~/.dir_colors/dircolors.256dark)"

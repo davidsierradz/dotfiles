@@ -14,3 +14,9 @@ https://github.com/robbyrussell/oh-my-zsh.git
 
 Vundle
 https://github.com/gmarik/Vundle.vim.git
+
+Gnome-Terminal Solarized
+https://github.com/Anthony25/gnome-terminal-colors-solarized
+
+Dircolors Solarized
+https://github.com/seebi/dircolors-solarized
