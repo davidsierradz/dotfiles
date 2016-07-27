@@ -87,6 +87,7 @@ source $ZSH/oh-my-zsh.sh
 
 # custom aliases
 alias ll='ls -lAFh'      #long list
+alias c='clear'          #Clear
 
 # enable completition for hidden files .
 _comp_options+=(globdots)
