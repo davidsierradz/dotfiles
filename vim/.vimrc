@@ -30,17 +30,26 @@ filetype plugin indent on    " required
 set term=screen-256color
 set list
 set listchars=tab:▸\ ,eol:¬,trail:·
+"set lcs=space:·
+noremap <F12> :set list!<CR>
+
 " Show line numbers
 set number
 set hidden " Leave hidden buffers open
 set history=100 "by default Vim saves your last 8 commands.  We can handle more
+
 syntax enable
 set background=dark
 colorscheme solarized
+"hi SpecialKey ctermfg=0
 
 " Text width ruler
 set colorcolumn=81
 highlight ColorColumn ctermbg=magenta
+
+" Enable highlight the current cursor line
+set cursorline
+"highlight CursorLine ctermbg=magenta
 
 " Disable text wrap
 set nowrap
@@ -52,3 +61,7 @@ set nowrap
 "if exists("+columns")
 "  set columns=85
 "endif
+
+" Toggle paste mode with F2 in insert mode
+set pastetoggle=<F2>
+set showmode
