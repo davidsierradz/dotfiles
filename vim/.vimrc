@@ -64,4 +64,7 @@ set nowrap
 
 " Toggle paste mode with F2 in insert mode
 set pastetoggle=<F2>
-set showmode
+"set showmode | Default in Vim on
+
+" Settings for tabs and space indents
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
