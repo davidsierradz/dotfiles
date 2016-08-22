@@ -38,7 +38,11 @@ set number
 set hidden " Leave hidden buffers open
 set history=100 "by default Vim saves your last 8 commands.  We can handle more
 
+" Indenting configurations
 syntax enable
+set autoindent
+set smartindent
+
 set background=dark
 colorscheme solarized
 "hi SpecialKey ctermfg=0
@@ -62,9 +66,15 @@ set nowrap
 "  set columns=85
 "endif
 
+" Fast redraw
+set ttyfast
+
 " Toggle paste mode with F2 in insert mode
 set pastetoggle=<F2>
+set backspace=indent,eol,start "Better delete
 "set showmode | Default in Vim on
+set showmatch " Show matched brace for a brief time
+set matchtime=7
 
 " Settings for tabs and space indents
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -92,3 +102,25 @@ set statusline+=%([%l-%L-%P]%) " Current line count, max and percentage
 set statusline+=\              " Space Separator
 set statusline+=[%c%V]         " Column number and Virtual Column number
 set laststatus=2               " Always show status line
+
+" Search options
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" Use <C-L> to clear the highlighting of :set hlsearch.
+if maparg('<C-L>', 'n') ==# ''
+  nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
+endif
+
+" Command-Line options
+set wildignorecase
+set wildmode=list:longest,full
+
+" Scroll options
+set scrolloff=1
+set sidescrolloff=999
+set display+=lastline
+
+set autoread "refresh file inside vim if changed
