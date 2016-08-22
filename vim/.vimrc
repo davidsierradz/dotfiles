@@ -74,7 +74,7 @@ set pastetoggle=<F2>
 set backspace=indent,eol,start "Better delete
 "set showmode | Default in Vim on
 set showmatch " Show matched brace for a brief time
-set matchtime=7
+set matchtime=3
 
 " Settings for tabs and space indents
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -120,7 +120,7 @@ set wildmode=list:longest,full
 
 " Scroll options
 set scrolloff=1
-set sidescrolloff=999
+set sidescrolloff=15
 set display+=lastline
 
 set autoread "refresh file inside vim if changed
