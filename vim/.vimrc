@@ -68,3 +68,27 @@ set pastetoggle=<F2>
 
 " Settings for tabs and space indents
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+" Settings for splitting windows
+set splitright
+" Netrw settings
+let g:netrw_liststyle=3 "NetrwTree mode
+" absolute width of netrw window
+let g:netrw_winsize = -30
+map <silent> <C-E> :Lexplore<CR>
+" Status line options
+set statusline=%F              " Relative file path
+set statusline+=\ -\           " Separator
+set statusline+=%y             " Filetype of the file
+set statusline+=\ -\           " Separator
+set statusline+=%n             " Buffer of the file
+set statusline+=\ -\           " Separator
+set statusline+=[%{&ff}        " Format of the file Unix or DOS
+set statusline+=\              " Separator
+set statusline+=%{strlen(&fenc)?&fenc:'none'}] "file encoding
+set statusline+=\ -\           " Separator
+set statusline+=%h%m%r%w       " Help, Modified and Read Only flags
+set statusline+=%=             " Separation point between left and right items
+set statusline+=%([%l-%L-%P]%) " Current line count, max and percentage
+set statusline+=\              " Space Separator
+set statusline+=[%c%V]         " Column number and Virtual Column number
+set laststatus=2               " Always show status line
