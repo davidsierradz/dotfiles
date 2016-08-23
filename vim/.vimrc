@@ -3,7 +3,7 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+    call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
 
@@ -11,7 +11,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+    call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
@@ -23,15 +23,18 @@ filetype plugin indent on    " required
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
+        " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
 " give us 256 color schemes!
 set term=screen-256color
 set list
-set listchars=tab:▸\ ,eol:¬,trail:·
+set listchars=tab:▸\ ,eol:¬,trail:·,space:·
+"set listchars+=,space:·
 "set lcs=space:·
-noremap <F12> :set list!<CR>
+"noremap <F12> :set list!<CR>
+noremap <F10> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
+noremap <F12> :set listchars=tab:▸\ ,eol:¬,trail:·,space:·<CR>
 
 " Show line numbers
 set number
@@ -45,6 +48,7 @@ set smartindent
 
 set background=dark
 colorscheme solarized
+hi SpecialKey cterm=standout ctermfg=3 ctermbg=NONE
 "hi SpecialKey ctermfg=0
 
 " Text width ruler
@@ -115,6 +119,7 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 
 " Command-Line options
+set wildmenu
 set wildignorecase
 set wildmode=list:longest,full
 
