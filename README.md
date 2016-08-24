@@ -20,3 +20,6 @@ https://github.com/Anthony25/gnome-terminal-colors-solarized
 
 Dircolors Solarized
 https://github.com/seebi/dircolors-solarized
+
+Powerline fonts for candy visuals
+https://github.com/powerline/fonts

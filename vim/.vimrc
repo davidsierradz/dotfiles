@@ -10,6 +10,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 " All of your Plugins must be added before the following line
     call vundle#end()            " required
 filetype plugin indent on    " required
@@ -25,6 +27,9 @@ filetype plugin indent on    " required
 "
         " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+
+" Mapleader key
+let mapleader=","
 
 " give us 256 color schemes!
 set term=screen-256color
@@ -45,6 +50,7 @@ set history=100 "by default Vim saves your last 8 commands.  We can handle more
 syntax enable
 set autoindent
 set smartindent
+set encoding=utf-8
 
 set background=dark
 colorscheme solarized
@@ -61,6 +67,7 @@ set cursorline
 
 " Disable text wrap
 set nowrap
+set noshowmode
 
 " Set default window width
 "if exists("+lines")
@@ -129,3 +136,31 @@ set sidescrolloff=15
 set display+=lastline
 
 set autoread "refresh file inside vim if changed
+
+" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
+" Using <Nul> as <C-Space> becouse in gnome-terminal thats a null character
+map <Space> /
+map <Nul> ?
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Buffers shortcuts
+
+nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> [B :bfirst<CR>
+nnoremap <silent> ]B :blast<CR>
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" Airline options
+
+let g:airline_powerline_fonts=1
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+let g:airline_inactive_collapse=0
