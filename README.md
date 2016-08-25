@@ -23,3 +23,6 @@ https://github.com/seebi/dircolors-solarized
 
 Powerline fonts for candy visuals
 https://github.com/powerline/fonts
+
+Powerline zsh theme
+https://gist.github.com/3712874

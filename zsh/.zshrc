@@ -5,8 +5,10 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-
+#ZSH_THEME="robbyrussell"
+#ZSH_THEME="solarized-powerline"
+ZSH_THEME="agnoster"
+#ZSH_POWERLINE_SHOW_OS="false"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -52,7 +54,7 @@ COMPLETION_WAITING_DOTS="true"
 plugins=(git common-aliases command-not-found dirhistory sudo)
 
 # User configuration
-
+DEFAULT_USER=neuromante
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 

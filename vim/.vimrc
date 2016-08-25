@@ -53,6 +53,7 @@ set smartindent
 set encoding=utf-8
 
 set background=dark
+"let g:solarized_termcolors=256
 colorscheme solarized
 hi SpecialKey cterm=standout ctermfg=3 ctermbg=NONE
 "hi SpecialKey ctermfg=0
