@@ -120,6 +120,8 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+highlight Search cterm=underline ctermfg=9
+highlight IncSearch cterm=underline
 
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
