@@ -12,6 +12,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-vinegar'
+Plugin 'ctrlpvim/ctrlp.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -94,11 +96,24 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 " Settings for splitting windows
 set splitright
 " Netrw settings
-let g:netrw_liststyle=3 "NetrwTree mode
+"let g:netrw_liststyle=3 "NetrwTree mode
 " absolute width of netrw window
 "let g:netrw_winsize = -30
-map <silent> <C-E> :Explore<CR>
+"map <silent> <C-E> :Explore<CR>
 map <silent> å :e.<CR>
+" CtrlP Settings
+nmap <c-R> :CtrlPBufTag<cr>
+nmap <c-e> :CtrlPMRUFiles<cr>
+nmap <leader>bl :CtrlPBuffer<cr>
+"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|vendor/'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+let g:ctrlp_show_hidden = 1
+"let g:ctrlp_custom_ignore = {
+"    \ 'dir':  '\v[\/]\.(git\|hg\|svn\|node_modules\|DS_Store\|vendor)$',
+"    \ 'file': '\v\.(exe\|so\|dll\|swp\|swo\|json)$',
+"    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+"    \ }
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
 " Status line options
 set statusline=%F              " Relative file path
 set statusline+=\ -\           " Separator
