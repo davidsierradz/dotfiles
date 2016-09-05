@@ -12,6 +12,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'MatchTag'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -36,9 +37,8 @@ set showcmd  " Show partial commands
 "set listchars+=,space:
 "set lcs=space:
 "noremap <F12> :set list!<CR>
-noremap <F10> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
+noremap <M-F12> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
 noremap <F12> :set listchars=tab:▸\ ,eol:¬,trail:·,space:·<CR>
-
 " Show line numbers
 set number
 set hidden " Leave hidden buffers open
