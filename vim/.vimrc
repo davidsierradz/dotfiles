@@ -100,10 +100,10 @@ set splitright
 " absolute width of netrw window
 "let g:netrw_winsize = -30
 "map <silent> <C-E> :Explore<CR>
-map <silent> å :e.<CR>
+map <silent> ÷ :e.<CR>
 " CtrlP Settings
-nmap <c-R> :CtrlPBufTag<cr>
-nmap <c-e> :CtrlPMRUFiles<cr>
+nmap ò :CtrlPBufTag<cr>
+nmap å :CtrlPMRUFiles<cr>
 nmap <leader>bl :CtrlPBuffer<cr>
 "let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|vendor/'
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
