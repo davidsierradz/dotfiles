@@ -160,7 +160,7 @@ if maparg('<C-L>', 'n') ==# ''
 endif
 
 " Reloads a buffer
-nnoremap <Leader>r :e<CR>
+nnoremap <Leader>r :w<CR>:e<CR>
 
 " Command-Line options
 set wildmenu
