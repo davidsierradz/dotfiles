@@ -54,6 +54,7 @@ noremap <M-F12> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
 noremap <F12> :set listchars=tab:▸\ ,eol:¬,trail:·,space:·<CR>
 " Show line numbers
 set number
+set relativenumber
 set hidden " Leave hidden buffers open
 set history=100 "by default Vim saves your last 8 commands.  We can handle more
 
@@ -157,6 +158,9 @@ highlight IncSearch cterm=underline
 if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
+
+" Reloads a buffer
+nnoremap <Leader>r :e<CR>
 
 " Command-Line options
 set wildmenu

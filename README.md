@@ -38,6 +38,7 @@ http://docs.ctags.io/en/latest/autotools.html
 para compilar el binario de ctags:
 instala build-essentials
 instala autoconf
+instala automake
 
 Para instalar YouCompleteMe, toca compilar el binario del plugin
 instala cmake
