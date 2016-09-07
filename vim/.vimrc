@@ -12,9 +12,19 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'MatchTag'
+Plugin 'Valloric/MatchTagAlways'
 Plugin 'tpope/vim-vinegar'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'benjifisher/matchit.zip'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'shawncplus/phpcomplete.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'wesQ3/vim-windowswap'
+"Plugin 'ervandew/supertab'
+"Plugin 'pangloss/vim-javascript'
+"Plugin 'terryma/vim-multiple-cursors'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'scrooloose/syntastic'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -36,6 +46,7 @@ set guiheadroom=-50
 set list
 set listchars=tab:▸\ ,eol:¬,trail:·,space:·
 set showcmd  " Show partial commands
+set updatetime=250
 "set listchars+=,space:
 "set lcs=space:
 "noremap <F12> :set list!<CR>
@@ -70,6 +81,8 @@ set cursorline
 " Disable text wrap
 set nowrap
 set noshowmode
+" saves from normal mode
+nnoremap <leader>s :w<cr>
 
 " Set default window width
 "if exists("+lines")
@@ -139,7 +152,7 @@ set ignorecase
 set smartcase
 highlight Search cterm=underline ctermfg=9
 highlight IncSearch cterm=underline
-
+"nnoremap <leader><space> <CR>:nohlsearch<CR>
 " Use <C-L> to clear the highlighting of :set hlsearch.
 if maparg('<C-L>', 'n') ==# ''
     nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
@@ -178,6 +191,9 @@ nnoremap <silent> ]B :blast<CR>
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
 
+"remap go to last file with backspace
+nnoremap <BS> <C-^>
+
 " Airline options
 
 let g:airline_powerline_fonts=1
@@ -185,8 +201,42 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+" Show the buffer number
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <leader>= <Plug>AirlineSelectNextTab
 
 let g:airline_inactive_collapse=0
+let g:airline_theme = 'powerlineish'
+" MatchTagAlways Options
+let g:mta_use_matchparen_group = 1
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'php' : 1,
+    \}
+
+"autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+
+" Supertab options
+"let g:SuperTabDefaultCompletionType = "context"
+"autocmd FileType *
+"  \ if &completefunc != '' |
+"  \   call SuperTabChain('youcompleteme#OmniComplete', "<c-n>") |
+"  \ endif
 
 " Terminal only settings
 if !has("gui_running")

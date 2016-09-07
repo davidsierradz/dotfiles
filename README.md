@@ -30,3 +30,22 @@ https://gist.github.com/3712874
 
 Para eliminar el borde blanco en Gvim, linkea el archivo vim/.gtkrc-2.0 a ~
 segun http://askubuntu.com/questions/47831/how-to-remove-gvims-fat-bottom-border-and-resize-grip
+
+Instalar Universal Ctags
+https://github.com/universal-ctags/ctags
+http://docs.ctags.io/en/latest/autotools.html
+
+para compilar el binario de ctags:
+instala build-essentials
+instala autoconf
+
+Para instalar YouCompleteMe, toca compilar el binario del plugin
+instala cmake
+instala python-dev y python3-dev
+instala node-js y npm para instalar con soporte para javascript
+despues ir a ~/.vim/bundle/YouCompleteMe
+./install.py --tern-completer
+
+Para generar los tags del proyecto
+ctags -R .
+en la raiz de este
