@@ -20,6 +20,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wesQ3/vim-windowswap'
+Plugin 'scrooloose/nerdcommenter'
 "Plugin 'ervandew/supertab'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'terryma/vim-multiple-cursors'
@@ -41,7 +42,7 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-set guifont=Anonymous\ Pro\ for\ Powerline\ 11
+set guifont=Anonymous\ Pro\ for\ Powerline\ 10
 set guiheadroom=-50
 set list
 set listchars=tab:▸\ ,eol:¬,trail:·,space:·
@@ -234,6 +235,12 @@ let g:mta_filetypes = {
 "autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
+
+"Better window navigation
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " Supertab options
 "let g:SuperTabDefaultCompletionType = "context"
