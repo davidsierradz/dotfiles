@@ -1,136 +1,113 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+" Be iMproved, required.
+set nocompatible
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Source plugins file.
+source ~/dotfiles/vim/plugins.vim
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Valloric/MatchTagAlways'
-Plugin 'tpope/vim-vinegar'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'benjifisher/matchit.zip'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'shawncplus/phpcomplete.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'wesQ3/vim-windowswap'
-Plugin 'scrooloose/nerdcommenter'
-"Plugin 'ervandew/supertab'
-"Plugin 'pangloss/vim-javascript'
-"Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'tpope/vim-fugitive'
-"Plugin 'scrooloose/syntastic'
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" vim +PluginInstall - Plugin install from terminal
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
 
-set guifont=Anonymous\ Pro\ for\ Powerline\ 10
-set guiheadroom=-50
-set list
-set listchars=tab:▸\ ,eol:¬,trail:·,space:·
-set showcmd  " Show partial commands
-set updatetime=250
-"set listchars+=,space:
-"set lcs=space:
-"noremap <F12> :set list!<CR>
-noremap <M-F12> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
-noremap <F12> :set listchars=tab:▸\ ,eol:¬,trail:·,space:·<CR>
-" Show line numbers
-set number
-set relativenumber
-set hidden " Leave hidden buffers open
-set history=100 "by default Vim saves your last 8 commands.  We can handle more
-" Look up recurively for ctags file
-set tags+=tags;/
-" Indenting configurations
+
+
+"--------------------------------General---------------------------------------"
+
+" This command switches on syntax highlighting.
 syntax enable
+
+" Indenting configurations.
 set autoindent
 set smartindent
+
+" Settings for tabs and space indents.
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+
 set encoding=utf-8
 
-set background=dark
-"let g:solarized_termcolors=256
-colorscheme solarized
-hi SpecialKey cterm=standout ctermfg=3 ctermbg=NONE
-hi VertSplit cterm=reverse
-"hi SpecialKey ctermfg=0
+set guifont=Anonymous\ Pro\ for\ Powerline\ 10
 
-" Text width ruler
-set colorcolumn=81
+" Show partial commands.
+set showcmd
+
+" After 250 milliseconds write the buffer to the swap file.
+set updatetime=250
+
+" Leave hidden buffers open.
+set hidden
+
+"by default Vim saves your last 8 commands.  We can handle more.
+set history=100
+
+" Look up recurively for ctags file.
+set tags+=tags;/
+
+" Becouse we have a status bar disable showing if we are in insert mode in the
+" Command line bar.
+set noshowmode
+
+" Fast redraw.
+set ttyfast
+
+"Better delete.
+set backspace=indent,eol,start
+
+" Command-Line options.
+set wildmenu
+set wildignorecase
+set wildmode=list:longest,full
+
+"refresh file inside vim if changed.
+set autoread
+
+"--------------------------------End General-----------------------------------"
+
+
+
+
+"--------------------------------Visuals---------------------------------------"
+
+" Show special characters.
+set list
+
+" Set the special characters default.
+set listchars=tab:▸\ ,eol:¬,trail:·,space:·
+
+" Show line numbers.
+set number
+
+" Relative positions for line numbers.
+set relativenumber
+
+set background=dark
+
+colorscheme solarized
+
+" Hide the background of the special characters in terminal.
+highlight SpecialKey cterm=standout ctermfg=3 ctermbg=NONE
+
+highlight VertSplit cterm=reverse
+
+" Put a red underline in search mode.
+highlight Search cterm=underline ctermfg=9
+highlight IncSearch cterm=underline
+
+" Color for the terminal column width ruler.
 highlight ColorColumn ctermbg=magenta
 
-" Enable highlight the current cursor line
+" Text width ruler.
+set colorcolumn=81
+
+" Enable highlight the current cursor line.
 set cursorline
-"highlight CursorLine ctermbg=magenta
 
-" Disable text wrap
+" Disable text wrap.
 set nowrap
-set noshowmode
-" saves from normal mode
-nnoremap <leader>s :w<cr>
 
-" Set default window width
-"if exists("+lines")
-"    set lines=11
-"endif
-"if exists("+columns")
-"  set columns=85
-"endif
- " Fast redraw
-set ttyfast
-" List contents of all registers (that typically contain pasteable text).
-nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
-" Paste on Gvim
-set clipboard=unnamed,unnamedplus
-" Toggle paste mode with F2 in insert mode
-set pastetoggle=<F2>
-set backspace=indent,eol,start "Better delete
-"set showmode | Default in Vim on
-set showmatch " Show matched brace for a brief time
+" Show matched brace for a brief time.
+set showmatch
 set matchtime=3
 
-" Settings for tabs and space indents
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-" Settings for splitting windows
-set splitright
-" Netrw settings
-"let g:netrw_liststyle=3 "NetrwTree mode
-" absolute width of netrw window
-"let g:netrw_winsize = -30
-"map <silent> <C-E> :Explore<CR>
-map <silent> ÷ :e.<CR>
-" CtrlP Settings
-nmap ò :CtrlPBufTag<cr>
-nmap å :CtrlPMRUFiles<cr>
-nmap <leader>bl :CtrlPBuffer<cr>
-"let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git|vendor/'
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
-let g:ctrlp_show_hidden = 1
-"let g:ctrlp_custom_ignore = {
-"    \ 'dir':  '\v[\/]\.(git\|hg\|svn\|node_modules\|DS_Store\|vendor)$',
-"    \ 'file': '\v\.(exe\|so\|dll\|swp\|swo\|json)$',
-"    \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
-"    \ }
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
-" Status line options
+" Always show the Status Line.
+set laststatus=2
+
+" Default Status line options without Vim Airline plugin.
 set statusline=%F              " Relative file path
 set statusline+=\ -\           " Separator
 set statusline+=%y             " Filetype of the file
@@ -146,69 +123,154 @@ set statusline+=%=             " Separation point between left and right items
 set statusline+=%([%l-%L-%P]%) " Current line count, max and percentage
 set statusline+=\              " Space Separator
 set statusline+=[%c%V]         " Column number and Virtual Column number
-set laststatus=2               " Always show status line
+
+" Scroll options.
+set scrolloff=1
+set sidescrolloff=15
+set display+=lastline
+
+"--------------------------------End Visuals-----------------------------------"
+
+
+
+
+"--------------------------------Search----------------------------------------"
 
 " Search options
 set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-highlight Search cterm=underline ctermfg=9
-highlight IncSearch cterm=underline
-"nnoremap <leader><space> <CR>:nohlsearch<CR>
-" Use <C-L> to clear the highlighting of :set hlsearch.
-if maparg('<C-L>', 'n') ==# ''
-    nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
-endif
 
-" Reloads a buffer
+"--------------------------------End Search------------------------------------"
+
+
+
+
+"--------------------------------Splits----------------------------------------"
+
+" Splitting to the right by default.
+set splitright
+
+"--------------------------------End Splits------------------------------------"
+
+
+
+
+"--------------------------------General Mappings------------------------------"
+
+" Shortcut to toogle showing spaces.
+nnoremap <M-F12> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
+nnoremap <F12> :set listchars=tab:▸\ ,eol:¬,trail:·,space:·<CR>
+
+" Regenerate ctags file.
+nnoremap <leader>rc :!ctags -R <CR>
+
+" Search tag.
+nnoremap <leader>ft :tag<space>
+
+" saves from normal mode.
+nnoremap <leader>s :w<cr>
+
+" List contents of all registers (that typically contain pasteable text).
+nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
+
+" Open Netrw file explorer in Present Working Directory with <Alt-W>.
+nnoremap <silent> ÷ :e.<CR>
+
+" Toggle paste mode with F2 in insert mode.
+set pastetoggle=<F2>
+
+" Clear the search highlight with <leader><space>.
+"nnoremap <leader><space> :nohlsearch<CR>
+
+" Clear the search highlight with <Alt-L>.
+"nnoremap ì :nohlsearch<CR>
+
+" Use <Alt-L> to clear the highlighting of :set hlsearch.
+nnoremap <silent> ì :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
+
+" Reloads a buffer.
 nnoremap <Leader>r :w<CR>:e<CR>
 
-" Command-Line options
-set wildmenu
-set wildignorecase
-set wildmode=list:longest,full
-
-" Scroll options
-set scrolloff=1
-set sidescrolloff=15
-set display+=lastline
-
-set autoread "refresh file inside vim if changed
-
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-" Using <Nul> as <C-Space> becouse in gnome-terminal thats a null character
+" Using <Nul> as <C-Space> because in gnome-terminal thats a null character.
 map <Space> /
 map <Nul> ?
+
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-" Return to last edit position when opening files (You want this!)
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" Buffers shortcuts
-
+" Buffers shortcuts.
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
+
 " Close the current buffer and move to the previous one
-" This replicates the idea of closing a tab
+" This replicates the idea of closing a tab.
 nmap <leader>bq :bp <BAR> bd #<CR>
 
-"remap go to last file with backspace
+" Remap go to last file with backspace.
 nnoremap <BS> <C-^>
 
-" Airline options
+"Better window navigation.
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
+"--------------------------------End General Mappings--------------------------"
+
+
+
+
+"--------------------------------Plugins---------------------------------------"
+
+"/
+"/ CtrlP
+"/
+
+" Open Tags window with <Alt-R>.
+nmap ò :CtrlPBufTag<cr>
+
+" Open Most Recent Used Files window with <Alt-E>.
+nmap å :CtrlPMRUFiles<cr>
+
+" Open the Ctrl-P window buffer.
+nmap <leader>bl :CtrlPBuffer<cr>
+
+" Ctrl-P window order and max results.
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+
+let g:ctrlp_show_hidden = 1
+
+let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
+
+"/
+"/ Vim Airline
+"/
+
+" Airline theme.
+let g:airline_theme = 'powerlineish'
+
+" SHow all airline things in the focus window only.
+let g:airline_inactive_collapse=0
+
+" Airline auto populate powerline fonts.
 let g:airline_powerline_fonts=1
+
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
+
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+
 " Show the buffer number
 let g:airline#extensions#tabline#buffer_idx_mode = 1
+
+" Quick buffer navigations with the plugin.
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
 nmap <leader>3 <Plug>AirlineSelectTab3
@@ -221,10 +283,13 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>= <Plug>AirlineSelectNextTab
 
-let g:airline_inactive_collapse=0
-let g:airline_theme = 'powerlineish'
-" MatchTagAlways Options
+"/
+"/ MatchTagAlways
+"/
+
 let g:mta_use_matchparen_group = 1
+
+" Enabled files for the plugin.
 let g:mta_filetypes = {
     \ 'html' : 1,
     \ 'xhtml' : 1,
@@ -233,27 +298,54 @@ let g:mta_filetypes = {
     \ 'php' : 1,
     \}
 
+"--------------------------------End Plugins-----------------------------------"
+
+
+
+
+"--------------------------------Auto Commands---------------------------------"
+
+" Return to last edit position when opening files (You want this!).
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Set the indent options for Javascript files.
 "autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
+" Set the indent options for CSS files.
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
+
+" Set the indent options for HTML files.
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 
-"Better window navigation
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+"--------------------------------End Auto Commands-----------------------------"
 
-" Supertab options
-"let g:SuperTabDefaultCompletionType = "context"
-"autocmd FileType *
-"  \ if &completefunc != '' |
-"  \   call SuperTabChain('youcompleteme#OmniComplete', "<c-n>") |
-"  \ endif
 
-" Terminal only settings
+
+
+"--------------------------------Functions-------------------------------------"
+
+"--------------------------------End Functions---------------------------------"
+
+
+
+
+"--------------------------------Terminal Only---------------------------------"
+
 if !has("gui_running")
 
     " give us 256 color schemes!
     set term=screen-256color
 
+    "let g:solarized_termcolors=256
+
 endif
+
+"--------------------------------End Terminal Only-----------------------------"
+
+
+
+
+"--------------------------------Tips and Remainders---------------------------"
+
+"--------------------------------End Tips and Remainders-----------------------"
+
