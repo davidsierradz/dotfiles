@@ -7,6 +7,8 @@ Git
 Zsh
 Vim/Gvim
 wmctrl (Para ajustar Gvim, viene por defecto en Linux Mint 18)
+Universal Ctags
+Silver Searcher Ag
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
@@ -50,3 +52,5 @@ despues ir a ~/.vim/bundle/YouCompleteMe
 Para generar los tags del proyecto
 ctags -R .
 en la raiz de este
+
+RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!

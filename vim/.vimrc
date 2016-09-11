@@ -142,6 +142,9 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" Put line numbers in Netrw windows.
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+
 "--------------------------------End Search------------------------------------"
 
 
@@ -221,6 +224,9 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
+" Put the Ack! command to not open first ocurrence of search.
+nnoremap <Leader>fa :Ack!<Space>'
+
 "--------------------------------End General Mappings--------------------------"
 
 
@@ -297,6 +303,13 @@ let g:mta_filetypes = {
     \ 'jinja' : 1,
     \ 'php' : 1,
     \}
+
+"/
+"/ Ack.vim
+"/
+
+" Using ack.vim with Ag because of deprecation of ag.vim.
+let g:ackprg = 'ag --vimgrep --path-to-agignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden'
 
 "--------------------------------End Plugins-----------------------------------"
 

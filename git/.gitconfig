@@ -1,0 +1,7 @@
+[user]
+	name = davidsierradz
+	email = davidsierradz@gmail.com
+[push]
+	default = simple
+[core]
+	excludesfile = ~/.gitignore
