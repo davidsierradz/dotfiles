@@ -57,7 +57,8 @@ set number
 set relativenumber
 set hidden " Leave hidden buffers open
 set history=100 "by default Vim saves your last 8 commands.  We can handle more
-
+" Look up recurively for ctags file
+set tags+=tags;/
 " Indenting configurations
 syntax enable
 set autoindent
