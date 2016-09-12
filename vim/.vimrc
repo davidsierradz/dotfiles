@@ -149,12 +149,6 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --path-to-agignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
 endif
 
 "--------------------------------End Search------------------------------------"
@@ -179,7 +173,7 @@ nnoremap <M-F12> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
 nnoremap <F12> :set listchars=tab:▸\ ,eol:¬,trail:·,space:·<CR>
 
 " Regenerate ctags file.
-nnoremap <leader>rc :!ctags -R <CR>
+nnoremap <leader>rc :!ctags<CR>
 
 " Search tag.
 nnoremap <leader>ft :tag<space>
@@ -258,6 +252,14 @@ nmap å :CtrlPMRUFiles<cr>
 
 " Open the Ctrl-P window buffer.
 nmap <leader>bl :CtrlPBuffer<cr>
+
+if executable('ag')
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --path-to-agignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
 
 " Ctrl-P window order and max results.
 let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
