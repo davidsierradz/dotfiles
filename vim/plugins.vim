@@ -21,6 +21,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'wesQ3/vim-windowswap'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'mileszs/ack.vim'
+" Using this PHP Syntax file instead of the original:
+" https://jasonwoof.com/gitweb/?p=vim-syntax.git;a=blob_plain;f=php.vim;hb=HEAD
+" waiting for updating the base Vim one to PHP 7.
+Plugin 'StanAngeloff/php.vim'
 "Plugin 'ervandew/supertab'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'terryma/vim-multiple-cursors'

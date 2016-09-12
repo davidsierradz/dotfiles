@@ -342,12 +342,24 @@ autocmd Filetype css setlocal ts=2 sts=2 sw=2
 " Set the indent options for HTML files.
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
 
+" Autocommand to call PhpSyntaxOverride function.
+augroup phpSyntaxOverride
+  autocmd!
+  autocmd FileType php call PhpSyntaxOverride()
+augroup END
+
 "--------------------------------End Auto Commands-----------------------------"
 
 
 
 
 "--------------------------------Functions-------------------------------------"
+
+" Function to override @tags and @params in the comments sections of PHP.
+function! PhpSyntaxOverride()
+  hi! def link phpDocTags  phpDefine
+  hi! def link phpDocParam phpType
+endfunction
 
 "--------------------------------End Functions---------------------------------"
 
