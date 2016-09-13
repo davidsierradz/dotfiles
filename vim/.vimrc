@@ -204,8 +204,8 @@ nnoremap <Leader>r :w<CR>:e<CR>
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 " Using <Nul> as <C-Space> because in gnome-terminal thats a null character.
-map <Space> /
-map <Nul> ?
+nnoremap <Space> /
+nnoremap <Nul> ?
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -219,7 +219,7 @@ nnoremap <silent> ]B :blast<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab.
-nmap <leader>bq :bp <BAR> bd #<CR>
+nnoremap <leader>bq :bp <BAR> bd #<CR>
 
 " Remap go to last file with backspace.
 nnoremap <BS> <C-^>
@@ -233,6 +233,10 @@ nnoremap <C-l> <C-w>l
 " Put the Ack! command to not open first ocurrence of search.
 nnoremap <Leader>fa :Ack!<Space>'
 
+" Swap semicolon for colon ;<->: in normal mode.
+"nnoremap ; :
+"nnoremap : ;
+
 "--------------------------------End General Mappings--------------------------"
 
 
@@ -245,13 +249,13 @@ nnoremap <Leader>fa :Ack!<Space>'
 "/
 
 " Open Tags window with <Alt-R>.
-nmap ò :CtrlPBufTag<cr>
+nnoremap ò :CtrlPBufTag<cr>
 
 " Open Most Recent Used Files window with <Alt-E>.
-nmap å :CtrlPMRUFiles<cr>
+nnoremap å :CtrlPMRUFiles<cr>
 
 " Open the Ctrl-P window buffer.
-nmap <leader>bl :CtrlPBuffer<cr>
+nnoremap <leader>bl :CtrlPBuffer<cr>
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
