@@ -42,14 +42,15 @@ set guioptions-=t
 " Console-like dialogs instead of popup ones.
 set guioptions+=c
 
-" Gvim hi colors
-
+" Gvim hi colors.
 hi SpecialKey guifg=#657b83 guibg=NONE
 hi VertSplit  guifg=#b58900 guibg=#b58900
 hi NonText gui=bold guifg=#b58900
 hi ColorColumn guibg=#d33682
 hi Search gui=underline guifg=#dc322f
 hi IncSearch gui=underline guifg=#dc322f
+"hi CursorLine guibg=#333333
+"hi LineNr guifg=#555555 guibg=bg
 "hi StatusLine gui=NONE guibg=#2aa198 guifg=#002b36
 "hi StatusLineNC gui=NONE guibg=#b58900 guifg=#002b36
 
