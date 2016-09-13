@@ -56,6 +56,9 @@ set wildmode=list:longest,full
 "refresh file inside vim if changed.
 set autoread
 
+" Generally we are working with mysql in sql files, auto set the default type.
+let g:sql_type_default = 'mysql'
+
 "--------------------------------End General-----------------------------------"
 
 
@@ -349,6 +352,9 @@ augroup phpSyntaxOverride
   autocmd!
   autocmd FileType php call PhpSyntaxOverride()
 augroup END
+
+" Generally we are working with mysql in sql files, auto set the filetype.
+"au BufNewFile,BufRead *.sql set filetype=mysql
 
 "--------------------------------End Auto Commands-----------------------------"
 

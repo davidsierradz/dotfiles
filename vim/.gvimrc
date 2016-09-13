@@ -30,6 +30,18 @@ set guioptions-=m
 " no toolbar.
 set guioptions-=T
 
+" no icon.
+set guioptions-=i
+
+" no grey menu.
+set guioptions-=g
+
+" no tearoff menu.
+set guioptions-=t
+
+" Console-like dialogs instead of popup ones.
+set guioptions+=c
+
 " Gvim hi colors
 
 hi SpecialKey guifg=#657b83 guibg=NONE
