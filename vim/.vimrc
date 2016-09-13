@@ -56,6 +56,9 @@ set wildmode=list:longest,full
 "refresh file inside vim if changed.
 set autoread
 
+"Ignore case for completion in insert mode.
+set infercase
+
 "--------------------------------End General-----------------------------------"
 
 
