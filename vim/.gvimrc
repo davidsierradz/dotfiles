@@ -61,11 +61,11 @@ hi IncSearch gui=underline guifg=#dc322f
 "--------------------------------General Mappings------------------------------"
 
 " F11 Full screen.
-map <silent> <F11>
+nnoremap <silent> <F11>
             \    :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
 
 " Mapping <Ctrl-Space> to reverse searching in Gvim only.
-map <C-Space> ?
+nnoremap <C-Space> ?
 
 "--------------------------------End General Mappings--------------------------"
 
