@@ -9,6 +9,7 @@ Vim/Gvim
 wmctrl (Para ajustar Gvim, viene por defecto en Linux Mint 18)
 Universal Ctags
 Silver Searcher Ag
+editorconfig
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
@@ -50,7 +51,7 @@ despues ir a ~/.vim/bundle/YouCompleteMe
 ./install.py --tern-completer
 
 Para generar los tags del proyecto
-ctags -R .
+ctags
 en la raiz de este
 
 RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!
