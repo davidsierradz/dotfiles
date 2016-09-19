@@ -368,6 +368,25 @@ augroup END
 
 
 
+"--------------------------------Macros----------------------------------------"
+
+"/
+"/ PHP
+"/
+
+" Put a var_dump() selecting text from current point to end of word (e),
+" searching for the closest empty line to paste it and a die().
+let @a = 'ye}ovar)€ü€kb_dump(0);die();'
+
+" Put a var_dump() selecting text from current point to end of word (e),
+" pasting under the current line and a die().
+let @s = 'yeovar_dump(0);die();'
+
+"--------------------------------End Macros------------------------------------"
+
+
+
+
 "--------------------------------Functions-------------------------------------"
 
 " Function to override @tags and @params in the comments sections of PHP.
