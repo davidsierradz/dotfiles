@@ -243,6 +243,9 @@ nnoremap <Leader>fa :Ack!<Space>'
 "nnoremap ; :
 "nnoremap : ;
 
+" Enter 2 spaces with Ctrl-Tab.
+inoremap <C-Tab> <Space><Space>
+
 "--------------------------------End General Mappings--------------------------"
 
 
@@ -336,6 +339,13 @@ let g:mta_filetypes = {
 let g:ackprg = 'ag --vimgrep --path-to-agignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden'
 
 "--------------------------------End Plugins-----------------------------------"
+
+
+
+
+"--------------------------------User Commands---------------------------------"
+
+"--------------------------------End User Commands-----------------------------"
 
 
 
