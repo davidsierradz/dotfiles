@@ -187,6 +187,9 @@ nnoremap <leader>ft :tag<space>
 " saves from normal mode.
 nnoremap <leader>s :w<cr>
 
+" Saves without sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 " List contents of all registers (that typically contain pasteable text).
 nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
@@ -245,6 +248,9 @@ nnoremap <Leader>fa :Ack!<Space>'
 
 " Enter 2 spaces with Ctrl-Tab.
 inoremap <C-Tab> <Space><Space>
+
+" Y yanks from current cursor position to end of line, more logical.
+nnoremap Y y$
 
 "--------------------------------End General Mappings--------------------------"
 
