@@ -1,0 +1,5 @@
+" Set alphabet for link hints.
+set hintchars=sadfjklewcmpgh
+
+" Disable all but tabs on Firefox GUI.
+set toolbars=none,tabs

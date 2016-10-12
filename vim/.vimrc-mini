@@ -18,7 +18,7 @@ endif
 " Use :help 'option' to see the documentation for the given option.
 
 set background=dark
-colorscheme desert
+colorscheme elflord
 set hidden
 hi PreProc ctermfg=1
 hi SpecialKey ctermfg=1
@@ -63,7 +63,7 @@ endif
 
 "if &listchars ==# 'eol:$'
   set list
-  set lcs=tab:>-,eol:¶,trail:·
+  set lcs=tab:>-,eol:¶,extends:>,precedes:<,trail:·
   "set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 "endif
 

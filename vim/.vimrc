@@ -252,6 +252,9 @@ inoremap <C-Tab> <Space><Space>
 " Y yanks from current cursor position to end of line, more logical.
 nnoremap Y y$
 
+" Make Ctrl-e jump to the end of the current line in the insert mode.
+inoremap <C-e> <C-o>$
+
 "--------------------------------End General Mappings--------------------------"
 
 

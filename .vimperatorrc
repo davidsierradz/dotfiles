@@ -1,0 +1,5 @@
+" Set alphabet to follow links.
+set hintchars=sadfjklewcmpgh
+
+" Disable all but tabs in GUI.
+set toolbars=none,tabs
