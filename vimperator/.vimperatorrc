@@ -1,0 +1,31 @@
+"--------------------------------Vimperator Settings---------------------------"
+
+" Set alphabet for link hints.
+set hintchars=sadfjklewcmpgh
+
+" Disable all but tabs on Firefox GUI.
+set toolbars=none,tabs
+
+" Show numbers on each tab.
+set tabnumbers
+
+" Perform incremental searching.
+set incsearch
+
+" Highlight search results.
+set hlsearch
+
+" Typically (see below) ignore case.
+set ignorecase
+
+" Only consider case if an upper case character is used.
+set smartcase
+
+"--------------------------------End Vimperator Settings-----------------------"
+
+"--------------------------------Vimperator Mappings---------------------------"
+
+" Clear search highlight
+nnoremap <C-L> :noh<CR>
+
+"--------------------------------End Vimperator Mappings-----------------------"
