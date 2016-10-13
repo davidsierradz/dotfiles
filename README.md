@@ -55,3 +55,10 @@ ctags
 en la raiz de este
 
 RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!
+
+
+-------------------------------------------------------------------------------
+Manjaroi3 config
+
+Cpmfigure LightDM Display Manager
+chmod +x ~/dotfiles/lightdm/set-correct-monitors.sh
