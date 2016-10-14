@@ -15,7 +15,7 @@ Plugin 'Valloric/MatchTagAlways'
 Plugin 'tpope/vim-vinegar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'benjifisher/matchit.zip'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'wesQ3/vim-windowswap'
@@ -25,7 +25,7 @@ Plugin 'editorconfig/editorconfig-vim'
 " Using this PHP Syntax file instead of the original:
 " https://jasonwoof.com/gitweb/?p=vim-syntax.git;a=blob_plain;f=php.vim;hb=HEAD
 " waiting for updating the base Vim one to PHP 7.
-Plugin 'StanAngeloff/php.vim'
+"Plugin 'StanAngeloff/php.vim'
 Plugin 'leafgarland/typescript-vim'
 "Plugin 'ervandew/supertab'
 "Plugin 'pangloss/vim-javascript'

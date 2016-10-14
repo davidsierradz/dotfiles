@@ -54,6 +54,9 @@ hi IncSearch gui=underline guifg=#dc322f
 "hi StatusLine gui=NONE guibg=#2aa198 guifg=#002b36
 "hi StatusLineNC gui=NONE guibg=#b58900 guifg=#002b36
 
+" Delete bottom border GVim.
+set guiheadroom=-50
+
 "--------------------------------End Visuals-----------------------------------"
 
 

@@ -7,7 +7,8 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="solarized-powerline"
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 #ZSH_POWERLINE_SHOW_OS="false"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -95,10 +96,10 @@ alias c='clear'          #Clear
 _comp_options+=(globdots)
 
 # want your terminal to support 256 color schemes? I do ...
-export TERM=xterm-256color
+#export TERM=xterm-256color
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
 
 # dircolors
-eval "$(dircolors ~/.dir_colors/dircolors.256dark)"
+eval "$(dircolors ~/.dir_colors)"
