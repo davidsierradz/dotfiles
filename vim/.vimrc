@@ -73,7 +73,7 @@ set infercase
 set list
 
 " Set the special characters default.
-set listchars=tab:▸\ ,eol:¬,trail:·,space:·
+set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·
 
 " Show line numbers.
 set number
@@ -175,8 +175,8 @@ set splitright
 "--------------------------------General Mappings------------------------------"
 
 " Shortcut to toogle showing spaces.
-nnoremap <M-F12> :set listchars=tab:▸\ ,eol:¬,trail:·<CR>
-nnoremap <F12> :set listchars=tab:▸\ ,eol:¬,trail:·,space:·<CR>
+nnoremap <M-F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·<CR>
+nnoremap <F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·<CR>
 
 " Regenerate ctags file.
 nnoremap <leader>rc :!ctags<CR>
@@ -185,7 +185,7 @@ nnoremap <leader>rc :!ctags<CR>
 nnoremap <leader>ft :tag<space>
 
 " saves from normal mode.
-nnoremap <leader>s :w<cr>
+nnoremap <leader>w :w<cr>
 
 " Saves without sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -395,7 +395,7 @@ augroup END
 
 " Put a var_dump() selecting text from current point to end of word (e),
 " searching for the closest empty line to paste it and a die().
-let @a = 'ye}ovar)���kb_dump(0);die();'
+let @a = 'ye}ovar_dump(0);die();'
 
 " Put a var_dump() selecting text from current point to end of word (e),
 " pasting under the current line and a die().
@@ -438,4 +438,3 @@ endif
 "--------------------------------Tips and Remainders---------------------------"
 
 "--------------------------------End Tips and Remainders-----------------------"
-
