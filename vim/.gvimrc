@@ -1,7 +1,5 @@
 "--------------------------------General---------------------------------------"
 
-set guiheadroom=-50
-
 " Paste on Gvim.
 set clipboard=unnamed,unnamedplus
 
@@ -65,8 +63,8 @@ set guiheadroom=-50
 "--------------------------------General Mappings------------------------------"
 
 " F11 Full screen.
-nnoremap <silent> <F11>
-            \    :call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")<CR>
+"nnoremap <silent> <F11>
+"            \    :call system('wmctrl -ir ' . v:windowid . ' -b toggle,fullscreen')<CR>
 
 " Mapping <Ctrl-Space> to reverse searching in Gvim only.
 nnoremap <C-Space> ?
@@ -80,6 +78,6 @@ nnoremap <C-Space> ?
 
 " Start GVim maximized using wmctrl Shell command
 " && wmctrl -r :ACTIVE: -b toggle,maximized_vert,maximized_horz.
-autocmd VimEnter * silent !sleep 0.2s && wmctrl -r :ACTIVE: -b toggle,fullscreen
+"autocmd VimEnter * silent !sleep 0.2s && wmctrl -r :ACTIVE: -b toggle,fullscreen
 
 "--------------------------------End Auto Commands-----------------------------"

@@ -185,7 +185,7 @@ nnoremap <leader>rc :!ctags<CR>
 nnoremap <leader>ft :tag<space>
 
 " saves from normal mode.
-nnoremap <leader>s :w<cr>
+nnoremap <leader>w :w<cr>
 
 " Saves without sudo.
 cmap w!! w !sudo tee > /dev/null %
@@ -438,4 +438,3 @@ endif
 "--------------------------------Tips and Remainders---------------------------"
 
 "--------------------------------End Tips and Remainders-----------------------"
-
