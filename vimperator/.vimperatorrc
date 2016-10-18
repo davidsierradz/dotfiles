@@ -21,11 +21,44 @@ set ignorecase
 " Only consider case if an upper case character is used.
 set smartcase
 
+" Disable default insert mode on some websites.
+set noinsertmode
+set focuscontent
+
+" Items listed when open a new buffer.
+set complete=slS
+
 "--------------------------------End Vimperator Settings-----------------------"
+
+
+
 
 "--------------------------------Vimperator Mappings---------------------------"
 
-" Clear search highlight
-nnoremap <C-L> :noh<CR>
+" Clear search highlight.
+nnoremap <A-L> :noh<CR>
+
+" Toggle the status line with gs.
+nnoremap gs :togglestatusline<CR>
 
 "--------------------------------End Vimperator Mappings-----------------------"
+
+
+
+
+"--------------------------------Vimperator Functions--------------------------"
+
+" Toggle the status line with a JS function.
+javascript <<EOF
+  function togglestatusline() {
+    if (['auto', 'visible'].indexOf(options['statuslinevisibility']) >= 0) {
+      options['statuslinevisibility'] = 'hidden'
+    } else {
+      // or 'visible'
+      options['statuslinevisibility'] = 'visible'
+    }
+  }
+EOF
+command! togglestatusline javascript togglestatusline()
+
+"--------------------------------End Vimperator Functions----------------------"
