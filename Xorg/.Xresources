@@ -1,39 +1,101 @@
-*background:            #272827
-*foreground:            #657b83
-*fading:                15
-*fadeColor:             black
-*cursorColor:           #16A085
-*pointerColorBackground:#2B2C2B
-*pointerColorForeground:#16A085
+! Solarized scheme.
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+*background:            S_base03
+*foreground:            S_base0
+*fadeColor:             S_base03
+*cursorColor:           S_base1
+*pointerColorBackground:S_base01
+*pointerColorForeground:S_base1
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
 
 !! black dark/light
-*color0:                #282928
-*color8:                #272827
+*color0:                S_base02
+*color8:                S_base03
 
 !! red dark/light
-*color1:                #983133
-*color9:                #985F31
+*color1:                S_red
+*color9:                S_orange
 
 !! green dark/light
-*color2:                #1D584D
-*color10:               #16A085
+*color2:                S_green
+*color10:               S_base01
 
 !! yellow dark/light
-*color3:                #5CE022
-*color11:               #63B93D
+*color3:                S_yellow
+*color11:               S_base00
 
 !! blue dark/light
-*color4:                #001B33
-*color12:               #839496
+*color4:                S_blue
+*color12:               S_base0
+
+!! magenta dark/light
+*color5:                S_magenta
+*color13:               S_violet
 
 !! cyan dark/light
-*color6:                #4F6A98
-*color14:               #2269E0
+*color6:                S_cyan
+*color14:               S_base1
 
 !! white dark/light
-*color7:                #fdf6e3
-*color15:               #fdf6e3
+*color7:                S_base2
+*color15:               S_base3
 
+
+
+
+!*background:            #272827
+!*foreground:            #657b83
+!*fading:                15
+!*fadeColor:             black
+!*cursorColor:           #16A085
+!*pointerColorBackground:#2B2C2B
+!*pointerColorForeground:#16A085
+
+!! black dark/light
+!*color0:                #282928
+!*color8:                #272827
+
+!! red dark/light
+!*color1:                #983133
+!*color9:                #985F31
+
+!! green dark/light
+!*color2:                #1D584D
+!*color10:               #16A085
+
+!! yellow dark/light
+!*color3:                #5CE022
+!*color11:               #63B93D
+
+!! blue dark/light
+!*color4:                #001B33
+!*color12:               #839496
+
+!! cyan dark/light
+!*color6:                #4F6A98
+!*color14:               #2269E0
+
+!! white dark/light
+!*color7:                #fdf6e3
+!*color15:               #fdf6e3
+
+!Xft.dpi: 120
 Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
@@ -44,21 +106,32 @@ Xft.lcdfilter: lcddefault
 Xcursor.theme: Breeze
 Xcursor.size:  0
 
-XTerm*background: #272827
-XTerm*foreground: #fdf6e3
+!XTerm*background: #272827
+XTerm*background: white
+!XTerm*foreground: #fdf6e3
+XTerm*foreground: black
 XTerm*reverseVideo: on
-XTerm*faceName: Terminus:size=11:antialias=true
+!XTerm*faceName: Anonymice Powerline:size=12:antialias=true
+XTerm*faceName: DejaVu Sans Mono for Powerline:size=12:antialias=true
+!XTerm*faceName: Terminus:size=11:antialias=true
 XTerm*selectToClipboard: true
+XTerm*termName: xterm-256color
 
-URxvt.font: 9x15
+!URxvt.font: 9x15
+!URxvt.font: xft:Anonymice Powerline:size=10
+URxvt.font: xft:Anonymice Powerline:pixelsize=16
+!URxvt.font: xft:Ubuntu Mono derivative Powerline:size=12
+!URxvt.font: xft:Source Code Pro for Powerline:pixelsize=14
 URxvt.depth: 32
-URxvt.background: [80]#000000
+!URxvt.background: [80]#000000
 URxvt*scrollBar:                      false
 URxvt*mouseWheelScrollPage:           false
 URxvt*cursorBlink:                    true
-URxvt*background:                     black
-URxvt*foreground:                     grey
-URxvt*saveLines:                      5000
+!URxvt*background:                     black
+!URxvt*foreground:                     grey
+URxvt*saveLines:                      50000
+URxvt.letterSpace: 1
+URxvt.intensityStyles: false
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
 ! URxvt*inheritPixmap:                  true

@@ -19,6 +19,9 @@ https://github.com/robbyrussell/oh-my-zsh.git
 Vundle
 https://github.com/gmarik/Vundle.vim.git
 
+Solarized for urxvt
+https://bbs.archlinux.org/viewtopic.php?id=164108
+
 Gnome-Terminal Solarized
 https://github.com/Anthony25/gnome-terminal-colors-solarized
 
@@ -28,8 +31,14 @@ https://github.com/seebi/dircolors-solarized
 Powerline fonts for candy visuals
 https://github.com/powerline/fonts
 
-Powerline zsh theme
+Powerline zsh theme (Agnoster)
 https://gist.github.com/3712874
+
+Powerline zsh theme (PowerLevel9k)
+https://github.com/bhilburn/powerlevel9k
+
+Solarized for Vim
+https://github.com/altercation/vim-colors-solarized
 
 Para eliminar el borde blanco en Gvim, linkea el archivo vim/.gtkrc-2.0 a ~
 segun http://askubuntu.com/questions/47831/how-to-remove-gvims-fat-bottom-border-and-resize-grip
@@ -53,6 +62,9 @@ despues ir a ~/.vim/bundle/YouCompleteMe
 Para generar los tags del proyecto
 ctags
 en la raiz de este
+
+Cambiar los DNS
+echo 'nameserver 8.8.8.8 \nnameserver 8.8.4.4' > /etc/resolve.conf
 
 RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!
 

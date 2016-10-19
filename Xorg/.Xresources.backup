@@ -34,6 +34,7 @@
 *color7:                #fdf6e3
 *color15:               #fdf6e3
 
+!Xft.dpi: 120
 Xft.dpi: 96
 Xft.antialias: true
 Xft.hinting: true
@@ -44,13 +45,19 @@ Xft.lcdfilter: lcddefault
 Xcursor.theme: Breeze
 Xcursor.size:  0
 
-XTerm*background: #272827
-XTerm*foreground: #fdf6e3
+!XTerm*background: #272827
+XTerm*background: white
+!XTerm*foreground: #fdf6e3
+XTerm*foreground: black
 XTerm*reverseVideo: on
-XTerm*faceName: Terminus:size=11:antialias=true
+XTerm*faceName: Anonymice Powerline:size=12:antialias=true
+!XTerm*faceName: Terminus:size=11:antialias=true
 XTerm*selectToClipboard: true
+XTerm*termName: xterm-256color
 
-URxvt.font: 9x15
+!URxvt.font: 9x15
+!URxvt.font: xft:Anonymice Powerline:size=10
+URxvt.font: xft:Anonymice Powerline:pixelsize=18
 URxvt.depth: 32
 URxvt.background: [80]#000000
 URxvt*scrollBar:                      false
@@ -59,6 +66,7 @@ URxvt*cursorBlink:                    true
 URxvt*background:                     black
 URxvt*foreground:                     grey
 URxvt*saveLines:                      5000
+URxvt.letterSpace: 1
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
 ! URxvt*inheritPixmap:                  true
