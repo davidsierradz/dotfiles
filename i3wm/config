@@ -296,8 +296,8 @@ bar {
 	tray_output primary
 #	tray_output eDP1
 
-#	Show the bar only on HDMI1 monitor.
-	output HDMI1
+#	Show the bar only on VGA1 monitor.
+	output VGA1
 
 	bindsym button4 nop
 	bindsym button5 nop
@@ -307,10 +307,10 @@ bar {
 	colors {
 #	background $transparent
 		background #2B2C2B
-                statusline #F9FAF9
+		statusline #F9FAF9
 		separator  #454947
 
-#                                  border  backgr. text
+#                           border  backgr. text
 		focused_workspace  #F9FAF9 #16A085 #2B2C2B
 		active_workspace   #595B5B #353836 #FDF6E3
 		inactive_workspace #595B5B #353836 #EEE8D5
@@ -321,26 +321,26 @@ bar {
 	mode hide
 }
 
-bar {
-	output VGA1
-	tray_output none
-	mode hide
-	font xft:Noto Sans,Icons 10.5
-	strip_workspace_numbers yes
-
-	colors {
-#	background $transparent
-		background #2B2C2B
-                statusline #F9FAF9
-		separator  #454947
-
-#                                  border  backgr. text
-		focused_workspace  #F9FAF9 #16A085 #2B2C2B
-		active_workspace   #595B5B #353836 #FDF6E3
-		inactive_workspace #595B5B #353836 #EEE8D5
-		urgent_workspace   #16A085 #FDF6E3 #E5201D
-	}
-}
+#bar {
+#	output VGA1
+#	tray_output none
+#	mode hide
+#	font xft:Noto Sans,Icons 10.5
+#	strip_workspace_numbers yes
+#
+#	colors {
+##	background $transparent
+#		background #2B2C2B
+#		statusline #F9FAF9
+#		separator  #454947
+#
+##                          border  backgr. text
+#		focused_workspace  #F9FAF9 #16A085 #2B2C2B
+#		active_workspace   #595B5B #353836 #FDF6E3
+#		inactive_workspace #595B5B #353836 #EEE8D5
+#		urgent_workspace   #16A085 #FDF6E3 #E5201D
+#	}
+#}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
@@ -420,5 +420,5 @@ mode "$mode_gaps_outer" {
 mouse_warping none
 
 # Put workspace 8 on VGA1 Screen always.
-workspace 8 output VGA1
+#workspace 8 output VGA1
 

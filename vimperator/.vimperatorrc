@@ -51,12 +51,7 @@ nnoremap gs :togglestatusline<CR>
 " Disable statusline when Firefox starts.
 javascript <<EOF
   (function() {
-    if (['auto', 'visible'].indexOf(options['statuslinevisibility']) >= 0) {
-      options['statuslinevisibility'] = 'hidden'
-    } else {
-      // or 'visible'
-      options['statuslinevisibility'] = 'visible'
-    }
+    options['statuslinevisibility'] = 'hidden';
   })()
 EOF
 
@@ -64,10 +59,10 @@ EOF
 javascript <<EOF
   function togglestatusline() {
     if (['auto', 'visible'].indexOf(options['statuslinevisibility']) >= 0) {
-      options['statuslinevisibility'] = 'hidden'
+      options['statuslinevisibility'] = 'hidden';
     } else {
       // or 'visible'
-      options['statuslinevisibility'] = 'visible'
+      options['statuslinevisibility'] = 'visible';
     }
   }
 EOF
