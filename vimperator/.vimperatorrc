@@ -21,6 +21,9 @@ set ignorecase
 " Only consider case if an upper case character is used.
 set smartcase
 
+" Dont focus an input after the page is loaded.
+set nofocuscontent
+
 "--------------------------------End Vimperator Settings-----------------------"
 
 "--------------------------------Vimperator Mappings---------------------------"
