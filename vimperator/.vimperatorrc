@@ -48,6 +48,18 @@ nnoremap gs :togglestatusline<CR>
 
 "--------------------------------Vimperator Functions--------------------------"
 
+" Disable statusline when Firefox starts.
+javascript <<EOF
+  (function() {
+    if (['auto', 'visible'].indexOf(options['statuslinevisibility']) >= 0) {
+      options['statuslinevisibility'] = 'hidden'
+    } else {
+      // or 'visible'
+      options['statuslinevisibility'] = 'visible'
+    }
+  })()
+EOF
+
 " Toggle the status line with a JS function.
 javascript <<EOF
   function togglestatusline() {
