@@ -41,6 +41,13 @@ nnoremap <A-L> :noh<CR>
 " Toggle the status line with gs.
 nnoremap gs :togglestatusline<CR>
 
+" Previous and next tabs.
+nnoremap J <C-p>
+nnoremap K <C-n>
+
+" Moar scroll.
+nnoremap j 3j
+nnoremap k 3k
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
