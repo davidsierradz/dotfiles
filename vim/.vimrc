@@ -277,7 +277,7 @@ nnoremap <leader>bl :CtrlPBuffer<cr>
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --path-to-agignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
@@ -345,7 +345,7 @@ let g:mta_filetypes = {
 "/
 
 " Using ack.vim with Ag because of deprecation of ag.vim.
-let g:ackprg = 'ag --vimgrep --path-to-agignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden'
+let g:ackprg = 'ag --vimgrep --path-to-ignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden'
 
 "--------------------------------End Plugins-----------------------------------"
 
