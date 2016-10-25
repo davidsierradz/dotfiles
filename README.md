@@ -74,3 +74,6 @@ Manjaroi3 config
 
 Cpmfigure LightDM Display Manager
 chmod +x ~/dotfiles/lightdm/set-correct-monitors.sh
+
+Remove
+-Bumblebeed

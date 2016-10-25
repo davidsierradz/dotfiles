@@ -22,7 +22,6 @@ set ignorecase
 set smartcase
 
 " Disable default insert mode on some websites.
-set noinsertmode
 set focuscontent
 
 " Items listed when open a new buffer.
