@@ -10,6 +10,7 @@ wmctrl (Para ajustar Gvim, viene por defecto en Linux Mint 18)
 Universal Ctags
 Silver Searcher Ag
 editorconfig
+xcape (AUR)
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
