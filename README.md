@@ -75,6 +75,7 @@ Manjaroi3 config
 
 Cpmfigure LightDM Display Manager
 chmod +x ~/dotfiles/lightdm/set-correct-monitors.sh
+chmod +x ~/dotfiles/scripts/conky/start_conky_maia
 
 i3wm config located at
 ~/.i3
