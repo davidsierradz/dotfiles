@@ -82,3 +82,10 @@ i3wm config located at
 
 Remove
 -Bumblebeed
+
+Using a dark theme with Firefox makes the inputs for certain pages to be inusable
+so do this:
+https://wiki.archlinux.org/index.php/Firefox#Unreadable_input_fields_with_dark_GTK.2B_themes
+
+mkdir .mozilla/firefox/xxxxxxxxxx.default/chrome
+ln -s ~/dotfiles/firefox/userContent.css .mozilla/firefox/xxxxxxxxxx.default/chrome/
