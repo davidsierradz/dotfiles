@@ -230,6 +230,10 @@ nnoremap <silent> ]B :blast<CR>
 " This replicates the idea of closing a tab.
 nnoremap <leader>bq :bp <BAR> bd #<CR>
 
+" Close the current buffer and move to the previous one and close the window
+" This replicates the idea of closing a tab.
+nnoremap <leader>bw :bp <BAR> bd #<CR> :q<CR>
+
 " Remap go to last file with backspace.
 nnoremap <BS> <C-^>
 
