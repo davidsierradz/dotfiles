@@ -89,8 +89,12 @@ source $ZSH/oh-my-zsh.sh
 ### CUSTOM
 
 # custom aliases
-alias ll='ls -lAFh'      #long list
-alias c='clear'          #Clear
+#long list
+alias ll='ls -lAFh'
+#Clear
+alias c='clear'
+#Open vim with mimi rc
+alias vim='vim -u /home/neuromante/dotfiles/vim/.vimrc-mini'
 
 # enable completition for hidden files .
 _comp_options+=(globdots)
