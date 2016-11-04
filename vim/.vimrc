@@ -14,7 +14,7 @@ syntax enable
 
 " Indenting configurations.
 set autoindent
-set smartindent
+"set smartindent
 
 " Settings for tabs and space indents.
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
