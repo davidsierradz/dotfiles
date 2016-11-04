@@ -50,6 +50,11 @@ nnoremap J <C-n>
 " Moar scroll.
 nnoremap j 3j
 nnoremap k 3k
+
+" Swap close current buffer mapping.
+nnoremap d D
+nnoremap D d
+
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
