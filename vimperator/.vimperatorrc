@@ -27,6 +27,9 @@ set focuscontent
 " Items listed when open a new buffer.
 set complete=slS
 
+" Solarized colorscheme
+colorscheme solarized_dark
+
 "--------------------------------End Vimperator Settings-----------------------"
 
 
@@ -41,8 +44,8 @@ nnoremap <A-L> :noh<CR>
 nnoremap gs :togglestatusline<CR>
 
 " Previous and next tabs.
-nnoremap J <C-p>
-nnoremap K <C-n>
+nnoremap K <C-p>
+nnoremap J <C-n>
 
 " Moar scroll.
 nnoremap j 3j

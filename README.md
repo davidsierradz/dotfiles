@@ -89,3 +89,6 @@ https://wiki.archlinux.org/index.php/Firefox#Unreadable_input_fields_with_dark_G
 
 mkdir .mozilla/firefox/xxxxxxxxxx.default/chrome
 ln -s ~/dotfiles/firefox/userContent.css .mozilla/firefox/xxxxxxxxxx.default/chrome/
+
+Vimperator colorscheme
+mkdir .vimperator/colors
