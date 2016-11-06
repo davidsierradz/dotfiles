@@ -92,3 +92,15 @@ ln -s ~/dotfiles/firefox/userContent.css .mozilla/firefox/xxxxxxxxxx.default/chr
 
 Vimperator colorscheme
 mkdir .vimperator/colors
+
+
+-------------------------------------------------------------------------------
+Special personal laptop setup
+
+Change Kernel parameters in grub cfg file with this to send default tty output to external monitors
+
+sudo vim /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="video=LVDS-1:d"
+
+then
+sudo grub-mkconfig -o /boot/grub/grub.cfg
