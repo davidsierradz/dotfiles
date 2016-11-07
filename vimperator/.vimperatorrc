@@ -28,7 +28,7 @@ set focuscontent
 set complete=slS
 
 " Solarized colorscheme
-colorscheme solarized_dark
+"colorscheme solarized_dark
 
 "--------------------------------End Vimperator Settings-----------------------"
 
