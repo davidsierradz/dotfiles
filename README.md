@@ -93,6 +93,9 @@ ln -s ~/dotfiles/firefox/userContent.css .mozilla/firefox/xxxxxxxxxx.default/chr
 Vimperator colorscheme
 mkdir .vimperator/colors
 
+URxvt settings
+Change font size on the fly
+install from AUR: urxvt-font-size-git
 
 -------------------------------------------------------------------------------
 Special personal laptop setup

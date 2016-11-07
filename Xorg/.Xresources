@@ -106,6 +106,9 @@ Xft.lcdfilter: lcddefault
 Xcursor.theme: Breeze
 Xcursor.size:  0
 
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+
 !XTerm*background: #272827
 XTerm*background: white
 !XTerm*foreground: #fdf6e3
@@ -132,6 +135,18 @@ URxvt*cursorBlink:                    true
 URxvt*saveLines:                      50000
 URxvt.letterSpace: 1
 URxvt.intensityStyles: false
+
+URxvt.perl-ext-common: font-size,matcher
+
+URxvt.keysym.C-Up:     font-size:increase
+URxvt.keysym.C-Down:   font-size:decrease
+URxvt.keysym.C-S-Up:   font-size:incglobal
+URxvt.keysym.C-S-Down: font-size:decglobal
+URxvt.keysym.C-equal:  font-size:reset
+URxvt.keysym.C-slash:  font-size:show
+
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
 
 ! for 'fake' transparency (without Compton) uncomment the following three lines
 ! URxvt*inheritPixmap:                  true
