@@ -97,6 +97,9 @@ URxvt settings
 Change font size on the fly
 install from AUR: urxvt-font-size-git
 
+Set cursor theme, create dir
+mkdir .local/share/icons/default
+
 -------------------------------------------------------------------------------
 Special personal laptop setup
 
