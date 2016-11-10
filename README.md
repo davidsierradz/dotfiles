@@ -110,3 +110,10 @@ GRUB_CMDLINE_LINUX_DEFAULT="video=LVDS-1:d"
 
 then
 sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+enable bluetooth
+execute manjaroi3 pulseaudio installer script:
+install_pulse
+then to enable headset buttons create file in:
+/etc/modules-load.d/uinput.conf containing uinput
+run blueman and pair device, change default audio device with pavucontrol
