@@ -90,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 
 # custom aliases
 #long list
-alias ll='ls -lAFh'
+alias ll='ls -lAFh --group-directories-first'
 #Clear
 alias c='clear'
 #Open vim with mimi rc
@@ -104,6 +104,7 @@ _comp_options+=(globdots)
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL=$EDITOR
+export LC_COLLATE="C"
 
 # dircolors
 eval "$(dircolors ~/.dir_colors)"
