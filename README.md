@@ -37,6 +37,7 @@ https://gist.github.com/3712874
 
 Powerline zsh theme (PowerLevel9k)
 https://github.com/bhilburn/powerlevel9k
+update theme with git pull from ~/.oh-my-zsh/custom/themes/powerlevel9k/
 
 Solarized for Vim
 https://github.com/altercation/vim-colors-solarized

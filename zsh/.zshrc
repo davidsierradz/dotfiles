@@ -9,6 +9,8 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="solarized-powerline"
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode root_indicator background_jobs time)
 #ZSH_POWERLINE_SHOW_OS="false"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -52,7 +54,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases command-not-found dirhistory sudo)
+plugins=(git common-aliases command-not-found dirhistory sudo vi-mode)
 
 # User configuration
 DEFAULT_USER=neuromante
@@ -108,3 +110,29 @@ export LC_COLLATE="C"
 
 # dircolors
 eval "$(dircolors ~/.dir_colors)"
+
+# Use backwards search in vi-mode.
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+
+bindkey -v
+
+# More bindkeys for vi-mode.
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+#function zle-line-init zle-keymap-select {
+#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
+#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+#    zle reset-prompt
+#}
+#
+#zle -N zle-line-init
+#zle -N zle-keymap-select
+
+# More responsive toggle from normal to insert mode in vi-mode.
+export KEYTIMEOUT=1
