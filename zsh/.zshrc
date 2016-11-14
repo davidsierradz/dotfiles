@@ -136,3 +136,33 @@ bindkey '^r' history-incremental-search-backward
 
 # More responsive toggle from normal to insert mode in vi-mode.
 export KEYTIMEOUT=1
+
+# Snippet of code to make vi_mode in zsh theme to work.
+# from https://github.com/bhilburn/powerlevel9k/issues/319#issuecomment-250894242
+function zle-line-init {
+  powerlevel9k_prepare_prompts
+  if (( ${+terminfo[smkx]} )); then
+    printf '%s' ${terminfo[smkx]}
+  fi
+  zle reset-prompt
+  zle -R
+}
+
+function zle-line-finish {
+  powerlevel9k_prepare_prompts
+  if (( ${+terminfo[rmkx]} )); then
+    printf '%s' ${terminfo[rmkx]}
+  fi
+  zle reset-prompt
+  zle -R
+}
+
+function zle-keymap-select {
+  powerlevel9k_prepare_prompts
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-line-init
+zle -N ale-line-finish
+zle -N zle-keymap-select
