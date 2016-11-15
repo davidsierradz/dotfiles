@@ -1,5 +1,8 @@
 "--------------------------------General---------------------------------------"
 
+" GUI font.
+set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
+
 " Paste on Gvim.
 set clipboard=unnamed,unnamedplus
 
