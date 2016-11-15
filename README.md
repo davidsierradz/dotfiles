@@ -118,3 +118,29 @@ install_pulse
 then to enable headset buttons create file in:
 /etc/modules-load.d/uinput.conf containing uinput
 run blueman and pair device, change default audio device with pavucontrol
+
+if a problem with connecting bluetooth headset, delete the device and unpair from blueman-manager
+and do:
+
+install bluetoothctl
+
+open bluetoothctl:
+ power on
+ agent on
+ default-agent
+ scan on
+
+ pair XX:XX:XX:XX:XX:XX
+ connect XX:XX:XX:XX:XX:XX
+
+ scan off
+ exit
+
+to toggle between A2DP sink mode and HSP (to use microphone of the headset)
+search number of bluetooth headset 'card':
+pactl list cards
+then:
+pacmd set-card-profile 1 a2dp_sink
+pacmd set-card-profile 1 headset_head_unit
+
+maybe write a little script to check actual profile and toggle between the two?
