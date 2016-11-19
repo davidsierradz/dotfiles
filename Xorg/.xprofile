@@ -20,3 +20,6 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Switch Caps Lock for Ctrl if using as a modifier and Esc if pressed and released.
 /usr/bin/setxkbmap -option 'caps:ctrl_modifier' && /usr/bin/xcape -e 'Caps_Lock=Escape' &
+
+# Start keynav-git
+/usr/bin/keynav

@@ -11,6 +11,7 @@ Universal Ctags
 Silver Searcher Ag
 editorconfig
 xcape (AUR)
+navkey-git (AUR)
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
