@@ -55,6 +55,9 @@ nnoremap k 3k
 nnoremap d D
 nnoremap D d
 
+" More zoom.
+nnoremap <C-z> i 3zi
+
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
