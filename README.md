@@ -12,6 +12,7 @@ Silver Searcher Ag
 editorconfig
 xcape (AUR)
 navkey-git (AUR)
+redshift-gtk
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
