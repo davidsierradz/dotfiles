@@ -12,7 +12,7 @@ new_window pixel 1
 new_float normal
 
 # Hide borders
-hide_edge_borders both
+hide_edge_borders smart
 
 # change borders
 bindsym $mod+u border none
@@ -98,8 +98,8 @@ bindsym $mod+Shift+Right move right
 
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
-bindsym $mod+b workspace back_and_forth
-bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+Shift+Tab move container to workspace back_and_forth; workspace back_and_forth
 
 # split orientation
 bindsym $mod+s split v;exec notify-send 'tile horizontally'
@@ -289,6 +289,7 @@ exec --no-startup-id /home/neuromante/dotfiles/scripts/conky/start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id setcursor
+exec --no-startup-id redshift-gtk &
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
@@ -362,8 +363,8 @@ client.background       #2B2C2B
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
-gaps outer -4
+gaps inner 5
+gaps outer -3
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
