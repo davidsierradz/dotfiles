@@ -59,7 +59,7 @@ nnoremap d D
 nnoremap D d
 
 " More zoom.
-nnoremap <C-z> i 3zi
+nnoremap <C-z>i 3zi
 
 " Map << and >> to move tabs.
 nnoremap << :tabmove -1<CR>
