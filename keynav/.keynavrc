@@ -99,9 +99,9 @@ a history-back
 
 ### Example using a 2-row, 3-column grid, 
 # mapped to Insert/Home/PageUp/etc...
-1 grid 26x26
-2 grid-nav toggle
-3 grid 2x2
+1 grid 26x26, grid-nav on
+2 grid 1x1, grid-nav off
+3 grid-nav toggle
 #Insert cell-select 1x1
 #Home cell-select 1x2
 #Prior cell-select 1x3   # PageUp
