@@ -23,3 +23,14 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Start keynav-git
 /usr/bin/keynav
+
+# Alt-Gr+hjkl to arrow keys.
+xmodmap -e "keycode 43 = h H NoSymbol NoSymbol Left"
+xmodmap -e "keycode 44 = j J NoSymbol NoSymbol Down"
+xmodmap -e "keycode 45 = k K NoSymbol NoSymbol Up"
+xmodmap -e "keycode 46 = l L NoSymbol NoSymbol Right"
+
+# Alt-Gr+iop to control sound.
+xmodmap -e "keycode  31 = i I i I XF86AudioLowerVolume Iacute iacute"
+xmodmap -e "keycode  32 = o O o O XF86AudioRaiseVolume Oacute oacute"
+xmodmap -e "keycode  33 = p P p P XF86AudioMute Odiaeresis odiaeresis"
