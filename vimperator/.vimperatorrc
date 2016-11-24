@@ -68,6 +68,9 @@ nnoremap >> :tabmove +1<CR>
 " Close Firefox and save the session.
 nnoremap <Leader>qq :xall<CR>
 
+" Restart Firefox.
+nnoremap <Leader>qr :restart<CR>
+
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
