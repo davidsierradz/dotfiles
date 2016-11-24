@@ -30,6 +30,9 @@ set complete=slS
 " Solarized colorscheme
 "colorscheme solarized_dark
 
+" Show selected link with ;; in the content area.
+set showstatuslinks=3
+
 "--------------------------------End Vimperator Settings-----------------------"
 
 
@@ -58,10 +61,22 @@ nnoremap D d
 " More zoom.
 nnoremap <C-z> i 3zi
 
+" Map << and >> to move tabs.
+nnoremap << :tabmove -1<CR>
+nnoremap >> :tabmove +1<CR>
+
+" Close Firefox and save the session.
+nnoremap <Leader>qq :xall<CR>
+
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
+"--------------------------------Vimperator Commands---------------------------"
 
+" Save the Firefox session when closing with qall.
+command! qall xall
+
+"--------------------------------End Vimperator Commands-----------------------"
 
 "--------------------------------Vimperator Functions--------------------------"
 
