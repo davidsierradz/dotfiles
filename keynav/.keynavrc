@@ -100,8 +100,14 @@ a history-back
 ### Example using a 2-row, 3-column grid, 
 # mapped to Insert/Home/PageUp/etc...
 1 grid 26x26, grid-nav on
-2 grid 1x1, grid-nav off
+2 grid 1x1, grid-nav off, cut-left .75, cut-right .665, cut-up .75, cut-down .665, cut-left .75, cut-right .665
+#2 grid 1x1, grid-nav off
 3 grid-nav toggle
+#4 cut-left .55
+#5 cut-right .15
+#6 cut-up .55
+#7 cut-down .15
+
 #Insert cell-select 1x1
 #Home cell-select 1x2
 #Prior cell-select 1x3   # PageUp
