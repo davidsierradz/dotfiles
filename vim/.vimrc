@@ -177,7 +177,7 @@ nnoremap <M-F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·<CR>
 nnoremap <F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·<CR>
 
 " Regenerate ctags file.
-nnoremap <leader>rc :!ctags<CR>
+nnoremap <leader>rc :!ctags -R --fields=+aimS-s --filter-terminator=php .<CR>
 
 " Search tag.
 nnoremap <leader>ft :tag<space>
