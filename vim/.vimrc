@@ -260,6 +260,9 @@ inoremap <C-e> <C-o>$
 " Toggle Relative number.
 nmap <silent> <Leader>l :set relativenumber!<CR>
 
+" Highlight last inserted text.
+nnoremap gV `[v`]
+
 "--------------------------------End General Mappings--------------------------"
 
 
