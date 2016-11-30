@@ -257,6 +257,9 @@ nnoremap Y y$
 " Make Ctrl-e jump to the end of the current line in the insert mode.
 inoremap <C-e> <C-o>$
 
+" Toggle Relative number.
+nmap <silent> <Leader>l :set relativenumber!<CR>
+
 "--------------------------------End General Mappings--------------------------"
 
 
