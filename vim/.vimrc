@@ -211,8 +211,8 @@ nnoremap <Leader>r :w<CR>:e<CR>
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 " Using <Nul> as <C-Space> because in gnome-terminal thats a null character.
-nnoremap <Space> /
-nnoremap <Nul> ?
+"nnoremap <Space> /
+"nnoremap <Nul> ?
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
@@ -348,6 +348,24 @@ let g:mta_filetypes = {
 
 " Using ack.vim with Ag because of deprecation of ag.vim.
 let g:ackprg = 'ag --vimgrep --path-to-ignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden'
+
+"/
+"/ Vim EasyMotion
+"/
+
+" Use spacebar to start easymotion.
+nmap <C-Space> <leader><leader>
+
+" Two char search.
+nmap <Space> <Plug>(easymotion-s2)
+"nmap <C-Space> <Plug>(easymotion-sn)
+
+let g:EasyMotion_smartcase = 1
+
+let g:EasyMotion_use_upper = 1
+
+"let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
+let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
 
 "--------------------------------End Plugins-----------------------------------"
 

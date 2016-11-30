@@ -70,7 +70,7 @@ set guiheadroom=-50
 "            \    :call system('wmctrl -ir ' . v:windowid . ' -b toggle,fullscreen')<CR>
 
 " Mapping <Ctrl-Space> to reverse searching in Gvim only.
-nnoremap <C-Space> ?
+"nnoremap <C-Space> ?
 
 "--------------------------------End General Mappings--------------------------"
 
