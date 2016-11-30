@@ -28,6 +28,7 @@ Plugin 'easymotion/vim-easymotion'
 " waiting for updating the base Vim one to PHP 7.
 "Plugin 'StanAngeloff/php.vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'sjl/gundo.vim'
 "Plugin 'ervandew/supertab'
 "Plugin 'pangloss/vim-javascript'
 "Plugin 'terryma/vim-multiple-cursors'

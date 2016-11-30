@@ -373,6 +373,21 @@ let g:EasyMotion_use_upper = 1
 "let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
 
+"/
+"/ Gundo.vim
+"/
+
+" Start plugin.
+nnoremap <leader>u :GundoToggle<CR>
+
+" Put preview window below current window.
+let g:gundo_preview_bottom = 1
+
+" Disable help.
+let g:gundo_help = 0
+
+let g:gundo_close_on_revert = 1
+
 "--------------------------------End Plugins-----------------------------------"
 
 
