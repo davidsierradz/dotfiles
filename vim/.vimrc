@@ -403,6 +403,9 @@ let g:gundo_close_on_revert = 1
 
 "--------------------------------User Commands---------------------------------"
 
+" :W sudo saves the file.
+command W w !sudo tee % > /dev/null
+
 "--------------------------------End User Commands-----------------------------"
 
 
