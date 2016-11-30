@@ -74,12 +74,20 @@ nnoremap <Leader>qr :restart<CR>
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
+
+
 "--------------------------------Vimperator Commands---------------------------"
 
 " Save the Firefox session when closing with qall.
 command! qall xall
 
+" Toggle the status line with a JS function.
+command! togglestatusline javascript togglestatusline()
+
 "--------------------------------End Vimperator Commands-----------------------"
+
+
+
 
 "--------------------------------Vimperator Functions--------------------------"
 
@@ -90,7 +98,6 @@ javascript <<EOF
   })()
 EOF
 
-" Toggle the status line with a JS function.
 javascript <<EOF
   function togglestatusline() {
     if (['auto', 'visible'].indexOf(options['statuslinevisibility']) >= 0) {
@@ -101,6 +108,5 @@ javascript <<EOF
     }
   }
 EOF
-command! togglestatusline javascript togglestatusline()
 
 "--------------------------------End Vimperator Functions----------------------"
