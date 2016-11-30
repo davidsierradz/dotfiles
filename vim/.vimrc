@@ -298,6 +298,14 @@ let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
 
+" Search by name, can switch with <C-d>.
+let g:ctrlp_by_filename = 1
+
+let g:ctrlp_reuse_window = 'netrw'
+
+" Save the recent list of files only when exiting vim.
+let g:ctrlp_mruf_save_on_update = 0
+
 "/
 "/ Vim Airline
 "/
