@@ -133,6 +133,9 @@ set scrolloff=1
 set sidescrolloff=15
 set display+=lastline
 
+" Set the width of the numberline.
+set numberwidth=1
+
 "--------------------------------End Visuals-----------------------------------"
 
 
