@@ -266,6 +266,9 @@ nmap <silent> <Leader>l :set relativenumber!<CR>
 " Highlight last inserted text.
 nnoremap gV `[v`]
 
+" Disable Ex mode.
+nnoremap Q <nop>
+
 "--------------------------------End General Mappings--------------------------"
 
 
