@@ -47,13 +47,19 @@ set guioptions+=c
 hi SpecialKey guifg=#657b83 guibg=NONE
 hi VertSplit  guifg=#b58900 guibg=#b58900
 hi NonText gui=bold guifg=#b58900
-hi ColorColumn guibg=#d33682
+"hi ColorColumn guibg=#d33682
 hi Search gui=underline guifg=#dc322f
 hi IncSearch gui=underline guifg=#dc322f
 "hi CursorLine guibg=#333333
 "hi LineNr guifg=#555555 guibg=bg
 "hi StatusLine gui=NONE guibg=#2aa198 guifg=#002b36
 "hi StatusLineNC gui=NONE guibg=#b58900 guifg=#002b36
+
+" Set the ruler to 81 and 120 columns.
+"highlight ColorColumn ctermbg=235 guibg=#003036
+highlight ColorColumn ctermbg=235 guibg=#073642
+let &colorcolumn=join(range(82,999),",")
+let &colorcolumn="81,".join(range(120,999),",")
 
 " Delete bottom border GVim.
 set guiheadroom=-50
