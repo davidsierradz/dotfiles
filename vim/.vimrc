@@ -450,6 +450,9 @@ augroup END
 " Generally we are working with mysql in sql files, auto set the filetype.
 "au BufNewFile,BufRead *.sql set filetype=mysql
 
+" Wipe the netrw buffer when go hidden.
+autocmd FileType netrw setl bufhidden=wipe
+
 "--------------------------------End Auto Commands-----------------------------"
 
 
