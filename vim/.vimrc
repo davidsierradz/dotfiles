@@ -402,6 +402,16 @@ let g:gundo_help = 0
 
 let g:gundo_close_on_revert = 1
 
+"/
+"/ vim.maximizer
+"/
+
+let g:maximizer_set_default_mapping = 0
+
+nnoremap <silent><leader>m :MaximizerToggle<CR>
+vnoremap <silent><leader>m :MaximizerToggle<CR>gv
+inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
+
 "--------------------------------End Plugins-----------------------------------"
 
 
