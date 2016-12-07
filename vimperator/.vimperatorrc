@@ -71,6 +71,17 @@ nnoremap <Leader>qq :xall<CR>
 " Restart Firefox.
 nnoremap <Leader>qr :restart<CR>
 
+" Swap Ctrl-d with d.
+nnoremap <C-d> d
+nnoremap d <C-d>
+
+" Map this for D to work (why?).
+nnoremap <S-d> D
+
+" Swap Ctrl-u with u.
+nnoremap <C-u> u
+nnoremap u <C-u>
+
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
