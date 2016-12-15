@@ -269,6 +269,9 @@ nnoremap gV `[v`]
 " Disable Ex mode.
 nnoremap Q <nop>
 
+" Change pwd locally to current file path.
+nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
+
 "--------------------------------End General Mappings--------------------------"
 
 
