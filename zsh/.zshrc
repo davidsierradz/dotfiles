@@ -54,7 +54,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git common-aliases command-not-found dirhistory sudo vi-mode)
+plugins=(git common-aliases dirhistory sudo vi-mode)
 
 # User configuration
 DEFAULT_USER=neuromante
