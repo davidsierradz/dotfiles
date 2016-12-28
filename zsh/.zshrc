@@ -109,7 +109,8 @@ export VISUAL=$EDITOR
 export LC_COLLATE="C"
 
 # dircolors
-eval "$(dircolors ~/.dir_colors)"
+#eval "$(dircolors ~/.dir_colors)"
+eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
 
 # Use backwards search in vi-mode.
 bindkey '^[[A' up-line-or-search
