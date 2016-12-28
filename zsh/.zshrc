@@ -54,7 +54,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases dirhistory git sudo vi-mode)
+plugins=(common-aliases dirhistory git sudo vi-mode zsh-completions)
 
 # User configuration
 DEFAULT_USER=neuromante
@@ -166,3 +166,6 @@ function zle-keymap-select {
 zle -N zle-line-init
 zle -N ale-line-finish
 zle -N zle-keymap-select
+
+# Reload completions.
+autoload -U compinit && compinit
