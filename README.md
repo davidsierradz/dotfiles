@@ -40,6 +40,9 @@ Powerline zsh theme (PowerLevel9k)
 https://github.com/bhilburn/powerlevel9k
 update theme with git pull from ~/.oh-my-zsh/custom/themes/powerlevel9k/
 
+Zsh completions plugin
+git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+
 Solarized for Vim
 https://github.com/altercation/vim-colors-solarized
 
