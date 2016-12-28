@@ -6,12 +6,11 @@ Binarios necesarios:
 Git
 Zsh
 Vim/Gvim
-wmctrl (Para ajustar Gvim, viene por defecto en Linux Mint 18)
 Universal Ctags
 Silver Searcher Ag
 editorconfig
 xcape (AUR)
-navkey-git (AUR)
+keynav-git (AUR)
 redshift-gtk
 
 Repositorios necesarios para utilizar estos archivos de configuración
