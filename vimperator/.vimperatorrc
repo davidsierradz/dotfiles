@@ -82,6 +82,9 @@ nnoremap <S-d> D
 nnoremap <C-u> u
 nnoremap u <C-u>
 
+" Use backspace to change to last tab.
+nnoremap <BS> <C-^>
+
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
