@@ -1,5 +1,5 @@
 conky.config = {
-	alignment = 'top_right',
+	alignment = 'top_left',
 	background = true,
 	color2 = '588078',
 	cpu_avg_samples = 2,
@@ -45,7 +45,7 @@ ${alignr}${color2}${font Bitstream Vera Sans:size=8}uptime: ${color}${uptime_sho
 ${voffset 5}${color2}${font Bitstream Vera Sans:size=8}${alignr}kernel: ${color}${kernel}
 #
 ${voffset 10}${goto 40}${color2}networking:
-${alignr}Up:$color ${upspeed enp4s0} ${color2} - Down:$color ${downspeed enp4s0}
+${alignr}Up:$color ${upspeed enp2s0} ${color2} - Down:$color ${downspeed enp2s0}
 #
 ${voffset 10}${goto 40}${color2}Disk I/O $alignr ${color}${diskio}
 ${goto 40}${color2}${diskiograph 16,000 ffffff 0000ff}
