@@ -21,7 +21,7 @@ bindsym $mod+n border normal
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Noto Mono 10
+font xft:Noto Sans 10
 
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -201,7 +201,7 @@ for_window [title="i3_help"] floating enable sticky enable border normal
 for_window [class="Lightdm-gtk-greeter-settings"] floating enable
 for_window [class="Lxappearance"] floating enable sticky enable border normal
 for_window [class="Manjaro Settings Manager"] floating enable border normal
-for_window [class="Manjaro Welcome"] floating enable
+for_window [class="Manjaro-hello"] floating enable
 for_window [title="MuseScore: Play Panel"] floating enable
 for_window [class="Nitrogen"] floating enable sticky enable border normal
 for_window [class="Oblogout"] fullscreen enable
@@ -275,10 +275,9 @@ mode "resize" {
 bindsym $mod+9 exec --no-startup-id blurlock
 
 # Autostart applications
-## adjustment of i3bar battery reading (only run at the very first login):
-#exec --no-startup-id /usr/bin/adjust_i3statusconf
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
+exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
@@ -288,12 +287,13 @@ exec --no-startup-id clipit
 exec --no-startup-id /home/neuromante/dotfiles/scripts/conky/start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 10 -locker blurlock
-exec_always --no-startup-id setcursor
+exec_always --no-startup-id fix_xcursor
 exec --no-startup-id redshift-gtk &
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	status_command i3status
+	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 	tray_output primary
@@ -304,7 +304,7 @@ bar {
 
 	bindsym button4 nop
 	bindsym button5 nop
-	font xft:Noto Sans,Icons 10.5
+	font xft:Noto Sans 10.5
 	strip_workspace_numbers yes
 
 	colors {
@@ -326,9 +326,10 @@ bar {
 
 bar {
 	output VGA1
+	position bottom
 	tray_output none
 	mode hide
-	font xft:Noto Sans,Icons 10.5
+	font xft:Noto Sans 10.5
 	strip_workspace_numbers yes
 
 	colors {
