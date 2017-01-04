@@ -286,7 +286,7 @@ exec --no-startup-id clipit
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id /home/neuromante/dotfiles/scripts/conky/start_conky_maia
 # exec --no-startup-id start_conky_green
-exec --no-startup-id xautolock -time 10 -locker blurlock
+exec --no-startup-id xautolock -time 30 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id redshift-gtk &
 
@@ -300,7 +300,7 @@ bar {
 #	tray_output eDP1
 
 #	Show the bar only on HDMI1 monitor.
-	output HDMI1
+	output HDMI2
 
 	bindsym button4 nop
 	bindsym button5 nop
