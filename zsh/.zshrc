@@ -98,9 +98,6 @@ alias c='clear'
 #Open vim with mimi rc
 alias vim='vim -u /home/neuromante/dotfiles/vim/.vimrc-mini'
 
-# enable completition for hidden files .
-_comp_options+=(globdots)
-
 # want your terminal to support 256 color schemes? I do ...
 #export TERM=xterm-256color
 export EDITOR="vim"
@@ -170,3 +167,6 @@ zle -N zle-keymap-select
 
 # Reload completions.
 autoload -U compinit && compinit
+
+# enable completition for hidden files .
+_comp_options+=(globdots)
