@@ -108,7 +108,7 @@ command! togglestatusline javascript togglestatusline()
 " Disable statusline when Firefox starts.
 javascript <<EOF
   (function() {
-    options['statuslinevisibility'] = 'hidden';
+    options['statuslinevisibility'] = 'auto';
   })()
 EOF
 
@@ -118,7 +118,7 @@ javascript <<EOF
       options['statuslinevisibility'] = 'hidden';
     } else {
       // or 'visible'
-      options['statuslinevisibility'] = 'visible';
+      options['statuslinevisibility'] = 'auto';
     }
   }
 EOF
