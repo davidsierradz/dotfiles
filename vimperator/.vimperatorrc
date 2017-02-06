@@ -38,6 +38,17 @@ set showstatuslinks=3
 
 
 
+"--------------------------------Vimperator Styles-----------------------------"
+
+" Set default style for statusline bar.
+hi StatusLine color: #fff; background: #000;
+"hi Normal color:  #fff;  background: #000;
+
+"--------------------------------End Vimperator Styles-------------------------"
+
+
+
+
 "--------------------------------Vimperator Mappings---------------------------"
 
 " Clear search highlight.
@@ -45,6 +56,12 @@ nnoremap <A-L> :noh<CR>
 
 " Toggle the status line with gs.
 nnoremap gs :togglestatusline<CR>
+
+" Set the status line color to black.
+nnoremap ga :hi StatusLine color: #fff; background: #000;<CR>
+
+" Set the status line color to white.
+nnoremap gd :hi StatusLine color: #000; background: #fff;<CR>
 
 " Previous and next tabs.
 nnoremap K <C-p>
