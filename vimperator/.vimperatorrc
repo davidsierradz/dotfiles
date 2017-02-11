@@ -41,7 +41,7 @@ set showstatuslinks=3
 "--------------------------------Vimperator Styles-----------------------------"
 
 " Set default style for statusline bar.
-hi StatusLine color: #fff; background: #000;
+"hi StatusLine color: #fff; background: #000;
 "hi Normal color:  #fff;  background: #000;
 
 "--------------------------------End Vimperator Styles-------------------------"
