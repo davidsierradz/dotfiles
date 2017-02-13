@@ -163,6 +163,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 # Switch to workspace 8 with ` key (left to 1).
 bindcode $mod+49 workspace $ws8
+bindcode $mod+Ctrl+49 workspace $ws7
 
 # Move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -351,6 +352,28 @@ bar {
 	}
 }
 
+bar {
+	output HDMI1
+	position bottom
+	tray_output none
+	mode hide
+	font xft:Noto Sans 10.5
+	strip_workspace_numbers yes
+
+	colors {
+#		background $transparent
+		background #2B2C2B
+		statusline #F9FAF9
+		separator  #454947
+
+#                          border  backgr. text
+		focused_workspace  #F9FAF9 #16A085 #2B2C2B
+		active_workspace   #595B5B #353836 #FDF6E3
+		inactive_workspace #595B5B #353836 #EEE8D5
+		urgent_workspace   #16A085 #FDF6E3 #E5201D
+	}
+}
+
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
@@ -428,6 +451,6 @@ mode "$mode_gaps_outer" {
 # With the mouse_warping option, you can control when the mouse cursor should be warped.
 mouse_warping none
 
-# Put workspace 8 on VGA1 Screen always.
-workspace 8 output VGA1
-
+# Put workspace 8 on VGA1 Screen always and workspace 7 on HDMI1.
+workspace 8 output HDMI1
+workspace 7 output VGA1
