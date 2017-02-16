@@ -337,6 +337,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Show the buffer number
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
+" Show the buffer id.
+let g:airline#extensions#tabline#buffer_nr_show = 1
+
 " Quick buffer navigations with the plugin.
 nmap <leader>1 <Plug>AirlineSelectTab1
 nmap <leader>2 <Plug>AirlineSelectTab2
