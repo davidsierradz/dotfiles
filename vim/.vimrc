@@ -130,7 +130,7 @@ set statusline+=[%c%V]         " Column number and Virtual Column number
 
 " Scroll options.
 set scrolloff=1
-set sidescrolloff=15
+set sidescrolloff=5
 set display+=lastline
 
 " Set the width of the numberline.
