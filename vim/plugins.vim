@@ -37,6 +37,7 @@ Plugin 'alvan/vim-closetag'
 "Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
+Plugin 'Raimondi/delimitMate'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

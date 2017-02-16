@@ -418,6 +418,13 @@ nnoremap <silent><leader>m :MaximizerToggle<CR>
 vnoremap <silent><leader>m :MaximizerToggle<CR>gv
 inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 
+"/
+"/ delimitMate
+"/
+
+" Disable automatic close on html files (already using vim-closetag).
+au FileType html let b:delimitMate_autoclose = 0
+
 "--------------------------------End Plugins-----------------------------------"
 
 
