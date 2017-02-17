@@ -12,6 +12,7 @@ editorconfig
 xcape (AUR)
 keynav-git (AUR)
 redshift-gtk
+vibrancy-colors (icon-theme)
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
@@ -48,6 +49,8 @@ https://github.com/altercation/vim-colors-solarized
 
 Para eliminar el borde blanco en Gvim, linkea el archivo vim/.gtkrc-2.0 a ~
 segun http://askubuntu.com/questions/47831/how-to-remove-gvims-fat-bottom-border-and-resize-grip
+
+link gtk/gtk-3.0/settings.ini a ~/.config/gtk/gtk-3.0/
 
 Instalar Universal Ctags
 https://github.com/universal-ctags/ctags
@@ -94,6 +97,8 @@ https://wiki.archlinux.org/index.php/Firefox#Unreadable_input_fields_with_dark_G
 
 mkdir .mozilla/firefox/xxxxxxxxxx.default/chrome
 ln -s ~/dotfiles/firefox/userContent.css .mozilla/firefox/xxxxxxxxxx.default/chrome/
+better this one:
+ln -s ~/dotfiles/firefox/chrome/* ~/.mozilla/firefox/xxxxxxxx.default/chrome
 
 Vimperator colorscheme
 mkdir .vimperator/colors
