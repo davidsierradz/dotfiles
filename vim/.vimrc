@@ -175,9 +175,11 @@ set splitright
 
 "--------------------------------General Mappings------------------------------"
 
-" Shortcut to toogle showing spaces.
+" Shortcut to toogle showing spaces and IndentLines.
 nnoremap <M-F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·<CR>
 nnoremap <F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·<CR>
+nnoremap <C-F12> :IndentLinesToggle<CR>
+
 
 " Regenerate ctags file.
 nnoremap <leader>rc :!ctags -R --fields=+aimS-s --filter-terminator=php .<CR>
@@ -424,6 +426,16 @@ inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 
 " Disable automatic close on html files (already using vim-closetag).
 au FileType html let b:delimitMate_autoclose = 0
+
+"/
+"/ indentLine
+"/
+
+let g:indentLine_char = '┆'
+let g:indentLine_color_gui = '#657B83'
+
+" indentLine will disable quotes in JSON files, install json plugin for fix.
+let g:vim_json_syntax_conceal = 0
 
 "--------------------------------End Plugins-----------------------------------"
 

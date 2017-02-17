@@ -38,6 +38,8 @@ Plugin 'alvan/vim-closetag'
 "Plugin 'tpope/vim-fugitive'
 "Plugin 'scrooloose/syntastic'
 Plugin 'Raimondi/delimitMate'
+Plugin 'elzr/vim-json'
+Plugin 'Yggdroot/indentLine'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
