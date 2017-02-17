@@ -424,8 +424,10 @@ inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 "/ delimitMate
 "/
 
-" Disable automatic close on html files (already using vim-closetag).
-au FileType html let b:delimitMate_autoclose = 0
+let delimitMate_expand_cr = 1
+
+" Disable automatic close on angle brackets <> in html files (already using vim-closetag).
+au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 "/
 "/ indentLine
