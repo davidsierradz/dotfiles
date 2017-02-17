@@ -437,6 +437,13 @@ let g:indentLine_color_gui = '#657B83'
 " indentLine will disable quotes in JSON files, install json plugin for fix.
 let g:vim_json_syntax_conceal = 0
 
+"/
+"/ Javascript Libraries Syntax
+"/
+
+let g:used_javascript_libs = 'jquery,underscore,backbone,angularjs,react,handlebars'
+"autocmd BufReadPre *.hbs set filetype=javascript
+
 "--------------------------------End Plugins-----------------------------------"
 
 

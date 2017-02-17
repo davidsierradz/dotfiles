@@ -40,6 +40,8 @@ Plugin 'alvan/vim-closetag'
 Plugin 'Raimondi/delimitMate'
 Plugin 'elzr/vim-json'
 Plugin 'Yggdroot/indentLine'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'othree/javascript-libraries-syntax.vim'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
