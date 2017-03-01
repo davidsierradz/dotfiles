@@ -68,8 +68,8 @@ nnoremap K <C-p>
 nnoremap J <C-n>
 
 " Moar scroll.
-nnoremap j 3j
-nnoremap k 3k
+nnoremap j 5j
+nnoremap k 5k
 
 " Swap close current buffer mapping.
 nnoremap d D
