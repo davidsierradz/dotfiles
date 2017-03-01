@@ -73,7 +73,7 @@ ctags
 en la raiz de este
 
 Cambiar los DNS
-echo 'nameserver 8.8.8.8 \nnameserver 8.8.4.4' > /etc/resolve.conf
+echo 'nameserver 8.8.8.8 \nnameserver 8.8.4.4' > /etc/resolv.conf
 
 RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!
 
