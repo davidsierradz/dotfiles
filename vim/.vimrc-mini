@@ -2,6 +2,7 @@
 " Maintainer:   Tim Pope <http://tpo.pe/>
 " Version:      1.1
 
+set nocompatible
 if exists('g:loaded_sensible') || &compatible
   finish
 else
@@ -46,6 +47,21 @@ set number
 set relativenumber
 "set cursorline
 set laststatus=2
+set statusline=%F              " Relative file path
+set statusline+=\ -\           " Separator
+set statusline+=%y             " Filetype of the file
+set statusline+=\ -\           " Separator
+set statusline+=%n             " Buffer of the file
+set statusline+=\ -\           " Separator
+set statusline+=[%{&ff}        " Format of the file Unix or DOS
+set statusline+=\              " Separator
+set statusline+=%{strlen(&fenc)?&fenc:'none'}] "file encoding
+set statusline+=\ -\           " Separator
+set statusline+=%h%m%r%w       " Help, Modified and Read Only flags
+set statusline+=%=             " Separation point between left and right items
+set statusline+=%([%l-%L-%P]%) " Current line count, max and percentage
+set statusline+=\              " Space Separator
+set statusline+=[%c%V]         " Column number and Virtual Column number
 set ruler
 set wildmenu
 

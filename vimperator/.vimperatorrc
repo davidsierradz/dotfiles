@@ -6,8 +6,8 @@ set hintchars=sadfjklewcmpgh
 " Disable all but tabs on Firefox GUI.
 set toolbars=none,tabs
 
-" Show numbers on each tab.
-set tabnumbers
+" Show numbers on each tab. (broken)
+"set tabnumbers
 
 " Perform incremental searching.
 set incsearch
@@ -21,11 +21,134 @@ set ignorecase
 " Only consider case if an upper case character is used.
 set smartcase
 
+" Disable default insert mode on some websites.
+set focuscontent
+
+" Items listed when open a new buffer.
+set complete=slS
+
+" Solarized colorscheme
+"colorscheme solarized_dark
+
+" Show selected link with ;; in the content area.
+set showstatuslinks=3
+
+" Add zoomlevel.
+set status=input,location,bookmark,history,ssl,tabcount,position,zoomlevel
+
 "--------------------------------End Vimperator Settings-----------------------"
+
+
+
+
+"--------------------------------Vimperator Styles-----------------------------"
+
+" Set default style for statusline bar.
+hi StatusLine color: #000; background: #fff;
+"hi Normal color:  #fff;  background: #000;
+highlight Hint font-family: monospace; font-size: 11px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;
+
+"--------------------------------End Vimperator Styles-------------------------"
+
+
+
 
 "--------------------------------Vimperator Mappings---------------------------"
 
-" Clear search highlight
-nnoremap <C-L> :noh<CR>
+" Clear search highlight.
+nnoremap <A-L> :noh<CR>
+
+" Toggle the status line with gs.
+nnoremap gs :togglestatusline<CR>
+
+" Set the status line color to black.
+nnoremap ga :hi StatusLine color: #fff; background: #002b36;<CR>
+
+" Set the status line color to white.
+nnoremap gd :hi StatusLine color: #000; background: #fff;<CR>
+
+" Previous and next tabs.
+nnoremap K <C-p>
+nnoremap J <C-n>
+
+" Moar scroll.
+nnoremap j 5j
+nnoremap k 5k
+
+" Swap close current buffer mapping.
+nnoremap d D
+nnoremap D d
+
+" More zoom.
+nnoremap <C-z>i 3zi
+
+" Map << and >> to move tabs.
+nnoremap << :tabmove -1<CR>
+nnoremap >> :tabmove +1<CR>
+
+" Close Firefox and save the session.
+nnoremap <Leader>qq :xall<CR>
+
+" Restart Firefox.
+nnoremap <Leader>qr :restart<CR>
+
+" Swap Ctrl-d with d.
+nnoremap <C-d> d
+nnoremap d <C-d>
+
+" Map this for D to work (why?).
+nnoremap <S-d> D
+
+" Swap Ctrl-u with u.
+nnoremap <C-u> u
+nnoremap u <C-u>
+
+" Use backspace to change to last tab.
+nnoremap <BS> <C-^>
+
+" Show or delete navigation bar.
+nnoremap <Leader>st :set toolbars=none,navigation,tabs<CR>
+nnoremap <Leader>dt :set toolbars=none,tabs<CR>
+
+" https://github.com/vimperator/vimperator-labs/issues/740
+"nmap t <C-t>:open<Space>
 
 "--------------------------------End Vimperator Mappings-----------------------"
+
+
+
+
+"--------------------------------Vimperator Commands---------------------------"
+
+" Save the Firefox session when closing with qall.
+command! qall xall
+
+" Toggle the status line with a JS function.
+command! togglestatusline javascript togglestatusline()
+
+"--------------------------------End Vimperator Commands-----------------------"
+
+
+
+
+"--------------------------------Vimperator Functions--------------------------"
+
+" Disable statusline when Firefox starts.
+javascript <<EOF
+  (function() {
+    options['statuslinevisibility'] = 'auto';
+  })()
+EOF
+
+javascript <<EOF
+  function togglestatusline() {
+    if (['auto', 'visible'].indexOf(options['statuslinevisibility']) >= 0) {
+      options['statuslinevisibility'] = 'hidden';
+    } else {
+      // or 'visible'
+      options['statuslinevisibility'] = 'auto';
+    }
+  }
+EOF
+
+"--------------------------------End Vimperator Functions----------------------"
