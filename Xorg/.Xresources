@@ -101,7 +101,7 @@ Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
 Xft.autohint: false
-Xft.hintstyle: hintslight
+Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
 Xcursor.theme: Breeze
 Xcursor.size:  0
@@ -122,7 +122,9 @@ XTerm*termName: xterm-256color
 
 !URxvt.font: 9x15
 !URxvt.font: xft:Anonymice Powerline:size=10
-URxvt.font: xft:Anonymice Powerline:pixelsize=16
+!URxvt.font: xft:Anonymice Powerline:pixelsize=16
+!URxvt.font: xft:DroidSansMonoForPowerline Nerd Font:pixelsize=16:antialias=true:hinting=true
+URxvt.font: xft:UbuntuMonoDerivativePowerline Nerd Font:pixelsize=22:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:size=12
 !URxvt.font: xft:Source Code Pro for Powerline:pixelsize=14
 URxvt.depth: 32
@@ -133,7 +135,7 @@ URxvt*cursorBlink:                    true
 !URxvt*background:                     black
 !URxvt*foreground:                     grey
 URxvt*saveLines:                      50000
-URxvt.letterSpace: 1
+URxvt.letterSpace: 0
 URxvt.intensityStyles: false
 
 URxvt.perl-ext-common: font-size,matcher

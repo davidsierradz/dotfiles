@@ -95,14 +95,14 @@ margin: 8px;
 
 @-moz-document url("about:sessionrestore") {
   .tree-container {
-    background-color: #000 !important;
+    background-color: #000000 !important;
   }
 }
 
 @-moz-document url("about:newtab") {
 
   :root {
-    background-color: #2b2c2b !important;
+    background-color: white !important;
   }
 
   /* SCROLLBOX */
@@ -221,7 +221,7 @@ margin: 8px;
 
   .newtab-customize-panel-item > label,
   .newtab-search-panel-engine > label {
-    color: #F3F5F3 !important;
+    color: black !important;
   }
 
   .searchSuggestionTable {
@@ -246,12 +246,12 @@ margin: 8px;
 
 /*Fix unreadable treeview text*/
 xul|treechildren::-moz-tree-cell-text {
-  color: #F3F5F3 !important;
+  color: black !important;
 }
 
 
 /*Make about:config list readable*/
 #configTreeBody::-moz-tree-cell-text() {
-  color: white !important;
+  color: black !important;
 }
 

@@ -60,6 +60,9 @@ let g:sql_type_default = 'mysql'
 "Ignore case for completion in insert mode.
 set infercase
 
+" Set the height of the command line window.
+set cmdwinheight=2
+
 "--------------------------------End General-----------------------------------"
 
 
@@ -71,7 +74,7 @@ set infercase
 set list
 
 " Set the special characters default.
-set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·
+set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·
 
 " Show line numbers.
 set number
@@ -182,7 +185,7 @@ nnoremap <C-F12> :IndentLinesToggle<CR>
 
 
 " Regenerate ctags file.
-nnoremap <leader>rc :!ctags -R --fields=+aimS-s --filter-terminator=php .<CR>
+nnoremap <leader>rc :!ctags .<CR>
 
 " Search tag.
 nnoremap <leader>ft :tag<space>
@@ -237,6 +240,9 @@ nnoremap <leader>bq :bp <BAR> bd #<CR>
 " This replicates the idea of closing a tab.
 nnoremap <leader>bw :bp <BAR> bd #<CR> :q<CR>
 
+" Call vim-wipeout plugin to delete all buffers not open.
+nnoremap <leader>bd :Wipeout<CR>
+
 " Remap go to last file with backspace.
 nnoremap <BS> <C-^>
 
@@ -274,6 +280,15 @@ nnoremap Q <nop>
 " Change pwd locally to current file path.
 nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
+" Toogle tagbar.vim plugin.
+nmap <F8> :TagbarOpenAutoClose<CR>
+
+" Close the preview window. (Better use Ctrl-W z, already in vim)
+"nnoremap <leader>q :pc<CR>
+
+" Change wrap setting.
+nnoremap <leader>cw :set wrap!<CR>
+
 "--------------------------------End General Mappings--------------------------"
 
 
@@ -296,26 +311,32 @@ nnoremap <leader>bl :CtrlPBuffer<cr>
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
+  let g:ctrlp_user_command = 'ag %s -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 
 " Ctrl-P window order and max results.
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:30,results:30'
+let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20,results:50'
 
 let g:ctrlp_show_hidden = 1
 
 let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
 
 " Search by name, can switch with <C-d>.
-let g:ctrlp_by_filename = 1
+let g:ctrlp_by_filename = 0
 
 let g:ctrlp_reuse_window = 'netrw'
 
 " Save the recent list of files only when exiting vim.
 let g:ctrlp_mruf_save_on_update = 0
+
+" Use pymatcher plugin.
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Set no file limit.
+let g:ctrlp_max_files = 0
 
 "/
 "/ Vim Airline
@@ -354,6 +375,8 @@ nmap <leader>8 <Plug>AirlineSelectTab8
 nmap <leader>9 <Plug>AirlineSelectTab9
 nmap <leader>- <Plug>AirlineSelectPrevTab
 nmap <leader>= <Plug>AirlineSelectNextTab
+
+let g:airline#extensions#tagbar#flags = 'f'
 
 "/
 "/ MatchTagAlways
@@ -433,7 +456,8 @@ au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
 "/ indentLine
 "/
 
-let g:indentLine_char = '┆'
+let g:indentLine_enabled = 0
+let g:indentLine_char = '┊'
 let g:indentLine_color_gui = '#657B83'
 
 " indentLine will disable quotes in JSON files, install json plugin for fix.
@@ -445,6 +469,64 @@ let g:vim_json_syntax_conceal = 0
 
 let g:used_javascript_libs = 'jquery,underscore,backbone,angularjs,react,handlebars'
 "autocmd BufReadPre *.hbs set filetype=javascript
+
+"/
+"/ vim-gutentags
+"/
+
+"let g:gutentags_cache_dir = '~/.vim/gutentags'
+
+"let g:gutentags_exclude = ['*.css', '*.html', '*.js', '*.json', '*.xml',
+"                            \ '*.phar', '*.ini', '*.rst', '*.md',
+"                            \ '*vendor/*/test*', '*vendor/*/Test*',
+"                            \ '*vendor/*/fixture*', '*vendor/*/Fixture*',
+"                            \ '*var/cache*', '*var/log*']
+
+"/
+"/ vdebug.vim
+"/
+
+
+" General Options.
+let g:vdebug_options = {}
+let g:vdebug_features = {}
+let g:vdebug_options["break_on_open"] = 0
+
+" Cross paths for projects.
+let g:vdebug_options["path_maps"] = {
+\    "/home/vagrant/Code/PackageTest": "/home/neuromante/Code/PackageTest",
+\    "/home/vagrant/Code/PhpSoda": "/home/neuromante/Code/PhpSoda",
+\    "/home/vagrant/Code/OpenDataApp": "/home/neuromante/Code/OpenDataApp",
+\}
+
+"let g:vdebug_features['max_depth'] = 6
+let g:vdebug_features['max_children'] = 256
+let g:vdebug_features['max_data'] = 2048
+
+"/
+""/ vim-polyglot
+"/
+
+let g:polyglot_disabled = ['css']
+
+"/
+""/ vim-startify
+"/
+
+
+let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
+
+let g:startify_list_order = ['bookmarks', 'sessions', 'files', 'dir',
+    \ 'commands']
+
+let g:startify_session_before_save = [
+    \ 'echo "Cleaning up before saving.."',
+    \ 'silent! Wipeout'
+    \ ]
+
+let g:startify_change_to_vcs_root = 1
+
+let g:startify_fortune_use_unicode = 1
 
 "--------------------------------End Plugins-----------------------------------"
 
@@ -486,6 +568,11 @@ augroup END
 
 " Wipe the netrw buffer when go hidden.
 autocmd FileType netrw setl bufhidden=wipe
+
+" When enter a preview window send the pw to top of screen.
+" autocmd BufWinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
+autocmd WinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
+"autocmd WinLeave * if &previewwindow && winnr() > 1 | :wincmd = | endif
 
 "--------------------------------End Auto Commands-----------------------------"
 
@@ -536,6 +623,14 @@ if !has("gui_running")
 endif
 
 "--------------------------------End Terminal Only-----------------------------"
+
+
+
+
+"--------------------------------PHP Debug-------------------------------------"
+
+
+"--------------------------------End PHP Debug---------------------------------"
 
 
 

@@ -1,8 +1,8 @@
 "--------------------------------General---------------------------------------"
 
 " GUI font.
-set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
-
+"set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
+set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font\ 13 
 " Paste on Gvim.
 set clipboard=unnamed,unnamedplus
 
@@ -51,7 +51,12 @@ hi NonText gui=bold guifg=#b58900
 hi Search gui=underline guifg=#dc322f
 hi IncSearch gui=underline guifg=#dc322f
 "hi CursorLine guibg=#333333
-"hi LineNr guifg=#555555 guibg=bg
+let g:gitgutter_override_sign_column_highlight = 0
+hi LineNr guibg=bg
+hi GitGutterAdd guifg=#009900 guibg=bg
+hi GitGutterChange guifg=#bbbb00 guibg=bg
+hi GitGutterDelete guifg=#ff2222 guibg=bg
+hi GitGutterChangeDelete guifg=#009900 guibg=bg
 "hi StatusLine gui=NONE guibg=#2aa198 guifg=#002b36
 "hi StatusLineNC gui=NONE guibg=#b58900 guifg=#002b36
 
@@ -62,7 +67,10 @@ let &colorcolumn=join(range(82,999),",")
 let &colorcolumn="81,".join(range(120,999),",")
 
 " Delete bottom border GVim.
-set guiheadroom=-50
+"set guiheadroom=-50
+
+" Line height.
+set linespace=8
 
 "--------------------------------End Visuals-----------------------------------"
 

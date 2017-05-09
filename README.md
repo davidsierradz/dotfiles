@@ -3,16 +3,21 @@ dotfile config files for *nix systems
 
 Binarios necesarios:
 
-Git
-Zsh
-Vim/Gvim
-Universal Ctags
-Silver Searcher Ag
+composer
 editorconfig
-xcape (AUR)
+git
 keynav-git (AUR)
+nerd-fonts-complete (AUR)
+php
 redshift-gtk
+silver Searcher Ag
+universal Ctags
+urxvt-font-size-git (AUR)
 vibrancy-colors (icon-theme)
+vim/Gvim
+waterfox-bin (AUR)
+xcape (AUR)
+zsh
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
@@ -68,12 +73,29 @@ instala node-js y npm para instalar con soporte para javascript
 despues ir a ~/.vim/bundle/YouCompleteMe
 ./install.py --tern-completer
 
+instalar phpcd.vim
+despues de instalar ir a ~/.vim/bundle/phpcd.vim/
+hacer composer install
+
 Para generar los tags del proyecto
 ctags
 en la raiz de este
 
+Debugger
+En la vagrant activar xdebug... luego en el ini en fpm:
+xdebug.remote_connect_back = 1
+xdebug.remote_port = 9000
+xdebug.max_nesting_level = 512
+xdebug.remote_autostart= 1
+xdebug.collect_params = 3
+xdebug.var_display_max_children = -1
+xdebug.var_display_max_data = -1
+xdebug.var_display_max_depth = -1
+
 Cambiar los DNS
 echo 'nameserver 8.8.8.8 \nnameserver 8.8.4.4' > /etc/resolv.conf
+para que no se borre la config de los dns ir al archivo /etc/resolvconf.conf y:
+resolvconf=NO
 
 RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!
 
@@ -81,7 +103,7 @@ RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!
 -------------------------------------------------------------------------------
 Manjaroi3 config
 
-Cpmfigure LightDM Display Manager
+Configure LightDM Display Manager
 chmod +x ~/dotfiles/lightdm/set-correct-monitors.sh
 chmod +x ~/dotfiles/scripts/conky/start_conky_maia
 

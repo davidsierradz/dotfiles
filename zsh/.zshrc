@@ -9,8 +9,23 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="solarized-powerline"
 #ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vi_mode root_indicator background_jobs time)
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable ssh vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs time)
+POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
+POWERLEVEL9K_SHOW_CHANGESET=true
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+POWERLEVEL9K_MODE='nerdfont-fontconfig'
+POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='007'
+POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='001'
+POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='007'
+POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='002'
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+POWERLEVEL9K_TIME_BACKGROUND="blue"
+POWERLEVEL9K_TIME_FOREGROUND="white"
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 #ZSH_POWERLINE_SHOW_OS="false"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -54,7 +69,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases dirhistory git sudo vi-mode zsh-completions)
+plugins=(common-aliases dirhistory git vi-mode zsh-completions)
 
 # User configuration
 DEFAULT_USER=neuromante
@@ -100,9 +115,9 @@ alias vim='vim -u /home/neuromante/dotfiles/vim/.vimrc-mini'
 
 # want your terminal to support 256 color schemes? I do ...
 #export TERM=xterm-256color
-export EDITOR="vim"
+export EDITOR="vim -u /home/neuromante/dotfiles/vim/.vimrc-mini"
 export USE_EDITOR=$EDITOR
-export VISUAL=$EDITOR
+export VISUAL="gvim"
 export LC_COLLATE="C"
 
 # dircolors
@@ -115,13 +130,30 @@ bindkey '^[[B' down-line-or-search
 
 bindkey -v
 
-# More bindkeys for vi-mode.
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
+# Ctrl-S to insert sudo in front of command
+function prepend-sudo { # Insert "sudo " at the beginning of the line
+    if [[ $BUFFER != "sudo "* ]]; then
+        BUFFER="sudo $BUFFER"; CURSOR+=5
+    fi
+}
+zle -N prepend-sudo
+bindkey -M vicmd '^s' prepend-sudo
+
+# More bindkeys for insert vi-mode.
+bindkey -M viins '^P' up-history
+bindkey -M viins '^N' down-history
+bindkey -M viins "^[[3~" delete-char
+bindkey -M viins "^k" kill-line
+bindkey -M viins "^b" backward-char
+bindkey -M viins "^f" forward-char
+bindkey -M viins "^u" kill-whole-line
+
+# Not necessary see man zshzle.
+#bindkey '^?' backward-delete-char
+#bindkey '^h' backward-delete-char
+#bindkey '^w' backward-kill-word
+#bindkey '^r' history-incremental-search-backward
+#bindkey "^[3;5~" delete-char
 
 #function zle-line-init zle-keymap-select {
 #    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"

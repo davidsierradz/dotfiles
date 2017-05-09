@@ -6,5 +6,6 @@
 [core]
 	excludesfile = /home/neuromante/.gitignore
 	autocrlf = input
+	editor = vim -u /home/neuromante/dotfiles/vim/.vimrc-mini
 [url "https://davidsierradz@github.com"]
 	insteadOf = https://github.com
