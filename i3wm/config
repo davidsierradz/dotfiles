@@ -46,7 +46,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 #bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 exec --no-startup-id pulseaudio
 exec --no-startup-id pa-applet
-bindsym $mod+Ctrl+m exec pavucontrol
+#bindsym $mod+Ctrl+m exec pavucontrol
 
 ################################################################################################
 
@@ -456,3 +456,13 @@ mouse_warping none
 # Put workspace 8 on VGA1 Screen always and workspace 7 on HDMI1.
 workspace 8 output HDMI1
 workspace 7 output VGA1
+
+# Put a mark for swapping on current focused window.
+bindsym $mod+Ctrl+m mark --toggle "swapee"
+
+# Swap current focused container with "swapee" marked one.
+bindsym $mod+Ctrl+s swap container with mark swapee
+
+# Experimental scratchpad with F1 key and marks.
+#bindsym $mod+Shift+F1 mark "scratch1", move scratchpad
+#bindsym $mod+F1 [con_mark="scratch1"] scratchpad show

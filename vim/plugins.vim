@@ -17,7 +17,7 @@ Plugin 'Valloric/MatchTagAlways'
 Plugin 'manasthakur/vim-vinegar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'benjifisher/matchit.zip'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 "Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'lvht/phpcd.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -59,6 +59,9 @@ Plugin 'mhinz/vim-startify'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tyru/restart.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'thinca/vim-visualstar'
+Plugin '2072/PHP-Indenting-for-VIm'
+"Plugin 'diepm/vim-php-wrapper'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required

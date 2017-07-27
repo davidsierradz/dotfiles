@@ -6,7 +6,8 @@ Binarios necesarios:
 composer
 editorconfig
 git
-keynav-git (AUR)
+i3-gaps-next-git (AUR) (You need to remove manjaro-i3-settings to swap default i3wm)
+keynav-git (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado)
 nerd-fonts-complete (AUR)
 php
 redshift-gtk
@@ -17,6 +18,7 @@ vibrancy-colors (icon-theme)
 vim/Gvim
 waterfox-bin (AUR)
 xcape (AUR)
+zathura (pdf viewer)
 zsh
 
 Repositorios necesarios para utilizar estos archivos de configuración
@@ -175,3 +177,18 @@ pacmd set-card-profile 1 a2dp_sink
 pacmd set-card-profile 1 headset_head_unit
 
 maybe write a little script to check actual profile and toggle between the two?
+
+-------------------------------------------------------------------------------
+
+SPACEMACS CONFIGURATION
+
+When installing javascript layer install tern also and put in PATH
+sudo npm i tern -g
+
+For Gtags:
+install: global (AUR)
+install: pygments
+
+install: cscope
+install: https://github.com/xcwen/phpctags.git
+

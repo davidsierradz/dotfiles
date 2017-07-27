@@ -1,7 +1,7 @@
 "--------------------------------Vimperator Settings---------------------------"
 
 " Set alphabet for link hints.
-set hintchars=sadfjklewcmpgh
+set hintchars=sdfajklghewcmp
 
 " Disable all but tabs on Firefox GUI.
 set toolbars=none,tabs
@@ -62,10 +62,10 @@ nnoremap <A-L> :noh<CR>
 nnoremap gs :togglestatusline<CR>
 
 " Set the status line color to black.
-nnoremap ga :hi StatusLine color: #fff; background: #002b36;<CR>
+nnoremap ga :hi StatusLine color: #fff; background: #002b36;<CR> :hi Normal color: white; background: #002b36;<CR>
 
 " Set the status line color to white.
-nnoremap gd :hi StatusLine color: #000; background: #fff;<CR>
+nnoremap gd :hi StatusLine color: #000; background: #fff;<CR> :hi Normal color: black; background: white;<CR>
 
 " Previous and next tabs.
 nnoremap K <C-p>
@@ -113,6 +113,10 @@ nnoremap <Leader>dt :set toolbars=none,tabs<CR>
 " https://github.com/vimperator/vimperator-labs/issues/740
 "nmap t <C-t>:open<Space>
 
+" Stylish toggle plugin mapping.
+" https://www.reddit.com/r/unixporn/comments/3yk68g/is_there_a_way_to_control_stylish_addon/
+nmap <Leader>ss :stylish toggle<CR>
+
 "--------------------------------End Vimperator Mappings-----------------------"
 
 
@@ -152,3 +156,23 @@ javascript <<EOF
 EOF
 
 "--------------------------------End Vimperator Functions----------------------"
+
+"--------------------------------Vimperator Plugins----------------------------"
+
+" 1 = If there are more than the one digit letters, keep using one letter first
+" 2 = dont use one letter only if there a lot of links
+let use_hintchars_ex=1
+
+javascript <<EOF
+  function addHintsSimpleMapping() {
+    hints.addSimpleMap("<C-l>", function () {this.relocation(); });
+    hints.addSimpleMap("<C-f>", function () {
+        this.hide();
+        buffer.scrollPages(1);
+        this.show(this._submode, "", content.window);
+    });
+  }
+  setTimeout(addHintsSimpleMapping, 1);
+EOF
+
+"--------------------------------End Vimperator Plugins------------------------"

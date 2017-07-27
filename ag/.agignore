@@ -3,6 +3,7 @@
 *~
 *.swp
 *.swo
+.phpcd/
 vendor/
 node_modules/
 tags

@@ -2,7 +2,7 @@
 
 " GUI font.
 "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 16
-set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font\ 13 
+set guifont=UbuntuMonoDerivativePowerline\ Nerd\ Font\ 12 
 " Paste on Gvim.
 set clipboard=unnamed,unnamedplus
 

@@ -1,0 +1,8 @@
+@define-color YOUR_BACKGROUND_COLOR #002b36;
+window#vim-main-window {
+    background-color: @YOUR_BACKGROUND_COLOR;
+}
+.window-frame {
+  box-shadow: none;
+  margin: 0;
+}

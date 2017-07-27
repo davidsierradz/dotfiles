@@ -124,7 +124,7 @@ XTerm*termName: xterm-256color
 !URxvt.font: xft:Anonymice Powerline:size=10
 !URxvt.font: xft:Anonymice Powerline:pixelsize=16
 !URxvt.font: xft:DroidSansMonoForPowerline Nerd Font:pixelsize=16:antialias=true:hinting=true
-URxvt.font: xft:UbuntuMonoDerivativePowerline Nerd Font:pixelsize=22:antialias=true:hinting=true
+URxvt.font: xft:UbuntuMonoDerivativePowerline Nerd Font:pixelsize=16:antialias=true:hinting=true
 !URxvt.font: xft:Ubuntu Mono derivative Powerline:size=12
 !URxvt.font: xft:Source Code Pro for Powerline:pixelsize=14
 URxvt.depth: 32

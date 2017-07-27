@@ -171,6 +171,10 @@ endif
 " Splitting to the right by default.
 set splitright
 
+" Using p in netrw will open a vertical split to preview the file.
+" Use P to reuse last visited buffer to open current file under cursor.
+let g:netrw_preview = 1
+
 "--------------------------------End Splits------------------------------------"
 
 
@@ -214,7 +218,7 @@ set pastetoggle=<F2>
 nnoremap <silent> ì :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
 
 " Reloads a buffer.
-nnoremap <Leader>r :w<CR>:e<CR>
+nnoremap <leader>r :w<CR>:e<CR>
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 " Using <Nul> as <C-Space> because in gnome-terminal thats a null character.
@@ -252,7 +256,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
 
 " Put the Ack! command to not open first ocurrence of search.
-nnoremap <Leader>fa :Ack!<Space>'
+nnoremap <leader>fa :Ack!<Space>'
 
 " Swap semicolon for colon ;<->: in normal mode.
 "nnoremap ; :
@@ -268,7 +272,7 @@ nnoremap Y y$
 inoremap <C-e> <C-o>$
 
 " Toggle Relative number.
-nmap <silent> <Leader>l :set relativenumber!<CR>
+nmap <silent> <leader>rn :set relativenumber!<CR>
 
 " Highlight last inserted text.
 nnoremap gV `[v`]
@@ -280,6 +284,7 @@ nnoremap Q <nop>
 nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
 
 " Toogle tagbar.vim plugin.
+"nmap <F8> :TagbarToggle<CR>
 nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Close the preview window. (Better use Ctrl-W z, already in vim)
@@ -299,14 +304,20 @@ nnoremap <leader>cw :set wrap!<CR>
 "/ CtrlP
 "/
 
+" Default windows mapping.
+"let g:ctrlp_map = '<Shift><Shift>'
+
+" Open Mixed mode with shift shift (dont work).
+"nnoremap <leader><leader> :CtrlPMixed<cr>
+
 " Open Tags window with <Alt-R>.
-nnoremap ò :CtrlPBufTag<cr>
+nnoremap ò :CtrlPTag<cr>
 
 " Open Most Recent Used Files window with <Alt-E>.
 nnoremap å :CtrlPMRUFiles<cr>
 
 " Open the Ctrl-P window buffer.
-nnoremap <leader>bl :CtrlPBuffer<cr>
+nnoremap <leader><leader> :CtrlPBuffer<cr>
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -342,7 +353,8 @@ let g:ctrlp_max_files = 0
 "/
 
 " Airline theme.
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'solarized'
+let g:airline_solarized_bg='dark'
 
 " SHow all airline things in the focus window only.
 let g:airline_inactive_collapse=0
@@ -377,6 +389,9 @@ nmap <leader>= <Plug>AirlineSelectNextTab
 
 let g:airline#extensions#tagbar#flags = 'f'
 
+" Disable git-gutter changed hunks.
+"let g:airline#extensions#hunks#enabled = 0
+
 "/
 "/ MatchTagAlways
 "/
@@ -404,10 +419,10 @@ let g:ackprg = 'ag --vimgrep --path-to-ignore ~/dotfiles/ag/.agignore --skip-vcs
 "/
 
 " Use spacebar to start easymotion.
-nmap <C-Space> <leader><leader>
+nmap <C-Space> <Plug>(easymotion-prefix)
 
-" Two char search.
-nmap <Space> <Plug>(easymotion-s2)
+" One char search.
+nmap <Space> <Plug>(easymotion-s)
 "nmap <C-Space> <Plug>(easymotion-sn)
 
 let g:EasyMotion_smartcase = 1
@@ -416,6 +431,11 @@ let g:EasyMotion_use_upper = 1
 
 "let g:EasyMotion_keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ;'
 let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
+
+" Search last motion used and disable highlight.
+let g:EasyMotion_move_highlight = 0
+nmap <leader>; <Plug>(easymotion-next)
+nmap <leader>, <Plug>(easymotion-prev)
 
 "/
 "/ Gundo.vim
@@ -448,8 +468,19 @@ inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 
 let delimitMate_expand_cr = 1
 
-" Disable automatic close on angle brackets <> in html files (already using vim-closetag).
-au FileType html let b:delimitMate_matchpairs = "(:),[:],{:}"
+" Disable automatic close on angle brackets <> in html and blade files (already using vim-closetag).
+au FileType html,blade let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+" Expand spaces in blade files.
+au FileType blade let b:delimitMate_expand_space = 1
+
+let delimitMate_jump_expansion = 1
+
+"/
+"/ vim-closetag
+"/
+
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php"
 
 "/
 "/ indentLine
@@ -493,9 +524,9 @@ let g:vdebug_options["break_on_open"] = 0
 
 " Cross paths for projects.
 let g:vdebug_options["path_maps"] = {
-\    "/home/vagrant/Code/PackageTest": "/home/neuromante/Code/PackageTest",
-\    "/home/vagrant/Code/PhpSoda": "/home/neuromante/Code/PhpSoda",
-\    "/home/vagrant/Code/OpenDataApp": "/home/neuromante/Code/OpenDataApp",
+\    "/home/vagrant/Code/coba": "/home/neuromante/Code/coba",
+\    "/home/vagrant/Code/Blog": "/home/neuromante/Code/Blog",
+\    "/home/vagrant/Code/Forum": "/home/neuromante/Code/Forum",
 \}
 
 "let g:vdebug_features['max_depth'] = 6
@@ -506,7 +537,7 @@ let g:vdebug_features['max_data'] = 2048
 ""/ vim-polyglot
 "/
 
-let g:polyglot_disabled = ['css']
+let g:polyglot_disabled = ['css', 'php']
 
 "/
 ""/ vim-startify
@@ -526,6 +557,43 @@ let g:startify_session_before_save = [
 let g:startify_change_to_vcs_root = 1
 
 let g:startify_fortune_use_unicode = 1
+
+"/
+""/ youcompleteme.vim
+"/
+
+"set completeopt-=preview
+" Change default previous to prevent collition with delimitMate plugin.
+let g:ycm_key_list_previous_completion = ['<Up>']
+
+let g:ycm_cache_omnifunc = 0
+"let g:ycm_seed_identifiers_with_syntax = 1
+"let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_min_num_identifier_candidate_chars = 0
+
+inoremap <C-a> <ESC>:call ToggleYCMAutoTrigger()<cr>a
+
+function ToggleYCMAutoTrigger()
+    if g:ycm_auto_trigger == 1
+        let g:ycm_auto_trigger = 0
+    else
+        let g:ycm_auto_trigger = 1
+    endif
+endfunction
+
+"/
+""/ vim-php-wrapper
+"/
+
+"nnoremap <buffer> <silent> <Leader>dk :call VphpwDocClosestMethod(0)<CR>
+"nnoremap <buffer> <silent> <Leader>dj :call VphpwDocClosestMethod(1)<CR>
+"noremap  <buffer> <silent> <Leader>dl :call VphpwAlignDocblock()<CR>
+"nnoremap <buffer> <silent> <Leader>dd :call
+"            \ VphpwDeleteEnclosingDocblock()<CR>
+"noremap  <buffer> <silent> <Leader>dr :call VphpwResetDocblock()<CR>
 
 "--------------------------------End Plugins-----------------------------------"
 
@@ -570,7 +638,7 @@ autocmd FileType netrw setl bufhidden=wipe
 
 " When enter a preview window send the pw to top of screen.
 " autocmd BufWinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
-autocmd WinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
+"autocmd WinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
 "autocmd WinLeave * if &previewwindow && winnr() > 1 | :wincmd = | endif
 
 "--------------------------------End Auto Commands-----------------------------"
