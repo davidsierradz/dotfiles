@@ -5,6 +5,7 @@ Binarios necesarios:
 
 composer
 editorconfig
+gtk-breath-theme
 git
 i3-gaps-next-git (AUR) (You need to remove manjaro-i3-settings to swap default i3wm)
 keynav-git (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado)
@@ -19,6 +20,7 @@ vim/Gvim
 waterfox-bin (AUR)
 xcape (AUR)
 zathura (pdf viewer)
+zip and unzip
 zsh
 
 Repositorios necesarios para utilizar estos archivos de configuración
@@ -50,6 +52,9 @@ update theme with git pull from ~/.oh-my-zsh/custom/themes/powerlevel9k/
 
 Zsh completions plugin
 git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions
+
+Zsh autosugestion
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 Solarized for Vim
 https://github.com/altercation/vim-colors-solarized
