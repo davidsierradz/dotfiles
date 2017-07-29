@@ -69,7 +69,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases dirhistory git vi-mode zsh-completions)
+plugins=(common-aliases dirhistory git vi-mode zsh-autosuggestions zsh-completions)
 
 # User configuration
 DEFAULT_USER=neuromante
@@ -202,3 +202,11 @@ autoload -U compinit && compinit
 
 # enable completition for hidden files .
 _comp_options+=(globdots)
+
+# zsh autosugestions plugin settings
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=1'
+ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
+
+# Press <C-Space> to autocomplete and execute command.
+bindkey '^ ' autosuggest-execute
