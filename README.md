@@ -7,10 +7,10 @@ composer
 editorconfig
 git
 i3-gaps-next-git (AUR) (You need to remove manjaro-i3-settings to swap default i3wm)
-keynav-git (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado)
-nerd-fonts-complete (AUR)
+keynav-git (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado: needs lib32-cairo)
+nerd-fonts-complete-mono-glyphs (AUR)
 php
-redshift-gtk
+redshift-gtk (needs python-xdg)
 silver Searcher Ag
 universal Ctags
 urxvt-font-size-git (AUR)
