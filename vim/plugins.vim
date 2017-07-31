@@ -61,6 +61,7 @@ Plugin 'tyru/restart.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'thinca/vim-visualstar'
 Plugin '2072/PHP-Indenting-for-VIm'
+Plugin 'jsfaint/gen_tags.vim'
 "Plugin 'diepm/vim-php-wrapper'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
