@@ -351,6 +351,9 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " Set no file limit.
 let g:ctrlp_max_files = 0
 
+" Set local working directory to cwd by default then a git directory?
+let g:ctrlp_working_path_mode = 'wr'
+
 "/
 "/ Vim Airline
 "/
