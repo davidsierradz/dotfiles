@@ -293,6 +293,9 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 " Change wrap setting.
 nnoremap <leader>cw :set wrap!<CR>
 
+" Change à (Alt-`) to -> in insert mode.
+inoremap à ->
+
 "--------------------------------End General Mappings--------------------------"
 
 
