@@ -174,17 +174,17 @@ set background=dark
 " Hide the background of the special characters in terminal.
 highlight SpecialKey cterm=standout ctermfg=3 ctermbg=NONE
 
-highlight VertSplit cterm=reverse
+"highlight VertSplit cterm=reverse
 
 " Put a red underline in search mode.
-highlight Search cterm=underline ctermfg=9
-highlight IncSearch cterm=underline
+"highlight Search cterm=underline ctermfg=9
+"highlight IncSearch cterm=underline
 
 " Color for the terminal column width ruler.
-highlight ColorColumn ctermbg=magenta
+"highlight ColorColumn ctermbg=magenta
 
 " Text width ruler.
-set colorcolumn=81
+"set colorcolumn=81
 
 " Enable highlight the current cursor line.
 set cursorline
@@ -225,7 +225,7 @@ set display+=lastline
 set numberwidth=1
 
 " Enable true color support
-set termguicolors
+"set termguicolors
 
 "--------------------------------End Visuals-----------------------------------"
 

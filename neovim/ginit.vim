@@ -3,6 +3,9 @@
 " GUI font.
 GuiFont UbuntuMonoDerivativePowerline Nerd Font:h13
 
+" Select with the mouse.
+set mouse=a
+
 " Paste on Gvim.
 set clipboard=unnamed,unnamedplus
 "--------------------------------End General-----------------------------------"
@@ -41,7 +44,7 @@ set guioptions+=c
 
 " Gvim hi colors.
 hi SpecialKey guifg=#657b83 guibg=NONE
-hi VertSplit  guifg=#b58900 guibg=#b58900
+"hi VertSplit  guifg=#b58900 guibg=#b58900
 hi NonText gui=bold guifg=#b58900
 "hi ColorColumn guibg=#d33682
 hi Search gui=underline guifg=#dc322f
@@ -66,6 +69,10 @@ hi GitGutterChangeDelete guifg=#009900 guibg=bg
 "set guiheadroom=-50
 
 " Line height.
-set linespace=8
+"set linespace=8
+GuiLinespace 4
+
+"hi Cursor guifg=black guibg=green gui=reverse
+"set guicursor=a:block-blinkon100-Cursor/Cursor
 
 "--------------------------------End Visuals-----------------------------------"
