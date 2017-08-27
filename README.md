@@ -197,3 +197,22 @@ install: pygments
 install: cscope
 install: https://github.com/xcwen/phpctags.git
 
+-------------------------------------------------------------------------------
+
+NEOVIM
+
+Install:
+
+- neovim-git-ninja
+- neovim-qt
+- python-neovim
+- python2-neovim
+
+symlink the dotfiles to ~/.config/nvim/
+
+install vim-plug:
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+inside neovim run
+:UpdateRemotePlugins
