@@ -552,8 +552,7 @@ let g:polyglot_disabled = ['css', 'php']
 
 let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
 
-let g:startify_list_order = ['bookmarks', 'sessions', 'files', 'dir',
-    \ 'commands']
+let g:startify_list_order = ['bookmarks', 'sessions', 'files']
 
 let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
