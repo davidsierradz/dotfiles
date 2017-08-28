@@ -82,6 +82,7 @@ Plug 'thinca/vim-visualstar'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-rooter'
+Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
@@ -483,6 +484,9 @@ let g:airline#extensions#tagbar#flags = 'f'
 " Disable git-gutter changed hunks.
 "let g:airline#extensions#hunks#enabled = 0
 
+" Enable the Ale integration.
+let g:airline#extensions#ale#enabled = 1
+
 "/
 "/ MatchTagAlways
 "/
@@ -685,7 +689,20 @@ let g:startify_fortune_use_unicode = 1
 ""nnoremap <buffer> <silent> <Leader>dd :call
 ""            \ VphpwDeleteEnclosingDocblock()<CR>
 ""noremap  <buffer> <silent> <Leader>dr :call VphpwResetDocblock()<CR>
-"
+
+"/
+""/ ale.vim
+"/
+
+let g:ale_linters = {
+            \ 'php': ['phpcs', 'phpstan'],
+            \}
+
+let g:ale_php_phpcs_use_global = 1
+let g:ale_php_phpcs_standard="PSR2"
+
+let g:ale_php_phpstan_use_global = 1
+
 "--------------------------------End Plugins-----------------------------------"
 
 

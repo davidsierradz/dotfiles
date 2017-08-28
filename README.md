@@ -216,3 +216,9 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 inside neovim run
 :UpdateRemotePlugins
+
+Download and install the following PHAR:
+https://github.com/squizlabs/PHP_CodeSniffer
+https://github.com/phpstan/phpstan
+
+Give execute permissions and put in /usr/bin
