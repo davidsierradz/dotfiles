@@ -8,10 +8,10 @@ editorconfig
 gtk-breath-theme
 git
 i3-gaps-next-git (AUR) (You need to remove manjaro-i3-settings to swap default i3wm)
-keynav-git (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado)
-nerd-fonts-complete (AUR)
+keynav-git (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado: needs lib32-cairo)
+nerd-fonts-complete-mono-glyphs (AUR)
 php
-redshift-gtk
+redshift-gtk (needs python-xdg)
 silver Searcher Ag
 universal Ctags
 urxvt-font-size-git (AUR)
@@ -197,3 +197,28 @@ install: pygments
 install: cscope
 install: https://github.com/xcwen/phpctags.git
 
+-------------------------------------------------------------------------------
+
+NEOVIM
+
+Install:
+
+- neovim-git-ninja
+- neovim-qt
+- python-neovim
+- python2-neovim
+
+symlink the dotfiles to ~/.config/nvim/
+
+install vim-plug:
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+inside neovim run
+:UpdateRemotePlugins
+
+Download and install the following PHAR:
+https://github.com/squizlabs/PHP_CodeSniffer
+https://github.com/phpstan/phpstan
+
+Give execute permissions and put in /usr/bin

@@ -1,20 +1,105 @@
-" Be iMproved, required.
-set nocompatible
+"--------------------------------Plugins---------------------------------------"
 
-" Source plugins file.
-source ~/dotfiles/vim/plugins.vim
+" Specify a directory for plugins
+call plug#begin('~/.local/share/nvim/plugged')
 
+" Solarized colorscheme for NeoVim.
+Plug 'iCyMind/NeoSolarized'
 
+" Better statusline.
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
+" Nerdfont icons for Vim.
+Plug 'ryanoasis/vim-devicons'
+
+" Highlights the XML/HTML tags that enclose your cursor location.
+Plug 'Valloric/MatchTagAlways'
+
+" Using this until the unlisted netrw buffer bug is solved.
+Plug 'manasthakur/vim-vinegar'
+
+" Allows you to configure % to match more than just single characters.
+Plug 'benjifisher/matchit.zip'
+
+" PHP implementation of Microsoft LSP (Language Server Protocol).
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+
+" Autocompletion framework.
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'roxma/nvim-completion-manager'
+
+"Plug 'jsfaint/gen_tags.vim'
+
+"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+
+"" Using this until the unlisted netrw buffer bug is solved.
+Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'shawncplus/phpcomplete.vim'
+"Plug 'lvht/phpcd.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'wesQ3/vim-windowswap'
+Plug 'scrooloose/nerdcommenter'
+Plug 'mileszs/ack.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'easymotion/vim-easymotion'
+" Using this PHP Syntax file instead of the original:
+" https://jasonwoof.com/gitweb/?p=vim-syntax.git;a=blob_plain;f=php.vim;hb=HEAD
+" waiting for updating the base Vim one to PHP 7.
+Plug 'StanAngeloff/php.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'sjl/gundo.vim'
+" "Plug 'blueyed/vim-diminactive'
+Plug 'szw/vim-maximizer'
+Plug 'alvan/vim-closetag'
+ "Plug 'ervandew/supertab'
+" "Plug 'pangloss/vim-javascript'
+" "Plug 'terryma/vim-multiple-cursors'
+" "Plug 'tpope/vim-fugitive'
+" "Plug 'scrooloose/syntastic'
+Plug 'Raimondi/delimitMate'
+Plug 'elzr/vim-json'
+Plug 'Yggdroot/indentLine'
+" "Plug 'jelera/vim-javascript-syntax'
+" "Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'tpope/vim-surround'
+Plug 'jwalton512/vim-blade'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
+" "Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
+Plug 'joonty/vdebug'
+Plug 'artnez/vim-wipeout'
+Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
+Plug 'mhinz/vim-startify'
+Plug 'tpope/vim-fugitive'
+"Plug 'tyru/restart.vim'
+Plug 'FelikZ/ctrlp-py-matcher'
+Plug 'thinca/vim-visualstar'
+Plug '2072/PHP-Indenting-for-VIm'
+Plug 'kshenoy/vim-signature'
+Plug 'airblade/vim-rooter'
+Plug 'w0rp/ale'
+
+" Initialize plugin system
+call plug#end()
+
+"--------------------------------End Plugins-----------------------------------"
+
+autocmd FileType php LanguageClientStart
+autocmd Filetype php set omnifunc=LanguageClient#complete
 
 "--------------------------------General---------------------------------------"
 
 " This command switches on syntax highlighting.
-syntax enable
+"syntax enable
 
 " Indenting configurations.
 set autoindent
-"set smartindent
+set smartindent
 
 " Settings for tabs and space indents.
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
@@ -34,7 +119,7 @@ set hidden
 set history=100
 
 " Look up recurively for ctags file.
-set tags+=tags;/
+"set tags+=tags;/
 
 " Becouse we have a status bar disable showing if we are in insert mode in the
 " Command line bar.
@@ -82,24 +167,25 @@ set number
 " Relative positions for line numbers.
 set relativenumber
 
+colorscheme NeoSolarized
+"
 set background=dark
-
-colorscheme solarized
+"let g:neosolarized_vertSplitBgTrans = 0
 
 " Hide the background of the special characters in terminal.
 highlight SpecialKey cterm=standout ctermfg=3 ctermbg=NONE
 
-highlight VertSplit cterm=reverse
+"highlight VertSplit cterm=reverse
 
 " Put a red underline in search mode.
-highlight Search cterm=underline ctermfg=9
-highlight IncSearch cterm=underline
+"highlight Search cterm=underline ctermfg=9
+"highlight IncSearch cterm=underline
 
 " Color for the terminal column width ruler.
-highlight ColorColumn ctermbg=magenta
+"highlight ColorColumn ctermbg=magenta
 
 " Text width ruler.
-set colorcolumn=81
+"set colorcolumn=81
 
 " Enable highlight the current cursor line.
 set cursorline
@@ -138,6 +224,9 @@ set display+=lastline
 
 " Set the width of the numberline.
 set numberwidth=1
+
+" Enable true color support
+"set termguicolors
 
 "--------------------------------End Visuals-----------------------------------"
 
@@ -215,7 +304,7 @@ set pastetoggle=<F2>
 "nnoremap ì :nohlsearch<CR>
 
 " Use <Alt-L> to clear the highlighting of :set hlsearch.
-nnoremap <silent> ì :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
+nnoremap <silent> <A-l> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
 
 " Reloads a buffer.
 nnoremap <leader>r :w<CR>:e<CR>
@@ -294,7 +383,7 @@ nmap <F8> :TagbarOpenAutoClose<CR>
 nnoremap <leader>cw :set wrap!<CR>
 
 " Change à (Alt-`) to -> in insert mode.
-inoremap à ->
+inoremap <A-`> ->
 
 "--------------------------------End General Mappings--------------------------"
 
@@ -314,10 +403,10 @@ inoremap à ->
 "nnoremap <leader><leader> :CtrlPMixed<cr>
 
 " Open Tags window with <Alt-R>.
-nnoremap ò :CtrlPTag<cr>
+nnoremap <A-r> :CtrlPTag<cr>
 
 " Open Most Recent Used Files window with <Alt-E>.
-nnoremap å :CtrlPMRUFiles<cr>
+nnoremap <A-e> :CtrlPMRUFiles<cr>
 
 " Open the Ctrl-P window buffer.
 nnoremap <leader><leader> :CtrlPBuffer<cr>
@@ -351,9 +440,6 @@ let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 " Set no file limit.
 let g:ctrlp_max_files = 0
 
-" Set local working directory to cwd by default then a git directory?
-let g:ctrlp_working_path_mode = 'wr'
-
 "/
 "/ Vim Airline
 "/
@@ -363,7 +449,7 @@ let g:airline_theme = 'solarized'
 let g:airline_solarized_bg='dark'
 
 " SHow all airline things in the focus window only.
-let g:airline_inactive_collapse=0
+let g:airline_inactive_collapse=1
 
 " Airline auto populate powerline fonts.
 let g:airline_powerline_fonts=1
@@ -397,6 +483,9 @@ let g:airline#extensions#tagbar#flags = 'f'
 
 " Disable git-gutter changed hunks.
 "let g:airline#extensions#hunks#enabled = 0
+
+" Enable the Ale integration.
+let g:airline#extensions#ale#enabled = 1
 
 "/
 "/ MatchTagAlways
@@ -552,7 +641,8 @@ let g:polyglot_disabled = ['css', 'php']
 
 let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
 
-let g:startify_list_order = ['bookmarks', 'sessions', 'files']
+let g:startify_list_order = ['bookmarks', 'sessions', 'files', 'dir',
+    \ 'commands']
 
 let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
@@ -563,42 +653,55 @@ let g:startify_change_to_vcs_root = 1
 
 let g:startify_fortune_use_unicode = 1
 
+""/
+"""/ youcompleteme.vim
+""/
+"
+""set completeopt-=preview
+"" Change default previous to prevent collition with delimitMate plugin.
+"let g:ycm_key_list_previous_completion = ['<Up>']
+"
+"let g:ycm_cache_omnifunc = 0
+""let g:ycm_seed_identifiers_with_syntax = 1
+""let g:ycm_collect_identifiers_from_tags_files = 1
+"let g:ycm_add_preview_to_completeopt = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+""let g:ycm_min_num_identifier_candidate_chars = 0
+"
+"inoremap <C-a> <ESC>:call ToggleYCMAutoTrigger()<cr>a
+"
+"function ToggleYCMAutoTrigger()
+"    if g:ycm_auto_trigger == 1
+"        let g:ycm_auto_trigger = 0
+"    else
+"        let g:ycm_auto_trigger = 1
+"    endif
+"endfunction
+"
+""/
+"""/ vim-php-wrapper
+""/
+"
+""nnoremap <buffer> <silent> <Leader>dk :call VphpwDocClosestMethod(0)<CR>
+""nnoremap <buffer> <silent> <Leader>dj :call VphpwDocClosestMethod(1)<CR>
+""noremap  <buffer> <silent> <Leader>dl :call VphpwAlignDocblock()<CR>
+""nnoremap <buffer> <silent> <Leader>dd :call
+""            \ VphpwDeleteEnclosingDocblock()<CR>
+""noremap  <buffer> <silent> <Leader>dr :call VphpwResetDocblock()<CR>
+
 "/
-""/ youcompleteme.vim
+""/ ale.vim
 "/
 
-"set completeopt-=preview
-" Change default previous to prevent collition with delimitMate plugin.
-let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ale_linters = {
+            \ 'php': ['phpcs', 'phpstan'],
+            \}
 
-let g:ycm_cache_omnifunc = 0
-"let g:ycm_seed_identifiers_with_syntax = 1
-"let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-"let g:ycm_min_num_identifier_candidate_chars = 0
+let g:ale_php_phpcs_use_global = 1
+let g:ale_php_phpcs_standard="PSR2"
 
-inoremap <C-a> <ESC>:call ToggleYCMAutoTrigger()<cr>a
-
-function ToggleYCMAutoTrigger()
-    if g:ycm_auto_trigger == 1
-        let g:ycm_auto_trigger = 0
-    else
-        let g:ycm_auto_trigger = 1
-    endif
-endfunction
-
-"/
-""/ vim-php-wrapper
-"/
-
-"nnoremap <buffer> <silent> <Leader>dk :call VphpwDocClosestMethod(0)<CR>
-"nnoremap <buffer> <silent> <Leader>dj :call VphpwDocClosestMethod(1)<CR>
-"noremap  <buffer> <silent> <Leader>dl :call VphpwAlignDocblock()<CR>
-"nnoremap <buffer> <silent> <Leader>dd :call
-"            \ VphpwDeleteEnclosingDocblock()<CR>
-"noremap  <buffer> <silent> <Leader>dr :call VphpwResetDocblock()<CR>
+let g:ale_php_phpstan_use_global = 1
 
 "--------------------------------End Plugins-----------------------------------"
 
@@ -659,11 +762,14 @@ autocmd FileType netrw setl bufhidden=wipe
 
 " Put a var_dump() selecting text from current point to end of word (e),
 " searching for the closest empty line to paste it and a die().
-let @a = 'ye}ovar_dump(0);die();'
-
-" Put a var_dump() selecting text from current point to end of word (e),
-" pasting under the current line and a die().
-let @s = 'yeovar_dump(0);die();'
+"let @a = 'ye}ovar_dump(0);
+"die();
+"'
+"
+"" Put a var_dump() selecting text from current point to end of word (e),
+"" pasting under the current line and a die().
+"let @s = 'yeovar_dump(0);
+"die();'
 
 "--------------------------------End Macros------------------------------------"
 
@@ -685,14 +791,14 @@ endfunction
 
 "--------------------------------Terminal Only---------------------------------"
 
-if !has("gui_running")
-
-    " give us 256 color schemes!
-    set term=screen-256color
-
-    "let g:solarized_termcolors=256
-
-endif
+"if !has("gui_running")
+"
+"    " give us 256 color schemes!
+"    "set term=screen-256color
+"
+"    "let g:solarized_termcolors=256
+"
+"endif
 
 "--------------------------------End Terminal Only-----------------------------"
 

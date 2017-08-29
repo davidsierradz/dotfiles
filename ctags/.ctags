@@ -1,5 +1,5 @@
 --languages=PHP
---PHP-kinds=+cfitdna-lv
+--PHP-kinds=+cfitdn-alv
 --fields=*
 --exclude=.git
 --exclude=node_modules
