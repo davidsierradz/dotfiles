@@ -9,7 +9,6 @@ select {
   border-radius: 2px;
   background-color: white;
   color: #333333;
-  -moz-appearance: none;
 }
 /*
 input[type="radio"],
@@ -35,7 +34,6 @@ input[type="checkbox"] {
   border-radius: 2px;
   background-color: #eeeeee;
   color: #333333;
-  -moz-appearance: none;
 }
 /*
 body {
