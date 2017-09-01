@@ -641,8 +641,7 @@ let g:polyglot_disabled = ['css', 'php']
 
 let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
 
-let g:startify_list_order = ['bookmarks', 'sessions', 'files', 'dir',
-    \ 'commands']
+let g:startify_list_order = ['bookmarks', 'sessions', 'files']
 
 let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
@@ -652,6 +651,8 @@ let g:startify_session_before_save = [
 let g:startify_change_to_vcs_root = 1
 
 let g:startify_fortune_use_unicode = 1
+
+let g:startify_files_number = 20
 
 ""/
 """/ youcompleteme.vim
