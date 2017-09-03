@@ -85,6 +85,7 @@ Plug 'airblade/vim-rooter'
 Plug 'w0rp/ale'
 Plug 'othree/csscomplete.vim'
 Plug 'calebeby/ncm-css'
+Plug 'arnaud-lb/vim-php-namespace'
 
 " Initialize plugin system
 call plug#end()
@@ -705,6 +706,32 @@ let g:ale_php_phpcs_use_global = 1
 let g:ale_php_phpcs_standard="PSR2"
 
 let g:ale_php_phpstan_use_global = 1
+
+"/
+""/ vim-php-namespace
+"/
+
+let g:php_namespace_sort = "'{,'}-1!awk '{print length, $0}' | sort -n -s | cut -d' ' -f2-"
+let g:php_namespace_sort_after_insert = 1
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+
+autocmd FileType php inoremap <Leader>sd <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>sd :call PhpInsertUse()<CR>
+
+autocmd FileType php inoremap <Leader>sf <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>sf :call PhpExpandClass()<CR>
+
+autocmd FileType php inoremap <Leader>ss <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>ss :call PhpSortUse()<CR>
 
 "--------------------------------End Plugins-----------------------------------"
 
