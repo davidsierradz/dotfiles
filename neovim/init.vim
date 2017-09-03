@@ -57,7 +57,7 @@ Plug 'alvan/vim-closetag'
  "Plug 'ervandew/supertab'
 " "Plug 'pangloss/vim-javascript'
 " "Plug 'terryma/vim-multiple-cursors'
-" "Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " "Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'elzr/vim-json'
@@ -93,8 +93,8 @@ call plug#end()
 
 "--------------------------------End Plugins-----------------------------------"
 
-autocmd FileType php LanguageClientStart
-autocmd Filetype php set omnifunc=LanguageClient#complete
+
+
 
 "--------------------------------General---------------------------------------"
 
@@ -787,6 +787,10 @@ autocmd FileType netrw setl bufhidden=wipe
 " autocmd BufWinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
 "autocmd WinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
 "autocmd WinLeave * if &previewwindow && winnr() > 1 | :wincmd = | endif
+
+" Start the LSP for PHP.
+autocmd FileType php LanguageClientStart
+autocmd Filetype php set omnifunc=LanguageClient#complete
 
 " Set the omnifunc for CSS.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
