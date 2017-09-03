@@ -85,6 +85,7 @@ Plug 'airblade/vim-rooter'
 Plug 'w0rp/ale'
 Plug 'othree/csscomplete.vim'
 Plug 'calebeby/ncm-css'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'arnaud-lb/vim-php-namespace'
 
 " Initialize plugin system
