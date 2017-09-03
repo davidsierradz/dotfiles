@@ -83,6 +83,8 @@ Plug '2072/PHP-Indenting-for-VIm'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-rooter'
 Plug 'w0rp/ale'
+Plug 'othree/csscomplete.vim'
+Plug 'calebeby/ncm-css'
 
 " Initialize plugin system
 call plug#end()
@@ -749,6 +751,9 @@ autocmd FileType netrw setl bufhidden=wipe
 " autocmd BufWinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
 "autocmd WinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
 "autocmd WinLeave * if &previewwindow && winnr() > 1 | :wincmd = | endif
+
+" Set the omnifunc for CSS.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 
 "--------------------------------End Auto Commands-----------------------------"
 
