@@ -709,6 +709,14 @@ let g:ale_php_phpcs_standard="PSR2"
 let g:ale_php_phpstan_use_global = 1
 
 "/
+""/ rooter.vim
+"/
+
+let g:rooter_manual_only = 1
+
+let g:rooter_silent_chdir = 1
+
+"/
 ""/ vim-php-namespace
 "/
 
