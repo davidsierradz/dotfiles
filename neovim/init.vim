@@ -57,7 +57,7 @@ Plug 'alvan/vim-closetag'
  "Plug 'ervandew/supertab'
 " "Plug 'pangloss/vim-javascript'
 " "Plug 'terryma/vim-multiple-cursors'
-" "Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 " "Plug 'scrooloose/syntastic'
 Plug 'Raimondi/delimitMate'
 Plug 'elzr/vim-json'
@@ -83,14 +83,18 @@ Plug '2072/PHP-Indenting-for-VIm'
 Plug 'kshenoy/vim-signature'
 Plug 'airblade/vim-rooter'
 Plug 'w0rp/ale'
+Plug 'othree/csscomplete.vim'
+Plug 'calebeby/ncm-css'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
+Plug 'arnaud-lb/vim-php-namespace'
 
 " Initialize plugin system
 call plug#end()
 
 "--------------------------------End Plugins-----------------------------------"
 
-autocmd FileType php LanguageClientStart
-autocmd Filetype php set omnifunc=LanguageClient#complete
+
+
 
 "--------------------------------General---------------------------------------"
 
@@ -487,6 +491,9 @@ let g:airline#extensions#tagbar#flags = 'f'
 " Enable the Ale integration.
 let g:airline#extensions#ale#enabled = 1
 
+" Add w modifier to search from 'cwd'.
+let g:ctrlp_working_path_mode = 'a'
+
 "/
 "/ MatchTagAlways
 "/
@@ -641,8 +648,7 @@ let g:polyglot_disabled = ['css', 'php']
 
 let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
 
-let g:startify_list_order = ['bookmarks', 'sessions', 'files', 'dir',
-    \ 'commands']
+let g:startify_list_order = ['bookmarks', 'sessions', 'files']
 
 let g:startify_session_before_save = [
     \ 'echo "Cleaning up before saving.."',
@@ -652,6 +658,8 @@ let g:startify_session_before_save = [
 let g:startify_change_to_vcs_root = 1
 
 let g:startify_fortune_use_unicode = 1
+
+let g:startify_files_number = 20
 
 ""/
 """/ youcompleteme.vim
@@ -696,12 +704,47 @@ let g:startify_fortune_use_unicode = 1
 
 let g:ale_linters = {
             \ 'php': ['phpcs', 'phpstan'],
+            \ 'javascript': ['eslint'],
             \}
 
 let g:ale_php_phpcs_use_global = 1
 let g:ale_php_phpcs_standard="PSR2"
 
 let g:ale_php_phpstan_use_global = 1
+
+"/
+""/ rooter.vim
+"/
+
+let g:rooter_manual_only = 1
+
+let g:rooter_silent_chdir = 1
+
+"/
+""/ vim-php-namespace
+"/
+
+let g:php_namespace_sort = "'{,'}-1!awk '{print length, $0}' | sort -n -s | cut -d' ' -f2-"
+let g:php_namespace_sort_after_insert = 1
+
+function! IPhpInsertUse()
+    call PhpInsertUse()
+    call feedkeys('a',  'n')
+endfunction
+
+function! IPhpExpandClass()
+    call PhpExpandClass()
+    call feedkeys('a', 'n')
+endfunction
+
+autocmd FileType php inoremap <Leader>sd <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <Leader>sd :call PhpInsertUse()<CR>
+
+autocmd FileType php inoremap <Leader>sf <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <Leader>sf :call PhpExpandClass()<CR>
+
+autocmd FileType php inoremap <Leader>ss <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <Leader>ss :call PhpSortUse()<CR>
 
 "--------------------------------End Plugins-----------------------------------"
 
@@ -748,6 +791,13 @@ autocmd FileType netrw setl bufhidden=wipe
 " autocmd BufWinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
 "autocmd WinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
 "autocmd WinLeave * if &previewwindow && winnr() > 1 | :wincmd = | endif
+
+" Start the LSP for PHP.
+autocmd FileType php LanguageClientStart
+autocmd Filetype php set omnifunc=LanguageClient#complete
+
+" Set the omnifunc for CSS.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 
 "--------------------------------End Auto Commands-----------------------------"
 
