@@ -227,3 +227,6 @@ Give execute permissions and put in /usr/bin
 Dont use default syntax file for php:
 $ sudo mv /usr/share/nvim/runtime/syntax/php.vim /usr/share/nvim/runtime/syntax/php.vim.bak
 $ sudo mv /usr/share/nvim/runtime/autoload/phpcomplete.vim /usr/share/nvim/runtime/autoload/phpcomplete.vim.bak
+
+To install nvim-cm-tern do:
+sudo ln -s /usr/bin/node /usr/bin/nodejs
