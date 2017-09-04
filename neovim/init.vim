@@ -491,6 +491,9 @@ let g:airline#extensions#tagbar#flags = 'f'
 " Enable the Ale integration.
 let g:airline#extensions#ale#enabled = 1
 
+" Add w modifier to search from 'cwd'.
+let g:ctrlp_working_path_mode = 'a'
+
 "/
 "/ MatchTagAlways
 "/
