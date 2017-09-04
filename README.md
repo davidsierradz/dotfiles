@@ -215,6 +215,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 inside neovim run
+:PlugInstall
 :UpdateRemotePlugins
 
 Download and install the following PHAR:
