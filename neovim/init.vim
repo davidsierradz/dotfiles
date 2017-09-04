@@ -77,7 +77,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
 "Plug 'tyru/restart.vim'
-Plug 'FelikZ/ctrlp-py-matcher'
+"Plug 'FelikZ/ctrlp-py-matcher'
 Plug 'thinca/vim-visualstar'
 Plug '2072/PHP-Indenting-for-VIm'
 Plug 'kshenoy/vim-signature'
@@ -87,6 +87,7 @@ Plug 'othree/csscomplete.vim'
 Plug 'calebeby/ncm-css'
 Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 Plug 'arnaud-lb/vim-php-namespace'
+Plug 'sergei-dyshel/vim-abbrev-matcher'
 
 " Initialize plugin system
 call plug#end()
@@ -439,7 +440,14 @@ let g:ctrlp_reuse_window = 'netrw'
 let g:ctrlp_mruf_save_on_update = 0
 
 " Use pymatcher plugin.
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+" Use vim-abbrev-matcher plugin.
+let g:ctrlp_match_func = { 'match': 'ctrlp#abbrev_matcher#match' }
+
+" Configure vim-abbrev-matcher.
+let g:abbrev_matcher_grep_exe = 'ag'
+let g:abbrev_matcher_grep_args = '--numbers'
 
 " Set no file limit.
 let g:ctrlp_max_files = 0
