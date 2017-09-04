@@ -726,8 +726,6 @@ let g:ale_php_phpstan_use_global = 1
 
 let g:rooter_manual_only = 1
 
-let g:rooter_silent_chdir = 1
-
 "/
 ""/ vim-php-namespace
 "/
@@ -753,6 +751,21 @@ autocmd FileType php noremap <Leader>sf :call PhpExpandClass()<CR>
 
 autocmd FileType php inoremap <Leader>ss <Esc>:call PhpSortUse()<CR>
 autocmd FileType php noremap <Leader>ss :call PhpSortUse()<CR>
+
+"/
+""/ nvim-completion-manager
+"/
+
+" Use a fuzzy style matcher.
+let g:cm_matcher = {'module': 'cm_matchers.abbrev_matcher', 'case': 'smartcase'}
+
+" Open the popup menu completion.
+imap <C-space> <Plug>(cm_force_refresh)
+
+" Use tab to cicle trough completion menu.
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 "--------------------------------End Plugins-----------------------------------"
 
