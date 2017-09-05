@@ -92,6 +92,7 @@ margin: 8px;
 }
 
 @-moz-document url("about:sessionrestore") {
+
   .tree-container {
     background-color: #000000 !important;
   }

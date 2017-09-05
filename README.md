@@ -183,6 +183,9 @@ pacmd set-card-profile 1 headset_head_unit
 
 maybe write a little script to check actual profile and toggle between the two?
 
+change the protocol from https to ssh for a git repository:
+$ git remote set-url origin git@github.com:davidsierradz/dotfiles.git
+
 -------------------------------------------------------------------------------
 
 SPACEMACS CONFIGURATION
@@ -215,6 +218,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 inside neovim run
+:PlugInstall
 :UpdateRemotePlugins
 
 Download and install the following PHAR:
@@ -226,3 +230,6 @@ Give execute permissions and put in /usr/bin
 Dont use default syntax file for php:
 $ sudo mv /usr/share/nvim/runtime/syntax/php.vim /usr/share/nvim/runtime/syntax/php.vim.bak
 $ sudo mv /usr/share/nvim/runtime/autoload/phpcomplete.vim /usr/share/nvim/runtime/autoload/phpcomplete.vim.bak
+
+To install nvim-cm-tern do:
+sudo ln -s /usr/bin/node /usr/bin/nodejs
