@@ -1,5 +1,4 @@
 .git/
-.gitignore
 .idea
 *~
 *.swp
@@ -8,3 +7,6 @@
 vendor/
 node_modules/
 tags
+storage/
+yarn.lock
+bootstrap/cache
