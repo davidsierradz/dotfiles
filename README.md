@@ -183,6 +183,9 @@ pacmd set-card-profile 1 headset_head_unit
 
 maybe write a little script to check actual profile and toggle between the two?
 
+change the protocol from https to ssh for a git repository:
+$ git remote set-url origin git@github.com:davidsierradz/dotfiles.git
+
 -------------------------------------------------------------------------------
 
 SPACEMACS CONFIGURATION
