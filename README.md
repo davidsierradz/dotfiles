@@ -186,6 +186,14 @@ maybe write a little script to check actual profile and toggle between the two?
 change the protocol from https to ssh for a git repository:
 $ git remote set-url origin git@github.com:davidsierradz/dotfiles.git
 
+to open whatsapp custom url protocol in google-chrome:
+
+# vim /usr/share/applications/google-chrome-unstable.desktop
+
+search MimeType string and add "x-scheme-handler/whatsapp;"
+
+restart browser
+
 -------------------------------------------------------------------------------
 
 SPACEMACS CONFIGURATION
