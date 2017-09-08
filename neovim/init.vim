@@ -790,6 +790,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " Set the indent options for Javascript files.
 autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
 
+" Set the indent options for Json files.
+autocmd Filetype json setlocal ts=2 sts=2 sw=2
+
 " Set the indent options for CSS files.
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
