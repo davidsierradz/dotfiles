@@ -1,7 +1,8 @@
 "--------------------------------General---------------------------------------"
 
 " GUI font.
-GuiFont UbuntuMonoDerivativePowerline Nerd Font:h13
+"GuiFont UbuntuMonoDerivativePowerline Nerd Font:h18
+GuiFont Hack Nerd Font Mono:h16
 
 " Select with the mouse.
 set mouse=a
@@ -70,7 +71,7 @@ hi GitGutterChangeDelete guifg=#009900 guibg=bg
 
 " Line height.
 "set linespace=8
-GuiLinespace 4
+GuiLinespace 7
 
 "hi Cursor guifg=black guibg=green gui=reverse
 "set guicursor=a:block-blinkon100-Cursor/Cursor
