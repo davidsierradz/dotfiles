@@ -139,6 +139,11 @@ install from AUR: urxvt-font-size-git
 Set cursor theme, create dir
 mkdir .local/share/icons/default
 
+Hack Nerd Font Mono:
+Download https://github.com/ryanoasis/nerd-fonts/releases the hack font.
+extract the fonts on /usr/share/fonts/TTF/
+sudo fc-cache -vf
+
 -------------------------------------------------------------------------------
 Special personal laptop setup
 
