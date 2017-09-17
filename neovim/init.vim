@@ -72,7 +72,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'majutsushi/tagbar'
 Plug 'joonty/vdebug'
 Plug 'artnez/vim-wipeout'
-Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
@@ -103,7 +102,7 @@ call plug#end()
 "syntax enable
 
 " Indenting configurations.
-set autoindent
+"set autoindent
 set smartindent
 
 " Settings for tabs and space indents.
