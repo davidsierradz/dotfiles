@@ -514,6 +514,7 @@ let g:mta_filetypes = {
     \ 'xml' : 1,
     \ 'jinja' : 1,
     \ 'php' : 1,
+    \ 'vue' : 1,
     \}
 
 "/
@@ -578,10 +579,10 @@ inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 let delimitMate_expand_cr = 1
 
 " Disable automatic close on angle brackets <> in html and blade files (already using vim-closetag).
-au FileType html,blade let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType html,blade,vue let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " Expand spaces in blade files.
-au FileType blade let b:delimitMate_expand_space = 1
+au FileType blade,vue,html.vue let b:delimitMate_expand_space = 1
 
 let delimitMate_jump_expansion = 1
 
@@ -589,7 +590,7 @@ let delimitMate_jump_expansion = 1
 "/ vim-closetag
 "/
 
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.vue"
 
 "/
 "/ indentLine
@@ -796,7 +797,7 @@ autocmd Filetype json setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for HTML files.
-autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype html,vue setlocal ts=2 sts=2 sw=2
 
 " Autocommand to call PhpSyntaxOverride function.
 augroup phpSyntaxOverride
