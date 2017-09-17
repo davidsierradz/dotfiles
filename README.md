@@ -106,6 +106,13 @@ resolvconf=NO
 
 RECUERDA HACER LOS LINKS SIMBOLICOS AL HOME!
 
+Para cambiar el dark theme del plugin para firefox 'Dark Background and Light Text'
+instalar el plugin 'Dorando keyconfig', crear una regla:
+'dark light toggle' <Ctrl+F8>
+pegar en la conf del shortcut:
+let prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+let key = 'extensions.jid1-QoFqdK4qzUfGWQ@jetpack.enabled';
+prefs.setBoolPref(key, ! prefs.getBoolPref(key));
 
 -------------------------------------------------------------------------------
 Manjaroi3 config
