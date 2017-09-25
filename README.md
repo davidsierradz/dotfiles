@@ -255,3 +255,21 @@ $ sudo mv /usr/share/nvim/runtime/autoload/phpcomplete.vim /usr/share/nvim/runti
 
 To install nvim-cm-tern do:
 sudo ln -s /usr/bin/node /usr/bin/nodejs
+
+
+-------------------------------------------------------------------------------
+
+NEOVIM for Ubuntu 16.04 (Digital Ocean droplet)
+
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+mkdir .config/nvim
+clone and link init-mini.vim
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+pip install setuptools
+pip  install --upgrade neovim
+enter nvim and do :PlugInstall
+
