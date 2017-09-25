@@ -637,12 +637,12 @@ let g:used_javascript_libs = 'jquery,underscore,backbone,angularjs,react,handleb
 let g:vdebug_options = {}
 let g:vdebug_features = {}
 let g:vdebug_options["break_on_open"] = 0
+let g:vdebug_options["port"] = 9100
+let g:vdebug_options["server"] = ''
 
 " Cross paths for projects.
 let g:vdebug_options["path_maps"] = {
-\    "/home/vagrant/Code/coba": "/home/neuromante/Code/coba",
-\    "/home/vagrant/Code/Blog": "/home/neuromante/Code/Blog",
-\    "/home/vagrant/Code/Forum": "/home/neuromante/Code/Forum",
+\    "/home/vagrant/Code/carflosas": "/home/neuromante/Code/carflosas",
 \}
 
 "let g:vdebug_features['max_depth'] = 6

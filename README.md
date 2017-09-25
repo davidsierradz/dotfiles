@@ -90,8 +90,10 @@ en la raiz de este
 
 Debugger
 En la vagrant activar xdebug... luego en el ini en fpm:
+xdebug.remote_enable = 1
 xdebug.remote_connect_back = 1
-xdebug.remote_port = 9000
+xdebug.remote_host = 192.168.10.1
+xdebug.remote_port = 9100
 xdebug.max_nesting_level = 512
 xdebug.remote_autostart= 1
 xdebug.collect_params = 3
