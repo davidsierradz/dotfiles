@@ -279,6 +279,7 @@ let g:netrw_preview = 1
 nnoremap <M-F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·<CR>
 nnoremap <F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·<CR>
 nnoremap <C-F12> :IndentLinesToggle<CR>
+nnoremap <S-F12> :set list!<CR>
 
 " Regenerate ctags file.
 nnoremap <leader>rc :!ctags .<CR>
