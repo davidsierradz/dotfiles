@@ -390,6 +390,9 @@ nnoremap <leader>cw :set wrap!<CR>
 " Change à (Alt-`) to -> in insert mode.
 inoremap <A-`> ->
 
+" Use <Alt-Tab> to expand a space: <Space>|<Space>.
+inoremap <A-Tab> <Space><Space><Left>
+
 "--------------------------------End General Mappings--------------------------"
 
 
