@@ -804,7 +804,7 @@ autocmd Filetype json setlocal ts=2 sts=2 sw=2
 autocmd Filetype css setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for HTML files.
-autocmd Filetype html,vue setlocal ts=2 sts=2 sw=2
+autocmd Filetype html,vue,blade setlocal ts=2 sts=2 sw=2
 
 " Autocommand to call PhpSyntaxOverride function.
 augroup phpSyntaxOverride
