@@ -153,6 +153,14 @@ Download https://github.com/ryanoasis/nerd-fonts/releases the hack font.
 extract the fonts on /usr/share/fonts/TTF/
 sudo fc-cache -vf
 
+Use a dev package in composer (phpstan for example):
+"require-dev": {
+"phpstan/phpstan": "dev-master",
+},
+"minimum-stability": "dev",
+"prefer-stable" : true
+
+
 -------------------------------------------------------------------------------
 Special personal laptop setup
 
