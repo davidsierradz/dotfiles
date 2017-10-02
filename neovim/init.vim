@@ -3,6 +3,59 @@
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
+
+"----------------Basics-----------------
+" Highlights the XML/HTML tags that enclose your cursor location.
+Plug 'Valloric/MatchTagAlways'
+
+" Using this until the unlisted netrw buffer bug is solved.
+Plug 'manasthakur/vim-vinegar'
+
+" Allows you to configure % to match more than just single characters.
+Plug 'benjifisher/matchit.zip'
+
+" Fuzzy finder.
+Plug 'ctrlpvim/ctrlp.vim'
+
+" Functions for toggle comments.
+Plug 'scrooloose/nerdcommenter'
+
+" Jump anywhere in current screen.
+Plug 'easymotion/vim-easymotion'
+
+" Pasting in Vim with indentation adjusted to destination context.
+Plug 'sickill/vim-pasta'
+
+" Check the " and @ registers.
+Plug 'junegunn/vim-peekaboo'
+
+" Add colons and semicolons in insert mode.
+Plug 'lfilho/cosco.vim'
+
+" Visualize your Vim undo tree.
+Plug 'sjl/gundo.vim'
+
+" Autoclose XML-like tags.
+Plug 'alvan/vim-closetag'
+
+" Automatic closing of quotes, parenthesis, brackets
+" also expands spaces and enters.
+Plug 'Raimondi/delimitMate'
+
+" Change or add pair of chars surrouding an object.
+Plug 'tpope/vim-surround'
+
+" Matcher for CtrlP by word separators.
+Plug 'sergei-dyshel/vim-abbrev-matcher'
+
+" Browse tags of current file.
+Plug 'majutsushi/tagbar'
+
+" Set the pwd smartly.
+Plug 'airblade/vim-rooter'
+
+
+"--------------Interface----------------
 " Solarized colorscheme for NeoVim.
 Plug 'iCyMind/NeoSolarized'
 
@@ -13,80 +66,105 @@ Plug 'vim-airline/vim-airline-themes'
 " Nerdfont icons for Vim.
 Plug 'ryanoasis/vim-devicons'
 
-" Highlights the XML/HTML tags that enclose your cursor location.
-Plug 'Valloric/MatchTagAlways'
+" Add git indications to sign sidebar.
+Plug 'airblade/vim-gitgutter'
 
-" Using this until the unlisted netrw buffer bug is solved.
-Plug 'manasthakur/vim-vinegar'
+" Swap windows without ruining your layout.
+Plug 'wesQ3/vim-windowswap'
 
-" Allows you to configure % to match more than just single characters.
-Plug 'benjifisher/matchit.zip'
+" Toggle the space of current window.
+Plug 'szw/vim-maximizer'
 
+" Smart close of buffers.
+Plug 'Asheq/close-buffers.vim'
+
+" Start buffer for vim.
+Plug 'mhinz/vim-startify'
+
+" Search your selection text with * or #.
+Plug 'thinca/vim-visualstar'
+
+" Manage marks.
+Plug 'kshenoy/vim-signature'
+
+
+"-------------Integrations--------------
+" Front for Ag.
+Plug 'mileszs/ack.vim'
+
+" Use .editorconfig file.
+Plug 'editorconfig/editorconfig-vim'
+
+" DBGP client for Xdebug.
+Plug 'joonty/vdebug'
+
+" Manage todo.txt files.
+Plug 'freitass/todo.txt-vim'
+
+
+"-------Completions and omnifuncs-------
 " PHP implementation of Microsoft LSP (Language Server Protocol).
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
 " Autocompletion framework.
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'roxma/nvim-completion-manager'
 
-"Plug 'jsfaint/gen_tags.vim'
+" Use ternjs as source for ncm.
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
-"Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" Use MDN as source for CSS properties and syntax.
+Plug 'calebeby/ncm-css'
 
-"" Using this until the unlisted netrw buffer bug is solved.
-Plug 'ctrlpvim/ctrlp.vim'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'shawncplus/phpcomplete.vim'
-"Plug 'lvht/phpcd.vim'
-Plug 'airblade/vim-gitgutter'
-Plug 'wesQ3/vim-windowswap'
-Plug 'scrooloose/nerdcommenter'
-Plug 'mileszs/ack.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'easymotion/vim-easymotion'
-" Using this PHP Syntax file instead of the original:
-" https://jasonwoof.com/gitweb/?p=vim-syntax.git;a=blob_plain;f=php.vim;hb=HEAD
-" waiting for updating the base Vim one to PHP 7.
-Plug 'StanAngeloff/php.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'sjl/gundo.vim'
-" "Plug 'blueyed/vim-diminactive'
-Plug 'szw/vim-maximizer'
-Plug 'alvan/vim-closetag'
- "Plug 'ervandew/supertab'
-" "Plug 'pangloss/vim-javascript'
-" "Plug 'terryma/vim-multiple-cursors'
-Plug 'tpope/vim-fugitive'
-" "Plug 'scrooloose/syntastic'
-Plug 'Raimondi/delimitMate'
-Plug 'elzr/vim-json'
-Plug 'Yggdroot/indentLine'
-" "Plug 'jelera/vim-javascript-syntax'
-" "Plug 'othree/javascript-libraries-syntax.vim'
-Plug 'tpope/vim-surround'
-Plug 'jwalton512/vim-blade'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'pangloss/vim-javascript'
-" "Plug 'ludovicchabant/vim-gutentags'
-Plug 'majutsushi/tagbar'
-Plug 'joonty/vdebug'
-Plug 'artnez/vim-wipeout'
+" CSS omnifunc.
+Plug 'othree/csscomplete.vim'
+
+" Snippet Engine.
+Plug 'SirVer/ultisnips'
+
+" List of snippets for Ultisnips.
+Plug 'honza/vim-snippets'
+
+" Syntax checker and linter.
+Plug 'w0rp/ale'
+
+
+"------Syntax files and Languages-------
+" Insert and sort use statements in PHP.
+Plug 'arnaud-lb/vim-php-namespace'
+
+" Language pack for vim.
 Plug 'sheerun/vim-polyglot'
-Plug 'mhinz/vim-startify'
-Plug 'tpope/vim-fugitive'
+
+" Updated syntax file for PHP.
+Plug 'StanAngeloff/php.vim'
+
+" Upstream indenting for PHP.
+Plug '2072/PHP-Indenting-for-VIm'
+
+" Updated CSS syntax files.
+Plug 'hail2u/vim-css3-syntax'
+
+" Updated >es6 syntax files.
+Plug 'pangloss/vim-javascript'
+
+
+"------------Standby plugins------------
+"Plug 'jsfaint/gen_tags.vim'
+"Plug 'lvht/phpcd.vim'
+"Plug 'blueyed/vim-diminactive'
+"Plug 'terryma/vim-multiple-cursors'
+"Plug 'jelera/vim-javascript-syntax'
+"Plug 'othree/javascript-libraries-syntax.vim'
+"Plug 'ludovicchabant/vim-gutentags'
+"Plug 'artnez/vim-wipeout'
 "Plug 'tyru/restart.vim'
 "Plug 'FelikZ/ctrlp-py-matcher'
-Plug 'thinca/vim-visualstar'
-Plug '2072/PHP-Indenting-for-VIm'
-Plug 'kshenoy/vim-signature'
-Plug 'airblade/vim-rooter'
-Plug 'w0rp/ale'
-Plug 'othree/csscomplete.vim'
-Plug 'calebeby/ncm-css'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-Plug 'arnaud-lb/vim-php-namespace'
-Plug 'sergei-dyshel/vim-abbrev-matcher'
+"Plug 'Yggdroot/indentLine'
+"Plug 'tpope/vim-fugitive'
+"Plug 'leafgarland/typescript-vim'
+"Plug 'elzr/vim-json'
+"Plug 'jwalton512/vim-blade'
 
 " Initialize plugin system
 call plug#end()
@@ -294,7 +372,7 @@ nnoremap <leader>w :w<cr>
 cmap w!! w !sudo tee > /dev/null %
 
 " List contents of all registers (that typically contain pasteable text).
-nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
+"nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
 " Open Netrw file explorer in Present Working Directory with <Alt-W>.
 nnoremap <silent> ÷ :e.<CR>
@@ -338,7 +416,8 @@ nnoremap <leader>bq :bp <BAR> bd #<CR>
 nnoremap <leader>bw :bp <BAR> bd #<CR> :q<CR>
 
 " Call vim-wipeout plugin to delete all buffers not open.
-nnoremap <leader>bd :Wipeout<CR>
+"nnoremap <leader>bd :Wipeout<CR>
+nnoremap <silent> <leader>bd :CloseBuffers<CR>
 
 " Remap go to last file with backspace.
 nnoremap <BS> <C-^>
@@ -390,6 +469,9 @@ nnoremap <leader>cw :set wrap!<CR>
 " Change à (Alt-`) to -> in insert mode.
 inoremap <A-`> ->
 
+" Change <Alt-1> to => in insert mode.
+inoremap <A-1> =>
+
 " Use <Alt-Tab> to expand a space: <Space>|<Space>.
 inoremap <A-Tab> <Space><Space><Left>
 
@@ -398,7 +480,7 @@ inoremap <A-Tab> <Space><Space><Left>
 
 
 
-"--------------------------------Plugins---------------------------------------"
+"--------------------------------Plugins Configuration-------------------------"
 
 "/
 "/ CtrlP
@@ -636,7 +718,6 @@ let g:used_javascript_libs = 'jquery,underscore,backbone,angularjs,react,handleb
 "/ vdebug.vim
 "/
 
-
 " General Options.
 let g:vdebug_options = {}
 let g:vdebug_features = {}
@@ -663,7 +744,6 @@ let g:polyglot_disabled = ['css', 'php']
 ""/ vim-startify
 "/
 
-
 let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
 
 let g:startify_list_order = ['bookmarks', 'sessions', 'files']
@@ -679,32 +759,6 @@ let g:startify_fortune_use_unicode = 1
 
 let g:startify_files_number = 20
 
-""/
-"""/ youcompleteme.vim
-""/
-"
-""set completeopt-=preview
-"" Change default previous to prevent collition with delimitMate plugin.
-"let g:ycm_key_list_previous_completion = ['<Up>']
-"
-"let g:ycm_cache_omnifunc = 0
-""let g:ycm_seed_identifiers_with_syntax = 1
-""let g:ycm_collect_identifiers_from_tags_files = 1
-"let g:ycm_add_preview_to_completeopt = 1
-"let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_autoclose_preview_window_after_insertion = 1
-""let g:ycm_min_num_identifier_candidate_chars = 0
-"
-"inoremap <C-a> <ESC>:call ToggleYCMAutoTrigger()<cr>a
-"
-"function ToggleYCMAutoTrigger()
-"    if g:ycm_auto_trigger == 1
-"        let g:ycm_auto_trigger = 0
-"    else
-"        let g:ycm_auto_trigger = 1
-"    endif
-"endfunction
-"
 ""/
 """/ vim-php-wrapper
 ""/
@@ -777,7 +831,29 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 "inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 "inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
-"--------------------------------End Plugins-----------------------------------"
+"/
+""/ Cosco.vim
+"/
+
+autocmd FileType javascript,css,php nmap <silent> <Leader>. <Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css,php imap <silent> <Leader>. <c-o><Plug>(cosco-commaOrSemiColon)
+let g:cosco_ignore_comment_lines = 1
+
+"/
+""/ Ultisnips.vim
+"/
+
+set runtimepath+=~/dotfiles/snips
+
+let g:UltiSnipsExpandTrigger        = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+
+" Expand the snippet.
+inoremap <silent> <c-x><c-s> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
+
+"--------------------------------End Plugins Configuration---------------------"
 
 
 
@@ -820,11 +896,6 @@ augroup END
 
 " Wipe the netrw buffer when go hidden.
 autocmd FileType netrw setl bufhidden=wipe
-
-" When enter a preview window send the pw to top of screen.
-" autocmd BufWinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
-"autocmd WinEnter * if &previewwindow && winnr() > 1 | :wincmd K | endif
-"autocmd WinLeave * if &previewwindow && winnr() > 1 | :wincmd = | endif
 
 " Start the LSP for PHP.
 autocmd FileType php LanguageClientStart
