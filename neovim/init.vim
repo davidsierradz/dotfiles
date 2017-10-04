@@ -788,7 +788,7 @@ let g:ale_php_phpcs_standard="PSR2"
 "let g:ale_php_phpstan_use_global = 1
 let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
 let g:ale_php_phpstan_configuration = 'phpstan.neon'
-let g:ale_php_phpstan_level = '7'
+let g:ale_php_phpstan_level = '4'
 
 "/
 ""/ rooter.vim
