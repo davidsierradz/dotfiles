@@ -310,6 +310,9 @@ set numberwidth=1
 " Enable true color support
 "set termguicolors
 
+" Set the sign column to always stay.
+set signcolumn=yes
+
 "--------------------------------End Visuals-----------------------------------"
 
 
