@@ -859,6 +859,13 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 " Expand the snippet.
 inoremap <silent> <c-x><c-s> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
 
+"/
+""/ LanguageServer.vim
+"/
+
+" Disable de diagnostics for the LSP.
+let g:LanguageClient_diagnosticsEnable = 0
+
 "--------------------------------End Plugins Configuration---------------------"
 
 
