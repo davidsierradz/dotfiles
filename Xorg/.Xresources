@@ -282,3 +282,33 @@ URxvt.matcher.button: 1
 ! URxvt*tabbar-bg:                      colour
 ! URxvt*tabbar-fg:                      colour
 ! URxvt*url-launcher:                   string
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! Copyright: Rasmus Steinke
+! ------------------------------------------------------------------------------
+!rofi.color-enabled: true
+!rofi.color-window: #002b37, #002b37, #003642
+!rofi.color-normal: #002b37, #819396, #002b37, #003642, #819396
+!rofi.color-active: #002b37, #008ed4, #002b37, #003642, #008ed4
+!rofi.color-urgent: #002b37, #da4281, #002b37, #003642, #da4281
+rofi.color-enabled: true
+rofi.color-window: #002b37, #002b37, #003642
+rofi.color-normal: #002b37, #819396, #003643, #008ed4, #ffffff
+rofi.color-active: #002b37, #008ed4, #003643, #008ed4, #66c6ff
+rofi.color-urgent: #002b37, #da4281, #003643, #008ed4, #890661
+
+! "Enabled modi" Set from: Default
+rofi.modi: combi,window,run
+! "Use levenshtein sorting also for fuzzy matching" Set from: Default
+!rofi.levenshtein-sort: true
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
+rofi.matching: normal
+! "Delete till the end of line" Set from: Default
+rofi.kb-remove-to-eol: Control+Shift+k
+! "Accept entry" Set from: Default
+rofi.kb-accept-entry: Control+m,Return,KP_Enter
+! "Select previous entry" Set from: Default
+rofi.kb-row-up: Up,Control+k,ISO_Left_Tab
+! "Select next entry" Set from: Default
+rofi.kb-row-down: Down,Control+j

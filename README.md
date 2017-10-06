@@ -12,6 +12,7 @@ keynav-git (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado: need
 nerd-fonts-complete-mono-glyphs (AUR)
 php
 redshift-gtk (needs python-xdg)
+rofi-git
 silver Searcher Ag
 universal Ctags
 urxvt-font-size-git (AUR)
