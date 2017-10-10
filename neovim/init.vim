@@ -96,6 +96,7 @@ Plug 'mileszs/ack.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 " DBGP client for Xdebug.
+"Plug 'joonty/vdebug', { 'branch': 'v2-integration' }
 Plug 'joonty/vdebug'
 
 " Manage todo.txt files.
