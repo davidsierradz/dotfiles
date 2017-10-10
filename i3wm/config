@@ -3,6 +3,7 @@
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
 set $mod Mod4
+set $mod1 Mod1
 
 # set default desktop layout (default is tiling)
 # workspace_layout tabbed <stacking|tabbed>
@@ -37,7 +38,8 @@ bindsym $mod+z exec --no-startup-id dmenu_recency
 
 # launch categorized menu
 #bindsym $mod+z exec --no-startup-id morc_menu
-bindsym $mod+d exec --no-startup-id rofi -m primary -location 2 -show combi
+bindsym $mod+d exec --no-startup-id rofi -m primary -location 2 -show run
+bindsym $mod1+Tab exec --no-startup-id rofi -m primary -location 2 -show window
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##

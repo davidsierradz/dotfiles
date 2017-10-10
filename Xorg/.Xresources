@@ -299,7 +299,7 @@ rofi.color-active: #002b37, #008ed4, #003643, #008ed4, #66c6ff
 rofi.color-urgent: #002b37, #da4281, #003643, #008ed4, #890661
 
 ! "Enabled modi" Set from: Default
-rofi.modi: combi,window,run
+rofi.modi: combi,run,window
 ! "Use levenshtein sorting also for fuzzy matching" Set from: Default
 !rofi.levenshtein-sort: true
 ! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
