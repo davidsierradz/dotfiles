@@ -161,7 +161,7 @@ EOF
 
 " 1 = If there are more than the one digit letters, keep using one letter first
 " 2 = dont use one letter only if there a lot of links
-let use_hintchars_ex=1
+let use_hintchars_ex=2
 
 javascript <<EOF
   function addHintsSimpleMapping() {
