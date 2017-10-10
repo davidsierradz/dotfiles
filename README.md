@@ -161,6 +161,11 @@ Use a dev package in composer (phpstan for example):
 "minimum-stability": "dev",
 "prefer-stable" : true
 
+Para activar los cambios del .Xresources:
+$ xrdb -merge .Xresources
+
+Cambiar la timezone de una laravel/homestead:
+# sudo dpkg-reconfigure tzdata
 
 -------------------------------------------------------------------------------
 Special personal laptop setup
