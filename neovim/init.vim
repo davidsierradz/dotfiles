@@ -865,7 +865,7 @@ inoremap <silent> <c-x><c-s> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug
 "/
 
 " Disable de diagnostics for the LSP.
-let g:LanguageClient_diagnosticsEnable = 0
+"let g:LanguageClient_diagnosticsEnable = 0
 
 "--------------------------------End Plugins Configuration---------------------"
 
