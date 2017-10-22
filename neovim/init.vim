@@ -381,7 +381,7 @@ cmap w!! w !sudo tee > /dev/null %
 "nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
 " Open Netrw file explorer in Present Working Directory with <Alt-W>.
-nnoremap <silent> ÷ :e.<CR>
+"nnoremap <silent> ÷ :e.<CR>
 
 " Toggle paste mode with F2 in insert mode.
 set pastetoggle=<F2>
@@ -505,7 +505,7 @@ nnoremap <A-r> :CtrlPTag<cr>
 nnoremap <A-e> :CtrlPMRUFiles<cr>
 
 " Open the Ctrl-P window buffer.
-nnoremap <leader><leader> :CtrlPBuffer<cr>
+nnoremap ; :CtrlPBuffer<cr>
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -844,8 +844,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 ""/ Cosco.vim
 "/
 
-autocmd FileType javascript,css,php nmap <silent> <Leader>. <Plug>(cosco-commaOrSemiColon)
-autocmd FileType javascript,css,php imap <silent> <Leader>. <c-o><Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css,php nmap <silent> , <Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css,php imap <silent> <Leader>, <c-o><Plug>(cosco-commaOrSemiColon)
 let g:cosco_ignore_comment_lines = 1
 
 "/
