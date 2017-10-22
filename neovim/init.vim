@@ -54,6 +54,8 @@ Plug 'majutsushi/tagbar'
 " Set the pwd smartly.
 Plug 'airblade/vim-rooter'
 
+" Extended f, F, t and T key mappings.
+Plug 'rhysd/clever-f.vim'
 
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
@@ -866,6 +868,19 @@ inoremap <silent> <c-x><c-s> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug
 
 " Disable de diagnostics for the LSP.
 "let g:LanguageClient_diagnosticsEnable = 0
+
+"/
+""/ clever-f.vim
+"/
+
+" Search a character only in current line.
+let g:clever_f_across_no_line = 1
+
+" Smart case.
+let g:clever_f_smart_case = 1
+
+" Show a prompt.
+let g:clever_f_show_prompt = 1
 
 "--------------------------------End Plugins Configuration---------------------"
 
