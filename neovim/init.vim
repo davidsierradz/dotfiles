@@ -789,7 +789,6 @@ let g:ale_linters = {
 let g:ale_php_phpcs_use_global = 1
 let g:ale_php_phpcs_standard="PSR2"
 
-"let g:ale_php_phpstan_use_global = 1
 let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
 let g:ale_php_phpstan_configuration = 'phpstan.neon'
 let g:ale_php_phpstan_level = '4'
@@ -868,7 +867,7 @@ inoremap <silent> <c-x><c-s> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug
 "/
 
 " Disable de diagnostics for the LSP.
-"let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_diagnosticsEnable = 0
 
 "/
 ""/ clever-f.vim
