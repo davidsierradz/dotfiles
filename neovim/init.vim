@@ -477,7 +477,7 @@ inoremap <A-`> ->
 inoremap <A-1> =>
 
 " Use <Alt-Tab> to expand a space: <Space>|<Space>.
-inoremap <A-Tab> <Space><Space><Left>
+inoremap <A-S-Tab> <Space><Space><Left>
 
 "--------------------------------End General Mappings--------------------------"
 
@@ -732,6 +732,8 @@ let g:vdebug_options["server"] = ''
 " Cross paths for projects.
 let g:vdebug_options["path_maps"] = {
 \    "/home/vagrant/Code/carflosas": "/home/neuromante/Code/carflosas",
+\    "/home/vagrant/Code/whatsapp_laravel": "/home/neuromante/Code/whatsapp_laravel",
+\    "/home/vagrant/Code/viviendata": "/home/neuromante/Code/viviendata",
 \}
 
 "let g:vdebug_features['max_depth'] = 6
