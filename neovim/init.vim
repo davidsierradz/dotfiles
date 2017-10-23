@@ -54,6 +54,8 @@ Plug 'majutsushi/tagbar'
 " Set the pwd smartly.
 Plug 'airblade/vim-rooter'
 
+" Extended f, F, t and T key mappings.
+Plug 'rhysd/clever-f.vim'
 
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
@@ -379,7 +381,7 @@ cmap w!! w !sudo tee > /dev/null %
 "nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
 " Open Netrw file explorer in Present Working Directory with <Alt-W>.
-nnoremap <silent> ÷ :e.<CR>
+"nnoremap <silent> ÷ :e.<CR>
 
 " Toggle paste mode with F2 in insert mode.
 set pastetoggle=<F2>
@@ -503,7 +505,7 @@ nnoremap <A-r> :CtrlPTag<cr>
 nnoremap <A-e> :CtrlPMRUFiles<cr>
 
 " Open the Ctrl-P window buffer.
-nnoremap <leader><leader> :CtrlPBuffer<cr>
+nnoremap ; :CtrlPBuffer<cr>
 
 if executable('ag')
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
@@ -783,12 +785,12 @@ let g:startify_files_number = 20
 let g:ale_linters = {
             \ 'php': ['phpcs', 'phpstan'],
             \ 'javascript': ['eslint'],
+            \ 'css': ['stylelint'],
             \}
 
 let g:ale_php_phpcs_use_global = 1
 let g:ale_php_phpcs_standard="PSR2"
 
-"let g:ale_php_phpstan_use_global = 1
 let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
 let g:ale_php_phpstan_configuration = 'phpstan.neon'
 let g:ale_php_phpstan_level = '4'
@@ -844,8 +846,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 ""/ Cosco.vim
 "/
 
-autocmd FileType javascript,css,php nmap <silent> <Leader>. <Plug>(cosco-commaOrSemiColon)
-autocmd FileType javascript,css,php imap <silent> <Leader>. <c-o><Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css,php nmap <silent> , <Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css,php imap <silent> <Leader>, <c-o><Plug>(cosco-commaOrSemiColon)
 let g:cosco_ignore_comment_lines = 1
 
 "/
@@ -867,7 +869,20 @@ inoremap <silent> <c-x><c-s> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug
 "/
 
 " Disable de diagnostics for the LSP.
-"let g:LanguageClient_diagnosticsEnable = 0
+let g:LanguageClient_diagnosticsEnable = 0
+
+"/
+""/ clever-f.vim
+"/
+
+" Search a character only in current line.
+let g:clever_f_across_no_line = 1
+
+" Smart case.
+let g:clever_f_smart_case = 1
+
+" Show a prompt.
+let g:clever_f_show_prompt = 1
 
 "--------------------------------End Plugins Configuration---------------------"
 

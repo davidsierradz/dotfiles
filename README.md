@@ -161,6 +161,23 @@ Use a dev package in composer (phpstan for example):
 "minimum-stability": "dev",
 "prefer-stable" : true
 
+Instalar Eslint y Stylelint en un proyecto en local
+
+$ npm install eslint --save-dev
+
+$ ./node_modules/.bin/eslint --init
+
+$ npm install stylelint --save-dev
+
+$ npm install stylelint-config-standard --save-dev
+
+Crear .stylelintrc en la raiz con:
+
+{
+        "extends": "stylelint-config-standard"
+}
+
+
 Para activar los cambios del .Xresources:
 $ xrdb -merge .Xresources
 
