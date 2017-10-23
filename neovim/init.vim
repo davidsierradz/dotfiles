@@ -783,6 +783,7 @@ let g:startify_files_number = 20
 let g:ale_linters = {
             \ 'php': ['phpcs', 'phpstan'],
             \ 'javascript': ['eslint'],
+            \ 'css': ['stylelint'],
             \}
 
 let g:ale_php_phpcs_use_global = 1
