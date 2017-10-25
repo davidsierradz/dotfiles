@@ -89,7 +89,10 @@ Para generar los tags del proyecto
 ctags
 en la raiz de este
 
-Debugger
+Debugger:
+En /etc/nginx/sites-avaliable/xxx.app cambiar:
+fastcgi_read_timeout a un numero alto para no resetear el script.
+
 En la vagrant activar xdebug... luego en el ini en fpm:
 xdebug.remote_enable = 1
 xdebug.remote_connect_back = 1

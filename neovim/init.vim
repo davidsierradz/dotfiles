@@ -739,10 +739,8 @@ let g:vdebug_options["server"] = ''
 
 " Cross paths for projects.
 let g:vdebug_options["path_maps"] = {
-\    "/home/vagrant/Code/carflosas": "/home/neuromante/Code/carflosas",
-\    "/home/vagrant/Code/whatsapp_laravel": "/home/neuromante/Code/whatsapp_laravel",
-\    "/home/vagrant/Code/viviendata": "/home/neuromante/Code/viviendata",
-\}
+            \    "/home/vagrant/Code/php-mini-framework": "/home/neuromante/Code/php-mini-framework",
+            \}
 
 "let g:vdebug_features['max_depth'] = 6
 let g:vdebug_features['max_children'] = 256
@@ -889,6 +887,9 @@ let g:clever_f_smart_case = 1
 
 " Show a prompt.
 let g:clever_f_show_prompt = 1
+
+" Fix the direction of f and F.
+let g:clever_f_fix_key_direction = 1
 
 "/
 ""/ hard-time.vim
