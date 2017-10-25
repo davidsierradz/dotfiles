@@ -361,6 +361,10 @@ let g:netrw_preview = 1
 
 "--------------------------------General Mappings------------------------------"
 
+" Use j and k in wrap lines.
+nnoremap j gj
+nnoremap k gk
+
 " Shortcut to toogle showing spaces and IndentLines.
 nnoremap <M-F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·<CR>
 nnoremap <F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·<CR>
