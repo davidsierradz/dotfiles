@@ -882,6 +882,9 @@ let g:clever_f_smart_case = 1
 " Show a prompt.
 let g:clever_f_show_prompt = 1
 
+" Fix the direction of f and F.
+let g:clever_f_fix_key_direction = 1
+
 "--------------------------------End Plugins Configuration---------------------"
 
 
