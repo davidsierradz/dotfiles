@@ -161,6 +161,38 @@ Use a dev package in composer (phpstan for example):
 "minimum-stability": "dev",
 "prefer-stable" : true
 
+Instalar phpcs
+
+clonar:
+
+https://github.com/squizlabs/PHP_CodeSniffer
+
+luego dentro del proyecto:
+
+$ php scripts/build-phar.php
+
+Darle permisos para ejecturar y mover los phar al PATH
+
+Instalar los estandares para wordpress y phpcompatibility para phpcs
+
+clonar:
+
+https://github.com/wimg/PHPCompatibility
+https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards
+
+luego
+
+sudo phpcs --config-set installed_paths /home/neuromante/Code/Bins\ and\ Stuffs/WordPress-Coding-Standards,/home/neuromante/Code/Bins\ and\ Stuffs/PHPCompatibility
+Using config file: /usr/bin/CodeSniffer.conf
+
+verificar que los estandares esten registrados:
+
+$ phpcs -i
+
+Para verificar:
+
+$ phpcs -p --standard=PHPCompatibility --runtime-set testVersion 7.0-7.1 .
+
 Instalar Eslint y Stylelint en un proyecto en local
 
 $ npm install eslint --save-dev
