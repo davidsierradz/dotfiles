@@ -151,6 +151,8 @@ Plug 'hail2u/vim-css3-syntax'
 " Updated >es6 syntax files.
 Plug 'pangloss/vim-javascript'
 
+" Vim HardTime.
+Plug 'takac/vim-hardtime'
 
 "------------Standby plugins------------
 "Plug 'jsfaint/gen_tags.vim'
@@ -883,6 +885,14 @@ let g:clever_f_smart_case = 1
 
 " Show a prompt.
 let g:clever_f_show_prompt = 1
+
+"/
+""/ hard-time.vim
+"/
+
+let g:hardtime_default_on = 1
+let g:list_of_normal_keys = ["h", "j", "k", "l",
+            \"+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
 "--------------------------------End Plugins Configuration---------------------"
 
