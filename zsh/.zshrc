@@ -213,3 +213,4 @@ ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 
 # Press <C-Space> to autocomplete and execute command.
 bindkey '^ ' autosuggest-execute
+bindkey '^e' forward-word
