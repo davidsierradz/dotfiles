@@ -487,6 +487,9 @@ inoremap <A-1> =>
 " Use <Alt-Tab> to expand a space: <Space>|<Space>.
 inoremap <A-S-Tab> <Space><Space><Left>
 
+" Use <AltGr-Q> to save current file.
+nnoremap ä :w<CR>
+
 "--------------------------------End General Mappings--------------------------"
 
 

@@ -37,3 +37,6 @@ xmodmap -e "keycode 33 = p P p P XF86AudioMute Odiaeresis odiaeresis"
 
 # Alt-Gr+m to enter.
 xmodmap -e "keycode 58 = m M m M Return"
+
+# Use Right Shift (Shift_R) to Alt-Gr+a (ä).
+xmodmap -e "keycode 62 = adiaeresis"
