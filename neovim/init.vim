@@ -490,6 +490,9 @@ inoremap <A-S-Tab> <Space><Space><Left>
 " Use <AltGr-Q> to save current file.
 nnoremap ä :w<CR>
 
+" Lint a php file.
+nnoremap <leader>lp :!php -l %<CR>
+
 "--------------------------------End General Mappings--------------------------"
 
 
