@@ -792,18 +792,32 @@ let g:startify_files_number = 20
 ""/ ale.vim
 "/
 
+let g:ale_echo_msg_format = "%s - %linter%"
+let g:ale_set_quickfix = 1
+
+let g:ale_php_phpcs_use_global = 1
+
 let g:ale_linters = {
-            \ 'php': ['phpcs', 'phpstan'],
+            \ 'php': ['php', 'phpcs'],
             \ 'javascript': ['eslint'],
             \ 'css': ['stylelint'],
             \}
 
-let g:ale_php_phpcs_use_global = 1
-let g:ale_php_phpcs_standard="PSR2"
+let g:ale_php_phpcs_standard = "WordPress-Extra"
+
+"let g:ale_linters = {
+"            \ 'php': ['php', 'phpcs', 'phpmd', 'phpstan'],
+"            \ 'javascript': ['eslint'],
+"            \ 'css': ['stylelint'],
+"            \}
+
+"let g:ale_php_phpcs_standard = "PSR2"
 
 let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
 let g:ale_php_phpstan_configuration = 'phpstan.neon'
 let g:ale_php_phpstan_level = '4'
+
+let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
 
 "/
 ""/ rooter.vim
