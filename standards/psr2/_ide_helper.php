@@ -3,11 +3,12 @@
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
  * Generated for Laravel 5.5.13 on 2017-09-28.
  *
- * This file should not be included in your code, only analyzed by your IDE!
- *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
  */
+namespace  {
+    exit("This file should not be included, only analyzed by your IDE");
+}
 
 namespace Illuminate\Support\Facades { 
 
@@ -2019,16 +2020,6 @@ namespace Illuminate\Support\Facades {
         {
             return \Illuminate\Auth\SessionGuard::hasMacro($name);
         }
-
-        /**
-         * Register the typical authentication routes for an application.
-         *
-         * @return void
-         */
-         public static function routes()
-         {
-             static::$app->make('router')->auth();
-         }
          
     }
 
