@@ -246,7 +246,7 @@ set cmdwinheight=2
 set list
 
 " Set the special characters default.
-set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·
+set listchars=tab:\ \ ,eol:₋,extends:>,precedes:<,trail:·
 
 " Show line numbers.
 set number
@@ -365,10 +365,10 @@ let g:netrw_preview = 1
 nnoremap j gj
 nnoremap k gk
 
-" Shortcut to toogle showing spaces and IndentLines.
-nnoremap <M-F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·<CR>
-nnoremap <F12> :set listchars=tab:>-,eol:¬,extends:>,precedes:<,trail:·,space:·<CR>
-nnoremap <C-F12> :IndentLinesToggle<CR>
+" Shortcut to toogle showing spaces and tabs.
+nnoremap <M-F12> :set listchars=tab:\ \ ,eol:₋,extends:>,precedes:<,trail:·<CR>
+nnoremap <C-F12> :set listchars=tab:>-,eol:₋,extends:>,precedes:<,trail:·<CR>
+nnoremap <F12> :set listchars=tab:>-,eol:₋,extends:>,precedes:<,trail:·,space:·<CR>
 nnoremap <S-F12> :set list!<CR>
 
 " Regenerate ctags file.

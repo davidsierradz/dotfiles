@@ -46,7 +46,8 @@ set guioptions+=c
 " Gvim hi colors.
 hi SpecialKey guifg=#657b83 guibg=NONE
 "hi VertSplit  guifg=#b58900 guibg=#b58900
-hi NonText gui=bold guifg=#b58900
+"hi NonText gui=bold guifg=#b58900
+hi NonText gui=NONE guifg=#657b83
 "hi ColorColumn guibg=#d33682
 hi Search gui=underline guifg=#dc322f
 hi IncSearch gui=underline guifg=#dc322f
