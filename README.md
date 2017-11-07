@@ -105,7 +105,7 @@ xdebug.remote_autostart= 1
 xdebug.collect_params = 3
 xdebug.var_display_max_children = -1
 xdebug.var_display_max_data = -1
-xdebug.var_display_max_depth = -1
+#xdebug.var_display_max_depth = -1
 ```
 
 Cambiar los DNS
