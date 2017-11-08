@@ -345,9 +345,10 @@ NEOVIM
 Install:
 
 - `neovim-git-ninja` (AUR)
-- `neovim-qt` (AUR)
+- `neovim-qt-git` (AUR)
 - `python-neovim`
 - `python2-neovim`
+- `gnome-themes-standard`
 
 symlink the dotfiles to `~/.config/nvim/`
 
