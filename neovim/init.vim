@@ -9,7 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'Valloric/MatchTagAlways'
 
 " Using this until the unlisted netrw buffer bug is solved.
-Plug 'manasthakur/vim-vinegar'
+Plug 'justinmk/vim-dirvish'
 
 " Allows you to configure % to match more than just single characters.
 Plug 'benjifisher/matchit.zip'
@@ -170,6 +170,8 @@ Plug 'takac/vim-hardtime'
 "Plug 'leafgarland/typescript-vim'
 "Plug 'elzr/vim-json'
 "Plug 'jwalton512/vim-blade'
+"Plug 'junegunn/vader.vim'
+"Plug 'manasthakur/vim-vinegar'
 
 " Initialize plugin system
 call plug#end()
@@ -919,6 +921,13 @@ let g:clever_f_fix_key_direction = 1
 let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["h", "j", "k", "l",
             \"+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
+
+"/
+""/ vim-dirvish
+"/
+
+" Put dirs first.
+let g:dirvish_mode = ':sort ,^.*[\/],'
 
 "--------------------------------End Plugins Configuration---------------------"
 
