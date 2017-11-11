@@ -191,7 +191,7 @@ call plug#end()
 set smartindent
 
 " Settings for tabs and space indents.
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=0 shiftwidth=4 smarttab expandtab
 
 set encoding=utf-8
 
@@ -691,7 +691,7 @@ inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 let delimitMate_expand_cr = 1
 
 " Disable automatic close on angle brackets <> in html and blade files (already using vim-closetag).
-au FileType html,blade,vue let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType html,blade,vue,php let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " Expand spaces in blade files.
 au FileType blade,vue,html.vue let b:delimitMate_expand_space = 1
@@ -950,16 +950,16 @@ command W w !sudo tee % > /dev/null
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Set the indent options for Javascript files.
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sw=2
 
 " Set the indent options for Json files.
-autocmd Filetype json setlocal ts=2 sts=2 sw=2
+autocmd Filetype json setlocal ts=2 sw=2
 
 " Set the indent options for CSS files.
-autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd Filetype css setlocal ts=2 sw=2
 
 " Set the indent options for HTML files.
-autocmd Filetype html,vue,blade setlocal ts=2 sts=2 sw=2
+autocmd Filetype html,vue,blade setlocal ts=2 sw=2
 
 " Autocommand to call PhpSyntaxOverride function.
 augroup phpSyntaxOverride

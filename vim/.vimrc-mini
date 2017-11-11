@@ -79,7 +79,7 @@ endif
 
 "if &listchars ==# 'eol:$'
   set list
-  set lcs=tab:>-,eol:¶,extends:>,precedes:<,trail:·
+  set lcs=tab:>-,eol:₋,extends:>,precedes:<,trail:·
   "set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 "endif
 
