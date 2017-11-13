@@ -939,6 +939,9 @@ let g:dirvish_mode = ':sort ,^.*[\/],'
 " :W sudo saves the file.
 command W w !sudo tee % > /dev/null
 
+" :TabMessage command
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
 "--------------------------------End User Commands-----------------------------"
 
 
@@ -1013,6 +1016,22 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 function! PhpSyntaxOverride()
   hi! def link phpDocTags  phpDefine
   hi! def link phpDocParam phpType
+endfunction
+
+" Function to pipe an Ex command to a buffer in a new tab.
+" Usage :TabMessage command
+function! TabMessage(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
 endfunction
 
 "--------------------------------End Functions---------------------------------"
