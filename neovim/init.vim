@@ -929,6 +929,13 @@ let g:list_of_normal_keys = ["h", "j", "k", "l",
 " Put dirs first.
 let g:dirvish_mode = ':sort ,^.*[\/],'
 
+" Set <leader>cd to change directories in dirvish buffers.
+augroup dirvish_events
+    autocmd!
+    autocmd FileType dirvish
+                \ nnoremap <buffer> <leader>cd :cd %<CR>:pwd<CR>
+augroup END
+
 "--------------------------------End Plugins Configuration---------------------"
 
 
