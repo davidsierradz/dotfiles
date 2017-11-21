@@ -268,6 +268,9 @@ ini_set('session.gc_maxlifetime', $sessionDuration);¶
 $cfg['Servers'][$i]['LoginCookieValidity'] = $sessionDuration;¶
 ```
 
+Cambiar la scrollbar en Chrome:
+ir a `chrome://flags` y buscar `#overlay-scrollbars`
+
 Special personal laptop setup
 -------------
 Change Kernel parameters in grub cfg file with this to send default tty output to external monitors
