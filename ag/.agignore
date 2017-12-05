@@ -3,6 +3,8 @@
 *~
 *.swp
 *.swo
+*.jpg
+*.png
 .phpcd/
 vendor/
 node_modules/
