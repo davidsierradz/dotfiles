@@ -57,6 +57,9 @@ Plug 'airblade/vim-rooter'
 " Extended f, F, t and T key mappings.
 Plug 'rhysd/clever-f.vim'
 
+" Vim plugin that provides additional text objects.
+Plug 'wellle/targets.vim'
+
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
 Plug 'iCyMind/NeoSolarized'
@@ -494,6 +497,13 @@ nnoremap ä :w<CR>
 
 " Lint a php file.
 nnoremap <leader>lp :!php -l %<CR>
+
+" Delete without yanking, send the deleted content to the 'black hole'
+" register.
+nnoremap <M-d> "_d
+nnoremap <Leader>d "_d
+vnoremap <M-d> "_d
+vnoremap <Leader>d "_d
 
 "--------------------------------End General Mappings--------------------------"
 
