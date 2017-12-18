@@ -850,14 +850,14 @@ function! IPhpExpandClass()
     call feedkeys('a', 'n')
 endfunction
 
-autocmd FileType php inoremap <Leader>sd <Esc>:call IPhpInsertUse()<CR>
-autocmd FileType php noremap <Leader>sd :call PhpInsertUse()<CR>
+autocmd FileType php inoremap <buffer> <Leader>sd <Esc>:call IPhpInsertUse()<CR>
+autocmd FileType php noremap <buffer> <Leader>sd :call PhpInsertUse()<CR>
 
-autocmd FileType php inoremap <Leader>sf <Esc>:call IPhpExpandClass()<CR>
-autocmd FileType php noremap <Leader>sf :call PhpExpandClass()<CR>
+autocmd FileType php inoremap <buffer> <Leader>sf <Esc>:call IPhpExpandClass()<CR>
+autocmd FileType php noremap <buffer> <Leader>sf :call PhpExpandClass()<CR>
 
-autocmd FileType php inoremap <Leader>ss <Esc>:call PhpSortUse()<CR>
-autocmd FileType php noremap <Leader>ss :call PhpSortUse()<CR>
+autocmd FileType php inoremap <buffer> <Leader>ss <Esc>:call PhpSortUse()<CR>
+autocmd FileType php noremap <buffer> <Leader>ss :call PhpSortUse()<CR>
 
 "/
 ""/ nvim-completion-manager
@@ -878,8 +878,8 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 ""/ Cosco.vim
 "/
 
-autocmd FileType javascript,css,php nmap <silent> , <Plug>(cosco-commaOrSemiColon)
-autocmd FileType javascript,css,php imap <silent> <Leader>, <c-o><Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css,php nmap <buffer> <silent> , <Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css,php imap <buffer> <silent> <Leader>, <c-o><Plug>(cosco-commaOrSemiColon)
 let g:cosco_ignore_comment_lines = 1
 
 "/
@@ -997,7 +997,7 @@ autocmd FileType netrw setl bufhidden=wipe
 
 " Start the LSP for PHP.
 autocmd FileType php LanguageClientStart
-autocmd Filetype php set omnifunc=LanguageClient#complete
+autocmd Filetype php setlocal omnifunc=LanguageClient#complete
 
 " Set the omnifunc for CSS.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
