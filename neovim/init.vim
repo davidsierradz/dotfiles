@@ -89,6 +89,9 @@ Plug 'thinca/vim-visualstar'
 " Manage marks.
 Plug 'kshenoy/vim-signature'
 
+" Make the yanked region apparent.
+Plug 'machakann/vim-highlightedyank'
+
 
 "-------------Integrations--------------
 " Front for Ag.
@@ -319,6 +322,9 @@ set numberwidth=1
 
 " Set the sign column to always stay.
 set signcolumn=yes
+
+" Live substitution
+set inccommand=nosplit
 
 "--------------------------------End Visuals-----------------------------------"
 
@@ -935,6 +941,12 @@ augroup dirvish_events
     autocmd FileType dirvish
                 \ nnoremap <buffer> <leader>cd :cd %<CR>:pwd<CR>
 augroup END
+
+"/
+""/ vim-highlightedyank
+"/
+
+highlight link HighlightedyankRegion ErrorMsg
 
 "--------------------------------End Plugins Configuration---------------------"
 
