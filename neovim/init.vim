@@ -193,11 +193,15 @@ call plug#end()
 "syntax enable
 
 " Indenting configurations.
-"set autoindent
+set autoindent
 set smartindent
 
 " Settings for tabs and space indents.
-set tabstop=4 softtabstop=0 shiftwidth=4 smarttab expandtab
+"set tabstop=4 softtabstop=0 shiftwidth=4 smarttab expandtab
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smarttab
 
 set encoding=utf-8
 
@@ -982,16 +986,16 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Set the indent options for Javascript files.
-autocmd Filetype javascript setlocal ts=2 sw=2
+autocmd Filetype javascript setlocal sts=2 sw=2
 
 " Set the indent options for Json files.
-autocmd Filetype json setlocal ts=2 sw=2
+autocmd Filetype json setlocal sts=2 sw=2
 
 " Set the indent options for CSS files.
-autocmd Filetype css setlocal ts=2 sw=2
+autocmd Filetype css setlocal sts=2 sw=2
 
 " Set the indent options for HTML files.
-autocmd Filetype html,vue,blade setlocal ts=2 sw=2
+autocmd Filetype html,vue,blade setlocal sts=2 sw=2
 
 " Autocommand to call PhpSyntaxOverride function.
 augroup phpSyntaxOverride
