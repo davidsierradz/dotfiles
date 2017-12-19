@@ -58,6 +58,9 @@ update theme with `$ git pull` from `~/.oh-my-zsh/custom/themes/powerlevel9k/`
 - Zsh autosugestion
 `$ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions`
 
+- Zsh syntax highlighting
+`$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
+
 - Solarized for Vim
 https://github.com/altercation/vim-colors-solarized
 
