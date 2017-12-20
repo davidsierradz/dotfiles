@@ -6,7 +6,7 @@ set nocompatible
 if exists('g:loaded_sensible') || &compatible
   finish
 else
-  let g:loaded_sensible = 1
+  let g:loaded_sensible = 'yes'
 endif
 
 if has('autocmd')
@@ -18,24 +18,17 @@ endif
 
 " Use :help 'option' to see the documentation for the given option.
 
-set background=dark
-colorscheme elflord
-set hidden
-hi PreProc ctermfg=1
-hi SpecialKey ctermfg=1
-hi NonText ctermfg=5
-hi Special ctermfg=2
-set nowrap
 set autoindent
 set backspace=indent,eol,start
 set complete-=i
 set smarttab
-set expandtab
-set shiftwidth=4
+
 set nrformats-=octal
 
-set ttimeout
-set ttimeoutlen=100
+if !has('nvim') && &ttimeoutlen == -1
+  set ttimeout
+  set ttimeoutlen=100
+endif
 
 set incsearch
 " Use <C-L> to clear the highlighting of :set hlsearch.
@@ -43,25 +36,7 @@ if maparg('<C-L>', 'n') ==# ''
   nnoremap <silent> <C-L> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR><C-L>
 endif
 
-set number
-set relativenumber
-"set cursorline
 set laststatus=2
-set statusline=%F              " Relative file path
-set statusline+=\ -\           " Separator
-set statusline+=%y             " Filetype of the file
-set statusline+=\ -\           " Separator
-set statusline+=%n             " Buffer of the file
-set statusline+=\ -\           " Separator
-set statusline+=[%{&ff}        " Format of the file Unix or DOS
-set statusline+=\              " Separator
-set statusline+=%{strlen(&fenc)?&fenc:'none'}] "file encoding
-set statusline+=\ -\           " Separator
-set statusline+=%h%m%r%w       " Help, Modified and Read Only flags
-set statusline+=%=             " Separation point between left and right items
-set statusline+=%([%l-%L-%P]%) " Current line count, max and percentage
-set statusline+=\              " Space Separator
-set statusline+=[%c%V]         " Column number and Virtual Column number
 set ruler
 set wildmenu
 
@@ -78,9 +53,7 @@ if &encoding ==# 'latin1' && has('gui_running')
 endif
 
 "if &listchars ==# 'eol:$'
-  set list
   set lcs=tab:>-,eol:₋,extends:>,precedes:<,trail:·
-  "set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 "endif
 
 if v:version > 703 || v:version == 703 && has("patch541")
@@ -119,5 +92,39 @@ if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
 endif
 
 inoremap <C-U> <C-G>u<C-U>
+
+" Custom Settings
+
+set background=dark
+colorscheme elflord
+set hidden
+hi PreProc ctermfg=1
+hi SpecialKey ctermfg=1
+hi NonText ctermfg=5
+hi Special ctermfg=2
+set nowrap
+set tabstop=4
+set shiftwidth=4
+let &softtabstop = &shiftwidth
+set expandtab
+set number
+set relativenumber
+set list
+
+set statusline=%F              " Relative file path
+set statusline+=\ -\           " Separator
+set statusline+=%y             " Filetype of the file
+set statusline+=\ -\           " Separator
+set statusline+=%n             " Buffer of the file
+set statusline+=\ -\           " Separator
+set statusline+=[%{&ff}        " Format of the file Unix or DOS
+set statusline+=\              " Separator
+set statusline+=%{strlen(&fenc)?&fenc:'none'}] "file encoding
+set statusline+=\ -\           " Separator
+set statusline+=%h%m%r%w       " Help, Modified and Read Only flags
+set statusline+=%=             " Separation point between left and right items
+set statusline+=%([%l-%L-%P]%) " Current line count, max and percentage
+set statusline+=\              " Space Separator
+set statusline+=[%c%V]         " Column number and Virtual Column number
 
 " vim:set ft=vim et sw=2:
