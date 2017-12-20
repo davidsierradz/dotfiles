@@ -110,6 +110,7 @@ set expandtab
 set number
 set relativenumber
 set list
+set showcmd
 
 set statusline=%F              " Relative file path
 set statusline+=\ -\           " Separator
