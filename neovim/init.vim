@@ -113,7 +113,7 @@ Plug 'freitass/todo.txt-vim'
 
 "-------Completions and omnifuncs-------
 " PHP implementation of Microsoft LSP (Language Server Protocol).
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': './install.sh', 'branch': 'next' }
 Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
 " Autocompletion framework.
@@ -414,7 +414,7 @@ set pastetoggle=<F2>
 "nnoremap ì :nohlsearch<CR>
 
 " Use <Alt-L> to clear the highlighting of :set hlsearch.
-nnoremap <silent> <A-l> :nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
+nnoremap <silent> <A-l> :syntax sync fromstart<CR>:nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
 
 " Reloads a buffer.
 nnoremap <leader>r :w<CR>:e<CR>
@@ -714,7 +714,8 @@ let delimitMate_expand_cr = 1
 au FileType html,blade,vue,php let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " Expand spaces in blade files.
-au FileType blade,vue,html.vue let b:delimitMate_expand_space = 1
+"au FileType blade,vue,html.vue let b:delimitMate_expand_space = 1
+au FileType html,php,javascript.jsx,css,vue let b:delimitMate_expand_space = 1
 
 let delimitMate_jump_expansion = 1
 
@@ -722,7 +723,7 @@ let delimitMate_jump_expansion = 1
 "/ vim-closetag
 "/
 
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.vue"
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.vue,*.php,*.js"
 
 "/
 "/ indentLine
@@ -918,6 +919,11 @@ vmap <silent> <c-x><c-s> <Plug>(ultisnips_expand)
 " Disable de diagnostics for the LSP.
 let g:LanguageClient_diagnosticsEnable = 0
 
+" First do: npm install vue-language-server -g
+let g:LanguageClient_serverCommands = {
+    \ 'vue': ['vls']
+    \ }
+
 "/
 ""/ clever-f.vim
 "/
@@ -1012,6 +1018,10 @@ autocmd FileType netrw setl bufhidden=wipe
 " Start the LSP for PHP.
 autocmd FileType php LanguageClientStart
 autocmd Filetype php setlocal omnifunc=LanguageClient#complete
+
+" Start the LSP for Vue.
+autocmd FileType vue LanguageClientStart
+autocmd Filetype vue set omnifunc=LanguageClient#complete
 
 " Set the omnifunc for CSS.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci

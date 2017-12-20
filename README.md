@@ -177,6 +177,12 @@ Use a dev package in composer (phpstan for example):
 "prefer-stable" : true
 ```
 
+Instalar paquetes globales para Vue
+
+`# sudo npm install -g vue-cli`
+
+`# sudo npm install -g vue-language-server`
+
 Instalar phpcs
 
 clonar:
