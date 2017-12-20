@@ -198,8 +198,9 @@ set smartindent
 
 " Settings for tabs and space indents.
 "set tabstop=4 softtabstop=0 shiftwidth=4 smarttab expandtab
+set tabstop=4
 set shiftwidth=4
-set softtabstop=4
+let &softtabstop = &shiftwidth
 set expandtab
 set smarttab
 
@@ -944,6 +945,7 @@ let g:clever_f_fix_key_direction = 1
 ""/ hard-time.vim
 "/
 
+let g:hardtime_timeout = 500
 let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["h", "j", "k", "l",
             \"+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
