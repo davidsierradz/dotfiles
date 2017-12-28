@@ -130,6 +130,10 @@ let key = 'extensions.jid1-QoFqdK4qzUfGWQ@jetpack.enabled';
 prefs.setBoolPref(key, ! prefs.getBoolPref(key));
 ```
 
+Empezar Firefox con un tema blanco:
+
+`env GTK_THEME=Adwaita:light firefox`
+
 Manjaroi3 config
 -------------
 Configure LightDM Display Manager
