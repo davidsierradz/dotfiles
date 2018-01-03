@@ -5,6 +5,7 @@
 *.swo
 *.jpg
 *.png
+*.svg
 .phpcd/
 vendor/
 node_modules/
@@ -12,3 +13,4 @@ tags
 storage/
 yarn.lock
 bootstrap/cache
+dist/

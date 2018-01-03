@@ -15,6 +15,9 @@ Binarios necesarios:
 - `redshift-gtk` (needs `python-xdg`)
 - `rofi-git`
 - `silver Searcher Ag`
+- `fzf`
+- `lnav`
+- `tig`
 - `universal Ctags`
 - `urxvt-font-size-git` (AUR)
 - `vibrancy-colors` (icon-theme)

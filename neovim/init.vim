@@ -205,7 +205,7 @@ set smartindent
 "set tabstop=4 softtabstop=0 shiftwidth=4 smarttab expandtab
 set tabstop=4
 set shiftwidth=4
-let &softtabstop = &shiftwidth
+let &softtabstop =&shiftwidth
 set expandtab
 set smarttab
 
@@ -673,6 +673,7 @@ nmap <C-Space> <Plug>(easymotion-prefix)
 
 " One char search.
 nmap <Space> <Plug>(easymotion-s)
+vmap <Space> <Plug>(easymotion-s)
 "nmap <C-Space> <Plug>(easymotion-sn)
 
 let g:EasyMotion_smartcase = 1
@@ -1026,16 +1027,16 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Set the indent options for Javascript files.
-autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for Json files.
-autocmd Filetype json setlocal ts=2 sts=2 sw=2
+autocmd FileType json setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for CSS files.
-autocmd Filetype css setlocal ts=2 sts=2 sw=2
+autocmd FileType css setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for HTML files.
-autocmd Filetype html,vue,blade setlocal ts=2 sts=2 sw=2
+autocmd FileType html,vue,blade setlocal ts=2 sts=2 sw=2
 
 " Autocommand to call PhpSyntaxOverride function.
 augroup phpSyntaxOverride
@@ -1050,12 +1051,12 @@ augroup END
 autocmd FileType netrw setl bufhidden=wipe
 
 " Start the LSP for PHP.
-autocmd FileType php LanguageClientStart
-autocmd Filetype php setlocal omnifunc=LanguageClient#complete
+"autocmd FileType php LanguageClientStart
+autocmd FileType php setlocal omnifunc=LanguageClient#complete
 
 " Start the LSP for Vue.
-autocmd FileType vue LanguageClientStart
-autocmd Filetype vue set omnifunc=LanguageClient#complete
+"autocmd FileType vue LanguageClientStart
+autocmd FileType vue setlocal omnifunc=LanguageClient#complete
 
 " Set the omnifunc for CSS.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
