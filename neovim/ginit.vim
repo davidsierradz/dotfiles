@@ -1,5 +1,12 @@
 "--------------------------------General---------------------------------------"
 
+if exists('g:GtkGuiLoaded')
+    call rpcnotify(1, 'Gui', 'Font', 'Hack Nerd Font Mono 12')
+    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+    call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
+    let g:GuiInternalClipboard = 1
+endif
+
 " GUI font.
 "GuiFont UbuntuMonoDerivativePowerline Nerd Font:h18
 GuiFont Hack Nerd Font Mono:h16
@@ -72,7 +79,7 @@ hi GitGutterChangeDelete guifg=#009900 guibg=bg
 
 " Line height.
 "set linespace=8
-GuiLinespace 7
+GuiLinespace 0
 
 "hi Cursor guifg=black guibg=green gui=reverse
 "set guicursor=a:block-blinkon100-Cursor/Cursor

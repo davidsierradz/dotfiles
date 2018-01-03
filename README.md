@@ -362,6 +362,7 @@ Install:
 
 - `neovim-git-ninja` (AUR)
 - `neovim-qt-git` (AUR)
+- `neovim-gtk-git` (AUR)
 - `python-neovim-git`
 - `python2-neovim-git`
 - `gnome-themes-standard`
