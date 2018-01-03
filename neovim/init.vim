@@ -15,7 +15,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'benjifisher/matchit.zip'
 
 " Fuzzy finder.
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 
 " Functions for toggle comments.
 Plug 'scrooloose/nerdcommenter'
@@ -46,7 +46,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'tpope/vim-surround'
 
 " Matcher for CtrlP by word separators.
-Plug 'sergei-dyshel/vim-abbrev-matcher'
+"Plug 'sergei-dyshel/vim-abbrev-matcher'
 
 " Browse tags of current file.
 Plug 'majutsushi/tagbar'
@@ -159,6 +159,10 @@ Plug 'pangloss/vim-javascript'
 
 " Vim HardTime.
 Plug 'takac/vim-hardtime'
+
+" FZF.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 
 "------------Standby plugins------------
 "Plug 'jsfaint/gen_tags.vim'
@@ -534,49 +538,51 @@ vnoremap <Leader>d "_d
 "nnoremap <leader><leader> :CtrlPMixed<cr>
 
 " Open Tags window with <Alt-R>.
-nnoremap <A-r> :CtrlPTag<cr>
-
-" Open Most Recent Used Files window with <Alt-E>.
-nnoremap <A-e> :CtrlPMRUFiles<cr>
-
-" Open the Ctrl-P window buffer.
-nnoremap ; :CtrlPBuffer<cr>
-
-if executable('ag')
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-" Ctrl-P window order and max results.
-let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20,results:50'
-
-let g:ctrlp_show_hidden = 1
-
-let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
-
-" Search by name, can switch with <C-d>.
-let g:ctrlp_by_filename = 0
-
-let g:ctrlp_reuse_window = 'netrw'
-
-" Save the recent list of files only when exiting vim.
-let g:ctrlp_mruf_save_on_update = 0
-
-" Use pymatcher plugin.
-"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-" Use vim-abbrev-matcher plugin.
-let g:ctrlp_match_func = { 'match': 'ctrlp#abbrev_matcher#match' }
-
-" Configure vim-abbrev-matcher.
-let g:abbrev_matcher_grep_exe = 'ag'
-let g:abbrev_matcher_grep_args = '--numbers'
-
-" Set no file limit.
-let g:ctrlp_max_files = 0
+"nnoremap <A-r> :CtrlPTag<cr>
+"
+"" Open Most Recent Used Files window with <Alt-E>.
+"nnoremap <A-e> :CtrlPMRUFiles<cr>
+"
+"" Open the Ctrl-P window buffer.
+"nnoremap ; :CtrlPBuffer<cr>
+"
+"if executable('ag')
+"  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"  let g:ctrlp_user_command = 'ag %s -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
+"
+"  let g:user_command_async = 1
+"
+"  " ag is fast enough that CtrlP doesn't need to cache
+"  let g:ctrlp_use_caching = 0
+"endif
+"
+"" Ctrl-P window order and max results.
+"let g:ctrlp_match_window = 'top,order:ttb,min:1,max:20,results:50'
+"
+"let g:ctrlp_show_hidden = 1
+"
+"let g:ctrlp_custom_ignore = '\v[\/](node_modules|target|dist|vendor)|(\.(swp|ico|git|svn))$'
+"
+"" Search by name, can switch with <C-d>.
+"let g:ctrlp_by_filename = 0
+"
+"let g:ctrlp_reuse_window = 'netrw'
+"
+"" Save the recent list of files only when exiting vim.
+"let g:ctrlp_mruf_save_on_update = 0
+"
+"" Use pymatcher plugin.
+""let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+"
+"" Use vim-abbrev-matcher plugin.
+"let g:ctrlp_match_func = { 'match': 'ctrlp#abbrev_matcher#match' }
+"
+"" Configure vim-abbrev-matcher.
+"let g:abbrev_matcher_grep_exe = 'ag'
+"let g:abbrev_matcher_grep_args = '--numbers'
+"
+"" Set no file limit.
+"let g:ctrlp_max_files = 0
 
 "/
 "/ Vim Airline
@@ -969,6 +975,22 @@ augroup END
 "/
 
 highlight link HighlightedyankRegion ErrorMsg
+
+
+"/
+""/ fzf.vim
+"/
+
+" FZF position.
+let g:fzf_layout = { 'down': '~40%' }
+
+" FZF mappings.
+nnoremap <A-m> :Marks<CR>
+nnoremap <A-t> :Ag<CR>
+nnoremap <A-r> :Tags<CR>
+nnoremap <A-e> :History<CR>
+nnoremap ; :Buffers<CR>
+nnoremap <C-p> :Files<CR>
 
 "--------------------------------End Plugins Configuration---------------------"
 

@@ -40,3 +40,6 @@ xmodmap -e "keycode 58 = m M m M Return"
 
 # Use Right Shift (Shift_R) to Alt-Gr+a (ä).
 xmodmap -e "keycode 62 = adiaeresis"
+
+export FZF_DEFAULT_COMMAND='ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
+export FZF_CTRL_T_COMMAND='ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
