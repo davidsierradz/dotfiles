@@ -12,7 +12,8 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'justinmk/vim-dirvish'
 
 " Allows you to configure % to match more than just single characters.
-Plug 'benjifisher/matchit.zip'
+"Plug 'benjifisher/matchit.zip'
+Plug 'chrisbra/matchit'
 
 " Fuzzy finder.
 "Plug 'ctrlpvim/ctrlp.vim'
@@ -976,6 +977,15 @@ augroup END
 
 highlight link HighlightedyankRegion ErrorMsg
 
+"/
+""/ matchit.vim
+"/
+
+" Support self-closed tags for %
+" see: https://vi.stackexchange.com/questions/7167/how-do-i-get-matchit-to-work-with-self-closed-tags
+autocmd Filetype vue let b:match_ignorecase = 0
+autocmd Filetype vue let b:match_words = '(:),\[:\],{:},<:>,' .
+            \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(\%(=\|/\)\@<!>\|$\):<\@<=/\1>'
 
 "/
 ""/ fzf.vim
