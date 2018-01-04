@@ -114,7 +114,7 @@ Plug 'freitass/todo.txt-vim'
 
 "-------Completions and omnifuncs-------
 " PHP implementation of Microsoft LSP (Language Server Protocol).
-Plug 'autozimu/LanguageClient-neovim', { 'do': './install.sh', 'branch': 'next' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': 'make release', 'branch': 'next' }
 Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
 " Autocompletion framework.
@@ -639,7 +639,7 @@ let g:airline#extensions#tagbar#flags = 'f'
 let g:airline#extensions#ale#enabled = 1
 
 " Add w modifier to search from 'cwd'.
-let g:ctrlp_working_path_mode = 'a'
+"let g:ctrlp_working_path_mode = 'a'
 
 "/
 "/ MatchTagAlways
