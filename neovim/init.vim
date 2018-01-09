@@ -970,6 +970,9 @@ augroup dirvish_events
     autocmd!
     autocmd FileType dirvish
                 \ nnoremap <buffer> <leader>cd :cd %<CR>:pwd<CR>
+    " Unmap <C-P> to use FZF :Files
+    autocmd FileType dirvish
+                \ silent! unmap <buffer> <C-p>
 augroup END
 
 "/
@@ -1002,6 +1005,13 @@ nnoremap <A-r> :Tags<CR>
 nnoremap <A-e> :History<CR>
 nnoremap ; :Buffers<CR>
 nnoremap <C-p> :Files<CR>
+
+"/
+""/ vim-pasta
+"/
+"
+let g:pasta_disabled_filetypes = ["python", "coffee", "markdown",
+            \"yaml", "slim", "nerdtree", "netrw", "startify", "dirvish"]
 
 "--------------------------------End Plugins Configuration---------------------"
 
