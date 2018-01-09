@@ -96,12 +96,16 @@ inoremap <C-U> <C-G>u<C-U>
 " Custom Settings
 
 set background=dark
-colorscheme elflord
+source /home/neuromante/dotfiles/vim/flattened_dark.vim
+"colorscheme flattened_light
+
 set hidden
 hi PreProc ctermfg=1
 hi SpecialKey ctermfg=1
 hi NonText ctermfg=5
 hi Special ctermfg=2
+hi LineNr ctermbg=8
+
 set nowrap
 set tabstop=4
 set shiftwidth=4

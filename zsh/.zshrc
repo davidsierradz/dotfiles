@@ -114,11 +114,11 @@ alias ll='ls -lAFh --group-directories-first'
 #Clear
 alias c='clear'
 #Open vim with mimi rc
-alias vim='vim -u /home/neuromante/dotfiles/vim/.vimrc-mini'
+#alias vim='vim -u /home/neuromante/dotfiles/vim/.vimrc-mini'
 
 # want your terminal to support 256 color schemes? I do ...
 #export TERM=xterm-256color
-export EDITOR="vim -u /home/neuromante/dotfiles/vim/.vimrc-mini"
+export EDITOR="vim"
 export USE_EDITOR=$EDITOR
 export VISUAL="gvim"
 export LC_COLLATE="C"
