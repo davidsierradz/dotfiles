@@ -100,11 +100,15 @@ source /home/neuromante/dotfiles/vim/flattened_dark.vim
 "colorscheme flattened_light
 
 set hidden
+
 hi PreProc ctermfg=1
 hi SpecialKey ctermfg=1
 hi NonText ctermfg=5
 hi Special ctermfg=2
 hi LineNr ctermbg=8
+hi CursorLine ctermbg=0
+hi Search cterm=standout ctermfg=15
+hi IncSearch cterm=standout ctermfg=15
 
 set nowrap
 set tabstop=4
@@ -115,6 +119,13 @@ set number
 set relativenumber
 set list
 set showcmd
+set cursorline
+set hlsearch
+set ignorecase
+set smartcase
+set wildignorecase
+set wildmode=list:longest,full
+set autoread
 
 set statusline=%F              " Relative file path
 set statusline+=\ -\           " Separator
@@ -131,5 +142,13 @@ set statusline+=%=             " Separation point between left and right items
 set statusline+=%([%l-%L-%P]%) " Current line count, max and percentage
 set statusline+=\              " Space Separator
 set statusline+=[%c%V]         " Column number and Virtual Column number
+
+" :W sudo saves the file.
+command W w !sudo tee % > /dev/null
+
+let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+let g:netrw_banner = 0
+
+autocmd FileType netrw setl bufhidden=wipe
 
 " vim:set ft=vim et sw=2:
