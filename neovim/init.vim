@@ -61,6 +61,15 @@ Plug 'rhysd/clever-f.vim'
 " Vim plugin that provides additional text objects.
 Plug 'wellle/targets.vim'
 
+" Enable repeating supported plugin maps with "."
+Plug 'tpope/vim-repeat'
+
+" Pairs of handy bracket mappings.
+Plug 'tpope/vim-unimpaired'
+
+" Easy text exchange operator.
+Plug 'tommcdo/vim-exchange'
+
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
 Plug 'iCyMind/NeoSolarized'
@@ -109,7 +118,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'joonty/vdebug'
 
 " Manage todo.txt files.
-Plug 'freitass/todo.txt-vim'
+"Plug 'freitass/todo.txt-vim'
 
 
 "-------Completions and omnifuncs-------
@@ -435,10 +444,10 @@ nnoremap <leader>r :w<CR>:e<CR>
 inoremap <C-U> <C-G>u<C-U>
 
 " Buffers shortcuts.
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
+"nnoremap <silent> [b :bprevious<CR>
+"nnoremap <silent> ]b :bnext<CR>
+"nnoremap <silent> [B :bfirst<CR>
+"nnoremap <silent> ]B :blast<CR>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab.
