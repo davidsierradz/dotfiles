@@ -32,9 +32,9 @@ xmodmap -e "keycode 45 = k K NoSymbol NoSymbol Up"
 xmodmap -e "keycode 46 = l L NoSymbol NoSymbol Right"
 
 # Alt-Gr+iop to control sound.
-xmodmap -e "keycode 31 = i I i I XF86AudioLowerVolume Iacute iacute"
-xmodmap -e "keycode 32 = o O o O XF86AudioRaiseVolume Oacute oacute"
-xmodmap -e "keycode 33 = p P p P XF86AudioMute Odiaeresis odiaeresis"
+#xmodmap -e "keycode 31 = i I i I XF86AudioLowerVolume Iacute iacute"
+#xmodmap -e "keycode 32 = o O o O XF86AudioRaiseVolume Oacute oacute"
+#xmodmap -e "keycode 33 = p P p P XF86AudioMute Odiaeresis odiaeresis"
 
 # Alt-Gr+m to enter.
 xmodmap -e "keycode 58 = m M m M Return"

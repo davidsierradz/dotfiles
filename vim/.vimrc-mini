@@ -102,7 +102,7 @@ source /home/neuromante/dotfiles/vim/flattened_dark.vim
 set hidden
 
 hi PreProc ctermfg=1
-hi SpecialKey ctermfg=1
+hi SpecialKey ctermfg=1 ctermbg=NONE
 hi NonText ctermfg=5
 hi Special ctermfg=2
 hi LineNr ctermbg=8

@@ -747,12 +747,12 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.vue,*.php,*.js"
 "/ indentLine
 "/
 
-let g:indentLine_enabled = 0
-let g:indentLine_char = '┊'
-let g:indentLine_color_gui = '#657B83'
+"let g:indentLine_enabled = 0
+"let g:indentLine_char = '┊'
+"let g:indentLine_color_gui = '#657B83'
 
 " indentLine will disable quotes in JSON files, install json plugin for fix.
-let g:vim_json_syntax_conceal = 0
+"let g:vim_json_syntax_conceal = 0
 
 "/
 "/ Javascript Libraries Syntax
@@ -797,11 +797,13 @@ let g:vdebug_features['max_data'] = 2048
 ""/ vim-polyglot
 "/
 
-let g:polyglot_disabled = ['css', 'php']
+"let g:polyglot_disabled = ['css', 'php', 'javascript']
 
 "/
 ""/ vim-startify
 "/
+
+let g:startify_custom_header = []
 
 let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
 
@@ -957,6 +959,10 @@ let g:clever_f_show_prompt = 1
 
 " Fix the direction of f and F.
 let g:clever_f_fix_key_direction = 1
+
+" Repeat previous search.
+nmap <A-f> <Plug>(clever-f-repeat-forward)
+nmap <A-S-f> <Plug>(clever-f-repeat-back)
 
 "/
 ""/ hard-time.vim
