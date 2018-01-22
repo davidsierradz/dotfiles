@@ -290,6 +290,10 @@ ir a `chrome://flags` y buscar `#overlay-scrollbars`
 Agregar el nombre de usuario a un repo de git:
 `$ git config --local remote.origin.url https://davidsierradz@github.com/davidsierradz/dotfiles`
 
+Instalar PyRuler:
+`# sudo ln ~/dotfiles/scripts/pyruler.py /usr/bin/pyruler`
+`# sudo chmod +x /usr/bin/pyruler`
+
 Special personal laptop setup
 -------------
 Change Kernel parameters in grub cfg file with this to send default tty output to external monitors
