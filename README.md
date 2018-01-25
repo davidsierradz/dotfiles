@@ -18,6 +18,7 @@ Binarios necesarios:
 - `fzf`
 - `lnav`
 - `tig`
+- `diffoscope`
 - `universal Ctags`
 - `urxvt-font-size-git` (AUR)
 - `vibrancy-colors` (icon-theme)

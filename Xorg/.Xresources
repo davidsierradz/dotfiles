@@ -103,7 +103,7 @@ Xft.rgba: rgb
 Xft.autohint: false
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
-Xcursor.theme: Breeze
+Xcursor.theme: xcursor-breeze
 Xcursor.size:  0
 
 URxvt.iso14755: false
@@ -125,7 +125,7 @@ XTerm*termName: xterm-256color
 !URxvt.font: xft:Anonymice Powerline:pixelsize=16
 !URxvt.font: xft:DroidSansMonoForPowerline Nerd Font:pixelsize=16:antialias=true:hinting=true
 !URxvt.font: xft:UbuntuMonoDerivativePowerline Nerd Font:pixelsize=24:antialias=true:hinting=true
-URxvt.font: xft:Hack Nerd Font Mono:pixelsize=21:antialias=true:hinting=true
+URxvt.font: xft:Hack Nerd Font Mono:pixelsize=26:antialias=true:hinting=true
 URxvt.depth: 32
 !URxvt.background: [80]#000000
 URxvt*scrollBar:                      false

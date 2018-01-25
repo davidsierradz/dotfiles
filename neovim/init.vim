@@ -70,6 +70,13 @@ Plug 'tpope/vim-unimpaired'
 " Easy text exchange operator.
 Plug 'tommcdo/vim-exchange'
 
+" PascalCase word motions.
+Plug 'chaoren/vim-wordmotion'
+
+" Vim HardTime.
+Plug 'takac/vim-hardtime'
+
+
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
 Plug 'iCyMind/NeoSolarized'
@@ -120,6 +127,10 @@ Plug 'joonty/vdebug'
 " Manage todo.txt files.
 "Plug 'freitass/todo.txt-vim'
 
+" FZF.
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
+
 
 "-------Completions and omnifuncs-------
 " PHP implementation of Microsoft LSP (Language Server Protocol).
@@ -147,32 +158,35 @@ Plug 'honza/vim-snippets'
 " Syntax checker and linter.
 Plug 'w0rp/ale'
 
+" Expand html tags.
+Plug 'mattn/emmet-vim'
+
 
 "------Syntax files and Languages-------
 " Insert and sort use statements in PHP.
 Plug 'arnaud-lb/vim-php-namespace'
 
 " Language pack for vim.
-Plug 'sheerun/vim-polyglot'
+"Plug 'sheerun/vim-polyglot'
+
+Plug 'othree/html5.vim', {'for': 'html'}
 
 " Updated syntax file for PHP.
-Plug 'StanAngeloff/php.vim'
+Plug 'StanAngeloff/php.vim', {'for': 'php'}
 
 " Upstream indenting for PHP.
-Plug '2072/PHP-Indenting-for-VIm'
+Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 
 " Updated CSS syntax files.
-Plug 'hail2u/vim-css3-syntax'
+Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
 
 " Updated >es6 syntax files.
-Plug 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 
-" Vim HardTime.
-Plug 'takac/vim-hardtime'
+Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
 
-" FZF.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-Plug 'junegunn/fzf.vim'
+Plug 'posva/vim-vue', {'for': 'vue'}
+
 
 "------------Standby plugins------------
 "Plug 'jsfaint/gen_tags.vim'
@@ -1024,9 +1038,21 @@ nnoremap <C-p> :Files<CR>
 "/
 ""/ vim-pasta
 "/
-"
+
 let g:pasta_disabled_filetypes = ["python", "coffee", "markdown",
             \"yaml", "slim", "nerdtree", "netrw", "startify", "dirvish"]
+
+"/
+""/ emmet.vim
+"/
+
+let g:user_emmet_leader_key='<C-f>'
+
+let g:user_emmet_settings = {
+            \  'javascript.jsx' : {
+            \      'extends' : 'jsx',
+            \  },
+            \}
 
 "--------------------------------End Plugins Configuration---------------------"
 
