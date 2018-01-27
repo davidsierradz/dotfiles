@@ -146,6 +146,9 @@ set statusline+=[%c%V]         " Column number and Virtual Column number
 " :W sudo saves the file.
 command W w !sudo tee % > /dev/null
 
+" Use <AltGr-Q> to save current file.
+nnoremap ä :w<CR>
+
 let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let g:netrw_banner = 0
 
