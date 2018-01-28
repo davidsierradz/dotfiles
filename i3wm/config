@@ -13,7 +13,7 @@ new_window pixel 2
 new_float normal
 
 # Hide borders
-hide_edge_borders smart_no_gaps
+hide_edge_borders smart
 
 # change borders
 bindsym $mod+u border none
@@ -501,3 +501,19 @@ bindsym $mod+Ctrl+s swap container with mark swapee
 # Experimental scratchpad with F1 key and marks.
 #bindsym $mod+Shift+F1 mark "scratch1", move scratchpad
 #bindsym $mod+F1 [con_mark="scratch1"] scratchpad show
+
+# Control spotify client with $mod+p, needs playerctl.
+set $mode_spotify p: play/pause j: previous k: next ; Caps to also quit
+
+bindsym $mod+p mode "$mode_spotify"
+
+mode "$mode_spotify" {
+        bindsym p            exec --no-startup-id playerctl --player=spotify play-pause
+        bindsym Shift+p      exec --no-startup-id playerctl --player=spotify play-pause, mode "default"
+        bindsym j            exec --no-startup-id playerctl --player=spotify previous
+        bindsym Shift+j      exec --no-startup-id playerctl --player=spotify previous, mode "default"
+        bindsym k            exec --no-startup-id playerctl --player=spotify next
+        bindsym Shift+k      exec --no-startup-id playerctl --player=spotify next, mode "default"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}

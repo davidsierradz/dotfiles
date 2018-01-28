@@ -28,6 +28,8 @@ Binarios necesarios:
 - `zathura` (pdf viewer)
 - `zip` and `unzip`
 - `zsh`
+- `spotify` (AUR)
+- `playerctl`
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
