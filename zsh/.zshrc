@@ -215,4 +215,26 @@ ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 bindkey '^ ' autosuggest-execute
 bindkey '^e' forward-word
 
+# go - cd into the directory of the selected file
+go() {
+   local file
+   local dir
+   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+# fa - including hidden directories
+fa() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
+# Use C-y to open history and run the command.
+fzf-history-widget-accept() {
+  fzf-history-widget
+  zle accept-line
+}
+
+zle     -N   fzf-history-widget-accept
+bindkey '^y' fzf-history-widget-accept
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
