@@ -408,6 +408,8 @@ let g:netrw_preview = 1
 " Use j and k in wrap lines.
 nnoremap j gj
 nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 " Shortcut to toogle showing spaces and tabs.
 nnoremap <M-F12> :set listchars=tab:\ \ ,eol:₋,extends:>,precedes:<,trail:·<CR>
@@ -446,7 +448,8 @@ set pastetoggle=<F2>
 nnoremap <silent> <A-l> :syntax sync fromstart<CR>:nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
 
 " Reloads a buffer.
-nnoremap <leader>r :w<CR>:e<CR>
+"nnoremap <leader>r :w<CR>:e<CR>
+nnoremap <leader>r :e!<CR>
 
 " Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
 " Using <Nul> as <C-Space> because in gnome-terminal thats a null character.

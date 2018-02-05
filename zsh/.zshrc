@@ -237,4 +237,10 @@ fzf-history-widget-accept() {
 zle     -N   fzf-history-widget-accept
 bindkey '^y' fzf-history-widget-accept
 
+# fzf + ag configuration
+export FZF_DEFAULT_COMMAND='ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
+#export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
