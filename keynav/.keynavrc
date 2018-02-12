@@ -118,7 +118,8 @@ a history-back
 ### Example using a 3x3 grid with nethack-vi keys
 ctrl+semicolon start, move-left, grid 3x3
 alt+semicolon start, move-right, grid 3x3
-ctrl+apostrophe start, move-left, cell-select 3x1, cell-select 3x1, cell-select 3x1, cell-select 3x1, cell-select 3x1, cell-select 3x1, move-right, warp, end
+#ctrl+apostrophe start, cell-select 1x3, cell-select 1x3, cell-select 1x3, cell-select 1x3, cell-select 1x3, cell-select 1x3, warp, end
+ctrl+apostrophe start, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, warp, end
 h cell-select 1x2      # left
 j cell-select 2x3      # down
 k cell-select 2x1      # up

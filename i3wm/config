@@ -340,7 +340,7 @@ bar {
 #	tray_output eDP1
 
 #	Show the bar only on HDMI1 monitor.
-	output HDMI2
+#	output HDMI2
 
 	bindsym button4 nop
 	bindsym button5 nop
@@ -365,51 +365,49 @@ bar {
 	mode hide
 }
 
-bar {
-	output VGA1
-	position bottom
-	tray_output none
-	mode hide
-	font xft:Noto Sans 10.5
-	strip_workspace_numbers yes
-
-	colors {
-#		background $transparent
-		background $i3_background
-		statusline $i3_text
-		separator  $i3_separator
-
-#					border     backgr.        text
-		focused_workspace   $i3_color1 $i3_color4     $i3_text
-		active_workspace    $i3_color2 $i3_color3     $i3_color5
-		inactive_workspace  $i3_color2 $i3_color3     $i3_color6
-		binding_mode        $i3_color8 $i3_background $i3_text
-		urgent_workspace    $i3_color4 $i3_color5     $i3_color7
-	}
-}
-
-bar {
-	output HDMI1
-	position bottom
-	tray_output none
-	mode hide
-	font xft:Noto Sans 10.5
-	strip_workspace_numbers yes
-
-	colors {
-#		background $transparent
-		background $i3_background
-		statusline $i3_text
-		separator  $i3_separator
-
-#					border     backgr.        text
-		focused_workspace   $i3_color1 $i3_color4     $i3_text
-		active_workspace    $i3_color2 $i3_color3     $i3_color5
-		inactive_workspace  $i3_color2 $i3_color3     $i3_color6
-		binding_mode        $i3_color8 $i3_background $i3_text
-		urgent_workspace    $i3_color4 $i3_color5     $i3_color7
-	}
-}
+#bar {
+#	output VGA1
+#	position bottom
+#	tray_output none
+#	mode hide
+#	font xft:Noto Sans 10.5
+#	strip_workspace_numbers yes
+#
+#	colors {
+##		background $transparent
+#		background #292F34
+#		statusline #F9FAF9
+#		separator  #454947
+#
+##                          border  backgr. text
+#		focused_workspace  #F9FAF9 #16A085 #2B2C2B
+#		active_workspace   #595B5B #353836 #FDF6E3
+#		inactive_workspace #595B5B #353836 #EEE8D5
+#		urgent_workspace   #16A085 #FDF6E3 #E5201D
+#	}
+#}
+#
+#bar {
+#	output HDMI1
+#	position bottom
+#	tray_output none
+#	mode hide
+#	font xft:Noto Sans 10.5
+#	strip_workspace_numbers yes
+#
+#	colors {
+##		background $transparent
+#		background #292F34
+#		statusline #F9FAF9
+#		separator  #454947
+#
+##                          border  backgr. text
+#		focused_workspace  #F9FAF9 #16A085 #2B2C2B
+#		active_workspace   #595B5B #353836 #FDF6E3
+#		inactive_workspace #595B5B #353836 #EEE8D5
+#		urgent_workspace   #16A085 #FDF6E3 #E5201D
+#	}
+#}
 
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
@@ -489,8 +487,8 @@ mode "$mode_gaps_outer" {
 mouse_warping none
 
 # Put workspace 8 on VGA1 Screen always and workspace 7 on HDMI1.
-workspace 8 output HDMI1
-workspace 7 output VGA1
+#workspace 8 output HDMI1
+#workspace 7 output VGA1
 
 # Put a mark for swapping on current focused window.
 bindsym $mod+Ctrl+m mark --toggle "swapee"

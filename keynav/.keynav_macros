@@ -1,1 +1,3 @@
-52 cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , move-right, warp, end
+52  cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , move-right, warp, end
+52  cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , cell-select 3x1      , move-right, warp, end
+66 cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, warp, end
