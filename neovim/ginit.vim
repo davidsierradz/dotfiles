@@ -1,15 +1,16 @@
 "--------------------------------General---------------------------------------"
 
-if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font', 'Hack Nerd Font Mono 12')
-    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-    call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
-    let g:GuiInternalClipboard = 1
-endif
+"if exists('g:GtkGuiLoaded')
+"    call rpcnotify(1, 'Gui', 'Font', 'Hack Nerd Font Mono 15')
+"    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+"    call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
+"    let g:GuiInternalClipboard = 1
+"endif
 
 " GUI font.
 "GuiFont UbuntuMonoDerivativePowerline Nerd Font:h18
-GuiFont Hack Nerd Font Mono:h16
+GuiFont Hack Nerd Font Mono:h15
+"set guifont=Hack\ Nerd\ Font\ Mono:20
 
 " Select with the mouse.
 set mouse=a
@@ -79,8 +80,8 @@ hi MatchParen guibg=NONE guifg=#cb4b16 gui=standout
 "set guiheadroom=-50
 
 " Line height.
-"set linespace=8
-GuiLinespace 0
+set linespace=8
+"GuiLinespace 0
 
 "hi Cursor guifg=black guibg=green gui=reverse
 "set guicursor=a:block-blinkon100-Cursor/Cursor

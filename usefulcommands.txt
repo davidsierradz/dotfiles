@@ -1,0 +1,104 @@
+--------------------------------------------------------------------------------
+
+General:
+
+Reset swap partition:
+sudo swapoff -a && sudo swapon -a
+
+Update the brightness of laptop screen:
+sudo tee /sys/class/backlight/intel_backlight/brightness <<< 250
+
+Update .Xresources:
+xrdb -merge .Xresources
+
+Open a program with a custom env variable:
+env GTK_THEME=Adwaita:light bin
+
+Clean the jounal file:
+sudo journalctl --vacuum-size=100M
+
+Check all files:
+sudo ncdu /
+
+Use gnome settings:
+gsettings get org.gnome.desktop.interface monospace-font-name
+
+Use systemd services:
+sudo systemctl restart NetworkManager.servic
+
+Find a folder:
+find . -name ".git"
+
+Show tree ignoring some dir:
+tree -a -I '.git' .
+
+List global npm packages:
+npm list -g --depth=0
+--------------------------------------------------------------------------------
+
+Pacman:
+
+Update one AUR package:
+yaourt -S --aur neovim-qt-git --noconfirm
+
+Update all AUR packages:
+yaourt -Su --devel --aur --noconfirm
+
+Update all packages:
+sudo pacman -Syuu
+
+Downgrade a package:
+downgrade neovim-git-ninja
+
+Remove cache packages:
+Dry run:
+paccache -dk1
+Remove:
+paccache -rk#
+
+--------------------------------------------------------------------------------
+
+PHP:
+
+Fix a php file:
+phpcbf --standard=PSR2 -p -v file.php
+phpcs --standard=PHPCompatibility -s -v -p functions.php
+phpmd functions.php text cleancode codesize controversial design naming unusedcode
+
+Create a PHP local server:
+php -S localhost:8080 -t .
+
+--------------------------------------------------------------------------------
+
+Ag:
+
+Useful Ag search:
+ag --ignore-dir="foo" --ignore="*.bak" --ignore="*.json" -Q 'bar'
+
+--------------------------------------------------------------------------------
+
+Git:
+
+Check staged files:
+git diff --cached
+git diff --staged
+
+Set and get remotes:
+git remote set-url origin https://github.com/davidsierradz/repo
+git remote get-url --all origin
+
+Fix last commit:
+git commit --amend --no-edit
+
+Config git local:
+git config --local user.email "davidsierradz@gmail.com"
+git config --local user.name "davidsierradz
+
+--------------------------------------------------------------------------------
+
+Vim:
+
+Open Neovim-qt:
+nvim-qt --no-ext-tabline
+
+--------------------------------------------------------------------------------

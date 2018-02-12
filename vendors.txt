@@ -1,0 +1,14 @@
+PHPCompatibility/
+PHP_CodeSniffer/
+Search-Replace-DB/
+WordPress-Coding-Standards/
+ale/
+keynav/
+phpmd/
+phpstan/
+treestyletab/
+vagrant/
+vimperator-labs/
+webdriver_node/
+webdriver_python/
+whatsapp_phishing/

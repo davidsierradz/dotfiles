@@ -179,6 +179,8 @@ Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 
 " Updated CSS syntax files.
 Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
+Plug 'groenewege/vim-less', {'for': 'less'}
+Plug 'cakebaker/scss-syntax.vim', {'foo': ['scss', 'sass']}
 
 " Updated >es6 syntax files.
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
@@ -206,6 +208,13 @@ Plug 'posva/vim-vue', {'for': 'vue'}
 "Plug 'jwalton512/vim-blade'
 "Plug 'junegunn/vader.vim'
 "Plug 'manasthakur/vim-vinegar'
+"Plug 'chrisbra/NrrwRgn'
+
+" Slow.
+"Plug 'othree/yajs.vim'
+"Plug 'othree/javascript-libraries-syntax.vim'
+"Plug 'othree/es.next.syntax.vim'
+"let g:used_javascript_libs = 'jquery,vue'
 
 " Initialize plugin system
 call plug#end()
