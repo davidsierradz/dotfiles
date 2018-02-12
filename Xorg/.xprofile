@@ -13,6 +13,12 @@ fi
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export NVIM_GTK_NO_HEADERBAR=1
 
+# fzf + ag configuration
+export FZF_DEFAULT_COMMAND='ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
+#export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+
 # Other stuff
 #
 
