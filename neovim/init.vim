@@ -169,7 +169,7 @@ Plug 'arnaud-lb/vim-php-namespace'
 " Language pack for vim.
 "Plug 'sheerun/vim-polyglot'
 
-Plug 'othree/html5.vim', {'for': 'html'}
+Plug 'othree/html5.vim', {'for': ['html', 'vue']}
 
 " Updated syntax file for PHP.
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
@@ -178,12 +178,12 @@ Plug 'StanAngeloff/php.vim', {'for': 'php'}
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 
 " Updated CSS syntax files.
-Plug 'hail2u/vim-css3-syntax', {'for': 'css'}
+Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'vue']}
 Plug 'groenewege/vim-less', {'for': 'less'}
 Plug 'cakebaker/scss-syntax.vim', {'foo': ['scss', 'sass']}
 
 " Updated >es6 syntax files.
-Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue', 'javascript.jsx']}
 
 Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
 
@@ -861,32 +861,36 @@ let g:startify_files_number = 20
 ""/ ale.vim
 "/
 
+" Use php linters for CSS and JS files.
+"let g:ale_linter_aliases = {
+"            \ 'css': ['css', 'php'],
+"            \ 'javascript': ['javascript', 'php'],
+"            \}
+
 let g:ale_echo_msg_format = "%s - %linter%"
 let g:ale_set_quickfix = 1
 
 let g:ale_php_phpcs_use_global = 1
 
+"let g:ale_php_phpcs_standard = "WordPress-Extra"
+
 let g:ale_linters = {
-            \ 'php': ['php', 'phpcs'],
+            \ 'php': ['php', 'phpcs', 'phpmd', 'phpstan'],
             \ 'javascript': ['eslint'],
             \ 'css': ['stylelint'],
             \}
 
-let g:ale_php_phpcs_standard = "WordPress-Extra"
-
-"let g:ale_linters = {
-"            \ 'php': ['php', 'phpcs', 'phpmd', 'phpstan'],
-"            \ 'javascript': ['eslint'],
-"            \ 'css': ['stylelint'],
-"            \}
-
-"let g:ale_php_phpcs_standard = "PSR2"
+let g:ale_php_phpcs_standard = "PSR2"
 
 let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
 let g:ale_php_phpstan_configuration = 'phpstan.neon'
 let g:ale_php_phpstan_level = '4'
 
 let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
+
+let g:ale_fixers = {
+            \ 'javascript': ['eslint']
+            \ }
 
 "/
 ""/ rooter.vim
@@ -965,10 +969,11 @@ vmap <silent> <c-x><c-s> <Plug>(ultisnips_expand)
 " Disable de diagnostics for the LSP.
 let g:LanguageClient_diagnosticsEnable = 0
 
+let g:LanguageClient_serverCommands = {}
+let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
+"let g:LanguageClient_serverCommands.css = ['css-languageserver', '--stdio']
 " First do: npm install vue-language-server -g
-let g:LanguageClient_serverCommands = {
-    \ 'vue': ['vls']
-    \ }
+let g:LanguageClient_serverCommands.vue = ['vls']
 
 "/
 ""/ clever-f.vim
