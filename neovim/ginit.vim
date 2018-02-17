@@ -1,22 +1,21 @@
 "--------------------------------General---------------------------------------"
 
 "if exists('g:GtkGuiLoaded')
-"    call rpcnotify(1, 'Gui', 'Font', 'Hack Nerd Font Mono 15')
+"    call rpcnotify(1, 'Gui', 'Font', 'Hack Nerd Font Mono 18')
 "    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
 "    call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
-"    let g:GuiInternalClipboard = 1
+"    "let g:GuiInternalClipboard = 1
 "endif
 
 " GUI font.
-"GuiFont UbuntuMonoDerivativePowerline Nerd Font:h18
-GuiFont Hack Nerd Font Mono:h15
-"set guifont=Hack\ Nerd\ Font\ Mono:20
+GuiFont Hack Nerd Font Mono:h18
 
 " Select with the mouse.
 set mouse=a
 
 " Paste on Gvim.
 set clipboard=unnamed,unnamedplus
+
 "--------------------------------End General-----------------------------------"
 
 
