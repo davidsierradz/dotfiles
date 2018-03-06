@@ -34,6 +34,23 @@ tree -a -I '.git' .
 
 List global npm packages:
 npm list -g --depth=0
+
+Create a usb live from iso:
+dd if=/home/neuromante/Downloads/linuxmint-18.3-cinnamon-64bit.iso of=/dev/sdd
+status=progress && sync
+
+Mostrar info de los dispositivos conectados (discos):
+lsblk --all
+fdisk -l
+
+Add a GPG key:
+gpg --recv-key 0x6656C593E5158D1A
+                 ----------------
+                       key
+
+Crear un archivo vacio de un peso especifico:
+dd if=/dev/zero of=output.dat  bs=1M  count=24
+
 --------------------------------------------------------------------------------
 
 Pacman:

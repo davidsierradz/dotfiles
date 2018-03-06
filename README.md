@@ -5,29 +5,28 @@ dotfile config files for *nix systems
 Binarios necesarios:
 -------------
 - `composer`
-- `editorconfig`
-- `gtk-breath-theme`
-- `git`
-- `i3-gaps-next-git` (AUR) (You need to remove `manjaro-i3-settings` to swap - default i3wm)
+- `editorconfig-core-c`
+- `gtk-breath-theme` ~
+- `i3-gaps-next-git` (AUR) (You need to remove `manjaro-i3-settings` to swap - default i3wm) ~
 - `keynav-git` (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado: needs `lib32-cairo`)
 - `nerd-fonts-complete-mono-glyphs` (AUR)
-- `php`
-- `redshift-gtk` (needs `python-xdg`)
-- `rofi-git`
-- `silver Searcher Ag`
-- `fzf`
-- `lnav`
+- `oh-my-zsh-git` (AUR)
+- `redshift` (needs `python-xdg`)
+- `rofi`
+- `the_silver_searcher`
+- `fzf` +
+- `lnav` (AUR)
 - `tig`
 - `diffoscope`
-- `universal Ctags`
+- `universal Ctags` (AUR)
 - `urxvt-font-size-git` (AUR)
-- `vibrancy-colors` (icon-theme)
-- `vim/Gvim`
-- `waterfox-bin` (AUR)
-- `xcape` (AUR)
+- `vibrancy-colors` (icon-theme) ~
+- `vim/Gvim` ~
+- `waterfox-bin` (AUR) ~
+- `xcape-git` (AUR)
 - `zathura` (pdf viewer)
+- `zathura-pdf-poppler`
 - `zip` and `unzip`
-- `zsh`
 - `spotify` (AUR)
 - `playerctl`
 
@@ -36,23 +35,14 @@ Repositorios necesarios para utilizar estos archivos de configuración
 - oh-my-zsh
 https://github.com/robbyrussell/oh-my-zsh.git
 
-- Vundle
-https://github.com/gmarik/Vundle.vim.git
-
 - Solarized for urxvt
 https://bbs.archlinux.org/viewtopic.php?id=164108
-
-- Gnome-Terminal Solarized
-https://github.com/Anthony25/gnome-terminal-colors-solarized
 
 - Dircolors Solarized
 https://github.com/seebi/dircolors-solarized
 
 - Powerline fonts for candy visuals
 https://github.com/powerline/fonts
-
-- Powerline zsh theme (Agnoster)
-https://gist.github.com/3712874
 
 - Powerline zsh theme (PowerLevel9k)
 https://github.com/bhilburn/powerlevel9k
@@ -72,8 +62,6 @@ https://github.com/altercation/vim-colors-solarized
 
 Para eliminar el borde blanco en Gvim, linkea el archivo `vim/.gtkrc-2.0` a ~
 segun http://askubuntu.com/questions/47831/how-to-remove-gvims-fat-bottom-border-and-resize-grip
-
-link `gtk/gtk-3.0/settings.ini` a `~/.config/gtk/gtk-3.0/`
 
 - Instalar Universal Ctags
 https://github.com/universal-ctags/ctags
@@ -406,13 +394,22 @@ To install nvim-cm-tern do:
 NEOVIM for Ubuntu 16.04 (Digital Ocean droplet)
 -------------
 `# sudo add-apt-repository ppa:neovim-ppa/stable`
+
 `# sudo apt-get update`
+
 `# sudo apt-get install neovim`
+
 `# sudo apt-get install python-dev python-pip python3-dev python3-pip`
+
 `mkdir .config/nvim`
+
 clone and link `init-mini.vim`
+
 `$ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+
 `$ pip install setuptools`
+
 `$ pip  install --upgrade neovim`
+
 enter nvim and do `:PlugInstall`
