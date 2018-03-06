@@ -180,7 +180,7 @@ Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 " Updated CSS syntax files.
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'vue']}
 Plug 'groenewege/vim-less', {'for': 'less'}
-Plug 'cakebaker/scss-syntax.vim', {'foo': ['scss', 'sass']}
+Plug 'cakebaker/scss-syntax.vim', {'for': ['scss', 'sass', 'vue']}
 
 " Updated >es6 syntax files.
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue', 'javascript.jsx']}
@@ -1033,8 +1033,8 @@ highlight link HighlightedyankRegion ErrorMsg
 
 " Support self-closed tags for %
 " see: https://vi.stackexchange.com/questions/7167/how-do-i-get-matchit-to-work-with-self-closed-tags
-autocmd Filetype vue let b:match_ignorecase = 0
-autocmd Filetype vue let b:match_words = '(:),\[:\],{:},<:>,' .
+autocmd Filetype javascript.jsx,vue let b:match_ignorecase = 0
+autocmd Filetype javascript.jsx,vue let b:match_words = '(:),\[:\],{:},<:>,' .
             \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(\%(=\|/\)\@<!>\|$\):<\@<=/\1>'
 
 "/
