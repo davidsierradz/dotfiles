@@ -6,6 +6,7 @@
 *.jpg
 *.png
 *.svg
+*.gif
 .phpcd/
 vendor/
 node_modules/
