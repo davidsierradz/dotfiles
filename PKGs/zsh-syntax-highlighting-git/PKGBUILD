@@ -1,0 +1,34 @@
+# Maintainer: David Sierra DiazGranados <davidsierradz at gmail dot com>
+# Contributor: Sam Stuewe <halosghost at archlinux dot info>
+# Contributor: mjheagle <mjheagle8@gmail.com>
+_name='zsh-syntax-highlighting'
+pkgname="${_name}-git"
+pkgver=0.6.0.r91.g2c0c75a
+pkgrel=1
+pkgdesc='Fish shell like syntax highlighting for Zsh'
+url='https://github.com/zsh-users/zsh-syntax-highlighting'
+arch=('any')
+groups=('modified')
+license=('Custom')
+depends=('zsh>=4.3.11' 'oh-my-zsh-git')
+makedepends=('git')
+provides=('zsh-syntax-highlighting')
+conflicts=('zsh-syntax-highlighting')
+source=("${_name}::${url//https/git}")
+sha256sums=('SKIP')
+
+pkgver() {
+   cd "${srcdir}/${_name}"
+   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+    cd "${srcdir}/${_name}"
+    make\
+        DESTDIR="${pkgdir}"\
+        PREFIX='/usr/share/oh-my-zsh/custom/plugins/'\
+        DOC_DIR="${pkgdir}/usr/share/doc/${_name}"\
+        SHARE_DIR="${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"\
+        install
+    install -Dm644 "${_name}.plugin.zsh" "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+}

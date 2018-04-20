@@ -1,0 +1,29 @@
+# Maintainer: David Sierra DiazGranados <davidsierradz at gmail dot com>
+_name='zsh-completions'
+pkgname="${_name}-git"
+pkgver=0.27.0.r18.g70a7a5c
+pkgrel=1
+pkgdesc='Additional completion definitions for Zsh'
+url='https://github.com/zsh-users/zsh-completions'
+arch=('any')
+groups=('modified')
+license=(GPL)
+depends=('zsh' 'oh-my-zsh-git')
+makedepends=('git')
+provides=('zsh-completions')
+source=("${_name}::${url//https/git}")
+md5sums=('SKIP')
+
+pkgver() {
+     cd "${srcdir}/${_name}"
+     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+package() {
+	cd "${srcdir}/${_name}"
+
+	install -d "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}/src"
+
+	install -Dm644 "${_name}.plugin.zsh" "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+	install -Dm644 "src/"_* "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}/src"
+}
