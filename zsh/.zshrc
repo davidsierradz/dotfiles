@@ -1,5 +1,5 @@
 #th to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+ZSH=/usr/share/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -38,7 +38,7 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -78,6 +78,11 @@ plugins=(common-aliases dirhistory git vi-mode zsh-autosuggestions zsh-completio
 DEFAULT_USER=neuromante
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
+
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -243,4 +248,5 @@ bindkey '^y' fzf-history-widget-accept
 #export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 #export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh

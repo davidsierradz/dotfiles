@@ -128,7 +128,8 @@ Plug 'joonty/vdebug'
 "Plug 'freitass/todo.txt-vim'
 
 " FZF.
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+" Already installed on Manjaro-i3.
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 
