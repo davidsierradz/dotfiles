@@ -1,0 +1,14 @@
+--languages=PHP
+--PHP-kinds=+cfitdn-alv
+--fields=*
+--exclude=.git
+--exclude=node_modules
+--exclude=storage/*
+--exclude=compiled.php
+--exclude=log
+--exclude=.build
+--exclude=.project
+--exclude=.idea/*
+--exclude=.settings/*
+--exclude=*.js
+--exclude=*.css

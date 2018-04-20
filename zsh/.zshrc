@@ -125,7 +125,7 @@ alias c='clear'
 #export TERM=xterm-256color
 export EDITOR="vim"
 export USE_EDITOR=$EDITOR
-export VISUAL="gvim"
+export VISUAL="nvim-qt --no-ext-tabline"
 export LC_COLLATE="C"
 
 # dircolors
