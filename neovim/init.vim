@@ -76,6 +76,9 @@ Plug 'chaoren/vim-wordmotion'
 " Vim HardTime.
 Plug 'takac/vim-hardtime'
 
+" Readline style insertion.
+Plug 'tpope/vim-rsi'
+
 
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
@@ -135,7 +138,7 @@ Plug 'junegunn/fzf.vim'
 
 "-------Completions and omnifuncs-------
 " PHP implementation of Microsoft LSP (Language Server Protocol).
-Plug 'autozimu/LanguageClient-neovim', { 'do': 'make release', 'branch': 'next' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
 Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
 " Autocompletion framework.
@@ -170,7 +173,7 @@ Plug 'arnaud-lb/vim-php-namespace'
 " Language pack for vim.
 "Plug 'sheerun/vim-polyglot'
 
-Plug 'othree/html5.vim', {'for': ['html', 'vue']}
+Plug 'othree/html5.vim', {'for': ['html', 'php', 'vue']}
 
 " Updated syntax file for PHP.
 Plug 'StanAngeloff/php.vim', {'for': 'php'}
@@ -178,15 +181,18 @@ Plug 'StanAngeloff/php.vim', {'for': 'php'}
 " Upstream indenting for PHP.
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 
+" Laravel Blade syntax.
+Plug 'jwalton512/vim-blade'
+
 " Updated CSS syntax files.
 Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'vue']}
 Plug 'groenewege/vim-less', {'for': 'less'}
-Plug 'cakebaker/scss-syntax.vim', {'foo': ['scss', 'sass']}
+Plug 'cakebaker/scss-syntax.vim', {'for': ['scss', 'sass']}
 
 " Updated >es6 syntax files.
 Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue', 'javascript.jsx']}
 
-Plug 'mxw/vim-jsx', {'for': 'javascript.jsx'}
+Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 
 Plug 'posva/vim-vue', {'for': 'vue'}
 
@@ -505,13 +511,13 @@ nnoremap <leader>fa :Ack!<Space>'
 "nnoremap : ;
 
 " Enter 2 spaces with Ctrl-Tab.
-inoremap <C-Tab> <Space><Space>
+"inoremap <C-Tab> <Space><Space>
 
 " Y yanks from current cursor position to end of line, more logical.
 nnoremap Y y$
 
 " Make Ctrl-e jump to the end of the current line in the insert mode.
-inoremap <C-e> <C-o>$
+"inoremap <C-e> <C-o>$
 
 " Toggle Relative number.
 nmap <silent> <leader>rn :set relativenumber!<CR>
@@ -541,7 +547,9 @@ inoremap <A-`> ->
 " Change <Alt-1> to => in insert mode.
 inoremap <A-1> =>
 
-" Use <Alt-Tab> to expand a space: <Space>|<Space>.
+inoremap <A-2> <
+
+" Use <Alt-Shift-Tab> to expand a space: <Space>|<Space>.
 inoremap <A-S-Tab> <Space><Space><Left>
 
 " Use <AltGr-Q> to save current file.
@@ -556,6 +564,9 @@ nnoremap <M-d> "_d
 nnoremap <Leader>d "_d
 vnoremap <M-d> "_d
 vnoremap <Leader>d "_d
+
+" Transpose two chars in insert mode <Alt-s>.
+inoremap <M-s> <ESC>Xpa
 
 "--------------------------------End General Mappings--------------------------"
 
@@ -628,6 +639,7 @@ vnoremap <Leader>d "_d
 " Airline theme.
 let g:airline_theme = 'solarized'
 let g:airline_solarized_bg='dark'
+let g:airline_solarized_dark_text = 1
 
 " SHow all airline things in the focus window only.
 let g:airline_inactive_collapse=1
@@ -832,7 +844,7 @@ let g:vdebug_features['max_data'] = 2048
 
 let g:startify_custom_header = []
 
-let g:startify_bookmarks = [ '~/dotfiles/', '~/Code/', '~/Vagrant/' ]
+let g:startify_bookmarks = [ '~/dotfiles/', '~/code/', '~/Vagrant/' ]
 
 let g:startify_list_order = ['bookmarks', 'sessions', 'files']
 
@@ -842,8 +854,6 @@ let g:startify_session_before_save = [
     \ ]
 
 let g:startify_change_to_vcs_root = 1
-
-let g:startify_fortune_use_unicode = 1
 
 let g:startify_files_number = 20
 
@@ -969,6 +979,8 @@ vmap <silent> <c-x><c-s> <Plug>(ultisnips_expand)
 
 " Disable de diagnostics for the LSP.
 let g:LanguageClient_diagnosticsEnable = 0
+
+"let g:LanguageClient_loggingLevel = 'DEBUG'
 
 let g:LanguageClient_serverCommands = {}
 let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
@@ -1096,16 +1108,16 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Set the indent options for Javascript files.
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+"autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for Json files.
-autocmd FileType json setlocal ts=2 sts=2 sw=2
+"autocmd FileType json setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for CSS files.
-autocmd FileType css setlocal ts=2 sts=2 sw=2
+"autocmd FileType css setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for HTML files.
-autocmd FileType html,vue,blade setlocal ts=2 sts=2 sw=2
+"autocmd FileType html,vue,blade setlocal ts=2 sts=2 sw=2
 
 " Autocommand to call PhpSyntaxOverride function.
 augroup phpSyntaxOverride
