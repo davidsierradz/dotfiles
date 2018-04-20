@@ -70,6 +70,11 @@ bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart du
 bindsym Print exec --no-startup-id i3-scrot
 bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
 bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+# Save to clipboard needs escrotum-git
+bindsym $mod+Ctrl+Print --release exec --no-startup-id escrotum -C
+bindsym $mod+Ctrl+Shift+Print --release exec --no-startup-id escrotum -C -s
+
 #bindsym $mod+Shift+h exec xdg-open /usr/share/doc/manjaro/i3_help.pdf
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
@@ -295,7 +300,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 exec --no-startup-id clipit
-# exec --no-startup-id blueman
+# exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id /home/neuromante/dotfiles/scripts/conky/start_conky_maia
 # exec --no-startup-id start_conky_green
@@ -332,6 +337,7 @@ set $i3_color17         #0c0c0c
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
+	i3bar_command i3bar
 	status_command i3status
 	position bottom
 
