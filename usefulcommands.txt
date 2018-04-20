@@ -14,6 +14,9 @@ xrdb -merge .Xresources
 Open a program with a custom env variable:
 env GTK_THEME=Adwaita:light bin
 
+Check errors in current boot from journal:
+journalctl -p 3 -xb
+
 Clean the jounal file:
 sudo journalctl --vacuum-size=100M
 
@@ -24,7 +27,7 @@ Use gnome settings:
 gsettings get org.gnome.desktop.interface monospace-font-name
 
 Use systemd services:
-sudo systemctl restart NetworkManager.servic
+sudo systemctl restart NetworkManager.service
 
 Find a folder:
 find . -name ".git"
@@ -51,18 +54,40 @@ gpg --recv-key 0x6656C593E5158D1A
 Crear un archivo vacio de un peso especifico:
 dd if=/dev/zero of=output.dat  bs=1M  count=24
 
+Remover o cargar un modulo del kernel (driver):
+sudo modprobe -r xxx
+
+Mostrar los mensajes del kernel (drivers):
+dmesg
+dmesg -HT (Human Readable)
+
+Mostrar info de los dispositivos usb montados:
+lsusb -v
+
+Hacer un benchmark a un core:
+yes > /dev/null &
+Matar los yes:
+killall yes
+
+Escanear las redes presentes desde una interfaz:
+sudo iwlist interfaz scanning
+
+Ver info del hardware, separado por tipo:
+sudo lshw -class network
+
+
 --------------------------------------------------------------------------------
 
 Pacman:
 
 Update one AUR package:
-yaourt -S --aur neovim-qt-git --noconfirm
+yaourt -Syy --aur neovim-qt-git --noconfirm
 
 Update all AUR packages:
-yaourt -Su --devel --aur --noconfirm
+yaourt -Syyuu --devel --aur --noconfirm
 
 Update all packages:
-sudo pacman -Syuu
+sudo pacman -Syyuu
 
 Downgrade a package:
 downgrade neovim-git-ninja
@@ -72,6 +97,16 @@ Dry run:
 paccache -dk1
 Remove:
 paccache -rk#
+
+Use unstable repos:
+sudo pacman-mirrors --api --set-branch unstable
+sudo pacman-mirrors --fasttrack
+sudo pacman -Syy
+
+Disable unstable repos:
+sudo pacman-mirrors --api --set-branch stable
+sudo pacman-mirrors --fasttrack
+sudo pacman -Syy
 
 --------------------------------------------------------------------------------
 
@@ -119,3 +154,8 @@ Open Neovim-qt:
 nvim-qt --no-ext-tabline
 
 --------------------------------------------------------------------------------
+
+Laptop:
+
+Toggle touchpad:
+xinput disable|enable SynPS/2\ Synaptics\ TouchPad

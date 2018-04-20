@@ -6,10 +6,7 @@ Binarios necesarios:
 -------------
 - `composer`
 - `editorconfig-core-c`
-- `gtk-breath-theme` ~
-- `i3-gaps-next-git` (AUR) (You need to remove `manjaro-i3-settings` to swap - default i3wm) ~
 - `keynav-git` (AUR) o https://github.com/yjftsjthsd-g/keynav (mas actualizado: needs `lib32-cairo`)
-- `nerd-fonts-complete-mono-glyphs` (AUR)
 - `oh-my-zsh-git` (AUR)
 - `redshift` (needs `python-xdg`)
 - `rofi`
@@ -20,9 +17,6 @@ Binarios necesarios:
 - `diffoscope`
 - `universal Ctags` (AUR)
 - `urxvt-font-size-git` (AUR)
-- `vibrancy-colors` (icon-theme) ~
-- `vim/Gvim` ~
-- `waterfox-bin` (AUR) ~
 - `xcape-git` (AUR)
 - `zathura` (pdf viewer)
 - `zathura-pdf-poppler`
@@ -32,59 +26,18 @@ Binarios necesarios:
 
 Repositorios necesarios para utilizar estos archivos de configuración
 
-- oh-my-zsh
-https://github.com/robbyrussell/oh-my-zsh.git
-
-- Solarized for urxvt
-https://bbs.archlinux.org/viewtopic.php?id=164108
-
-- Dircolors Solarized
-https://github.com/seebi/dircolors-solarized
-
-- Powerline fonts for candy visuals
-https://github.com/powerline/fonts
-
-- Powerline zsh theme (PowerLevel9k)
-https://github.com/bhilburn/powerlevel9k
-update theme with `$ git pull` from `~/.oh-my-zsh/custom/themes/powerlevel9k/`
-
-- Zsh completions plugin
-`$ git clone https://github.com/zsh-users/zsh-completions ~/.oh-my-zsh/custom/plugins/zsh-completions`
-
-- Zsh autosugestion
-`$ git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions`
-
-- Zsh syntax highlighting
-`$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
-
-- Solarized for Vim
-https://github.com/altercation/vim-colors-solarized
-
-Para eliminar el borde blanco en Gvim, linkea el archivo `vim/.gtkrc-2.0` a ~
-segun http://askubuntu.com/questions/47831/how-to-remove-gvims-fat-bottom-border-and-resize-grip
-
-- Instalar Universal Ctags
-https://github.com/universal-ctags/ctags
-http://docs.ctags.io/en/latest/autotools.html
-
-para compilar el binario de ctags:
-instala `build-essentials`
-instala `autoconf`
-instala `automake`
-
-Para instalar YouCompleteMe, toca compilar el binario del plugin
-instala `cmake`
-instala `python-dev` y `python3-dev`
-instala `node-js` y `npm` para instalar con soporte para javascript
-despues ir a `~/.vim/bundle/YouCompleteMe`
-`$ ./install.py --tern-completer`
-
 instalar phpcd.vim
 despues de instalar ir a `~/.vim/bundle/phpcd.vim/`
 `$ composer install`
 
+Universal Ctags
+```bash
+mkdir ~/.ctags.d
+ln -s ~/dotfiles/ctags/php.ctags ~/.ctags.d/
+```
+
 Para generar los tags del proyecto
-`$ ctags`
+`$ ctags -R`
 en la raiz de este
 
 Debugger:
@@ -299,8 +252,24 @@ then
 `# sudo grub-mkconfig -o /boot/grub/grub.cfg`
 
 enable bluetooth
+
 execute manjaroi3 pulseaudio installer script:
+
 install_pulse
+
+Probar esto primero:
+
+instalar:
+
+`pulseaudio-bluetooth`
+`bluez-utils`
+
+luego:
+
+`pactl load-module module-bluetooth-discover` (Una vez)
+
+Hacer el pair y cambiar en pavucontrol el audio device.
+
 then to enable headset buttons create file in:
 /etc/modules-load.d/uinput.conf containing uinput
 run blueman and pair device, change default audio device with pavucontrol
