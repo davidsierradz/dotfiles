@@ -521,3 +521,10 @@ mode "$mode_spotify" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# Open a terminal in floating mode.
+bindsym $mod+shift+Return exec --no-startup-id urxvt -geometry 100x30 -name "floating_urxvt"
+for_window [class="URxvt" instance="floating_urxvt$"] floating toggle
+
+#for_window [instance="__scratchpad"] move scratchpad
+#bindsym $mod+shift+t exec --no-startup-id urxvt -name __scratchpad
