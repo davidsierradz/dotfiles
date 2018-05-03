@@ -39,7 +39,7 @@ List global npm packages:
 npm list -g --depth=0
 
 Create a usb live from iso:
-dd if=/home/neuromante/Downloads/linuxmint-18.3-cinnamon-64bit.iso of=/dev/sdd
+sudo dd if=/home/neuromante/Downloads/linuxmint-18.3-cinnamon-64bit.iso of=/dev/sdd
 status=progress && sync
 
 Mostrar info de los dispositivos conectados (discos):
@@ -74,6 +74,9 @@ sudo iwlist interfaz scanning
 
 Ver info del hardware, separado por tipo:
 sudo lshw -class network
+
+Revisar el sha256 de un archivo:
+sha256sum --check manjaro-i3-17.1.8-stable-x86_64.iso.sha256
 
 
 --------------------------------------------------------------------------------
