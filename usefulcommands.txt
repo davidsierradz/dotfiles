@@ -162,3 +162,12 @@ Laptop:
 
 Toggle touchpad:
 xinput disable|enable SynPS/2\ Synaptics\ TouchPad
+
+--------------------------------------------------------------------------------
+
+Bash:
+
+Expand the last parameter:
+
+cd /foo/bar !#$ -> cd /foo/bar /foo/bar
+cd /foo/bar !#$:h -> cd /foo/bar /foo

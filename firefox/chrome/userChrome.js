@@ -1,11 +1,11 @@
-// ==UserScript==
-// @name           FloatingScrollbar.uc.js
-// @namespace      nightson1988@gmail.com
-// @include        main
-// @version        0.0.3
-// @note           Thanks to Griever(https://github.com/Griever/userChromeJS/blob/master/SmartScrollbar.uc.js) and Paul Rouget(https://gist.github.com/4003205)
-// @note...........0.0.3 Fixed a problem of breaking hbox layout 
-// @note           0.0.2 Remove usage of E4X (https://bugzilla.mozilla.org/show_bug.cgi?id=788293)
+
+// @name           userChrome.js
+// @namespace      scrollbars_win10
+// @version        0.0.4
+// @note           Windows 10 style by /u/mrkwatz https://www.reddit.com/r/FirefoxCSS/comments/7fkha6/firefox_57_windows_10_uwp_style_overlay_scrollbars/
+// @note           Brought to Firefox 57 by /u/Wiidesire https://www.reddit.com/r/firefox/comments/7f6kc4/floating_scrollbar_finally_possible_in_firefox_57/
+// @note           userChrome.js https://github.com/nuchi/firefox-quantum-userchromejs
+// @note           Forked from https://github.com/Endor8/userChrome.js/blob/master/floatingscrollbar/FloatingScrollbar.uc.js
 // ==/UserScript==
 
 (function () {
@@ -18,50 +18,58 @@
         enabled = true;
     }
 
-    var css = '\
-    @namespace url(http: //www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);\
-    :not(select):not(hbox) > scrollbar {\
-        -moz-appearance: none!important;\
-        position: relative;\
-        background-color: transparent;\
-        background-image: none;\
-        z-index: 2147483647;\
-        padding: 0px;\
-    }\
-    :not(select):not(hbox) > scrollbar[orient = "vertical"] {\
-        -moz-margin-start: -5px;\
-        min-width: 5px;\
-    }\
-    :not(select):not(hbox) > scrollbar[orient = "vertical"] thumb {\
-        min-height: 20px;\
-    }\
-   :not(select):not(hbox) > scrollbar[orient = "horizontal"] {\
-        margin-top: -5px;\
-        min-height: 5px;\
-    }\
-    :not(select):not(hbox) > scrollbar[orient = "horizontal"] thumb {\
-        min-width: 20px;\
-    }\
-    :not(select):not(hbox) > scrollbar thumb {\
-        -moz-appearance: none!important;\
-        border-width: 0px!important;\
-        border-radius: 3px!important;\
-        background-color: rgba(190, 190, 190, 0.5)!important;\
-    }\
-    :not(select):not(hbox) > scrollbar thumb:active,\
-    :not(select):not(hbox) > scrollbar thumb:hover {\
-        background-color: #9B9B9B!important;\
-    }\
-    :not(select):not(hbox) > scrollbar scrollbarbutton, :not(select):not(hbox) > scrollbar gripper {\
-        display: none;\
-    }';
+    var css = `
+        @namespace url(http: //www.mozilla.org/keymaster/gatekeeper/there.is.only.xul);
+        :not(select):not(hbox) > scrollbar {
+            -moz-appearance: none!important;
+            position: relative!important;
+            background-color: transparent;
+            pointer-events: none;
+        }
+        :not(select):not(hbox) > scrollbar thumb {
+            -moz-appearance: none!important;
+            background-color: transparent;
+            pointer-events: auto;
+        }
+        :not(select):not(hbox) > scrollbar[orient = "vertical"] {
+            min-width: 12px!important;
+            -moz-margin-start: -12px;/*margin to fill the whole render window with content and overlay the scrollbars*/
+        }
+        :not(select):not(hbox) > scrollbar[orient = "horizontal"] {
+            height: 12px!important;
+            margin-top: -12px;
+        }
+        :not(select):not(hbox) > scrollbar[orient = "vertical"] thumb {
+            border-right: 2px solid rgba(133, 132, 131, 1);
+            width: 12px;
+            min-height: 12px;
+            transition: border 0.1s ease-in;
+        }
+        :not(select):not(hbox) > scrollbar[orient = "horizontal"] thumb {
+            border-bottom: 2px solid rgba(133, 132, 131, 1);
+            min-width: 12px;
+            transition: border 0.1s ease-in;
+        }
+        :not(select):not(hbox) > scrollbar:hover {
+            background-color: rgba(0, 0, 0, 0.25);
+            max-width: 12px!important;
+            point-events: auto;
+        }
+        :not(select):not(hbox) > scrollbar:hover thumb {
+            border-width: 12px;
+            transition: border 0s linear;
+        }
+        :not(select):not(hbox) > scrollbar scrollbarbutton, :not(select):not(hbox) > scrollbar gripper {
+            display: none;
+        }
+    `;
 
     var sss = Cc['@mozilla.org/content/style-sheet-service;1'].getService(Ci.nsIStyleSheetService);
     var uri = makeURI('data:text/css;charset=UTF=8,' + encodeURIComponent(css));
 
     var p = document.getElementById('devToolsSeparator');
     var m = document.createElement('menuitem');
-    m.setAttribute('label', "Schwebende Scrollbar");
+    m.setAttribute('label', "Windows 10 Style Scrollbars");
     m.setAttribute('type', 'checkbox');
     m.setAttribute('autocheck', 'false');
     m.setAttribute('checked', enabled);
