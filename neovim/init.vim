@@ -1058,6 +1058,8 @@ autocmd Filetype javascript.jsx,vue let b:match_words = '(:),\[:\],{:},<:>,' .
 let g:fzf_layout = { 'down': '~40%' }
 
 " FZF mappings.
+nnoremap <A-n> :Lines<CR>
+nnoremap <A-b> :BTags<CR>
 nnoremap <A-m> :Marks<CR>
 nnoremap <A-t> :Ag<CR>
 nnoremap <A-r> :Tags<CR>
