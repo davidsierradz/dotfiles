@@ -1,4 +1,4 @@
-"--------------------------------General---------------------------------------"
+"--------------------------------General---------------------------------------"{{{
 
 "if exists('g:GtkGuiLoaded')
 "    call rpcnotify(1, 'Gui', 'Font', 'Hack Nerd Font Mono 18')
@@ -17,11 +17,11 @@ set mouse=a
 set clipboard=unnamed,unnamedplus
 
 "--------------------------------End General-----------------------------------"
+"}}}
 
 
 
-
-"--------------------------------Visuals---------------------------------------"
+"--------------------------------Visuals---------------------------------------"{{{
 
 " no scrollbar on the right.
 set guioptions-=r
@@ -86,3 +86,5 @@ set linespace=8
 "set guicursor=a:block-blinkon100-Cursor/Cursor
 
 "--------------------------------End Visuals-----------------------------------"
+"}}}
+" vim: set fdm=marker fmr={{{,}}} :

@@ -1,4 +1,4 @@
-"--------------------------------Plugins---------------------------------------"
+"--------------------------------Plugins---------------------------------------" {{{
 
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
@@ -227,11 +227,12 @@ Plug 'posva/vim-vue', {'for': 'vue'}
 call plug#end()
 
 "--------------------------------End Plugins-----------------------------------"
+"}}}
 
 
 
 
-"--------------------------------General---------------------------------------"
+"--------------------------------General---------------------------------------"{{{
 
 " This command switches on syntax highlighting.
 "syntax enable
@@ -293,11 +294,12 @@ set infercase
 set cmdwinheight=2
 
 "--------------------------------End General-----------------------------------"
+"}}}
 
 
 
 
-"--------------------------------Visuals---------------------------------------"
+"--------------------------------Visuals---------------------------------------"{{{
 
 " Show special characters.
 set list
@@ -379,11 +381,12 @@ set signcolumn=yes
 set inccommand=nosplit
 
 "--------------------------------End Visuals-----------------------------------"
+"}}}
 
 
 
 
-"--------------------------------Search----------------------------------------"
+"--------------------------------Search----------------------------------------"{{{
 
 " Search options
 set incsearch
@@ -401,11 +404,12 @@ if executable('ag')
 endif
 
 "--------------------------------End Search------------------------------------"
+"}}}
 
 
 
 
-"--------------------------------Splits----------------------------------------"
+"--------------------------------Splits----------------------------------------"{{{
 
 " Splitting to the right by default.
 set splitright
@@ -415,11 +419,12 @@ set splitright
 let g:netrw_preview = 1
 
 "--------------------------------End Splits------------------------------------"
+"}}}
 
 
 
 
-"--------------------------------General Mappings------------------------------"
+"--------------------------------General Mappings------------------------------"{{{
 
 " Use j and k in wrap lines.
 nnoremap j gj
@@ -569,11 +574,12 @@ vnoremap <Leader>d "_d
 inoremap <M-s> <ESC>Xpa
 
 "--------------------------------End General Mappings--------------------------"
+"}}}
 
 
 
 
-"--------------------------------Plugins Configuration-------------------------"
+"--------------------------------Plugins Configuration-------------------------"{{{
 
 "/
 "/ CtrlP
@@ -1087,11 +1093,12 @@ let g:user_emmet_settings = {
             \}
 
 "--------------------------------End Plugins Configuration---------------------"
+"}}}
 
 
 
 
-"--------------------------------User Commands---------------------------------"
+"--------------------------------User Commands---------------------------------"{{{
 
 " :W sudo saves the file.
 command W w !sudo tee % > /dev/null
@@ -1100,11 +1107,12 @@ command W w !sudo tee % > /dev/null
 command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
 "--------------------------------End User Commands-----------------------------"
+"}}}
 
 
 
 
-"--------------------------------Auto Commands---------------------------------"
+"--------------------------------Auto Commands---------------------------------"{{{
 
 " Return to last edit position when opening files (You want this!).
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -1145,11 +1153,12 @@ autocmd FileType vue setlocal omnifunc=LanguageClient#complete
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 
 "--------------------------------End Auto Commands-----------------------------"
+"}}}
 
 
 
 
-"--------------------------------Macros----------------------------------------"
+"--------------------------------Macros----------------------------------------"{{{
 
 "/
 "/ PHP
@@ -1167,11 +1176,12 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 "die();'
 
 "--------------------------------End Macros------------------------------------"
+"}}}
 
 
 
 
-"--------------------------------Functions-------------------------------------"
+"--------------------------------Functions-------------------------------------"{{{
 
 " Function to override @tags and @params in the comments sections of PHP.
 function! PhpSyntaxOverride()
@@ -1196,11 +1206,12 @@ function! TabMessage(cmd)
 endfunction
 
 "--------------------------------End Functions---------------------------------"
+"}}}
 
 
 
 
-"--------------------------------Terminal Only---------------------------------"
+"--------------------------------Terminal Only---------------------------------"{{{
 
 "if !has("gui_running")
 "
@@ -1212,18 +1223,22 @@ endfunction
 "endif
 
 "--------------------------------End Terminal Only-----------------------------"
+"}}}
 
 
 
 
-"--------------------------------PHP Debug-------------------------------------"
+"--------------------------------PHP Debug-------------------------------------"{{{
 
 
 "--------------------------------End PHP Debug---------------------------------"
+"}}}
 
 
 
 
-"--------------------------------Tips and Remainders---------------------------"
+"--------------------------------Tips and Remainders---------------------------"{{{
 
 "--------------------------------End Tips and Remainders-----------------------"
+"}}}
+" vim: set fdm=marker fmr={{{,}}} :
