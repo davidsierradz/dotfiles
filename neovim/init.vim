@@ -115,6 +115,8 @@ Plug 'kshenoy/vim-signature'
 " Make the yanked region apparent.
 Plug 'machakann/vim-highlightedyank'
 
+" Persist folds in sessions.
+Plug 'kopischke/vim-stay'
 
 "-------------Integrations--------------
 " Front for Ag.
@@ -292,6 +294,9 @@ set infercase
 
 " Set the height of the command line window.
 set cmdwinheight=2
+
+" Only save folds and cursor position with :mksession.
+set viewoptions=cursor,folds
 
 "--------------------------------End General-----------------------------------"
 "}}}
