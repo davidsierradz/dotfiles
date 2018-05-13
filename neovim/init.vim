@@ -295,6 +295,15 @@ set infercase
 " Set the height of the command line window.
 set cmdwinheight=2
 
+" Stop certain movements from always going to the first character of a line.
+set nostartofline
+
+" Raise a dialog instead of failing a command.
+set confirm
+
+" Make ~ an operator.
+set tildeop
+
 " Only save folds and cursor position with :mksession.
 set viewoptions=cursor,folds
 
@@ -1075,6 +1084,7 @@ nnoremap <A-m> :Marks<CR>
 nnoremap <A-t> :Ag<CR>
 nnoremap <A-r> :Tags<CR>
 nnoremap <A-e> :History<CR>
+nnoremap <A-c> :Snippets<CR>
 nnoremap ; :Buffers<CR>
 nnoremap <C-p> :Files<CR>
 
