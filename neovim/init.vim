@@ -107,7 +107,7 @@ Plug 'Asheq/close-buffers.vim'
 Plug 'mhinz/vim-startify'
 
 " Search your selection text with * or #.
-Plug 'thinca/vim-visualstar'
+Plug 'haya14busa/vim-asterisk'
 
 " Manage marks.
 Plug 'kshenoy/vim-signature'
@@ -1091,6 +1091,22 @@ let g:user_emmet_settings = {
             \      'extends' : 'jsx',
             \  },
             \}
+
+"/
+""/ vim-asterisk
+"/
+
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
+
+" Enable keepCursor feature.
+let g:asterisk#keeppos = 1
 
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
