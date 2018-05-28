@@ -1,14 +1,15 @@
 "--------------------------------General---------------------------------------"{{{
 
-"if exists('g:GtkGuiLoaded')
-"    call rpcnotify(1, 'Gui', 'Font', 'Hack Nerd Font Mono 18')
-"    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
-"    call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
-"    "let g:GuiInternalClipboard = 1
-"endif
+if exists('g:GtkGuiLoaded')
+    call rpcnotify(1, 'Gui', 'Font', 'Iosevka Light 15')
+    call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
+    call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
+    call rpcnotify(1, 'Gui', 'FontFeatures', 'calt, cv04, cv08, cv12, cv17, cv31, cv49')
+    "let g:GuiInternalClipboard = 1
+endif
 
 " GUI font.
-GuiFont Hack Nerd Font Mono:h18
+"GuiFont! Hack Nerd Font Mono:h18
 
 " Select with the mouse.
 set mouse=a
@@ -79,7 +80,7 @@ hi MatchParen guibg=NONE guifg=#cb4b16 gui=standout
 "set guiheadroom=-50
 
 " Line height.
-set linespace=8
+"set linespace=5
 "GuiLinespace 0
 
 "hi Cursor guifg=black guibg=green gui=reverse
