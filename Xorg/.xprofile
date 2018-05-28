@@ -48,5 +48,8 @@ xmodmap -e "keycode 46 = l L NoSymbol NoSymbol Right"
 # Alt-Gr+m to enter.
 xmodmap -e "keycode 58 = m M m M Return"
 
-# Use Right Shift (Shift_R) to Alt-Gr+a (ä).
+# Use Right Shift (Shift_R) to Alt-Gr+q (ä).
 xmodmap -e "keycode 62 = adiaeresis"
+
+# Use Right Control (Ctrl_R) to Alt-Gr+w (å).
+xmodmap -e "keycode 105 = aring"
