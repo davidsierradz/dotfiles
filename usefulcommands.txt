@@ -54,6 +54,9 @@ gpg --recv-key 0x6656C593E5158D1A
 Crear un archivo vacio de un peso especifico:
 dd if=/dev/zero of=output.dat  bs=1M  count=24
 
+Mostrar la lista de modulos cargados:
+lsmod
+
 Remover o cargar un modulo del kernel (driver):
 sudo modprobe -r xxx
 
