@@ -66,7 +66,7 @@ hi GitGutterAdd guifg=#009900 guibg=bg
 hi GitGutterChange guifg=#bbbb00 guibg=bg
 hi GitGutterDelete guifg=#ff2222 guibg=bg
 hi GitGutterChangeDelete guifg=#009900 guibg=bg
-hi MatchParen guibg=NONE guifg=#cb4b16 gui=standout
+hi MatchParen gui=underline,bold,standout guifg=#b58900 guibg=NONE
 "hi StatusLine gui=NONE guibg=#2aa198 guifg=#002b36
 "hi StatusLineNC gui=NONE guibg=#b58900 guifg=#002b36
 
