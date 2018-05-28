@@ -116,7 +116,7 @@ Plug 'kshenoy/vim-signature'
 Plug 'machakann/vim-highlightedyank'
 
 " Persist folds in sessions.
-Plug 'kopischke/vim-stay'
+Plug 'zhimsel/vim-stay'
 
 "-------------Integrations--------------
 " Front for Ag.
