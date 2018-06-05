@@ -198,6 +198,8 @@ Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
 
 Plug 'posva/vim-vue', {'for': 'vue'}
 
+" Set the 'path' option for miscellaneous file types.
+Plug 'tpope/vim-apathy'
 
 "------------Standby plugins------------
 "Plug 'jsfaint/gen_tags.vim'

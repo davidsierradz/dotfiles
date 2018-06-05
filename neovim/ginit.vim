@@ -57,8 +57,8 @@ hi SpecialKey guifg=#657b83 guibg=NONE
 "hi NonText gui=bold guifg=#b58900
 hi NonText gui=NONE guifg=#657b83
 "hi ColorColumn guibg=#d33682
-hi Search gui=underline guifg=#dc322f
-hi IncSearch gui=underline guifg=#dc322f
+hi Search gui=underline guifg=#cb4b16
+hi IncSearch gui=bold,standout,underline guifg=#dc322f
 "hi CursorLine guibg=#333333
 let g:gitgutter_override_sign_column_highlight = 0
 hi LineNr guibg=bg
