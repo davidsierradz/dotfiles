@@ -307,6 +307,9 @@ set tildeop
 " Only save folds and cursor position with :mksession.
 set viewoptions=cursor,folds
 
+" Round indenting with < and > to shiftwidth.
+set shiftround
+
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -394,6 +397,15 @@ set signcolumn=yes
 " Live substitution
 set inccommand=nosplit
 
+" Put ↪ on wrapped lines.
+"set showbreak=↪
+
+" Break words if the wrap option is set.
+set nolinebreak
+
+" Disable two spaces in join commands.
+set nojoinspaces
+
 "--------------------------------End Visuals-----------------------------------"
 "}}}
 
@@ -408,8 +420,11 @@ set hlsearch
 set ignorecase
 set smartcase
 
+" Use global in substitution per default.
+set gdefault
+
 " Put line numbers in Netrw windows.
-let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+"let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 
 " The Silver Searcher.
 if executable('ag')
@@ -586,6 +601,26 @@ vnoremap <Leader>d "_d
 
 " Transpose two chars in insert mode <Alt-s>.
 inoremap <M-s> <ESC>Xpa
+
+" Select text inside line.
+nnoremap vv ^vg_
+
+" Go to start or end of non-blank line chars.
+noremap H ^
+noremap L g_
+vnoremap L g_
+
+" Split a line.
+nnoremap K i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w:delmarks w<cr>
+
+" Keep the cursor in place while joining lines
+nnoremap J mzJ`z:delmarks z<cr>
+
+" Swap join lines behaviour.
+nnoremap gJ J
+
+" Yank non-blank current line.
+nnoremap <A-y> mz^yg_`z:delmarks z<cr>
 
 "--------------------------------End General Mappings--------------------------"
 "}}}
@@ -1146,7 +1181,14 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "--------------------------------Auto Commands---------------------------------"{{{
 
 " Return to last edit position when opening files (You want this!).
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+"au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 
 " Set the indent options for Javascript files.
 "autocmd FileType javascript setlocal ts=2 sts=2 sw=2
@@ -1182,6 +1224,27 @@ autocmd FileType vue setlocal omnifunc=LanguageClient#complete
 
 " Set the omnifunc for CSS.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+
+" Only show cursorline in the current window and in normal mode.
+augroup cline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
+augroup END
+
+" Only shown when not in insert mode so I don't go insane.
+augroup trailing
+    au!
+    au InsertEnter * :set listchars-=trail:·
+    au InsertLeave * :set listchars+=trail:·
+augroup END
+
+" Toggle hlsearch.
+augroup vimrc-incsearch-highlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
 
 "--------------------------------End Auto Commands-----------------------------"
 "}}}
