@@ -173,30 +173,30 @@ Plug 'mattn/emmet-vim'
 Plug 'arnaud-lb/vim-php-namespace'
 
 " Language pack for vim.
-"Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
-Plug 'othree/html5.vim', {'for': ['html', 'php', 'vue']}
+"Plug 'othree/html5.vim', {'for': ['html', 'php', 'vue']}
 
 " Updated syntax file for PHP.
-Plug 'StanAngeloff/php.vim', {'for': 'php'}
+"Plug 'StanAngeloff/php.vim', {'for': 'php'}
 
 " Upstream indenting for PHP.
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 
 " Laravel Blade syntax.
-Plug 'jwalton512/vim-blade'
+"Plug 'jwalton512/vim-blade'
 
 " Updated CSS syntax files.
-Plug 'hail2u/vim-css3-syntax', {'for': ['css', 'vue']}
-Plug 'groenewege/vim-less', {'for': 'less'}
-Plug 'cakebaker/scss-syntax.vim', {'for': ['scss', 'sass', 'vue']}
+Plug 'hail2u/vim-css3-syntax'
+"Plug 'groenewege/vim-less', {'for': 'less'}
+"Plug 'cakebaker/scss-syntax.vim', {'for': ['scss', 'sass', 'vue']}
 
 " Updated >es6 syntax files.
-Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue', 'javascript.jsx']}
+"Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue', 'javascript.jsx', 'html']}
 
-Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx']}
+"Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx', 'html']}
 
-Plug 'posva/vim-vue', {'for': 'vue'}
+"Plug 'posva/vim-vue', {'for': 'vue'}
 
 " Set the 'path' option for miscellaneous file types.
 Plug 'tpope/vim-apathy'
