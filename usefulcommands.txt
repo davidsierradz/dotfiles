@@ -92,6 +92,9 @@ yaourt -Syy --aur neovim-qt-git --noconfirm
 Update all AUR packages:
 yaourt -Syyuu --devel --aur --noconfirm
 
+Update all Neovim related packages:
+yaourt -S --noconfirm neovim-qt-git neovim-git-ninja python-neovim-git python2-neovim-git neovim-gtk-git
+
 Update all packages:
 sudo pacman -Syyuu
 
