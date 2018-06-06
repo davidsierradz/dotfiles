@@ -25,7 +25,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 
 " Pasting in Vim with indentation adjusted to destination context.
-Plug 'sickill/vim-pasta'
+"Plug 'sickill/vim-pasta'
 
 " Check the " and @ registers.
 Plug 'junegunn/vim-peekaboo'
@@ -613,16 +613,19 @@ noremap L g_
 vnoremap L g_
 
 " Split a line.
-nnoremap K i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w:delmarks w<cr>
+nnoremap <silent> K i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w:delmarks w<cr>
 
 " Keep the cursor in place while joining lines
-nnoremap J mzJ`z:delmarks z<cr>
+nnoremap <silent> J mzJ`z:delmarks z<cr>
 
 " Swap join lines behaviour.
 nnoremap gJ J
 
 " Yank non-blank current line.
 nnoremap <A-y> mz^yg_`z:delmarks z<cr>
+
+" Toggle highlighting the search string.
+nnoremap <silent> <F1> :set hlsearch!<cr>
 
 "--------------------------------End General Mappings--------------------------"
 "}}}
@@ -825,7 +828,7 @@ inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 let delimitMate_expand_cr = 1
 
 " Disable automatic close on angle brackets <> in html and blade files (already using vim-closetag).
-au FileType html,blade,vue,php let b:delimitMate_matchpairs = "(:),[:],{:}"
+au FileType html,blade,vue,php,javascript.jsx let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 " Expand spaces in blade files.
 "au FileType blade,vue,html.vue let b:delimitMate_expand_space = 1
@@ -841,6 +844,9 @@ let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.vue,*.php,*.js"
 
 " Self-close non-closing tags.
 let g:closetag_xhtml_filetypes = "xhtml,javascript.jsx,xml,vue"
+
+" Add > at current position without closing the current tag, default is ''.
+let g:closetag_close_shortcut = '<leader>>'
 
 "/
 "/ indentLine
