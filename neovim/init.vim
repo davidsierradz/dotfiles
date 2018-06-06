@@ -839,6 +839,9 @@ let delimitMate_jump_expansion = 1
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.vue,*.php,*.js"
 
+" Self-close non-closing tags.
+let g:closetag_xhtml_filetypes = "xhtml,javascript.jsx,xml,vue"
+
 "/
 "/ indentLine
 "/
