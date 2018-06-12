@@ -149,6 +149,28 @@ URxvt.keysym.C-slash:  font-size:show
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
 
+! Do not scroll with output
+URxvt*scrollTtyOutput: false
+! Scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! Scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+! Hide the cursor when typing.
+URxvt*pointerBlank: true
+
+! Use Ctrl-Alt-{k,j} to page-up and page-down 1 line.
+URxvt.keysym.Meta-k: command:\033]720;1\007
+URxvt.keysym.Meta-j: command:\033]721;1\007
+
+! Use Ctrl-Alt-{k,j} to page-up and page-down 20 lines.
+URxvt.keysym.Control-Meta-k: command:\033]720;20\007
+URxvt.keysym.Control-Meta-j: command:\033]721;20\007
+
+! Disable scrolling inside pagers (git diff, less...).
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
 ! for 'fake' transparency (without Compton) uncomment the following three lines
 ! URxvt*inheritPixmap:                  true
 ! URxvt*transparent:                    true
