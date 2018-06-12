@@ -216,9 +216,17 @@ _comp_options+=(globdots)
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=1'
 ZSH_AUTOSUGGEST_STRATEGY=match_prev_cmd
 
+# Remove forward-char widgets from ACCEPT
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#forward-char}")
+ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#vi-forward-char}")
+
+# Add forward-char widgets to PARTIAL_ACCEPT
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(forward-char)
+ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(vi-forward-char)
+
 # Press <C-Space> to autocomplete and execute command.
 bindkey '^ ' autosuggest-execute
-bindkey '^e' forward-word
+bindkey '^q' forward-word
 
 # go - cd into the directory of the selected file
 go() {
