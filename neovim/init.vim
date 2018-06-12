@@ -79,6 +79,8 @@ Plug 'takac/vim-hardtime'
 " Readline style insertion.
 Plug 'tpope/vim-rsi'
 
+" Move lines or block of lines.
+Plug 'matze/vim-move'
 
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
@@ -405,6 +407,9 @@ set inccommand=nosplit
 " Break words if the wrap option is set.
 set nolinebreak
 
+" Indent a wrapped line.
+set breakindent
+
 " Disable two spaces in join commands.
 set nojoinspaces
 
@@ -458,10 +463,14 @@ let g:netrw_preview = 1
 "--------------------------------General Mappings------------------------------"{{{
 
 " Use j and k in wrap lines.
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
+"nnoremap j gj
+"nnoremap k gk
+"nnoremap gj j
+"nnoremap gk k
+
+" Use j and k in wrap lines unless preceded by a count.
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Shortcut to toogle showing spaces and tabs.
 nnoremap <M-F12> :set listchars=tab:\ \ ,eol:₋,extends:>,precedes:<,trail:·<CR>
@@ -627,6 +636,13 @@ nnoremap <A-y> mz^yg_`z:delmarks z<cr>
 " Toggle highlighting the search string.
 nnoremap <silent> <F1> :set hlsearch!<cr>
 
+" Go previous or next buffer with <Alt-{j,k}>.
+nmap <M-j> <Plug>unimpairedBPrevious
+nmap <M-k> <Plug>unimpairedBNext
+
+" Execute a macro in visual mode.
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -763,6 +779,7 @@ let g:mta_filetypes = {
     \ 'jinja' : 1,
     \ 'php' : 1,
     \ 'vue' : 1,
+    \ 'javascript.jsx' : 1,
     \}
 
 "/
@@ -1083,6 +1100,8 @@ let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["h", "j", "k", "l",
             \"+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
+nnoremap <silent> <F3> :HardTimeToggle<CR>
+
 "/
 ""/ vim-dirvish
 "/
@@ -1168,6 +1187,13 @@ map gz# <Plug>(asterisk-gz#)
 
 " Enable keepCursor feature.
 let g:asterisk#keeppos = 1
+
+"/
+""/ vim-move
+"/
+
+let g:move_key_modifier = 'C-M'
+"let g:move_auto_indent = 0
 
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
@@ -1257,6 +1283,12 @@ augroup vimrc-incsearch-highlight
   autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
+" Update the auto read of a file after 4 seconds.
+augroup autoRead
+    autocmd!
+    autocmd CursorHold * silent! checktime
+augroup END
+
 "--------------------------------End Auto Commands-----------------------------"
 "}}}
 
@@ -1308,6 +1340,12 @@ function! TabMessage(cmd)
     setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
     silent put=message
   endif
+endfunction
+
+" Function to execute a recorded macro over a selected text.
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
 "--------------------------------End Functions---------------------------------"
