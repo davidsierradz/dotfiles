@@ -125,7 +125,10 @@ XTerm*termName: xterm-256color
 !URxvt.font: xft:Anonymice Powerline:pixelsize=16
 !URxvt.font: xft:DroidSansMonoForPowerline Nerd Font:pixelsize=16:antialias=true:hinting=true
 !URxvt.font: xft:UbuntuMonoDerivativePowerline Nerd Font:pixelsize=24:antialias=true:hinting=true
-URxvt.font: xft:Hack Nerd Font Mono:pixelsize=26:antialias=true:hinting=true
+URxvt.font:           xft:Hack Nerd Font Mono:style=Regular:pixelsize=16:antialias=true:hinting=true
+URxvt.boldFont:       xft:Hack Nerd Font Mono:style=Bold:pixelsize=16:antialias=true:hinting=true
+URxvt.italicFont:     xft:Hack Nerd Font Mono:style=Italic:pixelsize=16:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Hack Nerd Font Mono:style=Bold Italic:pixelsize=16:antialias=true:hinting=true
 URxvt.depth: 32
 !URxvt.background: [80]#000000
 URxvt*scrollBar:                      false
@@ -134,7 +137,7 @@ URxvt*cursorBlink:                    true
 !URxvt*background:                     black
 !URxvt*foreground:                     grey
 URxvt*saveLines:                      50000
-URxvt.letterSpace: 0
+URxvt.letterSpace: -1
 URxvt.intensityStyles: false
 
 URxvt.perl-ext-common: font-size,matcher
