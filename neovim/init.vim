@@ -836,6 +836,8 @@ let g:maximizer_set_default_mapping = 0
 
 nnoremap <silent><leader>m :MaximizerToggle<CR>
 vnoremap <silent><leader>m :MaximizerToggle<CR>gv
+nnoremap <silent><F3> :MaximizerToggle<CR>
+vnoremap <silent><F3> :MaximizerToggle<CR>gv
 inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
 
 "/
@@ -970,7 +972,7 @@ let g:ale_php_phpcs_use_global = 1
 
 let g:ale_linters = {
             \ 'php': ['php', 'phpcs', 'phpmd', 'phpstan'],
-            \ 'javascript': ['eslint'],
+            \ 'javascript': ['eslint', 'flow'],
             \ 'css': ['stylelint'],
             \}
 
@@ -983,8 +985,12 @@ let g:ale_php_phpstan_level = '4'
 let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
 
 let g:ale_fixers = {
-            \ 'javascript': ['eslint']
+            \ 'javascript': ['prettier']
             \ }
+
+let g:ale_fix_on_save = 1
+
+let g:ale_javascript_prettier_options = '--single-quote --no-semi --trailing-comma es5'
 
 "/
 ""/ rooter.vim
@@ -1100,7 +1106,7 @@ let g:hardtime_default_on = 1
 let g:list_of_normal_keys = ["h", "j", "k", "l",
             \"+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
-nnoremap <silent> <F3> :HardTimeToggle<CR>
+nnoremap <silent> <F4> :HardTimeToggle<CR>
 
 "/
 ""/ vim-dirvish
@@ -1287,6 +1293,12 @@ augroup END
 augroup autoRead
     autocmd!
     autocmd CursorHold * silent! checktime
+augroup END
+
+" Support `-` in css property names
+augroup VimCSS3Syntax
+    autocmd!
+    autocmd FileType css setlocal iskeyword+=-
 augroup END
 
 "--------------------------------End Auto Commands-----------------------------"
