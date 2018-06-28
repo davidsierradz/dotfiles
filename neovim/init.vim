@@ -82,6 +82,9 @@ Plug 'tpope/vim-rsi'
 " Move lines or block of lines.
 Plug 'matze/vim-move'
 
+" Replace operator for Vim
+Plug 'romgrk/replace.vim'
+
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
 Plug 'iCyMind/NeoSolarized'
@@ -1200,6 +1203,14 @@ let g:asterisk#keeppos = 1
 
 let g:move_key_modifier = 'C-M'
 "let g:move_auto_indent = 0
+
+"/
+""/ replace.vim
+"/
+
+nmap R <Plug>ReplaceOperator
+vmap R <Plug>ReplaceOperator
+nmap X <Plug>ExchangeOperator
 
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
