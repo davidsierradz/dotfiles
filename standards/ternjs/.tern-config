@@ -1,16 +1,19 @@
 {
+  "ecmaVersion": 7,
   "libs": [
     "browser",
     "jquery",
-    "ecmascript"
+    "ecmascript",
+    "react"
   ],
   "loadEagerly": [
   ],
   "plugins": {
-    "requirejs": {
-      "baseURL": "./",
-      "paths": {}
-    }
+    "node": {},
+    "commonjs": {},
+    "node_resolve": {},
+    "modules": {},
+    "es_modules": {}
   }
 }
 
