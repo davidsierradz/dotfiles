@@ -5,7 +5,8 @@ if exists('g:GtkGuiLoaded')
     call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
     call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
     call rpcnotify(1, 'Gui', 'FontFeatures', 'calt, cv04, cv08, cv12, cv17, cv31, cv49')
-    "let g:GuiInternalClipboard = 1
+    let g:GuiInternalClipboard = 1
+    GuiLinespace 2
 endif
 
 " GUI font.
