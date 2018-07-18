@@ -3,7 +3,6 @@
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-
 "----------------Basics-----------------
 " Highlights the XML/HTML tags that enclose your cursor location.
 Plug 'Valloric/MatchTagAlways'
@@ -14,9 +13,6 @@ Plug 'justinmk/vim-dirvish'
 " Allows you to configure % to match more than just single characters.
 "Plug 'benjifisher/matchit.zip'
 Plug 'chrisbra/matchit'
-
-" Fuzzy finder.
-"Plug 'ctrlpvim/ctrlp.vim'
 
 " Functions for toggle comments.
 Plug 'scrooloose/nerdcommenter'
@@ -45,9 +41,6 @@ Plug 'Raimondi/delimitMate'
 
 " Change or add pair of chars surrouding an object.
 Plug 'tpope/vim-surround'
-
-" Matcher for CtrlP by word separators.
-"Plug 'sergei-dyshel/vim-abbrev-matcher'
 
 " Browse tags of current file.
 Plug 'majutsushi/tagbar'
@@ -131,17 +124,12 @@ Plug 'mileszs/ack.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 " DBGP client for Xdebug.
-"Plug 'joonty/vdebug', { 'branch': 'v2-integration' }
 Plug 'joonty/vdebug'
-
-" Manage todo.txt files.
-"Plug 'freitass/todo.txt-vim'
 
 " FZF.
 " Already installed on Manjaro-i3.
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
-
 
 "-------Completions and omnifuncs-------
 " PHP implementation of Microsoft LSP (Language Server Protocol).
@@ -171,7 +159,6 @@ Plug 'w0rp/ale'
 
 " Expand html tags.
 Plug 'mattn/emmet-vim'
-
 
 "------Syntax files and Languages-------
 " Insert and sort use statements in PHP.
