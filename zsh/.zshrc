@@ -12,12 +12,16 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable ssh vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs)
-POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
+#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
 POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
+POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=15
+POWERLEVEL9K_VCS_SHORTEN_LENGTH=15
 POWERLEVEL9K_MODE='nerdfont-fontconfig'
-POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='007'
-POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='001'
+POWERLEVEL9K_VI_INSERT_MODE_STRING=""
+#POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='007'
+#POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='001'
 POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='007'
 POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='002'
 POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
@@ -26,8 +30,8 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_TIME_BACKGROUND="blue"
-POWERLEVEL9K_TIME_FOREGROUND="white"
+#POWERLEVEL9K_TIME_BACKGROUND="blue"
+#POWERLEVEL9K_TIME_FOREGROUND="white"
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 #ZSH_POWERLINE_SHOW_OS="false"
 # Uncomment the following line to use case-sensitive completion.
@@ -174,36 +178,6 @@ bindkey -M viins "^u" kill-whole-line
 
 # More responsive toggle from normal to insert mode in vi-mode.
 export KEYTIMEOUT=1
-
-# Snippet of code to make vi_mode in zsh theme to work.
-# from https://github.com/bhilburn/powerlevel9k/issues/319#issuecomment-250894242
-function zle-line-init {
-  powerlevel9k_prepare_prompts
-  if (( ${+terminfo[smkx]} )); then
-    printf '%s' ${terminfo[smkx]}
-  fi
-  zle reset-prompt
-  zle -R
-}
-
-function zle-line-finish {
-  powerlevel9k_prepare_prompts
-  if (( ${+terminfo[rmkx]} )); then
-    printf '%s' ${terminfo[rmkx]}
-  fi
-  zle reset-prompt
-  zle -R
-}
-
-function zle-keymap-select {
-  powerlevel9k_prepare_prompts
-  zle reset-prompt
-  zle -R
-}
-
-zle -N zle-line-init
-zle -N ale-line-finish
-zle -N zle-keymap-select
 
 # Reload completions.
 autoload -U compinit && compinit
