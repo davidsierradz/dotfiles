@@ -80,7 +80,7 @@ Plug 'romgrk/replace.vim'
 
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
-Plug 'iCyMind/NeoSolarized'
+Plug 'lifepillar/vim-solarized8'
 
 " Better statusline.
 Plug 'vim-airline/vim-airline'
@@ -324,10 +324,9 @@ set number
 " Relative positions for line numbers.
 set relativenumber
 
-colorscheme NeoSolarized
-"
 set background=dark
-"let g:neosolarized_vertSplitBgTrans = 0
+colorscheme solarized8
+let g:solarized_extra_hi_groups = 1
 
 " Hide the background of the special characters in terminal.
 highlight SpecialKey cterm=standout ctermfg=3 ctermbg=NONE
@@ -383,7 +382,7 @@ set display+=lastline
 set numberwidth=1
 
 " Enable true color support
-"set termguicolors
+set termguicolors
 
 " Set the sign column to always stay.
 set signcolumn=yes
