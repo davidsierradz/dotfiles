@@ -16,7 +16,8 @@ endif
 set mouse=a
 
 " Paste on Gvim.
-set clipboard=unnamed,unnamedplus
+"set clipboard=unnamed,unnamedplus
+set clipboard=unnamedplus
 
 "--------------------------------End General-----------------------------------"
 "}}}

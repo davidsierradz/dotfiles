@@ -132,21 +132,27 @@ Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
 "-------Completions and omnifuncs-------
-" PHP implementation of Microsoft LSP (Language Server Protocol).
-Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
-Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
-
 " Autocompletion framework.
-Plug 'roxma/nvim-completion-manager'
-
-" Use ternjs as source for ncm.
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
-
-" Use MDN as source for CSS properties and syntax.
-Plug 'calebeby/ncm-css'
+Plug 'ncm2/ncm2'
+" ncm2 requires nvim-yarp
+Plug 'roxma/nvim-yarp'
+" Some completions
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'ncm2/ncm2-cssomni'
+Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+Plug 'ncm2/ncm2-html-subscope'
+" Limit ncm2 popup the matches of the
+" source with highest priority only
+"Plug 'ncm2/ncm2-highprio-pop'
 
 " CSS omnifunc.
 Plug 'othree/csscomplete.vim'
+
+" PHP implementation of Microsoft LSP (Language Server Protocol).
+Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
+Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
 " Snippet Engine.
 Plug 'SirVer/ultisnips'
@@ -167,31 +173,17 @@ Plug 'arnaud-lb/vim-php-namespace'
 " Language pack for vim.
 Plug 'sheerun/vim-polyglot'
 
-"Plug 'othree/html5.vim', {'for': ['html', 'php', 'vue']}
-
-" Updated syntax file for PHP.
-"Plug 'StanAngeloff/php.vim', {'for': 'php'}
-
 " Upstream indenting for PHP.
 Plug '2072/PHP-Indenting-for-VIm', {'for': 'php'}
 
-" Laravel Blade syntax.
-"Plug 'jwalton512/vim-blade'
-
 " Updated CSS syntax files.
 Plug 'hail2u/vim-css3-syntax'
-"Plug 'groenewege/vim-less', {'for': 'less'}
-"Plug 'cakebaker/scss-syntax.vim', {'for': ['scss', 'sass', 'vue']}
-
-" Updated >es6 syntax files.
-"Plug 'pangloss/vim-javascript', {'for': ['javascript', 'vue', 'javascript.jsx', 'html']}
-
-"Plug 'mxw/vim-jsx', {'for': ['javascript', 'javascript.jsx', 'html']}
-
-"Plug 'posva/vim-vue', {'for': 'vue'}
 
 " Set the 'path' option for miscellaneous file types.
 Plug 'tpope/vim-apathy'
+
+Plug 'Quramy/vim-js-pretty-template'
+Plug 'styled-components/vim-styled-components'
 
 "------------Standby plugins------------
 "Plug 'jsfaint/gen_tags.vim'
@@ -316,7 +308,8 @@ set shiftround
 set list
 
 " Set the special characters default.
-set listchars=tab:\ \ ,eol:₋,extends:>,precedes:<,trail:·
+"set listchars=tab:\ \ ,eol:₋,extends:>,precedes:<,trail:
+set listchars=tab:→\ ,trail:·,eol:₋,extends:⟩,precedes:⟨
 
 " Show line numbers.
 set number
@@ -462,9 +455,9 @@ nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " Shortcut to toogle showing spaces and tabs.
-nnoremap <M-F12> :set listchars=tab:\ \ ,eol:₋,extends:>,precedes:<,trail:·<CR>
-nnoremap <C-F12> :set listchars=tab:>-,eol:₋,extends:>,precedes:<,trail:·<CR>
-nnoremap <F12> :set listchars=tab:>-,eol:₋,extends:>,precedes:<,trail:·,space:·<CR>
+nnoremap <M-F12> :set listchars=tab:\ \ ,eol:₋,extends:⟩,precedes:⟨,trail:·<CR>
+nnoremap <C-F12> :set listchars=tab:→\ ,eol:₋,extends:⟩,precedes:⟨,trail:·<CR>
+nnoremap <F12> :set listchars=tab:→\ ,eol:₋,extends:⟩,precedes:⟨,trail:·,space:·<CR>
 nnoremap <S-F12> :set list!<CR>
 
 " Regenerate ctags file.
@@ -957,26 +950,50 @@ autocmd FileType php inoremap <buffer> <Leader>ss <Esc>:call PhpSortUse()<CR>
 autocmd FileType php noremap <buffer> <Leader>ss :call PhpSortUse()<CR>
 
 "/
-""/ nvim-completion-manager
+""/ ncm2
 "/
 
-" Use a fuzzy style matcher.
-let g:cm_matcher = {'module': 'cm_matchers.abbrev_matcher', 'case': 'smartcase'}
+" enable ncm2 for all buffer
+autocmd BufEnter * call ncm2#enable_for_buffer()
+
+" note that must keep noinsert in completeopt, the others is optional
+set completeopt=noinsert,menuone,noselect
+
+" supress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+au TextChangedI * call ncm2#auto_trigger()
+
+let g:ncm2#matcher = 'abbrfuzzy'
+
+" use a sorter that's more friendly for fuzzy match
+let g:ncm2#sorter = 'abbrfuzzy'
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Open the popup menu completion.
-imap <C-space> <Plug>(cm_force_refresh)
+imap <C-space> <Plug>(ncm2_manual_trigger)
 
-" Use tab to cicle trough completion menu.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+" Change the minimun letters to pop the autocomplete.
+let g:ncm2#complete_length = [[1,3],[7,2]]
 
 "/
 ""/ Cosco.vim
 "/
 
-autocmd FileType javascript,css,php nmap <buffer> <silent> , <Plug>(cosco-commaOrSemiColon)
-autocmd FileType javascript,css,php imap <buffer> <silent> <Leader>, <c-o><Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript.jsx,css,php nmap <buffer> <silent> , <Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript.jsx,css,php imap <buffer> <silent> <Leader>, <c-o><Plug>(cosco-commaOrSemiColon)
 let g:cosco_ignore_comment_lines = 1
 
 "/
@@ -986,13 +1003,14 @@ let g:cosco_ignore_comment_lines = 1
 set runtimepath+=~/dotfiles/snips
 
 let g:UltiSnipsExpandTrigger        = "<Plug>(ultisnips_expand)"
-let g:UltiSnipsJumpForwardTrigger   = "<c-j>"
-let g:UltiSnipsJumpBackwardTrigger  = "<c-k>"
+let g:UltiSnipsJumpForwardTrigger   = "<M-j>"
+let g:UltiSnipsJumpBackwardTrigger  = "<M-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " Expand the snippet.
-inoremap <silent> <c-x><c-s> <c-r>=cm#sources#ultisnips#trigger_or_popup("\<Plug>(ultisnips_expand)")<cr>
-vmap <silent> <c-x><c-s> <Plug>(ultisnips_expand)
+inoremap <silent> <expr> <C-x><C-s> ncm2_ultisnips#expand_or("\<CR>", 'n')
+imap <C-u> <Plug>(ultisnips_expand)
+vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
 
 "/
 ""/ LanguageServer.vim
@@ -1174,10 +1192,10 @@ augroup line_return
 augroup END
 
 " Set the indent options for Javascript files.
-"autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript.jsx setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for Json files.
-"autocmd FileType json setlocal ts=2 sts=2 sw=2
+autocmd FileType json setlocal ts=2 sts=2 sw=2
 
 " Set the indent options for CSS files.
 "autocmd FileType css setlocal ts=2 sts=2 sw=2
@@ -1240,6 +1258,10 @@ augroup VimCSS3Syntax
     autocmd!
     autocmd FileType css setlocal iskeyword+=-
 augroup END
+
+call jspretmpl#register_tag('gql', 'graphql')
+autocmd FileType javascript.jsx JsPreTmpl graphql
+"autocmd FileType javascript JsPreTmpl
 
 "--------------------------------End Auto Commands-----------------------------"
 "}}}
@@ -1307,6 +1329,22 @@ endfunction
 
 
 "--------------------------------Terminal Only---------------------------------"{{{
+
+" I like relative numbering when in normal mode.
+autocmd TermOpen * setlocal conceallevel=0 colorcolumn=0 relativenumber
+
+" Prefer Neovim terminal insert mode to normal mode.
+autocmd BufEnter term://* startinsert
+
+" In :terminal mode.
+tnoremap <C-Esc> <C-\><C-n>
+tnoremap <M-h> <C-\><C-N><C-w>h
+tnoremap <M-j> <C-\><C-N><C-w>j
+tnoremap <M-k> <C-\><C-N><C-w>k
+tnoremap <M-l> <C-\><C-N><C-w>l
+
+" Open a tab with a terminal with Right Ctrl (å)
+nnoremap å :tabnew term://zsh<CR>
 
 "if !has("gui_running")
 "

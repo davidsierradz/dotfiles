@@ -24,3 +24,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[alias]
+	lg = log --graph --date=relative --abbrev=4 --color --decorate --pretty=format:\"%Cred%h%C(yellow)%d %C(bold blue)%an %Creset%s %Cgreen(%ad)%Creset\" --date-order
