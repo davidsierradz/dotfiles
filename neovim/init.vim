@@ -183,7 +183,7 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'tpope/vim-apathy'
 
 Plug 'Quramy/vim-js-pretty-template'
-Plug 'styled-components/vim-styled-components'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 "------------Standby plugins------------
 "Plug 'jsfaint/gen_tags.vim'
@@ -625,6 +625,9 @@ nmap <M-k> <Plug>unimpairedBNext
 " Execute a macro in visual mode.
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
+" Copy the unnamed register to the z register.
+nnoremap <silent> <leader>z :let @z=@"<CR>
+
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -807,7 +810,7 @@ let g:closetag_close_shortcut = '<leader>>'
 "/ Javascript Libraries Syntax
 "/
 
-let g:used_javascript_libs = 'jquery,underscore,backbone,angularjs,react,handlebars'
+"let g:used_javascript_libs = 'jquery,underscore,backbone,angularjs,react,handlebars'
 "autocmd BufReadPre *.hbs set filetype=javascript
 
 "/
@@ -1052,7 +1055,7 @@ nmap <A-S-f> <Plug>(clever-f-repeat-back)
 "/
 
 let g:hardtime_timeout = 500
-let g:hardtime_default_on = 1
+let g:hardtime_default_on = 0
 let g:list_of_normal_keys = ["h", "j", "k", "l",
             \"+", "<UP>", "<DOWN>", "<LEFT>", "<RIGHT>"]
 
@@ -1113,8 +1116,8 @@ nnoremap <C-p> :Files<CR>
 ""/ vim-pasta
 "/
 
-let g:pasta_disabled_filetypes = ["python", "coffee", "markdown",
-            \"yaml", "slim", "nerdtree", "netrw", "startify", "dirvish"]
+"let g:pasta_disabled_filetypes = ["python", "coffee", "markdown",
+"            \"yaml", "slim", "nerdtree", "netrw", "startify", "dirvish"]
 
 "/
 ""/ emmet.vim
