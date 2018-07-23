@@ -913,12 +913,14 @@ let g:ale_php_phpstan_level = '4'
 let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
 
 let g:ale_fixers = {
-            \ 'javascript': ['prettier']
+            \ 'javascript': ['prettier'],
+            \ 'json': ['prettier']
             \ }
 
 let g:ale_fix_on_save = 1
 
-let g:ale_javascript_prettier_options = '--single-quote --no-semi --trailing-comma es5'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+"let g:ale_javascript_prettier_options = '--single-quote --no-semi --trailing-comma es5'
 
 "/
 ""/ rooter.vim
