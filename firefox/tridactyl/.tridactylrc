@@ -1,0 +1,128 @@
+" bovine3dom's dogfood
+
+" Provided only as an example.
+" Do not install/run without reading through as you may be surprised by some
+" of the settings.
+
+" May require the latest beta builds.
+
+" Move this to $XDG_CONFIG_DIR/tridactyl/tridactylrc (that's
+" ~/.config/tridactyl/tridactylrc to mere mortals) or ~/.tridactylrc and
+" install the native messenger (:installnative in Tridactyl). Run :source to
+" get it in the browser, or just restart.
+
+" NB: If you want "vim-like" behaviour where removing a line from 
+" here makes the setting disappear, uncomment the line below.
+
+"sanitise tridactyllocal tridactylsync
+
+"
+" Binds
+"
+
+" Comment toggler for Reddit and Hacker News
+bind ;c hint -c [class*="expand"],[class="togg"]
+
+bind J tabnext
+
+bind K tabprev
+
+bind x tabclose
+
+bind X undo
+
+bind d scrollpage 0.6
+
+bind u scrollpage -0.6
+
+bind j scrollline 5
+
+bind k scrollline -5
+"
+" Misc settings
+"
+
+" set editorcmd to suckless terminal, or use the defaults on other platforms
+js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "nvim-gtk" : "auto"; tri.config.set("editorcmd", editorcmd)})
+
+" Sane hinting mode
+set hintfiltermode simple
+set hintnames uniform
+set hintchars asdfghjkl
+set relatedopenpos related
+
+set tabopenpos last
+
+set allowautofocus false
+
+set theme dark
+"set theme greenmat
+
+set smoothscroll true
+
+" blacklist
+blacklistadd repl.it
+
+" Make Tridactyl work on more sites at the expense of some security
+set csp clobber
+fixamo_quiet
+
+" Make quickmarks for the sane Tridactyl issue view
+"quickmark t https://github.com/cmcaine/tridactyl/issues?utf8=%E2%9C%93&q=sort%3Aupdated-desc+
+
+"
+" URL redirects
+"
+
+autocmd TabEnter .* unfocus
+
+" New reddit is bad
+"autocmd DocStart www.reddit.com urlmodify -t www old
+" Mosquito nets won't make themselves
+"autocmd DocStart www.amazon.co.uk urlmodify -t www smile
+
+"------------------------------------------------------------------------------
+" Firefox settings.
+"------------------------------------------------------------------------------
+
+" Note: Not supported by Tridactyl at the moment.
+
+" Do not close the window when the last tab is closed.
+" set browser.tabs.closeWindowWithLastTab=false
+
+" Open new tabs at the end instead of after the current tab.
+" set browser.tabs.insertRelatedAfterCurrent=false
+
+" Do not warn when closing a window with tabs.
+" set browser.tabs.warnOnClose=false
+
+" Prevent focus stealing when opening links from external applications.
+" set browser.tabs.loadDivertedInBackground=true
+
+" Do not shorten URLs (protocol and trailing slash).
+" set browser.urlbar.trimURLs=false
+
+" Do not check if Firefox is the default browser.
+" set browser.shell.checkDefaultBrowser=false
+
+" Disable autofocusing elements via HTML.
+" set browser.autofocus=false
+
+" Disable warnings.
+" set browser.tabs.warnOnClose=false
+" set browser.tabs.warnOnCloseOtherTabs=false
+" set browser.tabs.warnOnOpen=false
+" set general.warnOnAboutConfig=false
+
+" Disable Pocket (I always click on that thing instead of on 'Copy Location').
+" set extensions.pocket.enabled=false
+
+" Disable autoplay of videos.
+" set media.autoplay.enabled=false
+
+" Display the raw, punycode version of internationalized domain names (IDNs).
+" This mitigates phishing attacks via IDNs.
+" set network.IDN_show_punycode=true
+
+" This will have to do until someone writes us a nice syntax file :)
+" vim: set filetype=vim:
