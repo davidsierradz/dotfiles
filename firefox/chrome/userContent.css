@@ -182,11 +182,13 @@ menupopup menu[_moz-menuactive=true] {
   color: var(--in-content-selected-text)!important;
   background-color: var(--in-content-primary-button-background-hover)!important
 }
+/*
 vbox#sidebar-box.chromeclass-extrachrome {
   border-color: var(--in-content-category-header-background)!important;
   border-right: 1px!important;
   border-style: solid!important
 }
+*/
 #_testpilot-containers_7 .menu-iconic-left,
 #treestyletab_piro_sakura_ne_jp_8 .menu-iconic-left {
   filter: invert(55%)!important
@@ -1436,7 +1438,7 @@ url-prefix(https://discovery.addons.mozilla.org) {
   #background,
   #background::after,
   #tabbar {
-    background: var(--in-content-page-background)!important
+    background: var(--grey-50)!important
   }
   /* CUSTOM */
   /* Change styling of pending (unloaded) tabs */
@@ -1469,6 +1471,7 @@ url-prefix(https://discovery.addons.mozilla.org) {
     background: #193B99 !important;
     opacity: 1;
   }
+  /* Hide close buttons on tabs. */
   .tab:not(:hover) .closebox {
     display: none;
   }
@@ -1482,6 +1485,24 @@ url-prefix(https://discovery.addons.mozilla.org) {
   }
   .tab.active .closebox:hover::before {
     background: #96afc8;
+  }
+
+
+  /* Hide .twisty and adjust margins so favicons have 7px on left. */
+  .tab .twisty {
+    visibility: hidden!important;
+    margin-left: -12px!important;
+  }
+  /* Push tab labels slightly to the right so they're completely hidden in collapsed state */
+  .tab .label {
+    margin-left: 8px!important;
+  }
+  vbox#sidebar-box.chromeclass-extrachrome {
+    border: 0!important;
+  }
+  /* Hide 'new tab' button. */
+  .newtab-button {
+    visibility: hidden!important;
   }
 }
 /*! Alters the webextension Tridactyl
