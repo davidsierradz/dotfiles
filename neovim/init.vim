@@ -959,7 +959,8 @@ autocmd FileType php noremap <buffer> <Leader>ss :call PhpSortUse()<CR>
 "/
 
 " enable ncm2 for all buffer
-autocmd BufEnter * call ncm2#enable_for_buffer()
+"autocmd BufEnter * call ncm2#enable_for_buffer()
+autocmd InsertEnter * call ncm2#enable_for_buffer()
 
 " note that must keep noinsert in completeopt, the others is optional
 set completeopt=noinsert,menuone,noselect
@@ -970,7 +971,8 @@ set shortmess+=c
 
 au TextChangedI * call ncm2#auto_trigger()
 
-let g:ncm2#matcher = 'abbrfuzzy'
+let g:ncm2#matcher = 'substrfuzzy'
+"let g:ncm2#matcher = 'abbrfuzzy'
 
 " use a sorter that's more friendly for fuzzy match
 let g:ncm2#sorter = 'abbrfuzzy'
@@ -991,7 +993,7 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 imap <C-space> <Plug>(ncm2_manual_trigger)
 
 " Change the minimun letters to pop the autocomplete.
-let g:ncm2#complete_length = [[1,3],[7,2]]
+"let g:ncm2#complete_length = [[1,3],[7,2]]
 
 "/
 ""/ Cosco.vim
