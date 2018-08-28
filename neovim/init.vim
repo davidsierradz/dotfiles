@@ -249,7 +249,7 @@ set updatetime=250
 set hidden
 
 "by default Vim saves your last 8 commands.  We can handle more.
-set history=100
+set history=1000
 
 " Look up recurively for ctags file.
 "set tags+=tags;/
@@ -515,7 +515,17 @@ nnoremap <leader>bq :bp <BAR> bd #<CR>
 
 " Close the current buffer and move to the previous one and close the window
 " This replicates the idea of closing a tab.
-nnoremap <leader>bw :bp <BAR> bd #<CR> :q<CR>
+nnoremap <leader>bw :call DeleteWindowIfNotLast()<CR>
+
+function DeleteWindowIfNotLast()
+    if (winnr('$') > 1 && len(getbufinfo({'buflisted':1})) > 1)
+        execute ":bp\<BAR>bd#\<BAR>q"
+        return 1
+    endif
+
+    echo "Only one window or buffer."
+    return 0
+endfunction
 
 " Call vim-wipeout plugin to delete all buffers not open.
 "nnoremap <leader>bd :Wipeout<CR>
@@ -627,6 +637,10 @@ xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 
 " Copy the unnamed register to the z register.
 nnoremap <silent> <leader>z :let @z=@"<CR>
+
+" Re-select visual block after indenting.
+vnoremap < <gv
+vnoremap > >gv
 
 "--------------------------------End General Mappings--------------------------"
 "}}}
@@ -1226,6 +1240,9 @@ autocmd FileType netrw setl bufhidden=wipe
 "autocmd FileType php LanguageClientStart
 autocmd FileType php setlocal omnifunc=LanguageClient#complete
 
+" Treat `$` as part of the word for PHP.
+autocmd FileType php setlocal iskeyword+=$
+
 " Start the LSP for Vue.
 "autocmd FileType vue LanguageClientStart
 autocmd FileType vue setlocal omnifunc=LanguageClient#complete
@@ -1263,7 +1280,8 @@ augroup END
 " Support `-` in css property names
 augroup VimCSS3Syntax
     autocmd!
-    autocmd FileType css setlocal iskeyword+=-
+    autocmd FileType css setlocal iskeyword+=.,-,#
+    autocmd FileType scss setlocal iskeyword+=.,-,#
 augroup END
 
 call jspretmpl#register_tag('gql', 'graphql')
