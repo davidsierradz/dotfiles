@@ -1222,7 +1222,7 @@ toolbarbutton#alltabs-button {
 
 :root {
   --thin-tab-width: 27px;
-  --wide-tab-width: 300px;
+  --wide-tab-width: 500px;
 }
 
 #sidebar-box {
