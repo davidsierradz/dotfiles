@@ -109,7 +109,7 @@ Plug 'haya14busa/vim-asterisk'
 
 " Manage marks.
 Plug 'kshenoy/vim-signature'
-
+let g:SignatureMarkTextHLDynamic=1
 " Make the yanked region apparent.
 Plug 'machakann/vim-highlightedyank'
 
@@ -974,7 +974,16 @@ autocmd FileType php noremap <buffer> <Leader>ss :call PhpSortUse()<CR>
 
 " enable ncm2 for all buffer
 "autocmd BufEnter * call ncm2#enable_for_buffer()
-autocmd InsertEnter * call ncm2#enable_for_buffer()
+"autocmd InsertEnter * call ncm2#enable_for_buffer()
+
+function s:ncm2_start(...)
+    if v:vim_did_enter
+        call ncm2#enable_for_buffer()
+    endif
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+endfunc
+
+call timer_start(500, function('s:ncm2_start'))
 
 " note that must keep noinsert in completeopt, the others is optional
 set completeopt=noinsert,menuone,noselect
@@ -983,7 +992,7 @@ set completeopt=noinsert,menuone,noselect
 " found' messages
 set shortmess+=c
 
-au TextChangedI * call ncm2#auto_trigger()
+"au TextChangedI * call ncm2#auto_trigger()
 
 let g:ncm2#matcher = 'substrfuzzy'
 "let g:ncm2#matcher = 'abbrfuzzy'
