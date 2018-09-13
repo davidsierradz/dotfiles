@@ -43,7 +43,7 @@ bind k scrollline -5
 "
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
-js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "nvim-gtk" : "auto"; tri.config.set("editorcmd", editorcmd)})
+"js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "nvim-gtk" : "auto"; tri.config.set("editorcmd", editorcmd)})
 
 " Sane hinting mode
 set hintfiltermode simple
@@ -65,7 +65,7 @@ blacklistadd repl.it
 
 " Make Tridactyl work on more sites at the expense of some security
 set csp clobber
-fixamo
+fixamo_quiet
 
 " Make quickmarks for the sane Tridactyl issue view
 "quickmark t https://github.com/cmcaine/tridactyl/issues?utf8=%E2%9C%93&q=sort%3Aupdated-desc+
@@ -77,7 +77,8 @@ set putfrom clipboard
 " URL redirects
 "
 
-autocmd TabEnter .* unfocus
+"autocmd TabEnter .* unfocus
+autocmd TabEnter mail.google.com/mail mode ignore
 
 " New reddit is bad
 "autocmd DocStart www.reddit.com urlmodify -t www old
