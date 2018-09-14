@@ -778,9 +778,9 @@ let g:maximizer_set_default_mapping = 0
 
 nnoremap <silent><leader>m :MaximizerToggle<CR>
 vnoremap <silent><leader>m :MaximizerToggle<CR>gv
-nnoremap <silent><F3> :MaximizerToggle<CR>
-vnoremap <silent><F3> :MaximizerToggle<CR>gv
-inoremap <silent><F3> <C-o>:MaximizerToggle<CR>
+nnoremap <silent>å :MaximizerToggle<CR>
+vnoremap <silent>å :MaximizerToggle<CR>gv
+inoremap <silent>å <C-o>:MaximizerToggle<CR>
 
 "/
 "/ delimitMate
@@ -876,9 +876,9 @@ let g:startify_bookmarks = [ '~/dotfiles/', '~/code/', '~/Vagrant/' ]
 let g:startify_list_order = ['bookmarks', 'sessions', 'files']
 
 let g:startify_session_before_save = [
-    \ 'echo "Cleaning up before saving.."',
-    \ 'silent! Wipeout'
-    \ ]
+            \ 'echo "Cleaning up before saving.."',
+            \ 'silent! Wipeout'
+            \ ]
 
 let g:startify_change_to_vcs_root = 1
 
@@ -1216,9 +1216,9 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 augroup line_return
     au!
     au BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
-        \ endif
+                \ if line("'\"") > 0 && line("'\"") <= line("$") |
+                \     execute 'normal! g`"zvzz' |
+                \ endif
 augroup END
 
 " Set the indent options for Javascript files.
@@ -1235,8 +1235,8 @@ autocmd FileType json setlocal ts=2 sts=2 sw=2
 
 " Autocommand to call PhpSyntaxOverride function.
 augroup phpSyntaxOverride
-  autocmd!
-  autocmd FileType php call PhpSyntaxOverride()
+    autocmd!
+    autocmd FileType php call PhpSyntaxOverride()
 augroup END
 
 " Generally we are working with mysql in sql files, auto set the filetype.
@@ -1275,9 +1275,9 @@ augroup END
 
 " Toggle hlsearch.
 augroup vimrc-incsearch-highlight
-  autocmd!
-  autocmd CmdlineEnter /,\? :set hlsearch
-  autocmd CmdlineLeave /,\? :set nohlsearch
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
 " Update the auto read of a file after 4 seconds.
@@ -1330,30 +1330,30 @@ autocmd FileType javascript.jsx JsPreTmpl graphql
 
 " Function to override @tags and @params in the comments sections of PHP.
 function! PhpSyntaxOverride()
-  hi! def link phpDocTags  phpDefine
-  hi! def link phpDocParam phpType
+    hi! def link phpDocTags  phpDefine
+    hi! def link phpDocParam phpType
 endfunction
 
 " Function to pipe an Ex command to a buffer in a new tab.
 " Usage :TabMessage command
 function! TabMessage(cmd)
-  redir => message
-  silent execute a:cmd
-  redir END
-  if empty(message)
-    echoerr "no output"
-  else
-    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
-    tabnew
-    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
-    silent put=message
-  endif
+    redir => message
+    silent execute a:cmd
+    redir END
+    if empty(message)
+        echoerr "no output"
+    else
+        " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+        tabnew
+        setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+        silent put=message
+    endif
 endfunction
 
 " Function to execute a recorded macro over a selected text.
 function! ExecuteMacroOverVisualRange()
-  echo "@".getcmdline()
-  execute ":'<,'>normal @".nr2char(getchar())
+    echo "@".getcmdline()
+    execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
 "--------------------------------End Functions---------------------------------"
@@ -1378,7 +1378,7 @@ tnoremap <M-k> <C-\><C-N><C-w>k
 tnoremap <M-l> <C-\><C-N><C-w>l
 
 " Open a tab with a terminal with Right Ctrl (å)
-nnoremap å :tabnew term://zsh<CR>
+nnoremap <Leader>t :tabnew term://zsh<CR>
 
 "if !has("gui_running")
 "
