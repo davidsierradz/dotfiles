@@ -241,8 +241,9 @@ for_window [class="Timeset-gui"] floating enable border normal
 for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Gnomato"] floating enable
-for_window [title="Developer Tools"] floating enable
+#for_window [title="DevTools"] floating enable
 for_window [title="pyruler"] floating enable
+for_window [title="Page Unresponsive"] floating enable border normal
 
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
@@ -315,8 +316,8 @@ exec --no-startup-id /home/neuromante/dotfiles/scripts/conky/start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 30 -locker blurlock
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id redshift-gtk &
-# exec --no-startup-id synergys
+#exec --no-startup-id redshift-gtk &
+#exec --no-startup-id synergy-core --server
 
 # Color palette used for i3
 # Variables are set based on the documentation:

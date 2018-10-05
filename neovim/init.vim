@@ -131,6 +131,8 @@ Plug 'joonty/vdebug'
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
 
+Plug 'tpope/vim-fugitive'
+
 "-------Completions and omnifuncs-------
 " Autocompletion framework.
 Plug 'ncm2/ncm2'
@@ -197,7 +199,6 @@ Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 "Plug 'tyru/restart.vim'
 "Plug 'FelikZ/ctrlp-py-matcher'
 "Plug 'Yggdroot/indentLine'
-"Plug 'tpope/vim-fugitive'
 "Plug 'leafgarland/typescript-vim'
 "Plug 'elzr/vim-json'
 "Plug 'jwalton512/vim-blade'
@@ -1405,6 +1406,9 @@ nnoremap <Leader>t :tabnew term://zsh<CR>
 
 
 "--------------------------------Tips and Remainders---------------------------"{{{
+
+" Pipe json buffer to python formatter:
+" `%!python -mjson.tool`
 
 "--------------------------------End Tips and Remainders-----------------------"
 "}}}

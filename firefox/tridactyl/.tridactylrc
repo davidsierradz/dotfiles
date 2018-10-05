@@ -27,9 +27,15 @@ bind J tabnext
 
 bind K tabprev
 
-bind x tabclose
+unbind X
 
-bind X undo
+unbind x
+
+bind X composite tabnext; sleep 100; tabclose #
+
+bind x composite tabprev; sleep 100; tabclose #
+
+bind D undo
 
 bind d scrollpage 0.6
 
@@ -62,6 +68,7 @@ set smoothscroll false
 
 " blacklist
 blacklistadd repl.it
+blacklistadd mail.google.com/mail
 
 " Make Tridactyl work on more sites at the expense of some security
 set csp clobber
