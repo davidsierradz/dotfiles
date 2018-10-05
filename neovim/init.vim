@@ -116,6 +116,14 @@ Plug 'machakann/vim-highlightedyank'
 " Persist folds in sessions.
 Plug 'zhimsel/vim-stay'
 
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+
+let mapleader = " "
+let maplocalleader = "\\"
+set timeoutlen=500
+nnoremap <silent> <leader> :<c-u>WhichKey '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  '\\'<CR>
+
 "-------------Integrations--------------
 " Front for Ag.
 Plug 'mileszs/ack.vim'
@@ -737,11 +745,11 @@ let g:ackprg = 'ag --vimgrep --path-to-ignore ~/dotfiles/ag/.agignore --skip-vcs
 "/
 
 " Use spacebar to start easymotion.
-nmap <C-Space> <Plug>(easymotion-prefix)
+"nmap <C-Space> <Plug>(easymotion-prefix)
 
 " One char search.
-nmap <Space> <Plug>(easymotion-s)
-vmap <Space> <Plug>(easymotion-s)
+"nmap <Space> <Plug>(easymotion-s)
+"vmap <Space> <Plug>(easymotion-s)
 "nmap <C-Space> <Plug>(easymotion-sn)
 
 let g:EasyMotion_smartcase = 1
