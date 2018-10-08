@@ -609,6 +609,9 @@ inoremap <M-s> <ESC>Xpa
 " Select text inside line.
 nnoremap vv ^vg_
 
+" Select from current cursor position to before EOL.
+nnoremap <M-v> vg_
+
 " Go to start or end of non-blank line chars.
 noremap H ^
 noremap L g_
