@@ -44,6 +44,9 @@ bind u scrollpage -0.6
 bind j scrollline 5
 
 bind k scrollline -5
+
+bind <C-1> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1))
+
 "
 " Misc settings
 "
@@ -69,6 +72,7 @@ set smoothscroll false
 " blacklist
 blacklistadd repl.it
 blacklistadd mail.google.com/mail
+blacklistadd docs.google.com
 
 " Make Tridactyl work on more sites at the expense of some security
 set csp clobber
@@ -86,6 +90,11 @@ set putfrom clipboard
 
 "autocmd TabEnter .* unfocus
 autocmd TabEnter mail.google.com/mail mode ignore
+autocmd TabEnter docs.google.com mode ignore
+autocmd TabEnter .* composite mode normal ; hidecmdline
+autocmd DocLoad .* composite mode normal ; hidecmdline
+autocmd DocStart .* composite mode normal ; hidecmdline
+"autocmd DocLoad https://news.ycombinator.com/item js setTimeout(() => {[...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1))}, 2000);
 
 " New reddit is bad
 "autocmd DocStart www.reddit.com urlmodify -t www old
