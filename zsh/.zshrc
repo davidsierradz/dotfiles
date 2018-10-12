@@ -306,5 +306,27 @@ bindkey '^y' fzf-history-widget-accept
 #export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 #export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# ALT-D - Paste the selected directory path into the command line
+__fseldir() {
+    local cmd="command find -L . -mindepth 1 \\( -path '*/\\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
+        -o -type d -print 2> /dev/null | cut -b3-"
+    setopt localoptions pipefail 2> /dev/null
+    eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) -m "$@" | while read item; do
+    echo -n "${(q)item} "
+done
+local ret=$?
+echo
+}
+
+fzf-dirr-widget() {
+LBUFFER="${LBUFFER}$(__fseldir)"
+local ret=$?
+zle reset-prompt
+return $ret
+}
+
+zle     -N   fzf-dirr-widget
+bindkey '\ed' fzf-dirr-widget
+
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh

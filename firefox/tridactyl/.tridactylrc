@@ -14,7 +14,7 @@
 " NB: If you want "vim-like" behaviour where removing a line from 
 " here makes the setting disappear, uncomment the line below.
 
-"sanitise tridactyllocal tridactylsync
+sanitise tridactyllocal tridactylsync
 
 "
 " Binds
@@ -46,6 +46,18 @@ bind j scrollline 5
 bind k scrollline -5
 
 bind <C-1> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1))
+
+bind --mode=insert      <C-a> im_beginning_of_line
+bind --mode=input       <C-a> im_beginning_of_line
+bind --mode=insert      <C-e> im_end_of_line
+bind --mode=input       <C-e> im_end_of_line
+bind --mode=insert      <C-k> im_kill_line
+bind --mode=input       <C-k> im_kill_line
+bind --mode=insert      <C-u> im_backward_kill_line
+bind --mode=input       <C-u> im_backward_kill_line
+" One day this will work...
+bind --mode=insert      <C-w> im_backward_kill_word
+bind --mode=input <C-w> im_backward_kill_word
 
 "
 " Misc settings
