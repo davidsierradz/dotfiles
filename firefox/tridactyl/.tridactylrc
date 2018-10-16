@@ -35,6 +35,8 @@ bind X composite tabnext; sleep 100; tabclose #
 
 bind x composite tabprev; sleep 100; tabclose #
 
+bind <C-x> composite buffer #; sleep 100; tabclose #
+
 bind D undo
 
 bind d scrollpage 0.6
@@ -45,7 +47,36 @@ bind j scrollline 5
 
 bind k scrollline -5
 
-bind <C-1> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1))
+bind <BS> buffer #
+
+"(() => {
+"  var promise = new Promise((r, reject) => {
+"    var body = document.getElementsByClassName("comment-tree")[0];
+"    var interval = setInterval(() => {
+"      try {
+"        var e = body.querySelector(".athing.comtr:not(.noshow):not(.coll)");
+"        e.getElementsByClassName("togg")[0].click();
+"      } catch (e) {
+"        reject(interval);
+"      }
+"    }, 500);
+"  });
+"  promise.catch((interval) => {
+"    clearInterval(interval);
+"  });
+"})();
+
+" Collapse first level parents but not any children.
+bind <C-1> js (()=>{var a=new Promise((b,c)=>{var d=document.getElementsByClassName("comment-tree")[0],f=setInterval(()=>{try{var g=d.querySelector(".athing.comtr:not(.noshow):not(.coll)");g.getElementsByClassName("togg")[0].click()}catch(h){c(f)}},50)});a.catch(b=>{clearInterval(b)})})();
+
+" Collapse only second level comments whor are not collapsed or hidden.
+bind <C-2> js [...document.querySelectorAll('tr.athing.comtr:not(.noshow):not(.coll)')].filter(e => e.querySelector('td.ind img').attributes.width.value === '40').forEach(e => setTimeout(() => {e.querySelector('.togg').click()}, 1));
+
+" Collapse only third level comments who are not collapsed.
+bind <C-3> js [...document.querySelectorAll('tr.athing.comtr:not(.coll)')].filter(e => e.querySelector('td.ind img').attributes.width.value === '80').forEach(e => setTimeout(() => {e.querySelector('.togg').click()}, 1));
+
+" Collapse all level comments.
+bind <C-4> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1))
 
 bind --mode=insert      <C-a> im_beginning_of_line
 bind --mode=input       <C-a> im_beginning_of_line
@@ -56,8 +87,15 @@ bind --mode=input       <C-k> im_kill_line
 bind --mode=insert      <C-u> im_backward_kill_line
 bind --mode=input       <C-u> im_backward_kill_line
 " One day this will work...
-bind --mode=insert      <C-w> im_backward_kill_word
-bind --mode=input <C-w> im_backward_kill_word
+bind --mode=insert      <C-x> im_backward_kill_word
+bind --mode=input       <C-x> im_backward_kill_word
+bind --mode=insert      <A-x> im_kill_word
+bind --mode=input       <A-x> im_kill_word
+
+bind --mode=insert      <C-m> im_backward_word
+bind --mode=input       <C-m> im_backward_word
+bind --mode=insert      <A-m> im_forward_word
+bind --mode=input       <A-m> im_forward_word
 
 "
 " Misc settings
@@ -106,7 +144,7 @@ autocmd TabEnter docs.google.com mode ignore
 autocmd TabEnter .* composite mode normal ; hidecmdline
 autocmd DocLoad .* composite mode normal ; hidecmdline
 autocmd DocStart .* composite mode normal ; hidecmdline
-"autocmd DocLoad https://news.ycombinator.com/item js setTimeout(() => {[...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1))}, 2000);
+autocmd DocLoad https://news.ycombinator.com/item js setTimeout(() => {[...document.querySelectorAll('tr.athing.comtr:not(.noshow):not(.coll)')].filter(e => e.querySelector('td.ind img').attributes.width.value === '40').forEach(e => setTimeout(() => {e.querySelector('.togg').click()}, 1));}, 2000);
 
 " New reddit is bad
 "autocmd DocStart www.reddit.com urlmodify -t www old
