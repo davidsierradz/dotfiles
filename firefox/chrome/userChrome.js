@@ -1,7 +1,7 @@
-
+// ==UserScript==
 // @name           userChrome.js
 // @namespace      scrollbars_win10
-// @version        0.0.4
+// @version        0.0.5
 // @note           Windows 10 style by /u/mrkwatz https://www.reddit.com/r/FirefoxCSS/comments/7fkha6/firefox_57_windows_10_uwp_style_overlay_scrollbars/
 // @note           Brought to Firefox 57 by /u/Wiidesire https://www.reddit.com/r/firefox/comments/7f6kc4/floating_scrollbar_finally_possible_in_firefox_57/
 // @note           userChrome.js https://github.com/nuchi/firefox-quantum-userchromejs
@@ -25,6 +25,12 @@
             position: relative!important;
             background-color: transparent;
             pointer-events: none;
+            z-index: 2147483647;
+        }
+        :not(select):not(hbox) > scrollbar * {
+            -moz-appearance: none!important;
+            background-color: transparent!important;
+            pointer-events: auto;
         }
         :not(select):not(hbox) > scrollbar thumb {
             -moz-appearance: none!important;
@@ -40,13 +46,13 @@
             margin-top: -12px;
         }
         :not(select):not(hbox) > scrollbar[orient = "vertical"] thumb {
-            border-right: 2px solid rgba(133, 132, 131, 1);
+            border-right: 3px solid rgba(38, 139, 210, 1);
             width: 12px;
             min-height: 12px;
             transition: border 0.1s ease-in;
         }
         :not(select):not(hbox) > scrollbar[orient = "horizontal"] thumb {
-            border-bottom: 2px solid rgba(133, 132, 131, 1);
+            border-bottom: 3px solid rgba(38, 139, 210, 1);
             min-width: 12px;
             transition: border 0.1s ease-in;
         }

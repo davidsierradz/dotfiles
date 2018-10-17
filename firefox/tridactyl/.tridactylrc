@@ -14,7 +14,7 @@
 " NB: If you want "vim-like" behaviour where removing a line from 
 " here makes the setting disappear, uncomment the line below.
 
-sanitise tridactyllocal tridactylsync
+"sanitise tridactyllocal tridactylsync
 
 "
 " Binds
@@ -76,7 +76,7 @@ bind <C-2> js [...document.querySelectorAll('tr.athing.comtr:not(.noshow):not(.c
 bind <C-3> js [...document.querySelectorAll('tr.athing.comtr:not(.coll)')].filter(e => e.querySelector('td.ind img').attributes.width.value === '80').forEach(e => setTimeout(() => {e.querySelector('.togg').click()}, 1));
 
 " Collapse all level comments.
-bind <C-4> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1))
+bind <C-4> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1));
 
 bind --mode=insert      <C-a> im_beginning_of_line
 bind --mode=input       <C-a> im_beginning_of_line
