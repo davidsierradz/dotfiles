@@ -25,6 +25,8 @@ bind ;c hint -c [class*="expand"],[class="togg"]
 
 bind ä hint -c [class*="expand"],[class="togg"]
 
+bindurl news\.ycombinator\.com/item ` hint -c [class*="expand"],[class="togg"]
+
 bind J tabnext
 
 bind K tabprev
