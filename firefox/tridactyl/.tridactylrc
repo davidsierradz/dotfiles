@@ -14,7 +14,8 @@
 " NB: If you want "vim-like" behaviour where removing a line from 
 " here makes the setting disappear, uncomment the line below.
 
-"sanitise tridactyllocal tridactylsync
+sanitise tridactyllocal tridactylsync
+set storageloc local
 
 "
 " Binds
@@ -22,8 +23,6 @@
 
 " Comment toggler for Reddit and Hacker News
 bind ;c hint -c [class*="expand"],[class="togg"]
-
-bind ä hint -c [class*="expand"],[class="togg"]
 
 bindurl news\.ycombinator\.com/item ` hint -c [class*="expand"],[class="togg"]
 
@@ -52,6 +51,10 @@ bind j scrollline 5
 bind k scrollline -5
 
 bind <BS> buffer #
+
+bind <C->> tabmove
+
+bind <C-<> tabmove ^
 
 "(() => {
 "  var promise = new Promise((r, reject) => {
@@ -142,6 +145,9 @@ fixamo_quiet
 
 set yankto clipboard
 set putfrom clipboard
+
+set newtabfocus page
+"set newtab about:blank
 
 "
 " URL redirects
