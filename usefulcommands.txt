@@ -23,6 +23,9 @@ sudo journalctl --vacuum-size=100M
 Check all files:
 sudo ncdu /
 
+Check disk space:
+df -h
+
 Use gnome settings:
 gsettings get org.gnome.desktop.interface monospace-font-name
 
@@ -81,6 +84,8 @@ sudo lshw -class network
 Revisar el sha256 de un archivo:
 sha256sum --check manjaro-i3-17.1.8-stable-x86_64.iso.sha256
 
+Pyruler (v: vertical, h: horizontal, q: cerrar):
+python /home/neuromante/dotfiles/scripts/pyruler.py
 
 --------------------------------------------------------------------------------
 

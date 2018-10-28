@@ -22,9 +22,12 @@ set storageloc local
 "
 
 " Comment toggler for Reddit and Hacker News
-bind ;c hint -c [class*="expand"],[class="togg"]
+"bind ;c hint -c [class*="expand"],[class="togg"]
 
+bindurl http://hckrnews.com/ ` hint -br
 bindurl news\.ycombinator\.com/item ` hint -c [class*="expand"],[class="togg"]
+
+bind <Escape> composite mode normal; unfocus; hidecmdline
 
 bind J tabnext
 
