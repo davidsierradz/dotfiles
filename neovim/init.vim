@@ -1193,6 +1193,13 @@ nmap R <Plug>ReplaceOperator
 vmap R <Plug>ReplaceOperator
 nmap X <Plug>ExchangeOperator
 
+"/
+""/ targets.vim
+"/
+
+"Controls the keys used in maps for seeking next and last text objects.
+let g:targets_nl = 'nN'
+
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
 

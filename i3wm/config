@@ -9,8 +9,8 @@ set $mod1 Mod1
 # workspace_layout tabbed <stacking|tabbed>
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 2
-new_float normal
+default_border pixel 3
+default_floating_border normal
 
 # Hide borders
 hide_edge_borders smart
