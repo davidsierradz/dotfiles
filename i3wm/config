@@ -317,6 +317,7 @@ exec --no-startup-id /home/neuromante/dotfiles/scripts/conky/start_conky_maia
 exec --no-startup-id xautolock -time 30 -locker blurlock
 exec_always --no-startup-id fix_xcursor
 #exec --no-startup-id redshift-gtk &
+exec --no-startup-id unclutter --ignore-scrolling --timeout 2 --exclude-root --fork
 #exec --no-startup-id synergy-core --server
 
 # Color palette used for i3
@@ -535,6 +536,8 @@ mode "$mode_spotify" {
 # Open a terminal in floating mode.
 bindsym $mod+shift+Return exec --no-startup-id urxvt -geometry 100x30 -name "floating_urxvt"
 for_window [class="URxvt" instance="floating_urxvt$"] floating toggle
+
+bindsym $mod+apostrophe exec --no-startup-id xdotool mousemove 1350 10000 && xinput-toggle -r "SynPS/2 Synaptics TouchPad" -n
 
 #for_window [instance="__scratchpad"] move scratchpad
 #bindsym $mod+shift+t exec --no-startup-id urxvt -name __scratchpad
