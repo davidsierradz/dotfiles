@@ -76,7 +76,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases docker docker-compose git vi-mode yarn zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+plugins=(common-aliases docker docker-compose git vi-mode yarn zsh-autopair zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 # User configuration
 DEFAULT_USER=neuromante
@@ -122,6 +122,10 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -lAFh --group-directories-first'
 #Clear
 alias c='clear'
+
+# Python JSON prettier
+alias -g J='| python -m json.tool'
+
 #Open vim with mimi rc
 #alias vim='vim -u /home/neuromante/dotfiles/vim/.vimrc-mini'
 
@@ -177,7 +181,7 @@ bindkey -M viins "^u" kill-whole-line
 #zle -N zle-keymap-select
 
 # More responsive toggle from normal to insert mode in vi-mode.
-export KEYTIMEOUT=1
+export KEYTIMEOUT=25
 
 # Reload completions.
 autoload -U compinit && compinit
@@ -330,3 +334,29 @@ bindkey '\ed' fzf-dirr-widget
 
 [ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+
+# Vim Surround see: https://github.com/zsh-users/zsh/blob/master/Functions/Zle/surround
+autoload -Uz surround
+zle -N delete-surround surround
+zle -N add-surround surround
+zle -N change-surround surround
+bindkey -a cs change-surround
+bindkey -a ds delete-surround
+bindkey -a ys add-surround
+bindkey -M visual S add-surround
+
+autoload -U select-quoted
+zle -N select-quoted
+for m in visual viopp; do
+    for c in {a,i}{\',\",\`}; do
+        bindkey -M $m $c select-quoted
+    done
+done
+
+autoload -U select-bracketed
+zle -N select-bracketed
+for m in visual viopp; do
+   for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do
+       bindkey -M $m $c select-bracketed
+   done
+done

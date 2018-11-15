@@ -1,0 +1,32 @@
+# Maintainer: David Sierra DiazGranados <davidsierradz at gmail dot com>
+_name='zsh-autopair'
+pkgname="${_name}-git"
+pkgver=78
+pkgrel=1
+pkgdesc='Auto-close and delete matching delimiters in zsh'
+url='https://github.com/hlissner/zsh-autopair'
+arch=('any')
+groups=('modified')
+license=(GPL)
+depends=('zsh' 'oh-my-zsh-git')
+makedepends=('git')
+provides=('zsh-autopair')
+source=("${_name}::${url//https/git}")
+md5sums=('SKIP')
+
+pkgver() {
+     cd "${srcdir}/${_name}"
+     /usr/bin/git rev-list --count HEAD
+}
+
+package() {
+    cd "${srcdir}/${_name}"
+
+    rm "zsh-autopair.plugin.zsh"
+    touch "zsh-autopair.plugin.zsh"
+    echo 'source ${0:A:h}/autopair.zsh' > "zsh-autopair.plugin.zsh"
+
+    install -d "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+    install -Dm644 "autopair.zsh" "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+    install -Dm644 "zsh-autopair.plugin.zsh" "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+}
