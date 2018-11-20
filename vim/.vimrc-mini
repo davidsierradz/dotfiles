@@ -154,4 +154,7 @@ let g:netrw_banner = 0
 
 autocmd FileType netrw setl bufhidden=wipe
 
+autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
+
 " vim:set ft=vim et sw=2:
