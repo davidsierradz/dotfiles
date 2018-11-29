@@ -37,11 +37,11 @@ unbind X
 
 unbind x
 
-bind X composite tabnext; sleep 100; tabclose #
+bind C composite tabnext; sleep 100; tabclose #
 
-bind x composite tabprev; sleep 100; tabclose #
+bind c composite tabprev; sleep 100; tabclose #
 
-bind <C-x> composite buffer #; sleep 100; tabclose #
+bind x composite buffer #; sleep 100; tabclose #
 
 bind D undo
 

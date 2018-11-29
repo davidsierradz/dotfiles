@@ -145,6 +145,7 @@ Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 Plug 'ncm2/ncm2-html-subscope'
+Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
 " Limit ncm2 popup the matches of the
 " source with highest priority only
 "Plug 'ncm2/ncm2-highprio-pop'

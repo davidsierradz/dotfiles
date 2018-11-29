@@ -87,6 +87,9 @@ sha256sum --check manjaro-i3-17.1.8-stable-x86_64.iso.sha256
 Pyruler (v: vertical, h: horizontal, q: cerrar):
 python /home/neuromante/dotfiles/scripts/pyruler.py
 
+Restart pulseaudio
+pulseaudio --kill then pulseaudio --start
+
 --------------------------------------------------------------------------------
 
 Pacman:
