@@ -131,9 +131,9 @@ alias -g J='| python -m json.tool'
 
 # want your terminal to support 256 color schemes? I do ...
 #export TERM=xterm-256color
-export EDITOR="vim"
+export EDITOR="/usr/bin/vim"
+export VISUAL="/usr/bin/vim"
 export USE_EDITOR=$EDITOR
-export VISUAL="nvim-gtk"
 export LC_COLLATE="C"
 
 # dircolors
@@ -143,8 +143,6 @@ eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
 # Use backwards search in vi-mode.
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
-
-bindkey -v
 
 # Ctrl-S to insert sudo in front of command
 function prepend-sudo { # Insert "sudo " at the beginning of the line
@@ -382,3 +380,18 @@ echo -ne '\e[5 q'
 preexec() {
     echo -ne '\e[5 q'
 }
+
+bindkey -M vicmd ' ' edit-command-line
+bindkey -M vicmd 'v' visual-mode
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search

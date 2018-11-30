@@ -132,13 +132,6 @@ set theme dark
 
 set smoothscroll false
 
-" blacklist
-blacklistadd repl.it
-blacklistadd mail.google.com/mail
-blacklistadd mail.google.com/mail/*
-blacklistadd docs.google.com
-blacklistadd docs.google.com/*
-
 " Make Tridactyl work on more sites at the expense of some security
 set csp clobber
 fixamo_quiet
@@ -156,15 +149,20 @@ set newtabfocus page
 " URL redirects
 "
 
-"autocmd TabEnter .* unfocus
-autocmd TabEnter mail.google.com/mail mode ignore
-autocmd TabEnter mail.google.com/mail/* mode ignore
-autocmd TabEnter docs.google.com mode ignore
-autocmd TabEnter docs.google.com/* mode ignore
+autocmd TabEnter .* unfocus
 autocmd TabEnter .* composite mode normal ; hidecmdline
 autocmd DocLoad .* composite mode normal ; hidecmdline
 autocmd DocStart .* composite mode normal ; hidecmdline
+
 autocmd DocLoad https://news.ycombinator.com/item js setTimeout(() => {[...document.querySelectorAll('tr.athing.comtr:not(.noshow):not(.coll)')].filter(e => e.querySelector('td.ind img').attributes.width.value === '40').forEach(e => setTimeout(() => {e.querySelector('.togg').click()}, 1));}, 2000);
+
+autocmd DocLoad https://mail.google.com/mail/u/0/* mode ignore
+autocmd DocStart https://mail.google.com/mail/u/0/* mode ignore
+autocmd TabEnter https://mail.google.com/mail/u/0/* mode ignore
+
+autocmd DocLoad docs.google.com/* mode ignore
+autocmd DocStart docs.google.com/* mode ignore
+autocmd TabEnter docs.google.com/* mode ignore
 
 " New reddit is bad
 "autocmd DocStart www.reddit.com urlmodify -t www old
