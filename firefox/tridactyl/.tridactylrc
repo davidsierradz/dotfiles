@@ -88,24 +88,29 @@ bind <C-3> js [...document.querySelectorAll('tr.athing.comtr:not(.coll)')].filte
 " Collapse all level comments.
 bind <C-4> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1));
 
-bind --mode=insert      <C-a> im_beginning_of_line
-bind --mode=input       <C-a> im_beginning_of_line
-bind --mode=insert      <C-e> im_end_of_line
-bind --mode=input       <C-e> im_end_of_line
-bind --mode=insert      <C-k> im_kill_line
-bind --mode=input       <C-k> im_kill_line
-bind --mode=insert      <C-u> im_backward_kill_line
-bind --mode=input       <C-u> im_backward_kill_line
-" One day this will work...
-bind --mode=insert      <C-x> im_backward_kill_word
-bind --mode=input       <C-x> im_backward_kill_word
-bind --mode=insert      <A-x> im_kill_word
-bind --mode=input       <A-x> im_kill_word
+bind --mode=insert      <C-a> text.beginning_of_line
+bind --mode=input       <C-a> text.beginning_of_line
 
-bind --mode=insert      <C-m> im_backward_word
-bind --mode=input       <C-m> im_backward_word
-bind --mode=insert      <A-m> im_forward_word
-bind --mode=input       <A-m> im_forward_word
+bind --mode=insert      <C-e> text.end_of_line
+bind --mode=input       <C-e> text.end_of_line
+
+bind --mode=insert      <C-k> text.kill_line
+bind --mode=input       <C-k> text.kill_line
+
+bind --mode=insert      <C-u> text.backward_kill_line
+bind --mode=input       <C-u> text.backward_kill_line
+
+bind --mode=insert      <C-x> text.backward_kill_word
+bind --mode=input       <C-x> text.backward_kill_word
+
+bind --mode=insert      <A-x> text.kill_word
+bind --mode=input       <A-x> text.kill_word
+
+bind --mode=insert      <C-m> text.backward_word
+bind --mode=input       <C-m> text.backward_word
+
+bind --mode=insert      <A-m> text.forward_word
+bind --mode=input       <A-m> text.forward_word
 
 bind --mode=insert      <A-Escape> mode input
 bind --mode=input      <A-Escape> mode insert
