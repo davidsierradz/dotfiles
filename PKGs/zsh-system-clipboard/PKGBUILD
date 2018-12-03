@@ -1,0 +1,32 @@
+# Maintainer: David Sierra DiazGranados <davidsierradz at gmail dot com>
+_name='zsh-system-clipboard'
+pkgname="${_name}-git"
+pkgver=81
+pkgrel=1
+pkgdesc='System clipboard key bindings for Zsh Line Editor with vi mode.'
+url='https://github.com/kutsan/zsh-system-clipboard.git'
+arch=('any')
+groups=('modified')
+license=(GPL)
+depends=('zsh' 'oh-my-zsh-git')
+makedepends=('git')
+provides=('zsh-system-clipboard')
+source=("${_name}::${url//https/git}")
+md5sums=('SKIP')
+
+pkgver() {
+     cd "${srcdir}/${_name}"
+     /usr/bin/git rev-list --count HEAD
+}
+
+package() {
+    cd "${srcdir}/${_name}"
+
+    rm "zsh-system-clipboard.plugin.zsh"
+    touch "zsh-system-clipboard.plugin.zsh"
+    echo 'source ${0:A:h}/zsh-system-clipboard.zsh' > "zsh-system-clipboard.plugin.zsh"
+
+    install -d "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+    install -Dm644 "zsh-system-clipboard.zsh" "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+    install -Dm644 "zsh-system-clipboard.plugin.zsh" "${pkgdir}/usr/share/oh-my-zsh/custom/plugins/${_name}"
+}

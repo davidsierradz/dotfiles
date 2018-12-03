@@ -1421,6 +1421,9 @@ nnoremap <Leader>t :tabnew term://zsh<CR>
 " Pipe json buffer to python formatter:
 " `%!python -mjson.tool`
 
+" Send selected lines to clipboard:
+" `'<,'>w ! xsel -bi`
+
 "--------------------------------End Tips and Remainders-----------------------"
 "}}}
 " vim: set fdm=marker fmr={{{,}}} :

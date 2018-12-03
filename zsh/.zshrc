@@ -1,13 +1,6 @@
 #th to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="solarized-powerline"
-#ZSH_THEME="agnoster"
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable ssh vi_mode)
@@ -33,25 +26,11 @@ POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 #POWERLEVEL9K_TIME_BACKGROUND="blue"
 #POWERLEVEL9K_TIME_FOREGROUND="white"
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-#ZSH_POWERLINE_SHOW_OS="false"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
 # Uncomment the following line to disable bi-weekly auto-update checks.
 DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -59,27 +38,15 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases docker docker-compose git vi-mode yarn zsh-autopair zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
+plugins=(common-aliases docker docker-compose git vi-mode yarn zsh-autopair zsh-autosuggestions zsh-completions zsh-system-clipboard zsh-syntax-highlighting)
 
 # User configuration
 DEFAULT_USER=neuromante
+
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -88,32 +55,10 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
-source $ZSH/oh-my-zsh.sh
-
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+source $ZSH/oh-my-zsh.sh
 
 ### CUSTOM
 
@@ -122,12 +67,8 @@ source $ZSH/oh-my-zsh.sh
 alias ll='ls -lAFh --group-directories-first'
 #Clear
 alias c='clear'
-
 # Python JSON prettier
 alias -g J='| python -m json.tool'
-
-#Open vim with mimi rc
-#alias vim='vim -u /home/neuromante/dotfiles/vim/.vimrc-mini'
 
 # want your terminal to support 256 color schemes? I do ...
 #export TERM=xterm-256color
@@ -137,7 +78,6 @@ export USE_EDITOR=$EDITOR
 export LC_COLLATE="C"
 
 # dircolors
-#eval "$(dircolors ~/.dir_colors)"
 eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
 
 # Use backwards search in vi-mode.
@@ -162,29 +102,13 @@ bindkey -M viins "^b" backward-char
 bindkey -M viins "^f" forward-char
 bindkey -M viins "^u" kill-whole-line
 
-# Not necessary see man zshzle.
-#bindkey '^?' backward-delete-char
-#bindkey '^h' backward-delete-char
-#bindkey '^w' backward-kill-word
-#bindkey '^r' history-incremental-search-backward
-#bindkey "^[3;5~" delete-char
-
-#function zle-line-init zle-keymap-select {
-#    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]%  %{$reset_color%}"
-#    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-#    zle reset-prompt
-#}
-#
-#zle -N zle-line-init
-#zle -N zle-keymap-select
-
 # More responsive toggle from normal to insert mode in vi-mode.
-export KEYTIMEOUT=25
+export KEYTIMEOUT=5
 
 # Reload completions.
 autoload -U compinit && compinit
 
-# enable completition for hidden files .
+# enable completition for hidden files.
 _comp_options+=(globdots)
 
 # zsh autosugestions plugin settings
@@ -199,6 +123,8 @@ ZSH_AUTOSUGGEST_ACCEPT_WIDGETS=("${(@)ZSH_AUTOSUGGEST_ACCEPT_WIDGETS:#vi-forward
 # Add forward-char widgets to PARTIAL_ACCEPT
 ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(forward-char)
 ZSH_AUTOSUGGEST_PARTIAL_ACCEPT_WIDGETS+=(vi-forward-char)
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
 # Press <C-Space> to autocomplete and execute command.
 bindkey '^ ' autosuggest-execute
@@ -217,82 +143,6 @@ fa() {
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
-is_in_git_repo() {
-    git rev-parse HEAD > /dev/null 2>&1
-}
-
-fzf-down() {
-    fzf --height 80% "$@" --border
-}
-
-unalias gf
-gf() {
-    is_in_git_repo || return
-    git -c color.status=always status --short |
-        fzf-down -m --ansi --nth 2..,.. \
-        --preview '(git diff --color=always -- {-1} | sed 1,4d; cat {-1}) | head -500' |
-        cut -c4- | sed 's/.* -> //'
-}
-
-unalias gb
-gb() {
-    is_in_git_repo || return
-    git branch -a --color=always | grep -v '/HEAD\s' | sort |
-        fzf-down --ansi --multi --tac --preview-window right:70% \
-        --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" $(sed s/^..// <<< {} | cut -d" " -f1) | head -'$LINES |
-        sed 's/^..//' | cut -d' ' -f1 |
-        sed 's#^remotes/##'
-}
-
-gt() {
-    is_in_git_repo || return
-    git tag --sort -version:refname |
-        fzf-down --multi --preview-window right:70% \
-        --preview 'git show --color=always {} | head -'$LINES
-}
-
-gh() {
-    is_in_git_repo || return
-    git log --date=short --format="%C(green)%C(bold)%cd %C(auto)%h%d %s (%an)" --graph --color=always |
-        fzf-down --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
-        --header 'Press CTRL-S to toggle sort' \
-        --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -'$LINES |
-        grep -o "[a-f0-9]\{7,\}"
-}
-
-unalias gr
-gr() {
-    is_in_git_repo || return
-    git remote -v | awk '{print $1 "\t" $2}' | uniq |
-        fzf-down --tac \
-        --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1} | head -200' |
-        cut -d$'\t' -f1
-}
-
-join-lines() {
-  local item
-  while read item; do
-    echo -n "${(q)item} "
-  done
-}
-
-bind-git-helper() {
-  local char
-  for c in $@; do
-    eval "fzf-g$c-widget() { local result=\$(g$c | join-lines); zle reset-prompt; LBUFFER+=\$result }"
-    eval "zle -N fzf-g$c-widget"
-    #eval "bindkey '\\e^$c' fzf-g$c-widget"
-  done
-}
-
-bind-git-helper f b t r h
-unset -f bind-git-helper
-bindkey '\ef' fzf-gf-widget
-bindkey '\eb' fzf-gb-widget
-bindkey '\et' fzf-gt-widget
-bindkey '\er' fzf-gr-widget
-bindkey '\eh' fzf-gh-widget
-
 # Use C-y to open history and run the command.
 fzf-history-widget-accept() {
   fzf-history-widget
@@ -302,12 +152,6 @@ fzf-history-widget-accept() {
 zle     -N   fzf-history-widget-accept
 bindkey '^y' fzf-history-widget-accept
 
-# fzf + ag configuration
-#export FZF_DEFAULT_COMMAND='ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
-#export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-#export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # ALT-D - Paste the selected directory path into the command line
 __fseldir() {
     local cmd="command find -L . -mindepth 1 \\( -path '*/\\\.*' -o -fstype 'sysfs' -o -fstype 'devfs' -o -fstype 'devtmpfs' -o -fstype 'proc' \\) -prune \
@@ -315,16 +159,16 @@ __fseldir() {
     setopt localoptions pipefail 2> /dev/null
     eval "$cmd" | FZF_DEFAULT_OPTS="--height ${FZF_TMUX_HEIGHT:-40%} --reverse $FZF_DEFAULT_OPTS $FZF_ALT_C_OPTS" $(__fzfcmd) -m "$@" | while read item; do
     echo -n "${(q)item} "
-done
-local ret=$?
-echo
+    done
+    local ret=$?
+    echo
 }
 
 fzf-dirr-widget() {
-LBUFFER="${LBUFFER}$(__fseldir)"
-local ret=$?
-zle reset-prompt
-return $ret
+    LBUFFER="${LBUFFER}$(__fseldir)"
+    local ret=$?
+    zle reset-prompt
+    return $ret
 }
 
 zle     -N   fzf-dirr-widget
@@ -359,6 +203,21 @@ for m in visual viopp; do
    done
 done
 
+bindkey -M vicmd ' ' edit-command-line
+bindkey -M vicmd 'v' visual-mode
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
+
+# Better searching in command mode
+bindkey -M vicmd '?' history-incremental-search-backward
+bindkey -M vicmd '/' history-incremental-search-forward
+
+# Beginning search with arrow keys
+bindkey "^[OA" up-line-or-beginning-search
+bindkey "^[OB" down-line-or-beginning-search
+bindkey -M vicmd "k" up-line-or-beginning-search
+bindkey -M vicmd "j" down-line-or-beginning-search
+
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
     if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
@@ -380,18 +239,3 @@ echo -ne '\e[5 q'
 preexec() {
     echo -ne '\e[5 q'
 }
-
-bindkey -M vicmd ' ' edit-command-line
-bindkey -M vicmd 'v' visual-mode
-bindkey '^xe' edit-command-line
-bindkey '^x^e' edit-command-line
-
-# Better searching in command mode
-bindkey -M vicmd '?' history-incremental-search-backward
-bindkey -M vicmd '/' history-incremental-search-forward
-
-# Beginning search with arrow keys
-bindkey "^[OA" up-line-or-beginning-search
-bindkey "^[OB" down-line-or-beginning-search
-bindkey -M vicmd "k" up-line-or-beginning-search
-bindkey -M vicmd "j" down-line-or-beginning-search
