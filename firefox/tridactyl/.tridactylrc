@@ -43,6 +43,8 @@ bind c composite tabprev; sleep 100; tabclose #
 
 bind x composite buffer #; sleep 100; tabclose #
 
+bind X fillcmdline tabclose
+
 bind D undo
 
 bind d scrollpage 0.6
@@ -114,6 +116,9 @@ bind --mode=input       <A-m> text.forward_word
 
 bind --mode=insert      <A-Escape> mode input
 bind --mode=input      <A-Escape> mode insert
+
+bind --mode=insert <A-p> clipboard xselpaste
+bind --mode=input <A-p> clipboard xselpaste
 
 "
 " Misc settings
