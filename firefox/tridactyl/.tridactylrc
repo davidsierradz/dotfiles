@@ -29,17 +29,17 @@ bindurl news\.ycombinator\.com/item ` hint -c [class*="expand"],[class="togg"]
 
 bind <Escape> composite mode normal; unfocus; hidecmdline
 
-bind J tabnext
+bind J tabNext
 
-bind K tabprev
+bind K tabPrev
 
 unbind X
 
 unbind x
 
-bind C composite tabnext; sleep 100; tabclose #
+bind C composite tabNext; sleep 100; tabclose #
 
-bind c composite tabprev; sleep 100; tabclose #
+bind c composite tabPrev; sleep 100; tabclose #
 
 bind x composite buffer #; sleep 100; tabclose #
 
@@ -123,6 +123,10 @@ bind --mode=input <A-p> clipboard xselpaste
 "
 " Misc settings
 "
+
+command tabPrev jsb browser.tabs.query({currentWindow: true}).then(tabs => { tabs = tabs.sort((t1, t2) => t1.index - t2.index); let prevTab = (tabs.findIndex(t => t.active) - 1 + tabs.length) % tabs.length; return browser.tabs.update(tabs[prevTab].id, {active: true}); })
+
+command tabNext jsb browser.tabs.query({currentWindow: true}).then(tabs => { tabs = tabs.sort((t1, t2) => t1.index - t2.index); let prevTab = (tabs.findIndex(t => t.active) + 1 + tabs.length) % tabs.length; return browser.tabs.update(tabs[prevTab].id, {active: true}); })
 
 " set editorcmd to suckless terminal, or use the defaults on other platforms
 "js tri.browserBg.runtime.getPlatformInfo().then(os=>{const editorcmd = os.os=="linux" ? "nvim-gtk" : "auto"; tri.config.set("editorcmd", editorcmd)})
