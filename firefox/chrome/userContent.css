@@ -1,3 +1,14 @@
+/* Scrollbar colors and width - applied globally */
+@namespace url("http://www.w3.org/1999/xhtml");
+:root{
+    scrollbar-color: #0079D3 #2E3645 !important;
+    scrollbar-width: thin !important;
+}
+
+* {
+    scrollbar-width: thin !important;
+}
+
 /*! Alters the webextension Tree Style Tab
   IMPORTANT: change the Internal UUID all BOTH locations */
 @-moz-document url-prefix("moz-extension://ad54424c-7d2f-4e2e-9ab8-011d6237e74c/") {

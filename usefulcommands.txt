@@ -159,6 +159,9 @@ git remote get-url --all origin
 Fix last commit:
 git commit --amend --no-edit
 
+Update date of commit:
+gc --amend --no-edit --date="$(date -R)"
+
 Config git local:
 git config --local user.email "davidsierradz@gmail.com"
 git config --local user.name "davidsierradz
@@ -185,3 +188,9 @@ Expand the last parameter:
 
 cd /foo/bar !#$ -> cd /foo/bar /foo/bar
 cd /foo/bar !#$:h -> cd /foo/bar /foo
+
+
+worddiff:
+
+wdiff foo.txt bar.txt | colordiff | less -R
+

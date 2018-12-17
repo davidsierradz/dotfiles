@@ -70,6 +70,18 @@ alias c='clear'
 # Python JSON prettier
 alias -g J='| python -m json.tool'
 
+# Send command to clipboard paste.
+alias -g X='| xsel -bi'
+
+# Fuzzy find all files to send to git add.
+gafzf() {
+    git add $(git status -s | awk '{$1=""; print $0}' | fzf --height 30% --reverse --multi "$@")
+}
+
+dpsfzf() {
+    docker ps --all | fzf --height 30% --reverse --multi | awk '{$2=""; print $1}'
+}
+
 # want your terminal to support 256 color schemes? I do ...
 #export TERM=xterm-256color
 export EDITOR="/usr/bin/vim"
@@ -84,14 +96,25 @@ eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
 bindkey '^[[A' up-line-or-search
 bindkey '^[[B' down-line-or-search
 
-# Ctrl-S to insert sudo in front of command
+# Ctrl-S to insert sudo in front of command in normal mode.
 function prepend-sudo { # Insert "sudo " at the beginning of the line
     if [[ $BUFFER != "sudo "* ]]; then
         BUFFER="sudo $BUFFER"; CURSOR+=5
+        zle -K viins
+        xdotool key ctrl+e
     fi
 }
 zle -N prepend-sudo
 bindkey -M vicmd '^s' prepend-sudo
+
+# Ctrl-S to insert sudo in front of command in insert mode.
+sudo_ (){
+    BUFFER="sudo $BUFFER"
+    CURSOR=$#BUFFER
+}
+zle -N sudo_
+bindkey "^s" sudo_
+
 
 # More bindkeys for insert vi-mode.
 bindkey -M viins '^P' up-history
@@ -239,3 +262,15 @@ echo -ne '\e[5 q'
 preexec() {
     echo -ne '\e[5 q'
 }
+
+gh() {
+    myVar=$(</dev/stdin)
+
+    echo -e $myVar | fzf --height 80% "$@" --border --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+        --header 'Press CTRL-S to toggle sort' \
+        --preview 'grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | head -'$LINES |
+        grep -o "[a-f0-9]\{7,\}"
+
+}
+
+alias -g GHFZF='| gh'

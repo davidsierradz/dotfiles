@@ -5,14 +5,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 "----------------Basics-----------------
 " Highlights the XML/HTML tags that enclose your cursor location.
-Plug 'Valloric/MatchTagAlways'
+"Plug 'Valloric/MatchTagAlways'
 
 " Using this until the unlisted netrw buffer bug is solved.
 Plug 'justinmk/vim-dirvish'
 
 " Allows you to configure % to match more than just single characters.
 "Plug 'benjifisher/matchit.zip'
-Plug 'chrisbra/matchit'
+"Plug 'chrisbra/matchit'
+Plug 'andymass/vim-matchup'
+let g:loaded_matchit = 1
 
 " Functions for toggle comments.
 Plug 'scrooloose/nerdcommenter'
@@ -474,6 +476,9 @@ nnoremap <leader>w :w<cr>
 " Saves without sudo.
 cmap w!! w !sudo tee > /dev/null %
 
+" Open a file from + register and place cursor to input the line number.
+cmap ee e +<C-R>* <C-R>+<CR>
+
 " List contents of all registers (that typically contain pasteable text).
 "nnoremap <silent> "" :registers "0123456789abcdefghijklmnopqrstuvwxyz*+.<CR>
 
@@ -716,18 +721,18 @@ let g:airline#extensions#ale#enabled = 1
 "/ MatchTagAlways
 "/
 
-let g:mta_use_matchparen_group = 1
-
-" Enabled files for the plugin.
-let g:mta_filetypes = {
-    \ 'html' : 1,
-    \ 'xhtml' : 1,
-    \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'php' : 1,
-    \ 'vue' : 1,
-    \ 'javascript.jsx' : 1,
-    \}
+"let g:mta_use_matchparen_group = 1
+"
+"" Enabled files for the plugin.
+"let g:mta_filetypes = {
+"    \ 'html' : 1,
+"    \ 'xhtml' : 1,
+"    \ 'xml' : 1,
+"    \ 'jinja' : 1,
+"    \ 'php' : 1,
+"    \ 'vue' : 1,
+"    \ 'javascript.jsx' : 1,
+"    \}
 
 "/
 "/ Ack.vim
@@ -1122,9 +1127,27 @@ highlight link HighlightedyankRegion ErrorMsg
 
 " Support self-closed tags for %
 " see: https://vi.stackexchange.com/questions/7167/how-do-i-get-matchit-to-work-with-self-closed-tags
-autocmd Filetype javascript.jsx,vue let b:match_ignorecase = 0
-autocmd Filetype javascript.jsx,vue let b:match_words = '(:),\[:\],{:},<:>,' .
-            \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(\%(=\|/\)\@<!>\|$\):<\@<=/\1>'
+"autocmd Filetype javascript.jsx,vue let b:match_ignorecase = 0
+"autocmd Filetype javascript.jsx,vue let b:match_words = '(:),\[:\],{:},<:>,' .
+"            \ '<\@<=\([^/][^ \t>]*\)[^>]*\%(\%(=\|/\)\@<!>\|$\):<\@<=/\1>'
+
+"/
+""/ vim-matchup
+"/
+
+" To enable the delete surrounding (ds%) and change surrounding (cs%) maps.
+let g:matchup_surround_enabled = 1
+
+let g:matchup_matchparen_status_offscreen = 0
+
+"let g:matchup_matchparen_deferred = 1
+"let g:matchup_matchparen_hi_surround_always = 1
+
+autocmd Filetype javascript.jsx setlocal matchpairs=(:),{:},[:],<:>
+autocmd Filetype javascript.jsx let b:match_words = '<\@<=\([^/][^ \t>]*\)\g{hlend}[^>]*\%(/\@<!>\|$\):<\@<=/\1>'
+
+nmap <silent> <F7> <plug>(matchup-hi-surround)
+
 
 "/
 ""/ fzf.vim
