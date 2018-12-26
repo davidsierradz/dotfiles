@@ -9,6 +9,18 @@
     scrollbar-width: thin !important;
 }
 
+@-moz-document url("about:home"),url("about:blank"),url("about:newtab"),url("about:privatebrowsing") {
+    body{background-color: rgb(46,54,69) !important}
+}
+
+@-moz-document url-prefix("about:"){
+    xul|page,
+    xul|scrollbar{
+        scrollbar-color: #0079D3 #2E3645;
+        scrollbar-width: thin;
+    }
+}
+
 /*! Alters the webextension Tree Style Tab
   IMPORTANT: change the Internal UUID all BOTH locations */
 @-moz-document url-prefix("moz-extension://ad54424c-7d2f-4e2e-9ab8-011d6237e74c/") {

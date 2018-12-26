@@ -1,5 +1,9 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+#tabbrowser-tabpanels{
+    background-color: rgb(46,54,69) !important;
+}
+
 /* Remove the top tabs toolbar. */
 #TabsToolbar {
   visibility: collapse;
