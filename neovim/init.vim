@@ -652,6 +652,9 @@ nnoremap <silent> <leader>z :let @z=@"<CR>
 vnoremap < <gv
 vnoremap > >gv
 
+" Copy the % register (current file path) to + register (clipboard).
+nnoremap <leader>% :let @+=@%<CR>
+
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
