@@ -28,6 +28,10 @@ Plug 'easymotion/vim-easymotion'
 " Check the " and @ registers.
 Plug 'junegunn/vim-peekaboo'
 
+" Display all accessible marks and their surrounding lines in a collapsible
+" sidebar.
+Plug 'Yilin-Yang/vim-markbar'
+
 " Add colons and semicolons in insert mode.
 Plug 'lfilho/cosco.vim'
 
@@ -1162,7 +1166,7 @@ let g:fzf_layout = { 'down': '~40%' }
 " FZF mappings.
 nnoremap <A-n> :Lines<CR>
 nnoremap <A-b> :BTags<CR>
-nnoremap <A-m> :Marks<CR>
+"nnoremap <A-m> :Marks<CR>
 nnoremap <A-t> :Ag<CR>
 nnoremap <A-r> :Tags<CR>
 nnoremap <A-e> :History<CR>
@@ -1226,6 +1230,18 @@ nmap X <Plug>ExchangeOperator
 
 "Controls the keys used in maps for seeking next and last text objects.
 let g:targets_nl = 'nN'
+
+"/
+""/ vim-markbar
+"/
+
+nmap <A-m> <Plug>ToggleMarkbar
+
+let g:markbar_marks_to_display = "'.[]<>^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+let g:markbar_peekaboo_marks_to_display = "'.[]<>^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+
+let g:markbar_explicitly_remap_mark_mappings = v:true
 
 "--------------------------------End Plugins Configuration---------------------"
 "}}}

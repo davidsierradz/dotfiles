@@ -45,7 +45,9 @@ bind x composite buffer #; sleep 100; tabclose #
 
 bind X fillcmdline tabclose
 
-bind D undo
+bind <C-x> js window.stop()
+
+bind D undo tab
 
 bind d scrollpage 0.6
 
