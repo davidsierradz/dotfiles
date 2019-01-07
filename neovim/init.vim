@@ -81,8 +81,16 @@ Plug 'tpope/vim-rsi'
 " Move lines or block of lines.
 Plug 'matze/vim-move'
 
+"Plug 'romgrk/replace.vim'
+
 " Replace operator for Vim
-Plug 'romgrk/replace.vim'
+Plug 'svermeulen/vim-subversive'
+
+" Vim plugin that maintains a yank history to cycle between when pasting.
+Plug 'svermeulen/vim-yoink'
+
+" Plugin that adds a 'cut' operation separate from 'delete'.
+Plug 'svermeulen/vim-cutlass'
 
 "--------------Interface----------------
 " Solarized colorscheme for NeoVim.
@@ -155,6 +163,7 @@ Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
 " Limit ncm2 popup the matches of the
 " source with highest priority only
 "Plug 'ncm2/ncm2-highprio-pop'
+"Plug 'svermeulen/ncm2-yoink'
 
 " CSS omnifunc.
 Plug 'othree/csscomplete.vim'
@@ -1220,9 +1229,9 @@ let g:move_key_modifier = 'C-M'
 ""/ replace.vim
 "/
 
-nmap R <Plug>ReplaceOperator
-vmap R <Plug>ReplaceOperator
-nmap X <Plug>ExchangeOperator
+"nmap R <Plug>ReplaceOperator
+"vmap R <Plug>ReplaceOperator
+"nmap X <Plug>ExchangeOperator
 
 "/
 ""/ targets.vim
@@ -1242,6 +1251,51 @@ let g:markbar_marks_to_display = "'.[]<>^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLM
 let g:markbar_peekaboo_marks_to_display = "'.[]<>^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 let g:markbar_explicitly_remap_mark_mappings = v:true
+
+"/
+""/ vim-windowswap
+"/
+
+let g:windowswap_map_keys = 0 "prevent default bindings
+nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+
+"/
+""/ vim-subversive
+"/
+
+nmap s <plug>(SubversiveSubstitute)
+xmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+nmap S <plug>(SubversiveSubstituteToEndOfLine)
+xmap p <plug>(SubversiveSubstitute)
+xmap P <plug>(SubversiveSubstitute)
+
+"/
+""/ vim-cutlass
+"/
+
+nnoremap x d
+xnoremap x d
+
+nnoremap xx dd
+nnoremap X D
+
+"/
+""/ vim-yoink
+"/
+
+nmap <leader>n <plug>(YoinkPostPasteSwapBack)
+nmap <leader>p <plug>(YoinkPostPasteSwapForward)
+
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+
+nmap y <plug>(YoinkYankPreserveCursorPosition)
+xmap y <plug>(YoinkYankPreserveCursorPosition)
+
+let g:yoinkMoveCursorToEndOfPaste=1
+let g:yoinkSavePersistently=1
+let g:yoinkIncludeDeleteOperations=1
 
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
