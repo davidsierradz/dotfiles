@@ -121,6 +121,9 @@ Plug 'mhinz/vim-startify'
 " Search your selection text with * or #.
 Plug 'haya14busa/vim-asterisk'
 
+" Incremental search improved.
+Plug 'haya14busa/is.vim'
+
 " Manage marks.
 Plug 'kshenoy/vim-signature'
 let g:SignatureMarkTextHLDynamic=1
@@ -649,7 +652,7 @@ nnoremap gJ J
 nnoremap <A-y> mz^yg_`z:delmarks z<cr>
 
 " Toggle highlighting the search string.
-nnoremap <silent> <F1> :set hlsearch!<cr>
+"nnoremap <silent> <F1> :set hlsearch!<cr>
 
 " Go previous or next buffer with <Alt-{j,k}>.
 nmap <M-j> <Plug>unimpairedBPrevious
@@ -1206,14 +1209,14 @@ let g:user_emmet_settings = {
 ""/ vim-asterisk
 "/
 
-map *   <Plug>(asterisk-*)
-map #   <Plug>(asterisk-#)
-map g*  <Plug>(asterisk-g*)
-map g#  <Plug>(asterisk-g#)
-map z*  <Plug>(asterisk-z*)
-map gz* <Plug>(asterisk-gz*)
-map z#  <Plug>(asterisk-z#)
-map gz# <Plug>(asterisk-gz#)
+map *   <Plug>(asterisk-*)<Plug>(is-nohl-1)
+map #   <Plug>(asterisk-#)<Plug>(is-nohl-1)
+map g*  <Plug>(asterisk-g*)<Plug>(is-nohl-1)
+map g#  <Plug>(asterisk-g#)<Plug>(is-nohl-1)
+map z*  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+map gz* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+map z#  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+map gz# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 
 " Enable keepCursor feature.
 let g:asterisk#keeppos = 1
@@ -1382,11 +1385,11 @@ augroup trailing
 augroup END
 
 " Toggle hlsearch.
-augroup vimrc-incsearch-highlight
-    autocmd!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
+"augroup vimrc-incsearch-highlight
+"    autocmd!
+"    autocmd CmdlineEnter /,\? :set hlsearch
+"    autocmd CmdlineLeave /,\? :set nohlsearch
+"augroup END
 
 " Update the auto read of a file after 4 seconds.
 augroup autoRead
