@@ -641,6 +641,9 @@ let g:maximizer_set_default_mapping = 0
 
 nnoremap <silent><leader>m :MaximizerToggle<CR>
 vnoremap <silent><leader>m :MaximizerToggle<CR>gv
+nnoremap <silent>å :MaximizerToggle<CR>
+vnoremap <silent>å :MaximizerToggle<CR>gv
+inoremap <silent>å <C-o>:MaximizerToggle<CR>
 
 "/
 "/ delimitMate
