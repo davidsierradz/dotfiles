@@ -108,9 +108,6 @@ Plug 'mhinz/vim-startify'
 " Search your selection text with * or #.
 Plug 'haya14busa/vim-asterisk'
 
-" Incremental search improved.
-Plug 'haya14busa/is.vim'
-
 " Manage marks.
 Plug 'kshenoy/vim-signature'
 
@@ -514,7 +511,7 @@ nnoremap gJ J
 nnoremap <A-y> mz^yg_`z:delmarks z<cr>
 
 " Toggle highlighting the search string.
-"nnoremap <silent> <F1> :set hlsearch!<cr>
+nnoremap <silent> <F1> :set hlsearch!<cr>
 
 " Go previous or next buffer with <Alt-{j,k}>.
 nmap <M-j> <Plug>unimpairedBPrevious
@@ -971,14 +968,14 @@ let g:user_emmet_settings = {
 ""/ vim-asterisk
 "/
 
-map *   <Plug>(asterisk-*)<Plug>(is-nohl-1)
-map #   <Plug>(asterisk-#)<Plug>(is-nohl-1)
-map g*  <Plug>(asterisk-g*)<Plug>(is-nohl-1)
-map g#  <Plug>(asterisk-g#)<Plug>(is-nohl-1)
-map z*  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
-map gz* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
-map z#  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
-map gz# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+map *   <Plug>(asterisk-*)
+map #   <Plug>(asterisk-#)
+map g*  <Plug>(asterisk-g*)
+map g#  <Plug>(asterisk-g#)
+map z*  <Plug>(asterisk-z*)
+map gz* <Plug>(asterisk-gz*)
+map z#  <Plug>(asterisk-z#)
+map gz# <Plug>(asterisk-gz#)
 
 " Enable keepCursor feature.
 let g:asterisk#keeppos = 1
