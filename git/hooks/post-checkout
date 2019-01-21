@@ -1,0 +1,11 @@
+#!/bin/sh
+
+refname="$1"
+flag="$3"
+
+if test $3 = 1; then
+    destdir=".git/lastbranch"
+    last_branch=$(grep -Rl ${1} .git/refs/heads/ | xargs basename)
+
+    cat <<< "$last_branch" > "$destdir"
+fi

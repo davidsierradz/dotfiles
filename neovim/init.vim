@@ -3,9 +3,12 @@
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
-"----------------Basics-----------------
+"----------------Basics----------------- {{{
 " Using this until the unlisted netrw buffer bug is solved.
 Plug 'justinmk/vim-dirvish'
+
+" Git support for dirvish.vim.
+Plug 'kristijanhusak/vim-dirvish-git'
 
 " Allows you to configure % to match more than just single characters.
 Plug 'andymass/vim-matchup'
@@ -78,8 +81,9 @@ Plug 'svermeulen/vim-yoink'
 
 " Plugin that adds a 'cut' operation separate from 'delete'.
 Plug 'svermeulen/vim-cutlass'
+"}}}
 
-"--------------Interface----------------
+"--------------Interface---------------- {{{
 " Solarized colorscheme for NeoVim.
 Plug 'lifepillar/vim-solarized8'
 
@@ -117,7 +121,12 @@ Plug 'machakann/vim-highlightedyank'
 " Persist folds in sessions.
 Plug 'zhimsel/vim-stay'
 
-"-------------Integrations--------------
+" Toggles between hybrid and absolute line numbers automatically.
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+
+"}}}
+
+"-------------Integrations-------------- {{{
 " Front for Ag.
 Plug 'mileszs/ack.vim'
 
@@ -134,7 +143,9 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
 
-"-------Completions and omnifuncs-------
+"}}}
+
+"-------Completions and omnifuncs------- {{{
 " Autocompletion framework.
 Plug 'ncm2/ncm2'
 " ncm2 requires nvim-yarp
@@ -167,8 +178,9 @@ Plug 'w0rp/ale'
 
 " Expand html tags.
 Plug 'mattn/emmet-vim'
+"}}}
 
-"------Syntax files and Languages-------
+"------Syntax files and Languages------- {{{
 " Insert and sort use statements in PHP.
 Plug 'arnaud-lb/vim-php-namespace'
 
@@ -187,6 +199,7 @@ Plug 'tpope/vim-apathy'
 " Styled components syntax for query strings.
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+"}}}
 
 " Initialize plugin system
 call plug#end()
@@ -249,7 +262,7 @@ let g:sql_type_default = 'mysql'
 set infercase
 
 " Set the height of the command line window.
-set cmdwinheight=2
+set cmdwinheight=5
 
 " Stop certain movements from always going to the first character of a line.
 set nostartofline
@@ -460,8 +473,8 @@ nnoremap gV `[v`]
 " Disable Ex mode.
 nnoremap Q <nop>
 
-" Change pwd locally to current file path.
-nnoremap <leader>cd :lcd %:p:h<CR>:pwd<CR>
+" Change pwd to current file path.
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Toogle tagbar.vim plugin.
 nmap <F8> :TagbarOpenAutoClose<CR>
@@ -530,6 +543,9 @@ vnoremap > >gv
 " Copy the % register (current file path) to + register (clipboard).
 nnoremap <leader>% :let @+=@%<CR>
 
+" map _ to - see :help -.
+nnoremap _ -
+
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -538,8 +554,7 @@ nnoremap <leader>% :let @+=@%<CR>
 
 "--------------------------------Plugins Configuration-------------------------"{{{
 
-"/
-"/ Vim Airline
+"/ Vim Airline {{{
 "/
 
 " Airline theme.
@@ -588,16 +603,16 @@ let g:airline#extensions#tagbar#flags = 'f'
 
 " Enable the Ale integration.
 let g:airline#extensions#ale#enabled = 1
+"}}}
 
-"/
-"/ Ack.vim
+"/ Ack.vim {{{
 "/
 
 " Using ack.vim with Ag because of deprecation of ag.vim.
 let g:ackprg = 'ag --vimgrep --path-to-ignore ~/dotfiles/ag/.agignore --skip-vcs-ignores --hidden'
+"}}}
 
-"/
-"/ Vim EasyMotion
+"/ Vim EasyMotion {{{
 "/
 
 " Use spacebar to start easymotion.
@@ -606,6 +621,7 @@ nmap <C-Space> <Plug>(easymotion-prefix)
 " One char search.
 nmap <Space> <Plug>(easymotion-s)
 vmap <Space> <Plug>(easymotion-s)
+omap <Space> <Plug>(easymotion-s)
 
 let g:EasyMotion_smartcase = 1
 
@@ -617,9 +633,9 @@ let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
 let g:EasyMotion_move_highlight = 0
 nmap <leader>; <Plug>(easymotion-next)
 nmap <leader>, <Plug>(easymotion-prev)
+"}}}
 
-"/
-"/ Gundo.vim
+"/ Gundo.vim {{{
 "/
 
 " Start plugin.
@@ -632,9 +648,9 @@ let g:gundo_preview_bottom = 1
 let g:gundo_help = 0
 
 let g:gundo_close_on_revert = 1
+"}}}
 
-"/
-"/ vim.maximizer
+"/ vim.maximizer {{{
 "/
 
 let g:maximizer_set_default_mapping = 0
@@ -644,9 +660,9 @@ vnoremap <silent><leader>m :MaximizerToggle<CR>gv
 nnoremap <silent>å :MaximizerToggle<CR>
 vnoremap <silent>å :MaximizerToggle<CR>gv
 inoremap <silent>å <C-o>:MaximizerToggle<CR>
+"}}}
 
-"/
-"/ delimitMate
+"/ delimitMate {{{
 "/
 
 let delimitMate_expand_cr = 1
@@ -658,9 +674,9 @@ au FileType html,blade,vue,php,javascript.jsx let b:delimitMate_matchpairs = "(:
 au FileType html,php,javascript.jsx,css,vue let b:delimitMate_expand_space = 1
 
 let delimitMate_jump_expansion = 1
+"}}}
 
-"/
-"/ vim-closetag
+"/ vim-closetag {{{
 "/
 
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.blade.php,*.vue,*.php,*.js"
@@ -670,9 +686,9 @@ let g:closetag_xhtml_filetypes = "xhtml,javascript.jsx,xml,vue"
 
 " Add > at current position without closing the current tag, default is ''.
 let g:closetag_close_shortcut = '<leader>>'
+"}}}
 
-"/
-"/ vdebug.vim
+"/ vdebug.vim {{{
 "/
 
 " General Options.
@@ -690,15 +706,15 @@ let g:vdebug_options["path_maps"] = {
 "let g:vdebug_features['max_depth'] = 6
 let g:vdebug_features['max_children'] = 256
 let g:vdebug_features['max_data'] = 2048
+"}}}
 
-"/
-""/ vim-polyglot
+""/ vim-polyglot {{{
 "/
 
 "let g:polyglot_disabled = ['css', 'php', 'javascript']
+"}}}
 
-"/
-""/ vim-startify
+""/ vim-startify {{{
 "/
 
 let g:startify_custom_header = []
@@ -715,9 +731,9 @@ let g:startify_session_before_save = [
 let g:startify_change_to_vcs_root = 1
 
 let g:startify_files_number = 20
+"}}}
 
-"/
-""/ ale.vim
+""/ ale.vim {{{
 "/
 
 " Use php linters for CSS and JS files.
@@ -725,6 +741,31 @@ let g:startify_files_number = 20
 "            \ 'css': ['css', 'php'],
 "            \ 'javascript': ['javascript', 'php'],
 "            \}
+
+" Don't use the sign column/gutter for ALE.
+let g:ale_set_signs = 0
+
+" Lint always in Normal Mode.
+let g:ale_lint_on_text_changed = 'normal'
+
+" Lint when leaving Insert Mode but don't lint when in Insert Mode.
+let g:ale_lint_on_insert_leave = 1
+
+" Set ALE's 200ms delay to zero.
+let g:ale_lint_delay = 0
+
+" Set gorgeous colors for marked lines to sane, readable combinations
+" working with any colorscheme.
+au VimEnter,BufEnter,ColorScheme *
+            \ exec "hi! ALEInfoLine
+            \ guifg=".(&background=='light'?'#808000':'#ffff00')."
+            \ guibg=".(&background=='light'?'#ffff00':'#555500') |
+            \ exec "hi! ALEWarningLine
+            \ guifg=".(&background=='light'?'#808000':'#ffff00')."
+            \ guibg=".(&background=='light'?'#ffff00':'#555500') |
+            \ exec "hi! ALEErrorLine
+            \ guifg=".(&background=='light'?'#ff0000':'#ff0000')."
+            \ guibg=".(&background=='light'?'#ffcccc':'#550000')
 
 let g:ale_echo_msg_format = "%s - %linter%"
 let g:ale_set_quickfix = 1
@@ -735,7 +776,7 @@ let g:ale_php_phpcs_use_global = 1
 
 let g:ale_linters = {
             \ 'php': ['php', 'phpcs', 'phpmd', 'phpstan'],
-            \ 'javascript': ['eslint', 'flow'],
+            \ 'javascript': ['eslint'],
             \ 'css': ['stylelint'],
             \}
 
@@ -757,14 +798,22 @@ let g:ale_fix_on_save = 1
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
 "let g:ale_javascript_prettier_options = '--single-quote --no-semi --trailing-comma es5'
 
-"/
-""/ rooter.vim
+"}}}
+
+""/ rooter.vim {{{
 "/
 
-let g:rooter_manual_only = 1
+let g:rooter_change_directory_for_non_project_files = 'home'
 
-"/
-""/ vim-php-namespace
+" Dont change the current directory when opening a git submodule.
+let g:rooter_patterns = ['.git/']
+
+" Change current direction manually.
+"let g:rooter_manual_only = 1
+
+"}}}
+
+""/ vim-php-namespace {{{
 "/
 
 let g:php_namespace_sort = "'{,'}-1!awk '{print length, $0}' | sort -n -s | cut -d' ' -f2-"
@@ -788,9 +837,9 @@ autocmd FileType php noremap <buffer> <Leader>sf :call PhpExpandClass()<CR>
 
 autocmd FileType php inoremap <buffer> <Leader>ss <Esc>:call PhpSortUse()<CR>
 autocmd FileType php noremap <buffer> <Leader>ss :call PhpSortUse()<CR>
+"}}}
 
-"/
-""/ ncm2
+""/ ncm2 {{{
 "/
 
 " enable ncm2 for all buffer
@@ -838,17 +887,17 @@ imap <C-space> <Plug>(ncm2_manual_trigger)
 
 " Change the minimun letters to pop the autocomplete.
 "let g:ncm2#complete_length = [[1,3],[7,2]]
+"}}}
 
-"/
-""/ Cosco.vim
+""/ Cosco.vim {{{
 "/
 
 autocmd FileType javascript.jsx,css,php nmap <buffer> <silent> , <Plug>(cosco-commaOrSemiColon)
 autocmd FileType javascript.jsx,css,php imap <buffer> <silent> <Leader>, <c-o><Plug>(cosco-commaOrSemiColon)
 let g:cosco_ignore_comment_lines = 1
+"}}}
 
-"/
-""/ Ultisnips.vim
+""/ Ultisnips.vim {{{
 "/
 
 set runtimepath+=~/dotfiles/snips
@@ -862,9 +911,9 @@ let g:UltiSnipsRemoveSelectModeMappings = 0
 inoremap <silent> <expr> <C-x><C-s> ncm2_ultisnips#expand_or("\<CR>", 'n')
 imap <C-u> <Plug>(ultisnips_expand)
 vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
+"}}}
 
-"/
-""/ LanguageServer.vim
+""/ LanguageServer.vim {{{
 "/
 
 " Disable de diagnostics for the LSP.
@@ -878,8 +927,10 @@ let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
 " First do: npm install vue-language-server -g
 let g:LanguageClient_serverCommands.vue = ['vls']
 
-"/
-""/ clever-f.vim
+"\ 'javascript.jsx': ['flow-language-server', '--stdio'],
+"}}}
+
+""/ clever-f.vim {{{
 "/
 
 " Search a character only in current line.
@@ -897,9 +948,9 @@ let g:clever_f_fix_key_direction = 1
 " Repeat previous search.
 nmap <A-f> <Plug>(clever-f-repeat-forward)
 nmap <A-S-f> <Plug>(clever-f-repeat-back)
+"}}}
 
-"/
-""/ vim-dirvish
+""/ vim-dirvish {{{
 "/
 
 " Put dirs first.
@@ -914,15 +965,15 @@ augroup dirvish_events
     autocmd FileType dirvish
                 \ silent! unmap <buffer> <C-p>
 augroup END
+"}}}
 
-"/
-""/ vim-highlightedyank
+""/ vim-highlightedyank {{{
 "/
 
 highlight link HighlightedyankRegion ErrorMsg
+"}}}
 
-"/
-""/ vim-matchup
+""/ vim-matchup {{{
 "/
 
 " To enable the delete surrounding (ds%) and change surrounding (cs%) maps.
@@ -937,15 +988,16 @@ autocmd Filetype javascript.jsx setlocal matchpairs=(:),{:},[:],<:>
 autocmd Filetype javascript.jsx let b:match_words = '<\@<=\([^/][^ \t>]*\)\g{hlend}[^>]*\%(/\@<!>\|$\):<\@<=/\1>'
 
 nmap <silent> <F7> <plug>(matchup-hi-surround)
+"}}}
 
-"/
-""/ fzf.vim
+""/ fzf.vim {{{
 "/
 
 " FZF position.
 let g:fzf_layout = { 'down': '~40%' }
+"}}}
 
-" FZF mappings.
+" FZF mappings. {{{
 nnoremap <A-n> :Lines<CR>
 nnoremap <A-b> :BTags<CR>
 nnoremap <A-t> :Ag<CR>
@@ -954,9 +1006,9 @@ nnoremap <A-e> :History<CR>
 nnoremap <A-c> :Snippets<CR>
 nnoremap ; :Buffers<CR>
 nnoremap <C-p> :Files<CR>
+"}}}
 
-"/
-""/ emmet.vim
+""/ emmet.vim {{{
 "/
 
 let g:user_emmet_leader_key='<C-f>'
@@ -966,9 +1018,9 @@ let g:user_emmet_settings = {
             \      'extends' : 'jsx',
             \  },
             \}
+"}}}
 
-"/
-""/ vim-asterisk
+""/ vim-asterisk {{{
 "/
 
 map *   <Plug>(asterisk-*)
@@ -982,23 +1034,23 @@ map gz# <Plug>(asterisk-gz#)
 
 " Enable keepCursor feature.
 let g:asterisk#keeppos = 1
+"}}}
 
-"/
-""/ vim-move
+""/ vim-move {{{
 "/
 
 let g:move_key_modifier = 'C-M'
 "let g:move_auto_indent = 0
+"}}}
 
-"/
-""/ targets.vim
+""/ targets.vim {{{
 "/
 
 "Controls the keys used in maps for seeking next and last text objects.
 let g:targets_nl = 'nN'
+"}}}
 
-"/
-""/ vim-markbar
+""/ vim-markbar {{{
 "/
 
 nmap <A-m> <Plug>ToggleMarkbar
@@ -1008,16 +1060,16 @@ let g:markbar_marks_to_display = "'.[]<>^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLM
 let g:markbar_peekaboo_marks_to_display = "'.[]<>^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 let g:markbar_explicitly_remap_mark_mappings = v:true
+"}}}
 
-"/
-""/ vim-windowswap
+""/ vim-windowswap {{{
 "/
 
 let g:windowswap_map_keys = 0 "prevent default bindings
 nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+"}}}
 
-"/
-""/ vim-subversive
+""/ vim-subversive {{{
 "/
 
 nmap s <plug>(SubversiveSubstitute)
@@ -1026,9 +1078,9 @@ nmap ss <plug>(SubversiveSubstituteLine)
 nmap S <plug>(SubversiveSubstituteToEndOfLine)
 xmap p <plug>(SubversiveSubstitute)
 xmap P <plug>(SubversiveSubstitute)
+"}}}
 
-"/
-""/ vim-cutlass
+""/ vim-cutlass {{{
 "/
 
 nnoremap x d
@@ -1036,9 +1088,9 @@ xnoremap x d
 
 nnoremap xx dd
 nnoremap X D
+"}}}
 
-"/
-""/ vim-yoink
+""/ vim-yoink {{{
 "/
 
 nmap <leader>n <plug>(YoinkPostPasteSwapBack)
@@ -1053,6 +1105,7 @@ xmap y <plug>(YoinkYankPreserveCursorPosition)
 let g:yoinkMoveCursorToEndOfPaste=1
 let g:yoinkSavePersistently=1
 let g:yoinkIncludeDeleteOperations=1
+"}}}
 
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
