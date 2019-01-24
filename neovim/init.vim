@@ -995,9 +995,8 @@ nmap <silent> <F7> <plug>(matchup-hi-surround)
 
 " FZF position.
 let g:fzf_layout = { 'down': '~40%' }
-"}}}
 
-" FZF mappings. {{{
+" FZF mappings.
 nnoremap <A-n> :Lines<CR>
 nnoremap <A-b> :BTags<CR>
 nnoremap <A-t> :Ag<CR>
