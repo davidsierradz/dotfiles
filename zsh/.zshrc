@@ -65,6 +65,8 @@ source $ZSH/oh-my-zsh.sh
 # custom aliases
 #long list
 alias ll='ls -lAFh --group-directories-first'
+# long list by date
+alias llt='ls -lAFht --group-directories-first'
 #Clear
 alias c='clear'
 # Python JSON prettier

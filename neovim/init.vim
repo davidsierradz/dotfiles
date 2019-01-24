@@ -1309,6 +1309,14 @@ nnoremap <Leader>t :tabnew term://zsh<CR>
 " Send selected lines to clipboard:
 " `'<,'>w ! xsel -bi`
 
+" See ^M (CRLF) characters:
+" `:e ++ff=unix`
+
+" Substitute CRLF for LF:
+" `:setlocal ff=unix`
+" `:w`
+" `:e`
+
 "--------------------------------End Tips and Remainders-----------------------"
 "}}}
 " vim: set fdm=marker fmr={{{,}}} :

@@ -166,6 +166,9 @@ Config git local:
 git config --local user.email "davidsierradz@gmail.com"
 git config --local user.name "davidsierradz
 
+Check evolution of a range of lines (N,M) in file:
+git log -L N,M:bar/foo.txt
+
 --------------------------------------------------------------------------------
 
 Vim:
