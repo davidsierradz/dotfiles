@@ -1,5 +1,11 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
 
+/* Move the status panel to the bottom-right. */
+statuspanel[type="overLink"], #statuspanel[type="overLink"] {
+  right: 0;
+  display: inline;
+}
+
 #tabbrowser-tabpanels{
     background-color: rgb(46,54,69) !important;
 }

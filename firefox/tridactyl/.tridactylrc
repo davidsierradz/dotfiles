@@ -24,7 +24,10 @@ set storageloc local
 " Comment toggler for Reddit and Hacker News
 "bind ;c hint -c [class*="expand"],[class="togg"]
 
-bindurl http://hckrnews.com/ ` hint -br
+" Bind Right Shift (ä) to firefox memory page.
+bind ä open about:memory
+
+bindurl https://hckrnews.com/ ` hint -br
 bindurl news\.ycombinator\.com/item ` hint -c [class*="expand"],[class="togg"]
 
 bind <Escape> composite mode normal; unfocus; hidecmdline
@@ -92,8 +95,8 @@ bind <C-3> js [...document.querySelectorAll('tr.athing.comtr:not(.coll)')].filte
 " Collapse all level comments.
 bind <C-4> js [...document.getElementsByClassName('togg')].forEach(e => setTimeout(() => {e.click()}, 1));
 
-bind --mode=insert      <C-a> text.beginning_of_line
-bind --mode=input       <C-a> text.beginning_of_line
+"bind --mode=insert      <C-a> text.beginning_of_line
+"bind --mode=input       <C-a> text.beginning_of_line
 
 bind --mode=insert      <C-e> text.end_of_line
 bind --mode=input       <C-e> text.end_of_line
@@ -104,8 +107,8 @@ bind --mode=input       <C-k> text.kill_line
 bind --mode=insert      <C-u> text.backward_kill_line
 bind --mode=input       <C-u> text.backward_kill_line
 
-bind --mode=insert      <C-x> text.backward_kill_word
-bind --mode=input       <C-x> text.backward_kill_word
+"bind --mode=insert      <C-x> text.backward_kill_word
+"bind --mode=input       <C-x> text.backward_kill_word
 
 bind --mode=insert      <A-x> text.kill_word
 bind --mode=input       <A-x> text.kill_word
@@ -119,8 +122,21 @@ bind --mode=input       <A-m> text.forward_word
 bind --mode=insert      <A-Escape> mode input
 bind --mode=input      <A-Escape> mode insert
 
+" Paste from Selection buffer.
 bind --mode=insert <A-p> clipboard xselpaste
 bind --mode=input <A-p> clipboard xselpaste
+bind --mode=insert <S-Insert> clipboard xselpaste
+bind --mode=input <S-Insert> clipboard xselpaste
+
+" Allow Ctrl-a to select all in the commandline
+unbind --mode=ex <C-a>
+
+" Let Ctrl-c to copy in the commandline
+unbind --mode=ex <C-c>
+
+" Paste from Selection buffer in command mode.
+bind --mode=ex <S-Insert> clipboard xselpaste
+bind --mode=ex <A-p> clipboard xselpaste
 
 "
 " Misc settings
@@ -135,7 +151,7 @@ command tabNext jsb browser.tabs.query({currentWindow: true}).then(tabs => { tab
 
 " Sane hinting mode
 set hintfiltermode simple
-set hintnames uniform
+set hintnames short
 set hintchars asdfghjkl
 set relatedopenpos related
 
@@ -155,7 +171,7 @@ fixamo_quiet
 " Make quickmarks for the sane Tridactyl issue view
 "quickmark t https://github.com/cmcaine/tridactyl/issues?utf8=%E2%9C%93&q=sort%3Aupdated-desc+
 
-set yankto clipboard
+set yankto both
 set putfrom clipboard
 
 set newtabfocus page
