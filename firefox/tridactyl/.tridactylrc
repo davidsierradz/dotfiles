@@ -138,6 +138,12 @@ unbind --mode=ex <C-c>
 bind --mode=ex <S-Insert> clipboard xselpaste
 bind --mode=ex <A-p> clipboard xselpaste
 
+bind / fillcmdline find
+bind ? fillcmdline find -?
+bind n findnext 1
+bind N findnext -1
+bind <A-l> nohlsearch
+
 "
 " Misc settings
 "
