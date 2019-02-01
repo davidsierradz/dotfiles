@@ -103,6 +103,7 @@ Xft.rgba: rgb
 Xft.autohint: false
 Xft.hintstyle: hintfull
 Xft.lcdfilter: lcddefault
+
 Xcursor.theme: xcursor-breeze
 Xcursor.size:  0
 
@@ -116,19 +117,15 @@ XTerm*foreground: black
 XTerm*reverseVideo: on
 !XTerm*faceName: Anonymice Powerline:size=12:antialias=true
 XTerm*faceName: DejaVu Sans Mono for Powerline:size=12:antialias=true
-!XTerm*faceName: Terminus:size=11:antialias=true
+!XTerm*faceName: Terminus:size=12:antialias=true
 XTerm*selectToClipboard: true
 XTerm*termName: xterm-256color
 
-!URxvt.font: 9x15
-!URxvt.font: xft:Anonymice Powerline:size=10
-!URxvt.font: xft:Anonymice Powerline:pixelsize=16
-!URxvt.font: xft:DroidSansMonoForPowerline Nerd Font:pixelsize=16:antialias=true:hinting=true
-!URxvt.font: xft:UbuntuMonoDerivativePowerline Nerd Font:pixelsize=24:antialias=true:hinting=true
-URxvt.font:           xft:Hack Nerd Font Mono:style=Regular:pixelsize=16:antialias=true:hinting=true
-URxvt.boldFont:       xft:Hack Nerd Font Mono:style=Bold:pixelsize=16:antialias=true:hinting=true
-URxvt.italicFont:     xft:Hack Nerd Font Mono:style=Italic:pixelsize=16:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Hack Nerd Font Mono:style=Bold Italic:pixelsize=16:antialias=true:hinting=true
+URxvt.allow_bold:     true
+URxvt.font:           xft:Iosevka Term:style=Light:pixelsize=14:antialias=true:hinting=true
+URxvt.boldFont:       xft:Iosevka Term:style=Bold:pixelsize=14:antialias=true:hinting=true
+URxvt.italicFont:     xft:Iosevka Term:style=Italic:pixelsize=14:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Iosevka Term:style=Bold Italic:pixelsize=14:antialias=true:hinting=true
 URxvt.depth: 32
 !URxvt.background: [80]#000000
 URxvt*scrollBar:                      false
@@ -137,7 +134,7 @@ URxvt*cursorBlink:                    true
 !URxvt*background:                     black
 !URxvt*foreground:                     grey
 URxvt*saveLines:                      50000
-URxvt.letterSpace: -1
+URxvt.letterSpace: 0
 URxvt.intensityStyles: false
 
 URxvt.perl-ext-common: font-size,matcher
