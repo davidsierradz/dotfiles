@@ -189,8 +189,9 @@ set newtabfocus page
 
 autocmd TabEnter .* unfocus
 autocmd TabEnter .* composite mode normal ; hidecmdline
-autocmd DocLoad .* composite mode normal ; hidecmdline
-autocmd DocStart .* composite mode normal ; hidecmdline
+" Commented until https://github.com/tridactyl/tridactyl/issues/1236
+"autocmd DocLoad .* composite mode normal ; hidecmdline
+"autocmd DocStart .* composite mode normal ; hidecmdline
 
 autocmd DocLoad https://news.ycombinator.com/item js setTimeout(() => {[...document.querySelectorAll('tr.athing.comtr:not(.noshow):not(.coll)')].filter(e => e.querySelector('td.ind img').attributes.width.value === '40').forEach(e => setTimeout(() => {e.querySelector('.togg').click()}, 1));}, 2000);
 
