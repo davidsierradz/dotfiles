@@ -1108,6 +1108,11 @@ let g:yoinkSavePersistently=1
 let g:yoinkIncludeDeleteOperations=1
 "}}}
 
+""/ scrooloose/nerdcommenter {{{
+"/
+let g:NERDCompactSexyComs=1
+"}}}
+
 ""/ ryanoasis/vim-devicons {{{
 "/
 let g:webdevicons_enable_airline_tabline = 0
