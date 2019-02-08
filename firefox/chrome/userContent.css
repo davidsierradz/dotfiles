@@ -29,11 +29,14 @@
   .tab.discarded {
     opacity: 0.5;
   }
-  .tab.discarded .label {
+  .tab.discarded .label-content {
     color: #aaa;
   }
-  .tab.unread .label {
-    font-style: italic;
+  .tab.unread .label-content {
+    font-style: italic !important;
+  }
+  .tab.unread {
+    background-color: red !important;
   }
   .tab {
     height: 32px;
