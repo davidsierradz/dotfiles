@@ -570,9 +570,9 @@ let g:airline_powerline_fonts=1
 
 " Set airline separators.
 let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
+let g:airline_left_alt_sep = '|'
 let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
+let g:airline_right_alt_sep = '|'
 
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
@@ -585,6 +585,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " Show the buffer id.
 let g:airline#extensions#tabline#buffer_nr_show = 1
+
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 " Quick buffer navigations with the plugin.
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -1106,6 +1108,10 @@ let g:yoinkSavePersistently=1
 let g:yoinkIncludeDeleteOperations=1
 "}}}
 
+""/ ryanoasis/vim-devicons {{{
+"/
+let g:webdevicons_enable_airline_tabline = 0
+"}}}
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
 
