@@ -40,9 +40,9 @@ unbind X
 
 unbind x
 
-bind C composite tabNext; sleep 100; tabclose #
+bind C composite tabNext; tabclose #
 
-bind c composite tabPrev; sleep 100; tabclose #
+bind c composite tabPrev; tabclose #
 
 bind x composite buffer #; sleep 100; tabclose #
 
