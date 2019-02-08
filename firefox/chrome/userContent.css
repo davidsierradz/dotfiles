@@ -73,7 +73,13 @@
   .tab.active .closebox:hover::before {
     background: #96afc8;
   }
+  .tab.last-active {
+    background-color: #997719 !important;
+  }
 
+  #all-tabs li.tab.last-active.unread {
+    background-color: #B55712 !important;
+  }
 
   /* Hide .twisty and adjust margins so favicons have 7px on left. */
   .tab .twisty {
