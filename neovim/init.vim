@@ -419,7 +419,7 @@ cmap ee e +<C-R>* <C-R>+<CR>
 set pastetoggle=<F2>
 
 " Use <Alt-L> to clear the highlighting of :set hlsearch.
-nnoremap <silent> <A-l> :syntax sync fromstart<CR>:nohlsearch<C-R>=has('diff')?'<Bar>diffupdate':''<CR><CR>ì
+nnoremap <A-l> :syntax sync fromstart<CR>:nohlsearch<CR>:diffupdate<CR>:echo<CR>
 
 " Reloads a buffer.
 nnoremap <leader>r :e!<CR>
@@ -587,6 +587,8 @@ let g:airline#extensions#tabline#buffer_idx_mode = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+let g:airline#extensions#tabline#tab_nr_type = 2
 
 " Quick buffer navigations with the plugin.
 nmap <leader>1 <Plug>AirlineSelectTab1
@@ -996,7 +998,7 @@ nmap <silent> <F7> <plug>(matchup-hi-surround)
 "/
 
 " FZF position.
-let g:fzf_layout = { 'down': '~40%' }
+let g:fzf_layout = { 'window': '-tabnew' }
 
 " FZF mappings.
 nnoremap <A-n> :Lines<CR>
