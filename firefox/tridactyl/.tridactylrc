@@ -144,6 +144,8 @@ bind n findnext 1
 bind N findnext -1
 bind <A-l> nohlsearch
 
+unbind <C-f>
+
 "
 " Misc settings
 "
