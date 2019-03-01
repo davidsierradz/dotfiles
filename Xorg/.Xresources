@@ -137,7 +137,7 @@ URxvt*saveLines:                      50000
 URxvt.letterSpace: 0
 URxvt.intensityStyles: false
 
-URxvt.perl-ext-common: font-size,matcher
+URxvt.perl-ext-common: default,font-size,matcher
 
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
@@ -148,6 +148,7 @@ URxvt.keysym.C-slash:  font-size:show
 
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Uline Bold fg5
 
 ! Do not scroll with output
 URxvt*scrollTtyOutput: false
