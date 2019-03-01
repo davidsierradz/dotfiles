@@ -38,23 +38,3 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Start keynav-git
 /usr/bin/keynav
-
-# Alt-Gr+hjkl to arrow keys.
-xmodmap -e "keycode 43 = h H NoSymbol NoSymbol Left"
-xmodmap -e "keycode 44 = j J NoSymbol NoSymbol Down"
-xmodmap -e "keycode 45 = k K NoSymbol NoSymbol Up"
-xmodmap -e "keycode 46 = l L NoSymbol NoSymbol Right"
-
-# Alt-Gr+iop to control sound.
-#xmodmap -e "keycode 31 = i I i I XF86AudioLowerVolume Iacute iacute"
-#xmodmap -e "keycode 32 = o O o O XF86AudioRaiseVolume Oacute oacute"
-#xmodmap -e "keycode 33 = p P p P XF86AudioMute Odiaeresis odiaeresis"
-
-# Alt-Gr+m to enter.
-xmodmap -e "keycode 58 = m M m M Return"
-
-# Use Right Shift (Shift_R) to Alt-Gr+q (ä).
-xmodmap -e "keycode 62 = adiaeresis"
-
-# Use Right Control (Ctrl_R) to Alt-Gr+w (å).
-xmodmap -e "keycode 105 = aring"

@@ -1,0 +1,19 @@
+! Alt-Gr+hjkl to arrow keys.
+keycode 43 = h H NoSymbol NoSymbol Left
+keycode 44 = j J NoSymbol NoSymbol Down
+keycode 45 = k K NoSymbol NoSymbol Up
+keycode 46 = l L NoSymbol NoSymbol Right
+
+! Alt-Gr+iop to control sound.
+!xmodmap -e "keycode 31 = i I i I XF86AudioLowerVolume Iacute iacute"
+!xmodmap -e "keycode 32 = o O o O XF86AudioRaiseVolume Oacute oacute"
+!xmodmap -e "keycode 33 = p P p P XF86AudioMute Odiaeresis odiaeresis"
+
+! Alt-Gr+m to enter.
+keycode 58 = m M m M Return
+
+! Use Right Shift (Shift_R) to Alt-Gr+q (ä).
+keycode 62 = adiaeresis
+
+! Use Right Control (Ctrl_R) to Alt-Gr+w (å).
+keycode 105 = aring
