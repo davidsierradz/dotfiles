@@ -124,6 +124,8 @@ Plug 'zhimsel/vim-stay'
 " Toggles between hybrid and absolute line numbers automatically.
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
+Plug 'osyo-manga/vim-anzu'
+
 "}}}
 
 "-------------Integrations-------------- {{{
@@ -968,6 +970,8 @@ augroup dirvish_events
     " Unmap <C-P> to use FZF :Files
     autocmd FileType dirvish
                 \ silent! unmap <buffer> <C-p>
+    autocmd FileType dirvish
+                \ nnoremap <nowait><buffer><silent> <M-n> <C-\><C-n>k:call feedkeys("p")<CR>
 augroup END
 "}}}
 
