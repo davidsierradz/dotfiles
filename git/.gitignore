@@ -5,3 +5,5 @@ tags
 vendor
 node_modules
 .DS_Store
+adminer.php
+phpcs.xml.dist
