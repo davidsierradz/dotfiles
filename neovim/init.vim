@@ -525,6 +525,9 @@ nnoremap gJ J
 " Yank non-blank current line.
 nnoremap <A-y> mz^yg_`z:delmarks z<cr>
 
+" Cut non-blank current line.
+nmap <A-x> mz^xg_`z:delmarks z<cr>
+
 " Toggle highlighting the search string.
 nnoremap <silent> <F1> :set hlsearch!<cr>
 
@@ -663,9 +666,9 @@ let g:maximizer_set_default_mapping = 0
 
 nnoremap <silent><leader>m :MaximizerToggle<CR>
 vnoremap <silent><leader>m :MaximizerToggle<CR>gv
-nnoremap <silent>å :MaximizerToggle<CR>
-vnoremap <silent>å :MaximizerToggle<CR>gv
-inoremap <silent>å <C-o>:MaximizerToggle<CR>
+nnoremap <silent>Ä :MaximizerToggle<CR>
+vnoremap <silent>Ä :MaximizerToggle<CR>gv
+inoremap <silent>Ä <C-o>:MaximizerToggle<CR>
 "}}}
 
 "/ delimitMate {{{
