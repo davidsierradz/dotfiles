@@ -165,6 +165,8 @@ let g:mkdp_browser = '/usr/bin/qutebrowser'
 
 "-------Completions and omnifuncs------- {{{
 
+"Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+
 " Autocompletion framework.
 Plug 'ncm2/ncm2'
 " ncm2 requires nvim-yarp
@@ -178,13 +180,35 @@ Plug 'ncm2/ncm2-cssomni'
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
 "Plug 'svermeulen/ncm2-yoink'
+"Plug 'phpactor/ncm2-phpactor'
+
+"au User Ncm2Plugin call ncm2#register_source({'name' : 'css',
+"            \ 'priority': 9,
+"            \ 'subscope_enable': 1,
+"            \ 'scope': ['javascript', 'jsx', 'javascript.jsx'],
+"            \ 'mark': 'css',
+"            \ 'word_pattern': '[\w\-]+',
+"            \ 'complete_pattern': ':\s*',
+"            \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+"            \ })
+
+"au User Ncm2Plugin call ncm2#register_source({
+            "\ 'name' : 'phpomni',
+            "\ 'priority': 7,
+            "\ 'subscope_enable': 1,
+            "\ 'scope': ['php'],
+            "\ 'mark': 'po',
+            "\ 'word_pattern': '[\$\w][\w]*',
+            "\ 'complete_pattern': ['\$', '-\>', '::'],
+            "\ 'on_complete': ['ncm2#on_complete#omni', 'phpcomplete#CompletePHP'],
+            "\ })
 
 " CSS omnifunc.
 Plug 'othree/csscomplete.vim'
 
 " PHP implementation of Microsoft LSP (Language Server Protocol).
 Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
-Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+"Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
 " Snippet Engine.
 Plug 'SirVer/ultisnips'
@@ -197,6 +221,13 @@ Plug 'w0rp/ale'
 
 " Expand html tags.
 Plug 'mattn/emmet-vim'
+
+"Plug 'ncm2/float-preview.nvim'
+"Plug 'Shougo/echodoc.vim'
+
+"let g:echodoc#enable_at_startup = 1
+"let g:echodoc#type = 'signature'
+
 "}}}
 
 "------Syntax files and Languages------- {{{
@@ -219,6 +250,9 @@ Plug 'tpope/vim-apathy'
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
+
+"Plug 'salcode/vim-wordpress-dict'
+
 "}}}
 
 " Initialize plugin system
@@ -728,13 +762,15 @@ let g:closetag_close_shortcut = '<leader>>'
 let g:vdebug_options = {}
 let g:vdebug_features = {}
 let g:vdebug_options["break_on_open"] = 0
-let g:vdebug_options["port"] = 9100
-let g:vdebug_options["server"] = ''
+"let g:vdebug_options["watch_window_style"] = 'compact'
+"let g:vdebug_options["timeout"] = 5
+let g:vdebug_options["port"] = 9000
+"let g:vdebug_options["server"] = ''
 
 " Cross paths for projects.
 let g:vdebug_options["path_maps"] = {
-            \    "/home/vagrant/Code/php-mini-framework": "/home/neuromante/Code/php-mini-framework",
-            \}
+		\    "/srv/www/vhosts/nisl": "/home/neuromante/code/nisl",
+		\}
 
 "let g:vdebug_features['max_depth'] = 6
 let g:vdebug_features['max_children'] = 256
@@ -787,6 +823,8 @@ let g:ale_lint_on_insert_leave = 1
 " Set ALE's 200ms delay to zero.
 let g:ale_lint_delay = 0
 
+"let g:ale_virtualtext_cursor = 1
+
 " Set gorgeous colors for marked lines to sane, readable combinations
 " working with any colorscheme.
 au VimEnter,BufEnter,ColorScheme *
@@ -808,18 +846,18 @@ let g:ale_php_phpcs_use_global = 1
 "let g:ale_php_phpcs_standard = "WordPress-Extra"
 
 let g:ale_linters = {
-            \ 'php': ['php', 'phpcs', 'phpmd', 'phpstan'],
+            \ 'php': ['php', 'phpcs'],
             \ 'javascript': ['eslint'],
             \ 'css': ['stylelint'],
             \}
 
-let g:ale_php_phpcs_standard = "PSR2"
+let g:ale_php_phpcs_standard = "PSR12"
 
-let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
-let g:ale_php_phpstan_configuration = 'phpstan.neon'
-let g:ale_php_phpstan_level = '4'
+"let g:ale_php_phpstan_executable = 'vendor/bin/phpstan'
+"let g:ale_php_phpstan_configuration = 'phpstan.neon'
+"let g:ale_php_phpstan_level = '4'
 
-let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
+"let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
 
 let g:ale_fixers = {
             \ 'javascript': ['prettier'],
@@ -829,8 +867,9 @@ let g:ale_fixers = {
 
 let g:ale_fix_on_save = 1
 
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
-"let g:ale_javascript_prettier_options = '--single-quote --no-semi --trailing-comma es5'
+"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --print-width 100'
+"let g:ale_javascript_prettier_use_global = 1
+let g:ale_javascript_prettier_options = '--single-quote --no-semi --trailing-comma es5'
 
 "}}}
 
@@ -924,8 +963,13 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 " Open the popup menu completion.
 imap <C-space> <Plug>(ncm2_manual_trigger)
 
+call ncm2#override_source('phpactor', {s->extend(s, {'mark': 'pp'})})
+
 " Change the minimun letters to pop the autocomplete.
 "let g:ncm2#complete_length = [[1,3],[7,2]]
+
+let g:ncm2_phpactor_timeout = 15
+
 "}}}
 
 ""/ Cosco.vim {{{
@@ -954,6 +998,8 @@ vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
 
 ""/ LanguageServer.vim {{{
 "/
+
+let g:LanguageClient_autoStart = 0
 
 " Disable de diagnostics for the LSP.
 let g:LanguageClient_diagnosticsEnable = 0
@@ -1246,7 +1292,7 @@ autocmd FileType netrw setl bufhidden=wipe
 
 " Start the LSP for PHP.
 "autocmd FileType php LanguageClientStart
-autocmd FileType php setlocal omnifunc=LanguageClient#complete
+"autocmd FileType php setlocal omnifunc=LanguageClient#complete
 
 " Treat `$` as part of the word for PHP.
 autocmd FileType php setlocal iskeyword+=$

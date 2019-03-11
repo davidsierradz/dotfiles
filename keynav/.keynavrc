@@ -119,8 +119,14 @@ a history-back
 ctrl+semicolon start, grid 3x3
 #alt+semicolon start, move-right, grid 3x3
 #ctrl+apostrophe start, cell-select 1x3, cell-select 1x3, cell-select 1x3, cell-select 1x3, cell-select 1x3, cell-select 1x3, warp, end
+#alt+semicolon start, move-left, cut-right, cut-right, cut-right, cut-right, cut-right, cut-right, warp, end
+#alt+apostrophe start, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, warp, end
+#alt+semicolon start, cut-left, cut-left, cut-left, cut-left, cut-left, cut-left, cut-left, cut-left, warp, end
+#alt+apostrophe start, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, warp, end
+#alt+apostrophe start, cut-right, cut-right, cut-right, cut-right, cut-right, cut-right, cut-right, cut-right, warp, end
 alt+semicolon start, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, cut-left, cut-down, warp, end
-alt+apostrophe start, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, cut-right, cut-down, cut-down, cut-down, cut-down, cut-down, warp, end
+alt+apostrophe start, cut-right, cut-right, cut-right, cut-right, cut-right, warp, end
+
 h cell-select 1x2      # left
 j cell-select 2x3      # down
 k cell-select 2x1      # up

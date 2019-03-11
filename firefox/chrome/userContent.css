@@ -23,7 +23,7 @@
 
 /*! Alters the webextension Tree Style Tab
   IMPORTANT: change the Internal UUID all BOTH locations */
-@-moz-document url-prefix("moz-extension://7365b718-00f9-4aeb-bc32-706c756d3048/") {
+@-moz-document url-prefix("moz-extension://3f06c377-e982-4e9a-9ead-37437d6d06fb/") {
   /* CUSTOM */
   /* Change styling of pending (unloaded) tabs */
   .tab.discarded {
