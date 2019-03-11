@@ -58,6 +58,20 @@ xdebug.var_display_max_data = -1
 #xdebug.var_display_max_depth = -1
 ```
 
+Docker
+
+```so
+zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so
+xdebug.remote_autostart        = 1
+xdebug.remote_enable           = 1
+xdebug.remote_port             = 9000
+xdebug.default_enable          = 1
+xdebug.remote_connect_back     = 1
+xdebug.var_display_max_children = -1
+xdebug.var_display_max_data = -1
+xdebug.var_display_max_depth = -1
+```
+
 Cambiar los DNS
 `$echo 'nameserver 8.8.8.8 \nnameserver 8.8.4.4' > /etc/resolv.conf`
 para que no se borre la config de los dns ir al archivo /etc/resolvconf.conf y:

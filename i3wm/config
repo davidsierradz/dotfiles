@@ -54,8 +54,8 @@ exec --no-startup-id pa-applet
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; dunstify -r 1 \\"brightness up \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; dunstify -r 1 \\"brightness down \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
@@ -191,8 +191,8 @@ bindsym $mod+Ctrl+9 move container to workspace $ws9
 bindsym $mod+Ctrl+0 move container to workspace $ws10
 
 # Move workspace between outputs.
-bindsym $mod+Ctrl+h move workspace to output left
-bindsym $mod+Ctrl+l move workspace to output right
+bindsym $mod+Ctrl+h move workspace to output up
+bindsym $mod+Ctrl+l move workspace to output down
 
 # Move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -242,6 +242,7 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Gnomato"] floating enable
 #for_window [title="DevTools"] floating enable
+for_window [title="DevTools"] move container to workspace $ws9; workspace $ws9
 for_window [title="pyruler"] floating enable
 for_window [title="Page Unresponsive"] floating enable border normal
 
@@ -359,7 +360,7 @@ bar {
 #	tray_output eDP1
 
 #	Show the bar only on HDMI1 monitor.
-#	output HDMI2
+	output eDP1
 
 	bindsym button4 nop
 	bindsym button5 nop
@@ -384,27 +385,27 @@ bar {
 	mode hide
 }
 
-#bar {
-#	output VGA1
-#	position bottom
-#	tray_output none
-#	mode hide
-#	font xft:Noto Sans 10.5
-#	strip_workspace_numbers yes
-#
-#	colors {
-##		background $transparent
-#		background #292F34
-#		statusline #F9FAF9
-#		separator  #454947
-#
-##                          border  backgr. text
-#		focused_workspace  #F9FAF9 #16A085 #2B2C2B
-#		active_workspace   #595B5B #353836 #FDF6E3
-#		inactive_workspace #595B5B #353836 #EEE8D5
-#		urgent_workspace   #16A085 #FDF6E3 #E5201D
-#	}
-#}
+bar {
+	output HDMI1
+	position bottom
+	tray_output none
+	mode hide
+	font xft:Noto Sans 10.5
+	strip_workspace_numbers yes
+
+	colors {
+#		background $transparent
+		background #292F34
+		statusline #F9FAF9
+		separator  #454947
+
+#                          border  backgr. text
+		focused_workspace  #F9FAF9 #16A085 #2B2C2B
+		active_workspace   #595B5B #353836 #FDF6E3
+		inactive_workspace #595B5B #353836 #EEE8D5
+		urgent_workspace   #16A085 #FDF6E3 #E5201D
+	}
+}
 #
 #bar {
 #	output HDMI1
@@ -506,8 +507,8 @@ mode "$mode_gaps_outer" {
 mouse_warping none
 
 # Put workspace 8 on VGA1 Screen always and workspace 7 on HDMI1.
-#workspace 8 output HDMI1
-#workspace 7 output VGA1
+workspace 10 output HDMI1
+workspace 9 output HDMI1
 
 # Put a mark for swapping on current focused window.
 bindsym $mod+Ctrl+m mark --toggle "swapee"

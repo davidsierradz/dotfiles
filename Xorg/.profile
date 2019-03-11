@@ -6,4 +6,4 @@ export BROWSER=/usr/bin/qutebrowser
 export NVIM_GTK_NO_HEADERBAR=1
 export NVIM_GTK_PREFER_DARK_THEME=1
 #export NVIM_GTK_RUNTIME_PATH=/usr/share/nvim/runtime/nvim-gtk
-export NVIM_GTK_DOUBLE_BUFFER=1
+export PATH="$PATH:/home/neuromante/.config/composer/vendor/bin"

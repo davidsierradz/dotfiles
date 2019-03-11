@@ -1,6 +1,6 @@
 [user]
-	name = davidsierradz
-	email = davidsierradz@gmail.com
+	email=david.sierra@integ.ro
+	name=David Sierra
 [push]
 	default = simple
 [core]
@@ -8,8 +8,6 @@
 	autocrlf = input
 	editor = vim -u /home/neuromante/dotfiles/vim/.vimrc-mini
 	pager = diff-so-fancy | less --tabs=4 -RFX
-[url "https://davidsierradz@github.com"]
-	insteadOf = https://github.com
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -26,3 +24,7 @@
 	whitespace = red reverse
 [alias]
 	lg = log --graph --date=relative --abbrev=4 --color --decorate --pretty=format:\"%Cred%h%C(yellow)%d %C(bold blue)%an %Creset%s %Cgreen(%ad)%Creset\" --date-order
+	cherry-pick-merge = "!f() { branch=$(git get-current-branch-name) && git checkout $1 && git checkout -b temp-rebase && git rebase --preserve-merges --onto $branch $1^ && git steal-branch $branch && git branch -d temp-rebase ;}; f"
+	get-current-branch-name = symbolic-ref --short HEAD
+	steal-branch = "!f() { git branch -D $1 && git checkout -b $1 && git retrack-branch ;}; f"
+	retrack-branch = "!f() { branch=$(git get-current-branch-name) && git branch --set-upstream-to=origin/$branch $branch ;}; f"
