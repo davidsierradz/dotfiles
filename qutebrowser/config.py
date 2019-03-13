@@ -19,7 +19,7 @@
 
 ## Always restore open sites when qutebrowser is reopened.
 ## Type: Bool
-# c.auto_save.session = False
+c.auto_save.session = True
 
 ## Backend to use to display websites. qutebrowser supports two different
 ## web rendering engines / backends, QtWebKit and QtWebEngine. QtWebKit
@@ -383,7 +383,7 @@
 ## Number of commands to save in the command history. 0: no history / -1:
 ## unlimited
 ## Type: Int
-# c.completion.cmd_history_max_items = 100
+c.completion.cmd_history_max_items = 10000
 
 ## Delay (in milliseconds) before updating completions after typing a
 ## character.
@@ -392,7 +392,7 @@
 
 ## Height (in pixels or as percentage of the window) of the completion.
 ## Type: PercOrInt
-# c.completion.height = '50%'
+c.completion.height = '30%'
 
 ## Minimum amount of characters needed to update completions.
 ## Type: Int
@@ -446,7 +446,6 @@
 ## (and visible on the qute://history page), but hidden in the
 ## completion. Changing this setting will cause the completion history to
 ## be regenerated on the next start, which will take a short while.
-## Type: List of UrlPattern
 # c.completion.web_history.exclude = []
 
 ## Number of URLs to show in the web history. 0: no history / -1:
@@ -461,12 +460,12 @@
 ##   - multiple-tabs: Show a confirmation if multiple tabs are opened.
 ##   - downloads: Show a confirmation if downloads are running
 ##   - never: Never show a confirmation.
-# c.confirm_quit = ['never']
+c.confirm_quit = ['downloads']
 
 ## Automatically start playing `<video>` elements. Note: On Qt < 5.11,
 ## this option needs a restart and does not support URL patterns.
 ## Type: Bool
-# c.content.autoplay = True
+c.content.autoplay = False
 
 ## Enable support for the HTML 5 web application cache feature. An
 ## application cache acts like an HTTP cache in some sense. For documents
@@ -512,7 +511,7 @@
 ## Default encoding to use for websites. The encoding must be a string
 ## describing an encoding such as _utf-8_, _iso-8859-1_, etc.
 ## Type: String
-# c.content.default_encoding = 'iso-8859-1'
+c.content.default_encoding = 'utf-8'
 
 ## Allow websites to share screen content. On Qt < 5.10, a dialog box is
 ## always displayed, even if this is set to "true".
@@ -623,7 +622,21 @@
 
 ## Enable JavaScript.
 ## Type: Bool
-# c.content.javascript.enabled = True
+c.content.javascript.enabled = False
+
+js_whitelist = [
+        "*://localhost/*",
+        "*://127.0.0.1/*",
+        "*://github.com/*",
+        "*://news.ycombinator.com/*",
+        "*://*.youtube.com/*",
+        "*://translate.google.com/*",
+        ]
+
+for site in js_whitelist:
+    with config.pattern(site) as p:
+        p.content.javascript.enabled = True
+
 
 ## Log levels to use for JavaScript console logging messages. When a
 ## JavaScript message with the level given in the dictionary key is
@@ -673,7 +686,7 @@
 ## the mute status for the affected tab is now controlled manually, and
 ## this setting doesn't have any effect.
 ## Type: Bool
-# c.content.mute = False
+c.content.mute = True
 
 ## Netrc-file for HTTP authentication. If unset, `~/.netrc` is used.
 ## Type: File
@@ -940,7 +953,7 @@
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
-# c.hints.chars = 'asdfghjkl'
+c.hints.chars = 'asdfghjkl;'
 
 ## Dictionary file to be used by the word hints.
 ## Type: File
@@ -951,7 +964,7 @@
 ## Valid values:
 ##   - javascript: Better but slower
 ##   - python: Slightly worse but faster
-# c.hints.find_implementation = 'python'
+# c.hints.find_implementation = 'javascript'
 
 ## Hide unmatched hints in rapid mode.
 ## Type: Bool
@@ -985,11 +998,34 @@
 ## CSS selectors used to determine which elements on a page should have
 ## hints.
 ## Type: Dict
-# c.hints.selectors = {'all': ['a', 'area', 'textarea', 'select', 'input:not([type="hidden"])', 'button', 'frame', 'iframe', 'img', 'link', 'summary', '[onclick]', '[onmousedown]', '[role="link"]', '[role="option"]', '[role="button"]', '[ng-click]', '[ngClick]', '[data-ng-click]', '[x-ng-click]', '[tabindex]'], 'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'], 'images': ['img'], 'media': ['audio', 'img', 'video'], 'url': ['[src]', '[href]'], 'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', 'textarea']}
+c.hints.selectors['hn'] = ['[class*="togg"]']
+
+# For Hacker News
+config.bind('`', 'hint hn')
+config.bind('<Ctrl-2>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'40\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
+
+# For YouTube
+config.bind(',m', 'spawn nohup mpv {url}')
+
+
+#with config.pattern('*://news.ycombinator.com/item') as p:
+#    p.bindings.commands = {
+#            'normal': {
+#                '`': 'hint hn'
+#                }
+#            }
+#    p.bindings.commands.normal['`'] = 'hint hn'
+#    p.bindings.commands.normal['<Ctrl-2>'] = 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'40\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));'
+
+#with config.pattern('*://www.youtube.com/*') as p:
+#    p.bindings.commands.normal['`'] = 'spawn nohup mpv {url}'
+
+
+
 
 ## Make characters in hint strings uppercase.
 ## Type: Bool
-# c.hints.uppercase = False
+c.hints.uppercase = True
 
 ## Maximum time (in minutes) between two history items for them to be
 ## considered being from the same browsing session. Items with less time
@@ -1193,7 +1229,7 @@
 
 ## Load a restored tab as soon as it takes focus.
 ## Type: Bool
-# c.session.lazy_restore = False
+c.session.lazy_restore = True
 
 ## Languages to use for spell checking. You can check for available
 ## languages and install dictionaries using scripts/dictcli.py. Run the
@@ -1274,7 +1310,7 @@
 
 ## Open new tabs (middleclick/ctrl+click) in the background.
 ## Type: Bool
-# c.tabs.background = False
+c.tabs.background = True
 
 ## Mouse button with which to close tabs.
 ## Type: String
@@ -1404,7 +1440,7 @@
 ##   - prev: Select the tab which came before the closed one (left in horizontal, above in vertical).
 ##   - next: Select the tab which came after the closed one (right in horizontal, below in vertical).
 ##   - last-used: Select the previously selected tab.
-# c.tabs.select_on_remove = 'next'
+c.tabs.select_on_remove = 'last-used'
 
 ## When to show the tab bar.
 ## Type: String
@@ -1466,12 +1502,12 @@
 ##   - naive: Use simple/naive check.
 ##   - dns: Use DNS requests (might be slow!).
 ##   - never: Never search automatically.
-# c.url.auto_search = 'naive'
+c.url.auto_search = 'naive'
 
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-# c.url.default_page = 'https://start.duckduckgo.com/'
+c.url.default_page = 'about:blank'
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
@@ -1498,11 +1534,14 @@
 ## used by prepending the search engine name to the search term, e.g.
 ## `:open google qutebrowser`.
 ## Type: Dict
-# c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
+c.url.searchengines = {
+        'DEFAULT': 'https://www.google.com/search?q={}',
+        'ddg': 'https://duckduckgo.com/?q={}'
+}
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
-# c.url.start_pages = ['https://start.duckduckgo.com']
+c.url.start_pages = ['about:blank']
 
 ## URL parameters to strip with `:yank url`.
 ## Type: List of String
@@ -1541,19 +1580,19 @@
 # config.bind('.', 'repeat-command')
 # config.bind('/', 'set-cmd-text /')
 # config.bind(':', 'set-cmd-text :')
-# config.bind(';I', 'hint images tab')
-# config.bind(';O', 'hint links fill :open -t -r {hint-url}')
-# config.bind(';R', 'hint --rapid links window')
-# config.bind(';Y', 'hint links yank-primary')
-# config.bind(';b', 'hint all tab-bg')
-# config.bind(';d', 'hint links download')
-# config.bind(';f', 'hint all tab-fg')
-# config.bind(';h', 'hint all hover')
-# config.bind(';i', 'hint images')
-# config.bind(';o', 'hint links fill :open {hint-url}')
-# config.bind(';r', 'hint --rapid links tab-bg')
-# config.bind(';t', 'hint inputs')
-# config.bind(';y', 'hint links yank')
+config.bind(',I', 'hint images tab')
+config.bind(',O', 'hint links fill :open -t -r {hint-url}')
+config.bind(',R', 'hint --rapid links window')
+config.bind(',Y', 'hint links yank-primary')
+config.bind(',b', 'hint all tab-bg')
+config.bind(',d', 'hint links download')
+config.bind(',f', 'hint all tab-fg')
+config.bind(',h', 'hint all hover')
+config.bind(',i', 'hint images')
+config.bind(',o', 'hint links fill :open {hint-url}')
+config.bind(',r', 'hint --rapid links tab-bg')
+config.bind(',t', 'hint inputs')
+config.bind(',y', 'hint links yank')
 # config.bind('<Alt-1>', 'tab-focus 1')
 # config.bind('<Alt-2>', 'tab-focus 2')
 # config.bind('<Alt-3>', 'tab-focus 3')
@@ -1566,24 +1605,24 @@
 # config.bind('<Alt-m>', 'tab-mute')
 # config.bind('<Ctrl-A>', 'navigate increment')
 # config.bind('<Ctrl-Alt-p>', 'print')
-# config.bind('<Ctrl-B>', 'scroll-page 0 -1')
-# config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
+config.bind('U', 'scroll-page 0 -1')
+config.bind('d', 'scroll-page 0 0.5')
 # config.bind('<Ctrl-F5>', 'reload -f')
-# config.bind('<Ctrl-F>', 'scroll-page 0 1')
+config.bind('D', 'scroll-page 0 1')
 # config.bind('<Ctrl-N>', 'open -w')
 # config.bind('<Ctrl-PgDown>', 'tab-next')
 # config.bind('<Ctrl-PgUp>', 'tab-prev')
-# config.bind('<Ctrl-Q>', 'quit')
+config.bind('<Ctrl-Q>', 'quit --save')
 # config.bind('<Ctrl-Return>', 'follow-selected -t')
 # config.bind('<Ctrl-Shift-N>', 'open -p')
-# config.bind('<Ctrl-Shift-T>', 'undo')
+config.bind('X', 'undo')
 # config.bind('<Ctrl-Shift-Tab>', 'nop')
 # config.bind('<Ctrl-Shift-W>', 'close')
 # config.bind('<Ctrl-T>', 'open -t')
-# config.bind('<Ctrl-Tab>', 'tab-focus last')
-# config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
+config.bind('<Backspace>', 'tab-focus last')
+config.bind('u', 'scroll-page 0 -0.5')
 # config.bind('<Ctrl-V>', 'enter-mode passthrough')
-# config.bind('<Ctrl-W>', 'tab-close')
+config.bind('x', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
 # config.bind('<Ctrl-h>', 'home')
@@ -1599,12 +1638,15 @@
 # config.bind('?', 'set-cmd-text ?')
 # config.bind('@', 'run-macro')
 # config.bind('B', 'set-cmd-text -s :quickmark-load -t')
-# config.bind('D', 'tab-close -o')
+config.bind('c', 'tab-close --prev')
+config.bind('C', 'tab-close --next')
 # config.bind('F', 'hint all tab')
 # config.bind('G', 'scroll-to-perc')
 # config.bind('H', 'back')
-# config.bind('J', 'tab-next')
-# config.bind('K', 'tab-prev')
+config.bind('<Alt-k>', 'tab-next')
+config.bind('K', 'tab-next')
+config.bind('<Alt-j>', 'tab-prev')
+config.bind('J', 'tab-prev')
 # config.bind('L', 'forward')
 # config.bind('M', 'bookmark-add')
 # config.bind('N', 'search-prev')
@@ -1646,7 +1688,7 @@
 # config.bind('gm', 'tab-move')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
 # config.bind('gr', 'tab-move +')
-# config.bind('gt', 'set-cmd-text -s :buffer')
+config.bind(';', 'set-cmd-text -s :buffer')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
 # config.bind('i', 'enter-mode insert')
@@ -1665,6 +1707,8 @@
 # config.bind('sl', 'set-cmd-text -s :set -t')
 # config.bind('ss', 'set-cmd-text -s :set')
 # config.bind('tIH', 'config-cycle -p -u *://*.{url:host}/* content.images ;; reload')
+# Right Shift
+config.bind('ä', 'config-cycle -t tabs.show always never ;; config-cycle -t statusbar.hide false true')
 # config.bind('tIh', 'config-cycle -p -u *://{url:host}/* content.images ;; reload')
 # config.bind('tIu', 'config-cycle -p -u {url} content.images ;; reload')
 # config.bind('tPH', 'config-cycle -p -u *://*.{url:host}/* content.plugins ;; reload')
