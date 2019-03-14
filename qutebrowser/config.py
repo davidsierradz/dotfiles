@@ -622,20 +622,21 @@ c.content.default_encoding = 'utf-8'
 
 ## Enable JavaScript.
 ## Type: Bool
-c.content.javascript.enabled = False
+#c.content.javascript.enabled = False
 
-js_whitelist = [
-        "*://localhost/*",
-        "*://127.0.0.1/*",
-        "*://github.com/*",
-        "*://news.ycombinator.com/*",
-        "*://*.youtube.com/*",
-        "*://translate.google.com/*",
-        ]
-
-for site in js_whitelist:
-    with config.pattern(site) as p:
-        p.content.javascript.enabled = True
+#js_whitelist = [
+#        "*://localhost/*",
+#        "*://127.0.0.1/*",
+#        "*://github.com/*",
+#        "*://news.ycombinator.com/*",
+#        "*://*.youtube.com/*",
+#        "*://translate.google.com/*",
+#        "*://*.qutebrowser.org/*",
+#        ]
+#
+#for site in js_whitelist:
+#    with config.pattern(site) as p:
+#        p.content.javascript.enabled = True
 
 
 ## Log levels to use for JavaScript console logging messages. When a
@@ -760,6 +761,8 @@ c.content.mute = True
 ## List of user stylesheet filenames to use.
 ## Type: List of File, or File
 # c.content.user_stylesheets = []
+
+config.bind('<Ctrl-Shift-D>', 'config-cycle -t content.user_stylesheets \'~/dotfiles/qutebrowser/solarized-dark-all-sites.css\' "" ;; config-cycle -t colors.webpage.bg #002b36 white')
 
 ## Enable WebGL.
 ## Type: Bool
