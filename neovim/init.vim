@@ -1223,6 +1223,9 @@ call jspretmpl#register_tag('gql', 'graphql')
 autocmd FileType javascript.jsx JsPreTmpl graphql
 "autocmd FileType javascript JsPreTmpl
 
+" Set folding method
+autocmd FileType json setlocal foldmethod=syntax
+
 "--------------------------------End Auto Commands-----------------------------"
 "}}}
 
