@@ -762,7 +762,8 @@ c.content.mute = True
 ## Type: List of File, or File
 # c.content.user_stylesheets = []
 
-config.bind('<Ctrl-Shift-D>', 'config-cycle -t content.user_stylesheets \'~/dotfiles/qutebrowser/solarized-dark-all-sites.css\' "" ;; config-cycle -t colors.webpage.bg #002b36 white')
+css = '~/dotfiles/qutebrowser/solarized-dark-all-sites.css'
+config.bind('<Ctrl-Shift-D>', f'config-cycle -t content.user_stylesheets {css} "" ;; config-cycle -t colors.webpage.bg #002b36 white')
 
 ## Enable WebGL.
 ## Type: Bool
@@ -844,56 +845,56 @@ config.bind('<Ctrl-Shift-D>', 'config-cycle -t content.user_stylesheets \'~/dotf
 
 ## Font used in the completion categories.
 ## Type: Font
-# c.fonts.completion.category = 'bold 10pt monospace'
+c.fonts.completion.category = 'bold 10pt DejaVu Sans Mono'
 
 ## Font used in the completion widget.
 ## Type: Font
-# c.fonts.completion.entry = '10pt monospace'
+c.fonts.completion.entry = '10pt DejaVu Sans Mono'
 
 ## Font used for the debugging console.
 ## Type: QtFont
-# c.fonts.debug_console = '10pt monospace'
+c.fonts.debug_console = '10pt DejaVu Sans Mono'
 
 ## Font used for the downloadbar.
 ## Type: Font
-# c.fonts.downloads = '10pt monospace'
+c.fonts.downloads = '10pt DejaVu Sans Mono'
 
 ## Font used for the hints.
 ## Type: Font
-# c.fonts.hints = 'bold 10pt monospace'
+c.fonts.hints = 'bold 10pt DejaVu Sans Mono'
 
 ## Font used in the keyhint widget.
 ## Type: Font
-# c.fonts.keyhint = '10pt monospace'
+c.fonts.keyhint = '10pt DejaVu Sans Mono'
 
 ## Font used for error messages.
 ## Type: Font
-# c.fonts.messages.error = '10pt monospace'
+c.fonts.messages.error = '10pt DejaVu Sans Mono'
 
 ## Font used for info messages.
 ## Type: Font
-# c.fonts.messages.info = '10pt monospace'
+c.fonts.messages.info = '10pt DejaVu Sans Mono'
 
 ## Font used for warning messages.
 ## Type: Font
-# c.fonts.messages.warning = '10pt monospace'
+c.fonts.messages.warning = '10pt DejaVu Sans Mono'
 
 ## Default monospace fonts. Whenever "monospace" is used in a font
 ## setting, it's replaced with the fonts listed here.
 ## Type: Font
-# c.fonts.monospace = '"xos4 Terminus", Terminus, Monospace, "DejaVu Sans Mono", Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
+c.fonts.monospace = '"DejaVu Sans Mono","xos4 Terminus", Terminus, Monospace, Monaco, "Bitstream Vera Sans Mono", "Andale Mono", "Courier New", Courier, "Liberation Mono", monospace, Fixed, Consolas, Terminal'
 
 ## Font used for prompts.
 ## Type: Font
-# c.fonts.prompts = '10pt sans-serif'
+c.fonts.prompts = '10pt sans-serif'
 
 ## Font used in the statusbar.
 ## Type: Font
-# c.fonts.statusbar = '10pt monospace'
+c.fonts.statusbar = '10pt DejaVu Sans Mono'
 
 ## Font used in the tab bar.
 ## Type: QtFont
-# c.fonts.tabs = '10pt monospace'
+c.fonts.tabs = '10pt DejaVu Sans Mono'
 
 ## Font family for cursive fonts.
 ## Type: FontFamily
@@ -905,27 +906,27 @@ config.bind('<Ctrl-Shift-D>', 'config-cycle -t content.user_stylesheets \'~/dotf
 
 ## Font family for fixed fonts.
 ## Type: FontFamily
-# c.fonts.web.family.fixed = ''
+c.fonts.web.family.fixed = "DejaVu Sans Mono"
 
 ## Font family for sans-serif fonts.
 ## Type: FontFamily
-# c.fonts.web.family.sans_serif = ''
+c.fonts.web.family.sans_serif = "DejaVu Sans"
 
 ## Font family for serif fonts.
 ## Type: FontFamily
-# c.fonts.web.family.serif = ''
+c.fonts.web.family.serif = "DejaVu Serif"
 
 ## Font family for standard fonts.
 ## Type: FontFamily
-# c.fonts.web.family.standard = ''
+c.fonts.web.family.standard = "DejaVu Sans"
 
 ## Default font size (in pixels) for regular text.
 ## Type: Int
-# c.fonts.web.size.default = 16
+c.fonts.web.size.default = 14
 
 ## Default font size (in pixels) for fixed-pitch text.
 ## Type: Int
-# c.fonts.web.size.default_fixed = 13
+c.fonts.web.size.default_fixed = 11
 
 ## Hard minimum font size (in pixels).
 ## Type: Int
@@ -1024,6 +1025,8 @@ config.bind(',m', 'spawn nohup mpv {url}')
 #    p.bindings.commands.normal['`'] = 'spawn nohup mpv {url}'
 
 
+#with config.pattern('*://www.youtube.com/*') as p:
+#    p.bindings.commands.normal['`'] = 'spawn nohup mpv {url}'
 
 
 ## Make characters in hint strings uppercase.
@@ -1060,7 +1063,7 @@ c.hints.uppercase = True
 ## Automatically enter insert mode if an editable element is focused
 ## after loading the page.
 ## Type: Bool
-# c.input.insert_mode.auto_load = False
+c.input.insert_mode.auto_load = True
 
 ## Leave insert mode when starting a new page load. Patterns may be
 ## unreliable on this setting, and they may match the url you are
@@ -1590,7 +1593,7 @@ config.bind(',Y', 'hint links yank-primary')
 config.bind(',b', 'hint all tab-bg')
 config.bind(',d', 'hint links download')
 config.bind(',f', 'hint all tab-fg')
-config.bind(',h', 'hint all hover')
+config.bind(',,', 'hint all hover')
 config.bind(',i', 'hint images')
 config.bind(',o', 'hint links fill :open {hint-url}')
 config.bind(',r', 'hint --rapid links tab-bg')
@@ -1609,7 +1612,7 @@ config.bind(',y', 'hint links yank')
 # config.bind('<Ctrl-A>', 'navigate increment')
 # config.bind('<Ctrl-Alt-p>', 'print')
 config.bind('U', 'scroll-page 0 -1')
-config.bind('d', 'scroll-page 0 0.5')
+config.bind('d', 'scroll-page 0 0.6')
 # config.bind('<Ctrl-F5>', 'reload -f')
 config.bind('D', 'scroll-page 0 1')
 # config.bind('<Ctrl-N>', 'open -w')
@@ -1623,7 +1626,7 @@ config.bind('X', 'undo')
 # config.bind('<Ctrl-Shift-W>', 'close')
 # config.bind('<Ctrl-T>', 'open -t')
 config.bind('<Backspace>', 'tab-focus last')
-config.bind('u', 'scroll-page 0 -0.5')
+config.bind('u', 'scroll-page 0 -0.6')
 # config.bind('<Ctrl-V>', 'enter-mode passthrough')
 config.bind('x', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
@@ -1631,7 +1634,7 @@ config.bind('x', 'tab-close')
 # config.bind('<Ctrl-h>', 'home')
 # config.bind('<Ctrl-p>', 'tab-pin')
 # config.bind('<Ctrl-s>', 'stop')
-# config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
+config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave;; jseval -q document.activeElement.blur()')
 # config.bind('<F11>', 'fullscreen')
 # config.bind('<F5>', 'reload')
 # config.bind('<Return>', 'follow-selected')
@@ -1695,8 +1698,10 @@ config.bind(';', 'set-cmd-text -s :buffer')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
 # config.bind('i', 'enter-mode insert')
-# config.bind('j', 'scroll down')
-# config.bind('k', 'scroll up')
+config.bind('<Ctrl-j>', 'scroll down')
+config.bind('<Ctrl-k>', 'scroll up')
+config.bind('j', 'scroll-px 0 40')
+config.bind('k', 'scroll-px 0 -40')
 # config.bind('l', 'scroll right')
 # config.bind('m', 'quickmark-save')
 # config.bind('n', 'search-next')
@@ -1832,6 +1837,8 @@ config.bind('ä', 'config-cycle -t tabs.show always never ;; config-cycle -t sta
 
 ## Bindings for passthrough mode
 # config.bind('<Shift-Escape>', 'leave-mode', mode='passthrough')
+config.bind('<Alt-k>', 'tab-next', mode='passthrough')
+config.bind('<Alt-j>', 'tab-prev', mode='passthrough')
 
 ## Bindings for prompt mode
 # config.bind('<Alt-B>', 'rl-backward-word', mode='prompt')
