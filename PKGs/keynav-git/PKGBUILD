@@ -4,7 +4,7 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 # Contributor: Jan Fader <jan.fader@web.de>
 pkgname=keynav-git
-pkgver=0.+r262.20171104
+pkgver=0.+r285.20190221
 pkgrel=1
 pkgdesc="Ingenious and fast way to move the mouse pointer on the screen with keystrokes."
 url="http://www.semicomplete.com/projects/keynav/"

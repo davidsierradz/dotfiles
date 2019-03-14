@@ -5,7 +5,7 @@
 
 _pkgname=powerlevel9k
 pkgname=zsh-theme-${_pkgname}-git
-pkgver=v0.6.4.r45.gafb7387
+pkgver=v0.6.6.r108.gc4a8118
 pkgrel=1
 pkgdesc='Powerlevel9k theme for zsh'
 groups=('modified')

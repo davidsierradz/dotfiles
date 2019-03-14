@@ -1,7 +1,7 @@
 # Maintainer: David Sierra DiazGranados <davidsierradz at gmail dot com>
 _name='zsh-autosuggestions'
 pkgname="${_name}-git"
-pkgver=v0.4.2.r1.gc7d4a85
+pkgver=v0.5.0.r1.g70f36c0
 pkgrel=1
 pkgdesc='Fish shell like fast/unobtrusive autosuggestions for zsh'
 url='https://github.com/zsh-users/zsh-autosuggestions'

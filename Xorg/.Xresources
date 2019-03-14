@@ -1,3 +1,11 @@
+Xft.dpi: 96
+Xft.antialias: true
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.autohint: false
+Xft.hintstyle: hintfull
+Xft.lcdfilter: lcddefault
+
 ! Solarized scheme.
 #define S_base03        #002b36
 #define S_base02        #073642
@@ -95,15 +103,6 @@
 !*color7:                #fdf6e3
 !*color15:               #fdf6e3
 
-!Xft.dpi: 120
-Xft.dpi: 96
-Xft.antialias: true
-Xft.hinting: true
-Xft.rgba: rgb
-Xft.autohint: false
-Xft.hintstyle: hintfull
-Xft.lcdfilter: lcddefault
-
 Xcursor.theme: xcursor-breeze
 Xcursor.size:  0
 
@@ -122,10 +121,10 @@ XTerm*selectToClipboard: true
 XTerm*termName: xterm-256color
 
 URxvt.allow_bold:     true
-URxvt.font:           xft:Iosevka Term:style=Light:pixelsize=14:antialias=true:hinting=true
-URxvt.boldFont:       xft:Iosevka Term:style=Bold:pixelsize=14:antialias=true:hinting=true
-URxvt.italicFont:     xft:Iosevka Term:style=Italic:pixelsize=14:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Iosevka Term:style=Bold Italic:pixelsize=14:antialias=true:hinting=true
+URxvt.font:           xft:Iosevka Term:style=Light:pixelsize=18:antialias=true:hinting=true
+URxvt.boldFont:       xft:Iosevka Term:style=Bold:pixelsize=18:antialias=true:hinting=true
+URxvt.italicFont:     xft:Iosevka Term:style=Italic:pixelsize=18:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Iosevka Term:style=Bold Italic:pixelsize=18:antialias=true:hinting=true
 URxvt.depth: 32
 !URxvt.background: [80]#000000
 URxvt*scrollBar:                      false
