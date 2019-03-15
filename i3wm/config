@@ -525,12 +525,12 @@ set $mode_spotify p: play/pause j: next k: previous ; Caps to also quit
 bindsym $mod+p mode "$mode_spotify"
 
 mode "$mode_spotify" {
-        bindsym p            exec --no-startup-id playerctl --player=spotify play-pause
-        bindsym Shift+p      exec --no-startup-id playerctl --player=spotify play-pause, mode "default"
-        bindsym j            exec --no-startup-id playerctl --player=spotify next
-        bindsym Shift+j      exec --no-startup-id playerctl --player=spotify next, mode "default"
-        bindsym k            exec --no-startup-id playerctl --player=spotify previous
-        bindsym Shift+k      exec --no-startup-id playerctl --player=spotify previous, mode "default"
+        bindsym p            exec --no-startup-id "playerctl --player=spotify,mps-youtube play-pause"
+        bindsym Shift+p      exec --no-startup-id "playerctl --player=spotify,mps-youtube play-pause", mode "default"
+        bindsym j            exec --no-startup-id "playerctl --player=spotify,mps-youtube next"
+        bindsym Shift+j      exec --no-startup-id "playerctl --player=spotify,mps-youtube next", mode "default"
+        bindsym k            exec --no-startup-id "playerctl --player=spotify,mps-youtube previous"
+        bindsym Shift+k      exec --no-startup-id "playerctl --player=spotify,mps-youtube previous", mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
