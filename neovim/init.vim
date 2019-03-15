@@ -1008,14 +1008,14 @@ nmap <silent> <F7> <plug>(matchup-hi-surround)
 let g:fzf_layout = { 'window': '-tabnew' }
 
 " FZF mappings.
-nnoremap <A-n> :Lines<CR>
-nnoremap <A-b> :BTags<CR>
-nnoremap <A-t> :Ag<CR>
-nnoremap <A-r> :Tags<CR>
-nnoremap <A-e> :History<CR>
-nnoremap <A-c> :Snippets<CR>
-nnoremap ; :Buffers<CR>
-nnoremap <C-p> :Files<CR>
+nnoremap <A-n> :Lines<CR><C-\><C-n>0i
+nnoremap <A-b> :BTags<CR><C-\><C-n>0i
+nnoremap <A-t> :Ag<CR><C-\><C-n>0i
+nnoremap <A-r> :Tags<CR><C-\><C-n>0i
+nnoremap <A-e> :History<CR><C-\><C-n>0i
+nnoremap <A-c> :Snippets<CR><C-\><C-n>0i
+nnoremap ; :Buffers<CR><C-\><C-n>0i
+nnoremap <C-p> :Files<CR><C-\><C-n>0i
 "}}}
 
 ""/ emmet.vim {{{
