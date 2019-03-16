@@ -763,7 +763,7 @@ c.content.mute = True
 # c.content.user_stylesheets = []
 
 css = '~/dotfiles/qutebrowser/solarized-dark-all-sites.css'
-config.bind('<Ctrl-Shift-D>', f'config-cycle -t content.user_stylesheets {css} "" ;; config-cycle -t colors.webpage.bg #002b36 white')
+config.bind('<Alt-Shift-D>', f'config-cycle -t content.user_stylesheets {css} "" ;; config-cycle -t colors.webpage.bg #002b36 white')
 
 ## Enable WebGL.
 ## Type: Bool
