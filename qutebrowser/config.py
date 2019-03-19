@@ -944,7 +944,7 @@ c.fonts.web.size.default_fixed = 11
 ##   - unique-match: Auto-follow whenever there is a unique non-empty match in either the hint string (word mode) or filter (number mode).
 ##   - full-match: Follow the hint when the user typed the whole hint (letter, word or number mode) or the element's text (only in number mode).
 ##   - never: The user will always need to press Enter to follow a hint.
-# c.hints.auto_follow = 'unique-match'
+c.hints.auto_follow = 'always'
 
 ## Duration (in milliseconds) to ignore normal-mode key bindings after a
 ## successful auto-follow.
@@ -957,7 +957,7 @@ c.fonts.web.size.default_fixed = 11
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
-c.hints.chars = 'asdfghjkl;'
+c.hints.chars = 'asdfghjkl'
 
 ## Dictionary file to be used by the word hints.
 ## Type: File
@@ -976,7 +976,7 @@ c.hints.chars = 'asdfghjkl;'
 
 ## Minimum number of characters used for hint strings.
 ## Type: Int
-# c.hints.min_chars = 1
+c.hints.min_chars = 2
 
 ## Mode to use for hints.
 ## Type: String
@@ -1063,7 +1063,7 @@ c.hints.uppercase = True
 ## Automatically enter insert mode if an editable element is focused
 ## after loading the page.
 ## Type: Bool
-c.input.insert_mode.auto_load = True
+# c.input.insert_mode.auto_load = False
 
 ## Leave insert mode when starting a new page load. Patterns may be
 ## unreliable on this setting, and they may match the url you are
@@ -1691,7 +1691,7 @@ config.bind('J', 'tab-prev')
 # config.bind('gd', 'download')
 # config.bind('gf', 'view-source')
 # config.bind('gg', 'scroll-to-perc 0')
-# config.bind('gi', 'hint inputs --first')
+config.bind('gi', 'hint inputs')
 # config.bind('gl', 'tab-move -')
 # config.bind('gm', 'tab-move')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')

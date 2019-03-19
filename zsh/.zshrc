@@ -81,11 +81,11 @@ alias d='docker'
 
 # Fuzzy find all files to send to git add.
 gafzf() {
-    git add $(git status -s | awk '{$1=""; print $0}' | fzf --height 30% --reverse --multi "$@")
+    git add $(git status -s | awk '{$1=""; print $0}' | fzf --height 50% --reverse --multi "$@")
 }
 
 dpsfzf() {
-    docker ps --all | fzf --height 30% --reverse --multi | awk '{$2=""; print $1}'
+    docker ps --all | fzf --height 50% --reverse --multi | awk '{$2=""; print $1}'
 }
 
 # want your terminal to support 256 color schemes? I do ...
@@ -296,7 +296,7 @@ gh() {
     myVar=$(</dev/stdin)
     originalFile=$1
 
-    echo -e $myVar | fzf --height 80% --border --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+    echo -e $myVar | fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
         --header 'Press CTRL-S to toggle sort' \
         --preview "grep -o \"[a-f0-9]\{7,\}\" <<< {} | xargs -I % sh -c \"git show % --color=always -- $originalFile\" | head -"$LINES |
         grep -o "[a-f0-9]\{7,\}"
