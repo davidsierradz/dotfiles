@@ -149,22 +149,22 @@ Plug 'tpope/vim-fugitive'
 
 "-------Completions and omnifuncs------- {{{
 
-Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+"Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
 
 " Autocompletion framework.
-Plug 'ncm2/ncm2'
+"Plug 'ncm2/ncm2'
 " ncm2 requires nvim-yarp
-Plug 'roxma/nvim-yarp'
+"Plug 'roxma/nvim-yarp'
 " Some completions
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
-Plug 'ncm2/ncm2-html-subscope'
-Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
+"Plug 'ncm2/ncm2-bufword'
+"Plug 'ncm2/ncm2-path'
+"Plug 'ncm2/ncm2-ultisnips'
+"Plug 'ncm2/ncm2-cssomni'
+"Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+"Plug 'ncm2/ncm2-html-subscope'
+"Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
 "Plug 'svermeulen/ncm2-yoink'
-Plug 'phpactor/ncm2-phpactor'
+"Plug 'phpactor/ncm2-phpactor'
 
 "au User Ncm2Plugin call ncm2#register_source({
             "\ 'name' : 'phpomni',
@@ -178,11 +178,11 @@ Plug 'phpactor/ncm2-phpactor'
             "\ })
 
 " CSS omnifunc.
-Plug 'othree/csscomplete.vim'
+"Plug 'othree/csscomplete.vim'
 
 " PHP implementation of Microsoft LSP (Language Server Protocol).
-Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
-Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
+"Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
+"Plug 'roxma/LanguageServer-php-neovim',  {'do': 'composer install && composer run-script parse-stubs'}
 
 " Snippet Engine.
 Plug 'SirVer/ultisnips'
@@ -198,11 +198,42 @@ Plug 'mattn/emmet-vim'
 
 "Plug 'ncm2/float-preview.nvim'
 
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+let g:coc_filetype_map = {
+            \ 'javascript': 'css',
+            \ }
+
 "}}}
 
 "------Syntax files and Languages------- {{{
 " Insert and sort use statements in PHP.
 Plug 'arnaud-lb/vim-php-namespace'
+
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
+Plug 'othree/javascript-libraries-syntax.vim'
+Plug 'maxmellon/vim-jsx-pretty'
 
 " Language pack for vim.
 Plug 'sheerun/vim-polyglot'
@@ -743,7 +774,7 @@ let g:vdebug_features['max_data'] = 2048
 ""/ vim-polyglot {{{
 "/
 
-"let g:polyglot_disabled = ['css', 'php', 'javascript']
+"let g:polyglot_disabled = ['javascript', 'javascript.jsx']
 "}}}
 
 ""/ vim-startify {{{
@@ -881,51 +912,51 @@ autocmd FileType php noremap <buffer> <Leader>ss :call PhpSortUse()<CR>
 "autocmd BufEnter * call ncm2#enable_for_buffer()
 "autocmd InsertEnter * call ncm2#enable_for_buffer()
 
-function s:ncm2_start(...)
-    if v:vim_did_enter
-        call ncm2#enable_for_buffer()
-    endif
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-endfunc
-
-call timer_start(500, function('s:ncm2_start'))
-
-" note that must keep noinsert in completeopt, the others is optional
-set completeopt=noinsert,menuone,noselect
-
-" supress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
-
-"au TextChangedI * call ncm2#auto_trigger()
-
-let g:ncm2#matcher = 'substrfuzzy'
-"let g:ncm2#matcher = 'abbrfuzzy'
-
-" use a sorter that's more friendly for fuzzy match
-let g:ncm2#sorter = 'abbrfuzzy'
-
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
-
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
-
-" Use <TAB> to select the popup menu:
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
-
-" Open the popup menu completion.
-imap <C-space> <Plug>(ncm2_manual_trigger)
-
-call ncm2#override_source('phpactor', {s->extend(s, {'mark': 'pp'})})
-
-" Change the minimun letters to pop the autocomplete.
-"let g:ncm2#complete_length = [[1,3],[7,2]]
-
-let g:ncm2_phpactor_timeout = 15
+"function s:ncm2_start(...)
+"    if v:vim_did_enter
+"        call ncm2#enable_for_buffer()
+"    endif
+"    autocmd BufEnter * call ncm2#enable_for_buffer()
+"endfunc
+"
+"call timer_start(500, function('s:ncm2_start'))
+"
+"" note that must keep noinsert in completeopt, the others is optional
+"set completeopt=noinsert,menuone,noselect
+"
+"" supress the annoying 'match x of y', 'The only match' and 'Pattern not
+"" found' messages
+"set shortmess+=c
+"
+""au TextChangedI * call ncm2#auto_trigger()
+"
+"let g:ncm2#matcher = 'substrfuzzy'
+""let g:ncm2#matcher = 'abbrfuzzy'
+"
+"" use a sorter that's more friendly for fuzzy match
+"let g:ncm2#sorter = 'abbrfuzzy'
+"
+"" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+"inoremap <c-c> <ESC>
+"
+"" When the <Enter> key is pressed while the popup menu is visible, it only
+"" hides the menu. Use this mapping to close the menu and also start a new
+"" line.
+""inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"
+"" Use <TAB> to select the popup menu:
+"inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+"inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+"
+"" Open the popup menu completion.
+"imap <C-space> <Plug>(ncm2_manual_trigger)
+"
+"call ncm2#override_source('phpactor', {s->extend(s, {'mark': 'pp'})})
+"
+"" Change the minimun letters to pop the autocomplete.
+""let g:ncm2#complete_length = [[1,3],[7,2]]
+"
+"let g:ncm2_phpactor_timeout = 15
 
 "}}}
 
@@ -948,7 +979,7 @@ let g:UltiSnipsJumpBackwardTrigger  = "<M-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " Expand the snippet.
-inoremap <silent> <expr> <C-x><C-s> ncm2_ultisnips#expand_or("\<CR>", 'n')
+"inoremap <silent> <expr> <C-x><C-s> ncm2_ultisnips#expand_or("\<CR>", 'n')
 imap <C-u> <Plug>(ultisnips_expand)
 vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
 "}}}
@@ -956,10 +987,10 @@ vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
 ""/ LanguageServer.vim {{{
 "/
 
-let g:LanguageClient_autoStart = 0
+"let g:LanguageClient_autoStart = 0
 
 " Disable de diagnostics for the LSP.
-let g:LanguageClient_diagnosticsEnable = 0
+"let g:LanguageClient_diagnosticsEnable = 0
 
 "let g:LanguageClient_loggingLevel = 'DEBUG'
 
@@ -1220,10 +1251,10 @@ autocmd FileType php setlocal iskeyword+=$
 
 " Start the LSP for Vue.
 "autocmd FileType vue LanguageClientStart
-autocmd FileType vue setlocal omnifunc=LanguageClient#complete
+"autocmd FileType vue setlocal omnifunc=LanguageClient#complete
 
 " Set the omnifunc for CSS.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS noci
 
 " Only show cursorline in the current window and in normal mode.
 augroup cline
