@@ -3,8 +3,8 @@ ZSH=/usr/share/oh-my-zsh
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable ssh vi_mode)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vi_mode)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs time command_execution_time)
 #POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
 POWERLEVEL9K_SHOW_CHANGESET=true
 POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
@@ -23,8 +23,8 @@ POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
 POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-#POWERLEVEL9K_TIME_BACKGROUND="blue"
-#POWERLEVEL9K_TIME_FOREGROUND="white"
+POWERLEVEL9K_TIME_BACKGROUND="blue"
+POWERLEVEL9K_TIME_FOREGROUND="white"
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,6 +82,13 @@ alias d='docker'
 # Fuzzy find all files to send to git add.
 gafzf() {
     git add $(git status -s | awk '{$1=""; print $0}' | fzf --height 50% --reverse --multi "$@")
+}
+
+# Using xargs to pass arguments to git patch for some reason is
+# interpreting \n as n inside the interactive patch section, why?
+# For now add another command:
+gapafzf() {
+    git add --patch $(git status -s | awk '{$1=""; print $0}' | fzf --height 50% --reverse --multi "$@")
 }
 
 dpsfzf() {
