@@ -1029,6 +1029,10 @@ config.bind(',m', 'spawn nohup mpv {url}')
 #    p.bindings.commands.normal['`'] = 'spawn nohup mpv {url}'
 
 
+with config.pattern('*://mail.google.com/*') as p:
+    p.content.register_protocol_handler = True
+
+
 ## Make characters in hint strings uppercase.
 ## Type: Bool
 c.hints.uppercase = True
