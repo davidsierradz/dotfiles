@@ -612,6 +612,12 @@ let g:airline#extensions#tagbar#flags = 'f'
 
 " Enable the Ale integration.
 let g:airline#extensions#ale#enabled = 1
+
+" Hide empty sections.
+let g:airline_skip_empty_sections = 1
+
+" Add 'foldlevel' to z section.
+let g:airline_section_z = airline#section#create(['Σ %{&foldlevel}', 'windowswap', '%3p%% ', 'linenr', ':%3v '])
 "}}}
 
 "/ Ack.vim {{{
