@@ -154,6 +154,7 @@ let g:mkdp_browser = '/usr/bin/qutebrowser'
 "}}}
 
 "-------Completions and omnifuncs------- {{{
+
 " Autocompletion framework.
 Plug 'ncm2/ncm2'
 " ncm2 requires nvim-yarp
@@ -163,7 +164,7 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'ncm2/ncm2-cssomni'
-Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
+"Plug 'ncm2/ncm2-tern',  {'do': 'npm install'}
 Plug 'ncm2/ncm2-html-subscope'
 Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
 "Plug 'svermeulen/ncm2-yoink'
@@ -207,6 +208,7 @@ Plug 'tpope/vim-apathy'
 " Styled components syntax for query strings.
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
 "}}}
 
 " Initialize plugin system
@@ -345,10 +347,10 @@ set signcolumn=yes
 set inccommand=nosplit
 
 " Put ↪ on wrapped lines.
-"set showbreak=↪
+"set showbreak=\ \ \ \ 
 
 " Break words if the wrap option is set.
-set nolinebreak
+set linebreak
 
 " Indent a wrapped line.
 set breakindent
@@ -497,7 +499,12 @@ inoremap <A-`> ->
 inoremap <A-1> =>
 
 " Change <Alt-2> to < in insert mode.
-inoremap <A-2> <
+"inoremap <A-2> <
+"cnoremap <A-2> <
+"vnoremap <A-2> <
+"noremap <A-2> <
+"tnoremap <A-2> <
+"onoremap <A-2> <
 
 " Use <Alt-Shift-Tab> to expand a space: <Space>|<Space>.
 inoremap <A-S-Tab> <Space><Space><Left>
@@ -740,7 +747,7 @@ let g:vdebug_features['max_data'] = 2048
 
 let g:startify_custom_header = []
 
-let g:startify_bookmarks = [ '~/dotfiles/', '~/code/', '~/Vagrant/' ]
+let g:startify_bookmarks = [ '~/dotfiles/', '~/code/' ]
 
 let g:startify_list_order = ['bookmarks', 'sessions', 'files']
 
@@ -811,7 +818,8 @@ let g:ale_php_phpmd_executable = 'vendor/bin/phpmd'
 
 let g:ale_fixers = {
             \ 'javascript': ['prettier'],
-            \ 'json': ['prettier']
+            \ 'json': ['prettier'],
+            \ 'typescript': ['prettier']
             \ }
 
 let g:ale_fix_on_save = 1
@@ -943,12 +951,44 @@ let g:LanguageClient_diagnosticsEnable = 0
 "let g:LanguageClient_loggingLevel = 'DEBUG'
 
 let g:LanguageClient_serverCommands = {}
-let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
+"let g:LanguageClient_serverCommands.html = ['html-languageserver', '--stdio']
 "let g:LanguageClient_serverCommands.css = ['css-languageserver', '--stdio']
 " First do: npm install vue-language-server -g
-let g:LanguageClient_serverCommands.vue = ['vls']
+"let g:LanguageClient_serverCommands.vue = ['vls']
+
+if executable('javascript-typescript-stdio')
+    let g:LanguageClient_autoStart = 1
+    let g:LanguageClient_serverCommands = {
+                \ 'javascript': ['javascript-typescript-stdio'],
+                \ 'javascript.jsx': ['javascript-typescript-stdio'],
+                \ 'typescript': ['javascript-typescript-stdio'],
+                \ }
+    autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
+endif
 
 "\ 'javascript.jsx': ['flow-language-server', '--stdio'],
+
+
+"\ 'javascript.jsx': ['flow-language-server', '--stdio'],
+
+function SetLSPShortcuts()
+    nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+    nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+    nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+    nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+    nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+    nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+    nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+    nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+    nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+    nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+endfunction()
+
+augroup LSP
+    autocmd!
+    autocmd FileType javascript.jsx call SetLSPShortcuts()
+augroup END
+
 "}}}
 
 ""/ clever-f.vim {{{
@@ -1088,7 +1128,7 @@ let g:markbar_explicitly_remap_mark_mappings = v:true
 "/
 
 let g:windowswap_map_keys = 0 "prevent default bindings
-nnoremap <silent> <leader>ww :call WindowSwap#EasyWindowSwap()<CR>
+nnoremap <silent> <leader>ss :call WindowSwap#EasyWindowSwap()<CR>
 "}}}
 
 ""/ vim-subversive {{{
@@ -1175,6 +1215,9 @@ autocmd FileType javascript.jsx setlocal ts=2 sts=2 sw=2
 " Set the indent options for Json files.
 autocmd FileType json setlocal ts=2 sts=2 sw=2
 
+" Set the indent options for TypeScript files.
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2
+
 " Set the indent options for CSS files.
 autocmd FileType css setlocal ts=2 sts=2 sw=2
 
@@ -1232,8 +1275,7 @@ augroup VimCSS3Syntax
 augroup END
 
 call jspretmpl#register_tag('gql', 'graphql')
-autocmd FileType javascript.jsx JsPreTmpl graphql
-"autocmd FileType javascript JsPreTmpl
+autocmd FileType javascript.jsx JsPreTmpl
 
 " Set folding method
 autocmd FileType json setlocal foldmethod=syntax

@@ -27,7 +27,7 @@ set storageloc local
 " Bind Right Shift (ä) to firefox memory page.
 bind ä open about:memory
 
-bindurl https://hckrnews.com/ ` hint -br
+bindurl https://hckrnews.com/ ` hint -qb
 bindurl news\.ycombinator\.com/item ` hint -c [class*="expand"],[class="togg"]
 
 bind <Escape> composite mode normal; unfocus; hidecmdline

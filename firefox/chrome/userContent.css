@@ -23,14 +23,14 @@
 
 /*! Alters the webextension Tree Style Tab
   IMPORTANT: change the Internal UUID all BOTH locations */
-@-moz-document url-prefix("moz-extension://ad54424c-7d2f-4e2e-9ab8-011d6237e74c/") {
+@-moz-document url-prefix("moz-extension://7365b718-00f9-4aeb-bc32-706c756d3048/") {
   /* CUSTOM */
   /* Change styling of pending (unloaded) tabs */
   .tab.discarded {
-    opacity: 0.5;
+    opacity: 0.7 !important;
   }
   .tab.discarded .label-content {
-    color: #aaa;
+    color: #999 !important;
   }
   .tab.unread .label-content {
     font-style: italic !important;

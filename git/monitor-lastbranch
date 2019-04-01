@@ -1,0 +1,8 @@
+!#/bin/sh
+
+inotifywait -e close_write,moved_to,create -m .git/lastbranch |
+    while read -r filename events; do
+        if [ "$filename" = ".git/lastbranch" ]; then
+            export lastbranch=$(cat .git/lastbranch)
+        fi
+    done

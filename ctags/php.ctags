@@ -1,4 +1,4 @@
---languages=PHP
+--languages=+PHP
 --PHP-kinds=+cfitdn-alv
 --fields=*
 --exclude=.git

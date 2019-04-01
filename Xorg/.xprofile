@@ -34,7 +34,15 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 #/usr/bin/setxkbmap -option "caps:swapescape"
 
 # Switch Caps Lock for Ctrl if using as a modifier and Esc if pressed and released.
-/usr/bin/setxkbmap -option 'caps:ctrl_modifier' && /usr/bin/xcape -e 'Caps_Lock=Escape' &
+/usr/bin/setxkbmap -option 'caps:ctrl_modifier' && /usr/bin/xcape -t 2000 -e 'Caps_Lock=Escape' &
 
 # Start keynav-git
 /usr/bin/keynav
+
+# Alt-Gr+, to <.
+#xmodmap -e "keycode 59 = comma less comma less less"
+
+# iso less and greater than to < and >.
+#xmodmap -e "keycode 94 = less greater"
+
+#xset b off
