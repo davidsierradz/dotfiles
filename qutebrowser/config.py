@@ -955,11 +955,11 @@ c.fonts.tabs = '10pt DejaVu Sans Mono'
 
 ## Default font size (in pixels) for regular text.
 ## Type: Int
-# c.fonts.web.size.default = 16
+c.fonts.web.size.default = 16
 
 ## Default font size (in pixels) for fixed-pitch text.
 ## Type: Int
-# c.fonts.web.size.default_fixed = 13
+c.fonts.web.size.default_fixed = 13
 
 ## Hard minimum font size (in pixels).
 ## Type: Int
@@ -1053,6 +1053,7 @@ config.bind(',m', 'spawn nohup mpv {url}')
 
 
 #with config.pattern('*://news.ycombinator.com/item') as p:
+#    p.zoom.default = '150%'
 #    p.bindings.commands = {
 #            'normal': {
 #                '`': 'hint hn'

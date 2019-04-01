@@ -7,4 +7,4 @@ Host github.com
 Host github-nisl
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_rsa_nisl
+  IdentityFile ~/.ssh/nisl_id_rsa

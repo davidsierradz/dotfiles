@@ -422,7 +422,7 @@ let g:ale_fixers = {
 
 let g:ale_fix_on_save = 1
 
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --no-semi'
+"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --no-semi'
 "}}}
 ""/ close-buffers.vim {{{
 "/

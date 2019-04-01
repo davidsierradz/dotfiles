@@ -121,10 +121,10 @@ XTerm*selectToClipboard: true
 XTerm*termName: xterm-256color
 
 URxvt.allow_bold:     true
-URxvt.font:           xft:Iosevka Term:style=Light:pixelsize=18:antialias=true:hinting=true
-URxvt.boldFont:       xft:Iosevka Term:style=Bold:pixelsize=18:antialias=true:hinting=true
-URxvt.italicFont:     xft:Iosevka Term:style=Italic:pixelsize=18:antialias=true:hinting=true
-URxvt.boldItalicFont: xft:Iosevka Term:style=Bold Italic:pixelsize=18:antialias=true:hinting=true
+URxvt.font:           xft:Iosevka Term:style=Light:pixelsize=20:antialias=true:hinting=true
+URxvt.boldFont:       xft:Iosevka Term:style=Bold:pixelsize=20:antialias=true:hinting=true
+URxvt.italicFont:     xft:Iosevka Term:style=Italic:pixelsize=20:antialias=true:hinting=true
+URxvt.boldItalicFont: xft:Iosevka Term:style=Bold Italic:pixelsize=20:antialias=true:hinting=true
 URxvt.depth: 32
 !URxvt.background: [80]#000000
 URxvt*scrollBar:                      false

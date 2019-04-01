@@ -1,12 +1,12 @@
 "--------------------------------General---------------------------------------"{{{
 
 if exists('g:GtkGuiLoaded')
-    call rpcnotify(1, 'Gui', 'Font', 'Iosevka Light 15')
+    call rpcnotify(1, 'Gui', 'Font', 'Iosevka Light 20')
     call rpcnotify(1, 'Gui', 'Option', 'Tabline', 0)
     call rpcnotify(1, 'Gui', 'Option', 'Popupmenu', 0)
     call rpcnotify(1, 'Gui', 'FontFeatures', 'calt, cv04, cv08, cv12, cv17, cv31, cv49')
     let g:GuiInternalClipboard = 1
-    GuiLinespace 2
+    GuiLinespace 6
 endif
 
 " GUI font.
