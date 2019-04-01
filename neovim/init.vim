@@ -145,6 +145,12 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'tpope/vim-fugitive'
 
+Plug 'vimwiki/vimwiki'
+  let g:vimwiki_list = [{'path': '~/notes/',
+                       \ 'syntax': 'markdown', 'ext': '.md'}]
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
+let g:mkdp_browser = '/usr/bin/qutebrowser'
+
 "}}}
 
 "-------Completions and omnifuncs------- {{{

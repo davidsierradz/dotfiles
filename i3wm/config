@@ -54,8 +54,8 @@ exec --no-startup-id pa-applet
 ################################################################################################
 
 # Screen brightness controls
-#bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; dunstify -r 1 \\"brightness up \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
-#bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; dunstify -r 1 \\"brightness down \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; dunstify -r 1 \\"brightness up \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; dunstify -r 1 \\"brightness down \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'

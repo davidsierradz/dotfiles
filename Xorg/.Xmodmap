@@ -18,5 +18,5 @@ keycode 62 = adiaeresis
 ! Use Right Control (Ctrl_R) to Alt-Gr+w (å).
 keycode 105 = aring
 
-!keycode 173 = XF86MonBrightnessDown
-!keycode 172 = XF86MonBrightnessUp
+keycode 173 = XF86MonBrightnessDown
+keycode 172 = XF86MonBrightnessUp
