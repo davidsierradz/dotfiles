@@ -242,6 +242,7 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
 for_window [class="Gnomato"] floating enable
 #for_window [title="DevTools"] floating enable
+for_window [title="mpv"] floating enable; [title="mpv"] resize set 640 480; [title="mpv"] move scratchpad; [title="mpv"] scratchpad show
 for_window [title="pyruler"] floating enable
 for_window [title="Page Unresponsive"] floating enable border normal
 
@@ -525,12 +526,12 @@ set $mode_spotify p: play/pause j: next k: previous ; Caps to also quit
 bindsym $mod+p mode "$mode_spotify"
 
 mode "$mode_spotify" {
-        bindsym p            exec --no-startup-id "playerctl --player=spotify,mps-youtube play-pause"
-        bindsym Shift+p      exec --no-startup-id "playerctl --player=spotify,mps-youtube play-pause", mode "default"
-        bindsym j            exec --no-startup-id "playerctl --player=spotify,mps-youtube next"
-        bindsym Shift+j      exec --no-startup-id "playerctl --player=spotify,mps-youtube next", mode "default"
-        bindsym k            exec --no-startup-id "playerctl --player=spotify,mps-youtube previous"
-        bindsym Shift+k      exec --no-startup-id "playerctl --player=spotify,mps-youtube previous", mode "default"
+        bindsym p            exec --no-startup-id "playerctl --player=spotify,mps-youtube,mpv play-pause"
+        bindsym Shift+p      exec --no-startup-id "playerctl --player=spotify,mps-youtube,mpv play-pause", mode "default"
+        bindsym j            exec --no-startup-id "playerctl --player=spotify,mps-youtube,mpv next"
+        bindsym Shift+j      exec --no-startup-id "playerctl --player=spotify,mps-youtube,mpv next", mode "default"
+        bindsym k            exec --no-startup-id "playerctl --player=spotify,mps-youtube,mpv previous"
+        bindsym Shift+k      exec --no-startup-id "playerctl --player=spotify,mps-youtube,mpv previous", mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
