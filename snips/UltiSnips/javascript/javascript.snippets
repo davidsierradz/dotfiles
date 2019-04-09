@@ -7,3 +7,26 @@ endsnippet
 snippet cl "console.log"
 console.log(${VISUAL}${0})
 endsnippet
+
+snippet clmh "console.log main header"
+console.log(
+  \`
++------------------------------------------------------------------------------------------------------------------+
+|                                                  NEW EXECUTION                                                   |
++------------------------------------------------------------------------------------------------------------------+
+  \`
+)
+console.log('\n\n\n\n\n')
+
+endsnippet
+
+snippet clh "console.log header"
+console.log('\n\n\n\n\n')
+console.log(
+  '\x1b[31m',
+  '↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓',
+  '\x1b[0m'
+)
+console.log('\n\n\n\n\n')
+console.log(${0})
+endsnippet

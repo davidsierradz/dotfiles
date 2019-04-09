@@ -146,8 +146,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'vimwiki/vimwiki'
-  let g:vimwiki_list = [{'path': '~/notes/',
-                       \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/notes/',
+                    \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:vimwiki_global_ext = 0
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 let g:mkdp_browser = '/usr/bin/qutebrowser'
 
@@ -888,7 +890,12 @@ endfunc
 call timer_start(500, function('s:ncm2_start'))
 
 " note that must keep noinsert in completeopt, the others is optional
-set completeopt=noinsert,menuone,noselect
+"set completeopt=noinsert,menuone,noselect
+
+set completeopt=menuone
+
+au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+au User Ncm2PopupClose set completeopt=menuone
 
 " supress the annoying 'match x of y', 'The only match' and 'Pattern not
 " found' messages
@@ -966,6 +973,7 @@ if executable('javascript-typescript-stdio')
                 \ 'javascript.jsx': ['javascript-typescript-stdio'],
                 \ 'typescript': ['javascript-typescript-stdio'],
                 \ }
+    autocmd FileType javascript.jsx setlocal completefunc=styledcomplete#CompleteSC
     autocmd FileType javascript.jsx setlocal omnifunc=LanguageClient#complete
 endif
 
