@@ -65,10 +65,13 @@ source $ZSH/oh-my-zsh.sh
 # custom aliases
 #long list
 alias ll='ls -lAFh --group-directories-first'
+
 # long list by date
 alias llt='ls -lAFht --group-directories-first'
+
 #Clear
 alias c='clear'
+
 # Python JSON prettier
 alias -g J='| python -m json.tool'
 
@@ -76,8 +79,10 @@ alias -g J='| python -m json.tool'
 alias -g X='| xsel -bi'
 
 # Docker alias
-
 alias d='docker'
+
+# Neovim alias
+alias vimwiki='nvim -u ~/dotfiles/neovim/wiki-init.vim -c VimwikiIndex'
 
 # Fuzzy find all files to send to git add.
 gafzf() {
@@ -95,10 +100,8 @@ dpsfzf() {
     docker ps --all | fzf --height 50% --reverse --multi | awk '{$2=""; print $1}'
 }
 
-# want your terminal to support 256 color schemes? I do ...
-#export TERM=xterm-256color
-export EDITOR="/usr/bin/vim"
-export VISUAL="/usr/bin/vim"
+export EDITOR="/usr/bin/nvim"
+export VISUAL="/usr/bin/nvim"
 export USE_EDITOR=$EDITOR
 export LC_COLLATE="C"
 
