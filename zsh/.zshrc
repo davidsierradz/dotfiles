@@ -277,26 +277,26 @@ bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 
 # Change cursor shape for different vi modes.
-function zle-keymap-select {
-    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-        echo -ne '\e[1 q'
-
-    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
-        echo -ne '\e[5 q'
-    fi
-
-    zle reset-prompt
-    zle -R
-}
-zle -N zle-keymap-select
+#function zle-keymap-select {
+#    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+#        echo -ne '\e[1 q'
+#
+#    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+#        echo -ne '\e[5 q'
+#    fi
+#
+#    zle reset-prompt
+#    zle -R
+#}
+#zle -N zle-keymap-select
 
 # Use beam shape cursor on startup.
-echo -ne '\e[5 q'
+#echo -ne '\e[5 q'
 
 # Use beam shape cursor for each new prompt.
-preexec() {
-    echo -ne '\e[5 q'
-}
+#preexec() {
+#    echo -ne '\e[5 q'
+#}
 
 # Use like this: git log -- file GHFZF file
 gh() {
@@ -313,3 +313,9 @@ gh() {
 alias -g GHFZF='| gh'
 
 alias -g lastbranch='$(cat .git/lastbranch)'
+
+# Terminal color scheme
+function terminal-scheme() {
+  config_file=~/dotfiles/alacritty/alacritty.yml
+  sed -i "s/\(^colors: \*\).*/\1$1/g" $config_file
+}
