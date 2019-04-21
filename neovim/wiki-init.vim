@@ -1,19 +1,13 @@
 "--------------------------------Plugins---------------------------------------" {{{
-
 " Specify a directory for plugins
 call plug#begin('~/.local/share/nvim/plugged')
 
 "----------------Basics----------------- {{{
-Plug 'reedes/vim-colors-pencil'
-
 " Enable repeating supported plugin maps with "."
 Plug 'tpope/vim-repeat'
 
 " Readline style insertion.
 Plug 'tpope/vim-rsi'
-
-" Move lines or block of lines.
-Plug 'matze/vim-move'
 
 " Replace operator for Vim
 Plug 'svermeulen/vim-subversive'
@@ -31,6 +25,9 @@ Plug 'reedes/vim-lexical'
 "}}}
 
 "--------------Interface---------------- {{{
+" Colorscheme.
+Plug 'reedes/vim-colors-pencil'
+
 " Search your selection text with * or #.
 Plug 'haya14busa/vim-asterisk'
 
@@ -42,33 +39,20 @@ Plug 'junegunn/goyo.vim'
 
 "-------------Integrations-------------- {{{
 Plug 'vimwiki/vimwiki'
-let g:vimwiki_list = [{'path': '~/notes/',
-                    \ 'syntax': 'markdown', 'ext': '.md'}]
 
-let g:vimwiki_global_ext = 0
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-let g:mkdp_browser = '/usr/bin/qutebrowser'
-"}}}
-
-"-------Completions and omnifuncs------- {{{
-"}}}
-
-"------Syntax files and Languages------- {{{
 "}}}
 
 " Initialize plugin system
 call plug#end()
-
 "--------------------------------End Plugins-----------------------------------"
 "}}}
 
 
-
-
 "--------------------------------General---------------------------------------"{{{
 " Settings for tabs and space indents.
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 let &softtabstop =&shiftwidth
 set expandtab
 
@@ -79,7 +63,7 @@ set hidden
 set wildignorecase
 set wildmode=list:longest,full
 
-"Ignore case for completion in insert mode.
+" Ignore case for completion in insert mode.
 set infercase
 
 " Stop certain movements from always going to the first character of a line.
@@ -96,15 +80,17 @@ set viewoptions=cursor,folds
 
 " Round indenting with < and > to shiftwidth.
 set shiftround
+
+" Select with the mouse.
+set mouse=a
+
+" Sync clipboard with +.
+set clipboard=unnamedplus
 "--------------------------------End General-----------------------------------"
 "}}}
 
 
-
-
 "--------------------------------Visuals---------------------------------------"{{{
-colorscheme pencil
-
 " Show matched brace for a brief time.
 set showmatch
 
@@ -126,10 +112,11 @@ set breakindent
 
 " Disable two spaces in join commands.
 set nojoinspaces
+
+" Special chars.
+set listchars=tab:→\ ,eol:₋,extends:⟩,precedes:⟨,trail:·,space:·
 "--------------------------------End Visuals-----------------------------------"
 "}}}
-
-
 
 
 "--------------------------------Search----------------------------------------"{{{
@@ -143,13 +130,11 @@ set gdefault
 "}}}
 
 
-
-
 "--------------------------------Splits----------------------------------------"{{{
+" Splitting to the right by default.
+set splitright
 "--------------------------------End Splits------------------------------------"
 "}}}
-
-
 
 
 "--------------------------------General Mappings------------------------------"{{{
@@ -191,9 +176,6 @@ nnoremap Q <nop>
 
 " Change pwd to current file path.
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-
-" Change wrap setting.
-nnoremap <leader>cw :set wrap!<CR>
 
 " Change à (Alt-`) to -> in insert mode.
 inoremap <A-`> ->
@@ -253,43 +235,20 @@ nnoremap <silent> J mzJ`z:delmarks z<cr>
 "}}}
 
 
-
-
 "--------------------------------Plugins Configuration-------------------------"{{{
-""/ vim-subversive {{{
+""/ close-buffers.vim {{{
 "/
-
-nmap s <plug>(SubversiveSubstitute)
-xmap s <plug>(SubversiveSubstitute)
-nmap ss <plug>(SubversiveSubstituteLine)
-nmap S <plug>(SubversiveSubstituteToEndOfLine)
-xmap p <plug>(SubversiveSubstitute)
-xmap P <plug>(SubversiveSubstitute)
+" Call close-buffers.vim plugin to list an options menu.
+nnoremap <silent> <leader>bd :CloseBuffersMenu<CR>
 "}}}
-""/ vim-cutlass {{{
+""/ Goyo {{{
 "/
-
-nnoremap x d
-xnoremap x d
-
-nnoremap xx dd
-nnoremap X D
+" Open Goyo.
+nnoremap <F5> :Goyo<CR>
 "}}}
-""/ vim-yoink {{{
+""/ markdown-preview.nvim {{{
 "/
-
-nmap <leader>n <plug>(YoinkPostPasteSwapBack)
-nmap <leader>p <plug>(YoinkPostPasteSwapForward)
-
-nmap p <plug>(YoinkPaste_p)
-nmap P <plug>(YoinkPaste_P)
-
-nmap y <plug>(YoinkYankPreserveCursorPosition)
-xmap y <plug>(YoinkYankPreserveCursorPosition)
-
-let g:yoinkMoveCursorToEndOfPaste=1
-let g:yoinkSavePersistently=1
-let g:yoinkIncludeDeleteOperations=1
+let g:mkdp_browser = '/usr/bin/qutebrowser'
 "}}}
 ""/ Pencil {{{
 "/
@@ -312,10 +271,35 @@ let g:pencil#concealcursor = 'c'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 "}}}
-""/ Goyo {{{
+""/ vimwiki {{{
 "/
-" Open Goyo.
-nnoremap <F5> :Goyo<CR>
+let g:vimwiki_list = [{'path': '~/notes/',
+                    \ 'syntax': 'markdown', 'ext': '.md'}]
+
+let g:vimwiki_global_ext = 0
+"}}}
+""/ vim-cutlass {{{
+"/
+
+nnoremap x d
+xnoremap x d
+
+nnoremap xx dd
+nnoremap X D
+"}}}
+""/ vim-highlightedyank {{{
+"/
+highlight link HighlightedyankRegion ErrorMsg
+"}}}
+""/ vim-subversive {{{
+"/
+
+nmap s <plug>(SubversiveSubstitute)
+xmap s <plug>(SubversiveSubstitute)
+nmap ss <plug>(SubversiveSubstituteLine)
+nmap S <plug>(SubversiveSubstituteToEndOfLine)
+xmap p <plug>(SubversiveSubstitute)
+xmap P <plug>(SubversiveSubstitute)
 "}}}
 ""/ vim-unimpaired {{{
 "/
@@ -323,24 +307,29 @@ nnoremap <F5> :Goyo<CR>
 nmap <M-j> <Plug>unimpairedBPrevious
 nmap <M-k> <Plug>unimpairedBNext
 "}}}
-""/ close-buffers.vim {{{
+""/ vim-yoink {{{
 "/
-" Call close-buffers.vim plugin to list an options menu.
-nnoremap <silent> <leader>bd :CloseBuffersMenu<CR>
-"}}}
-""/ vim-move {{{
-"/
-let g:move_key_modifier = 'C-M'
+
+nmap <leader>n <plug>(YoinkPostPasteSwapBack)
+nmap <leader>p <plug>(YoinkPostPasteSwapForward)
+
+nmap p <plug>(YoinkPaste_p)
+nmap P <plug>(YoinkPaste_P)
+
+nmap y <plug>(YoinkYankPreserveCursorPosition)
+xmap y <plug>(YoinkYankPreserveCursorPosition)
+
+let g:yoinkMoveCursorToEndOfPaste=1
+let g:yoinkSavePersistently=1
+let g:yoinkIncludeDeleteOperations=1
 "}}}
 "--------------------------------End Plugins Configuration---------------------"
 "}}}
 
 
-
-
 "--------------------------------User Commands---------------------------------"{{{
 " :W sudo saves the file.
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " :TabMessage command
 command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
@@ -348,98 +337,73 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 "}}}
 
 
-
-
 "--------------------------------Auto Commands---------------------------------"{{{
 " Return to last edit position when opening files (You want this!).
 augroup line_return
-    au!
-    au BufReadPost *
-                \ if line("'\"") > 0 && line("'\"") <= line("$") |
-                \     execute 'normal! g`"zvzz' |
-                \ endif
-augroup END
-
-" Only shown when not in insert mode so I don't go insane.
-augroup trailing
-    au!
-    au InsertEnter * :set listchars-=trail:·
-    au InsertLeave * :set listchars+=trail:·
+  au!
+  au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
 augroup END
 
 " Update the auto read of a file after 4 seconds.
 augroup autoRead
-    autocmd!
-    autocmd CursorHold * silent! checktime
+  autocmd!
+  autocmd CursorHold * silent! checktime
 augroup END
 "--------------------------------End Auto Commands-----------------------------"
 "}}}
 
 
-
-
-"--------------------------------Macros----------------------------------------"{{{
-"--------------------------------End Macros------------------------------------"
-"}}}
-
-
-
-
 "--------------------------------Functions-------------------------------------"{{{
-function DeleteWindowIfNotLast()
-    if (winnr('$') > 1 && len(getbufinfo({'buflisted':1})) > 1)
-        execute ":bp\<BAR>bd#\<BAR>q"
-        return 1
-    endif
-
-    echo "Only one window or buffer."
-    return 0
-endfunction
-
 " Function to pipe an Ex command to a buffer in a new tab.
 " Usage :TabMessage command
 function! TabMessage(cmd)
-    redir => message
-    silent execute a:cmd
-    redir END
-    if empty(message)
-        echoerr "no output"
-    else
-        " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
-        tabnew
-        setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
-        silent put=message
-    endif
+  redir => message
+  silent execute a:cmd
+  redir END
+  if empty(message)
+    echoerr "no output"
+  else
+    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    tabnew
+    setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
+    silent put=message
+  endif
 endfunction
 
 " Function to execute a recorded macro over a selected text.
 function! ExecuteMacroOverVisualRange()
-    echo "@".getcmdline()
-    execute ":'<,'>normal @".nr2char(getchar())
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
+function! DeleteWindowIfNotLast()
+  if (winnr('$') > 1 && len(getbufinfo({'buflisted':1})) > 1)
+    execute ":bp\<BAR>bd#\<BAR>q"
+    return 1
+  endif
+
+  echo "Only one window or buffer."
+  return 0
 endfunction
 "--------------------------------End Functions---------------------------------"
 "}}}
 
 
+"--------------------------------Colors----------------------------------------"{{{
+" Custom Highlight groups.
+function! MyHighlights() abort
+  highlight MatchParen guibg=NONE
+endfunction
 
+augroup MyColors
+  autocmd!
+  autocmd ColorScheme * call MyHighlights()
+augroup END
 
-"--------------------------------Terminal Only---------------------------------"{{{
-"--------------------------------End Terminal Only-----------------------------"
-"}}}
-
-
-
-
-"--------------------------------PHP Debug-------------------------------------"{{{
-
-
-"--------------------------------End PHP Debug---------------------------------"
-"}}}
-
-
-
-
-"--------------------------------Tips and Remainders---------------------------"{{{
-"--------------------------------End Tips and Remainders-----------------------"
+colorscheme pencil
+"--------------------------------End Colors------------------------------------"
 "}}}
 " vim: set fdm=marker fmr={{{,}}} :
