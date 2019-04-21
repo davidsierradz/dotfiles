@@ -7,22 +7,21 @@
 	excludesfile = /home/neuromante/.gitignore
 	autocrlf = input
 	editor = vim -u /home/neuromante/dotfiles/vim/.vimrc-mini
-	pager = diff-so-fancy | less --tabs=4 -RFX
 [url "https://davidsierradz@github.com"]
 	insteadOf = https://github.com
 [color]
 	ui = true
 [color "diff-highlight"]
-	oldNormal = red bold
-	oldHighlight = red bold 52
-	newNormal = green bold
-	newHighlight = green bold 22
+	oldNormal = red
+	oldHighlight = red
+	newNormal = green
+	newHighlight = green
 [color "diff"]
 	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
+	frag = magenta
+	commit = yellow
+	old = red
+	new = green
+	whitespace = red
 [alias]
 	lg = log --graph --date=relative --abbrev=4 --color --decorate --pretty=format:\"%Cred%h%C(yellow)%d %C(bold blue)%an %Creset%s %Cgreen(%ad)%Creset\" --date-order
