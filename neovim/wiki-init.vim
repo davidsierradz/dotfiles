@@ -3,8 +3,14 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 "----------------Basics----------------- {{{
+" Change or add pair of chars surrouding an object.
+Plug 'tpope/vim-surround'
+
 " Enable repeating supported plugin maps with "."
 Plug 'tpope/vim-repeat'
+
+" Pairs of handy bracket mappings.
+Plug 'tpope/vim-unimpaired'
 
 " Readline style insertion.
 Plug 'tpope/vim-rsi'
@@ -396,6 +402,8 @@ endfunction
 " Custom Highlight groups.
 function! MyHighlights() abort
   highlight MatchParen guibg=NONE
+  highlight SpellBad gui=undercurl guifg=NONE
+  highlight VimwikiLink guifg=#cb4b16
 endfunction
 
 augroup MyColors
