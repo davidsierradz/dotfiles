@@ -124,8 +124,16 @@ Plug 'zhimsel/vim-stay'
 " Toggles between hybrid and absolute line numbers automatically.
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
+" Vim search status.
 Plug 'osyo-manga/vim-anzu'
 
+Plug 'junegunn/goyo.vim'
+let g:goyo_width = 90
+Plug 'reedes/vim-pencil'
+augroup pencil
+    autocmd!
+    "autocmd FileType vimwiki call pencil#init()
+augroup END
 "}}}
 
 "-------------Integrations-------------- {{{
@@ -225,56 +233,56 @@ call plug#end()
 "--------------------------------General---------------------------------------"{{{
 
 " Indenting configurations.
-set autoindent
-set smartindent
+"set autoindent
+"set smartindent
 
 " Settings for tabs and space indents.
 set tabstop=4
 set shiftwidth=4
 let &softtabstop =&shiftwidth
 set expandtab
-set smarttab
+"set smarttab
 
-set encoding=utf-8
+"set encoding=utf-8
 
 " Show partial commands.
-set showcmd
+"set showcmd
 
 " After 250 milliseconds write the buffer to the swap file.
-set updatetime=250
+"set updatetime=250
 
 " Leave hidden buffers open.
 set hidden
 
 "by default Vim saves your last 8 commands.  We can handle more.
-set history=1000
+"set history=1000
 
 " Becouse we have a status bar disable showing if we are in insert mode in the
 " Command line bar.
 set noshowmode
 
 " Fast redraw.
-set ttyfast
+"set ttyfast
 
 "Better delete.
-set backspace=indent,eol,start
+"set backspace=indent,eol,start
 
 " Command-Line options.
-set wildmenu
+"set wildmenu
 set wildignorecase
 set wildmode=list:longest,full
 
 "refresh file inside vim if changed.
-set autoread
+"set autoread
 
 " Generally we are working with mysql in sql files, auto set the default type.
-let g:sql_type_default = 'mysql'
+"let g:sql_type_default = 'mysql'
 
 "Ignore case for completion in insert mode.
 set infercase
 
 " Set the height of the command line window.
-set cmdwinheight=5
+"set cmdwinheight=5
 
 " Stop certain movements from always going to the first character of a line.
 set nostartofline
@@ -290,6 +298,8 @@ set viewoptions=cursor,folds
 
 " Round indenting with < and > to shiftwidth.
 set shiftround
+
+let g:main = v:true
 
 "--------------------------------End General-----------------------------------"
 "}}}
@@ -311,7 +321,7 @@ set number
 " Relative positions for line numbers.
 set relativenumber
 
-set background=dark
+"set background=dark
 colorscheme solarized8
 let g:solarized_extra_hi_groups = 1
 
@@ -326,15 +336,15 @@ set nowrap
 
 " Show matched brace for a brief time.
 set showmatch
-set matchtime=3
+"set matchtime=3
 
 " Always show the Status Line.
-set laststatus=2
+"set laststatus=2
 
 " Scroll options.
 set scrolloff=1
 set sidescrolloff=5
-set display+=lastline
+"set display+=lastline
 
 " Set the width of the numberline.
 set numberwidth=1
@@ -369,8 +379,8 @@ set nojoinspaces
 "--------------------------------Search----------------------------------------"{{{
 
 " Search options
-set incsearch
-set hlsearch
+"set incsearch
+"set hlsearch
 set ignorecase
 set smartcase
 
@@ -413,10 +423,10 @@ nnoremap <F12> :set listchars=tab:→\ ,eol:₋,extends:⟩,precedes:⟨,trail:�
 nnoremap <S-F12> :set list!<CR>
 
 " Regenerate ctags file.
-nnoremap <leader>rc :!ctags .<CR>
+"nnoremap <leader>rc :!ctags .<CR>
 
 " Search tag.
-nnoremap <leader>ft :tag<space>
+"nnoremap <leader>ft :tag<space>
 
 " saves from normal mode.
 nnoremap <leader>w :w<cr>
@@ -438,7 +448,7 @@ nnoremap <leader>r :e!<CR>
 
 " CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
 " so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
+"inoremap <C-U> <C-G>u<C-U>
 
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab.
@@ -448,18 +458,8 @@ nnoremap <leader>bq :bp <BAR> bd #<CR>
 " This replicates the idea of closing a tab.
 nnoremap <leader>bw :call DeleteWindowIfNotLast()<CR>
 
-function DeleteWindowIfNotLast()
-    if (winnr('$') > 1 && len(getbufinfo({'buflisted':1})) > 1)
-        execute ":bp\<BAR>bd#\<BAR>q"
-        return 1
-    endif
-
-    echo "Only one window or buffer."
-    return 0
-endfunction
-
-" Call vim-wipeout plugin to delete all buffers not open.
-nnoremap <silent> <leader>bd :CloseBuffers<CR>
+" Call close-buffers.vim plugin to list an options menu.
+nnoremap <silent> <leader>bd :CloseBuffersMenu<CR>
 
 " Remap go to last file with backspace.
 nnoremap <BS> <C-^>
@@ -480,7 +480,7 @@ nnoremap Y y$
 nmap <silent> <leader>rn :set relativenumber!<CR>
 
 " Highlight last inserted text.
-nnoremap gV `[v`]
+"nnoremap gV `[v`]
 
 " Disable Ex mode.
 nnoremap Q <nop>
@@ -489,7 +489,7 @@ nnoremap Q <nop>
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Toogle tagbar.vim plugin.
-nmap <F8> :TagbarOpenAutoClose<CR>
+"nmap <F8> :TagbarOpenAutoClose<CR>
 
 " Change wrap setting.
 nnoremap <leader>cw :set wrap!<CR>
@@ -509,7 +509,7 @@ inoremap <A-1> =>
 "onoremap <A-2> <
 
 " Use <Alt-Shift-Tab> to expand a space: <Space>|<Space>.
-inoremap <A-S-Tab> <Space><Space><Left>
+"inoremap <A-S-Tab> <Space><Space><Left>
 
 " Use <AltGr-Q>(right shift) to save current file.
 nnoremap ä :w<CR>
@@ -1074,7 +1074,7 @@ let g:fzf_layout = { 'window': '-tabnew' }
 nnoremap <A-n> :Lines<CR><C-\><C-n>0i
 nnoremap <A-b> :BTags<CR><C-\><C-n>0i
 nnoremap <A-t> :Ag<CR><C-\><C-n>0i
-nnoremap <A-r> :Tags<CR><C-\><C-n>0i
+"nnoremap <A-r> :Tags<CR><C-\><C-n>0i
 nnoremap <A-e> :History<CR><C-\><C-n>0i
 nnoremap <A-c> :Snippets<CR><C-\><C-n>0i
 nnoremap ; :Buffers<CR><C-\><C-n>0i
@@ -1291,6 +1291,11 @@ autocmd FileType javascript.jsx JsPreTmpl
 " Set folding method
 autocmd FileType json setlocal foldmethod=syntax
 
+"autocmd FileType vimwiki call s:vimwiki_settings()
+
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
 "--------------------------------End Auto Commands-----------------------------"
 "}}}
 
@@ -1350,6 +1355,29 @@ function! ExecuteMacroOverVisualRange()
     execute ":'<,'>normal @".nr2char(getchar())
 endfunction
 
+function! s:vimwiki_settings()
+    setlocal formatoptions=ant
+    setlocal textwidth=80
+    setlocal wrapmargin=0
+endfunction
+
+function DeleteWindowIfNotLast()
+    if (winnr('$') > 1 && len(getbufinfo({'buflisted':1})) > 1)
+        execute ":bp\<BAR>bd#\<BAR>q"
+        return 1
+    endif
+
+    echo "Only one window or buffer."
+    return 0
+endfunction
+
+function! s:goyo_enter()
+    setlocal nocursorline
+endfunction
+
+function! s:goyo_leave()
+    setlocal cursorline
+endfunction
 "--------------------------------End Functions---------------------------------"
 "}}}
 
