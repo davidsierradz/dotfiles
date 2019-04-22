@@ -34,6 +34,9 @@ Plug 'reedes/vim-lexical'
 " Colorscheme.
 Plug 'reedes/vim-colors-pencil'
 
+" Smart close of buffers.
+Plug 'Asheq/close-buffers.vim'
+
 " Search your selection text with * or #.
 Plug 'haya14busa/vim-asterisk'
 
@@ -121,6 +124,9 @@ set nojoinspaces
 
 " Special chars.
 set listchars=tab:→\ ,eol:₋,extends:⟩,precedes:⟨,trail:·,space:·
+
+" Dont show current mode in command line.
+set noshowmode
 "--------------------------------End Visuals-----------------------------------"
 "}}}
 
@@ -283,6 +289,8 @@ let g:vimwiki_list = [{'path': '~/notes/',
                     \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_global_ext = 0
+
+let g:vimwiki_folding = 'expr'
 "}}}
 ""/ vim-cutlass {{{
 "/
