@@ -64,6 +64,16 @@ Plug 'junegunn/fzf.vim'
 "}}}
 
 "-------Completions and omnifuncs------- {{{
+" Autocompletion framework.
+Plug 'ncm2/ncm2'
+" ncm2 requires nvim-yarp
+Plug 'roxma/nvim-yarp'
+" Some completions
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
+
 " Snippet Engine.
 Plug 'SirVer/ultisnips'
 
@@ -77,6 +87,9 @@ Plug 'w0rp/ale'
 "------Syntax files and Languages------- {{{
 " Yet Another JavaScript Syntax for Vim.
 Plug 'othree/yajs.vim'
+
+" ES.Next syntax for Vim.
+Plug 'othree/es.next.syntax.vim'
 
 " React JSX syntax highlighting and indenting for vim.
 Plug 'mxw/vim-jsx'
@@ -125,6 +138,9 @@ set mouse=a
 
 " Sync clipboard with +.
 set clipboard=unnamedplus
+
+" Remove tags from completions.
+set complete=.,w,b,u
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -341,11 +357,15 @@ let delimitMate_jump_expansion = 1
 " FZF position.
 let g:fzf_layout = { 'window': '-tabnew' }
 
+command! -bang -nargs=? -complete=dir Files
+      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 " FZF mappings.
 nnoremap <A-t> :Ag<CR><C-\><C-n>0i
 nnoremap <A-e> :History<CR><C-\><C-n>0i
 nnoremap <A-c> :Snippets<CR><C-\><C-n>0i
 nnoremap <A-b> :Buffers<CR><C-\><C-n>0i
+nnoremap <Space> :Buffers<CR><C-\><C-n>0i
 nnoremap <C-p> :Files<CR><C-\><C-n>0i
 "}}}
 ""/ Gundo.vim {{{
@@ -360,6 +380,50 @@ let g:gundo_preview_bottom = 1
 let g:gundo_help = 0
 
 let g:gundo_close_on_revert = 1
+"}}}
+""/ ncm2 {{{
+"/
+" enable ncm2 for all buffer
+function s:ncm2_start(...)
+    if v:vim_did_enter
+        call ncm2#enable_for_buffer()
+    endif
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+endfunc
+
+call timer_start(500, function('s:ncm2_start'))
+
+" note that must keep noinsert in completeopt, the others is optional
+"set completeopt=noinsert,menuone,noselect
+
+"set completeopt=menuone
+
+au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+au User Ncm2PopupClose set completeopt=menuone
+
+" supress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" use a sorter that's more friendly for fuzzy match
+let g:ncm2#sorter = 'abbrfuzzy'
+let g:ncm2#matcher = 'substrfuzzy'
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" Conflicts with delimitMate_expand_cr.
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+imap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<Plug>delimitMateCR")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+" Open the popup menu completion.
+imap <C-space> <Plug>(ncm2_manual_trigger)
 "}}}
 ""/ Ultisnips.vim {{{
 "/
