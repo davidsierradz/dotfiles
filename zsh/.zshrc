@@ -322,3 +322,9 @@ function terminal-scheme() {
   config_file=~/dotfiles/alacritty/alacritty.yml
   sed -i "s/\(^colors: \*\).*/\1$1/g" $config_file
 }
+
+function ol() {
+  ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g "" \
+    | fzf --bind "::execute(awk '{print \"+\"NR\" \"FILENAME}' {} | fzf)+abort" \
+    | xargs bash -c '</dev/tty nvim "$@"' ignoreme
+}

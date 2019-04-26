@@ -141,6 +141,10 @@ set clipboard=unnamedplus
 
 " Remove tags from completions.
 set complete=.,w,b,u
+
+set path=.,src
+set suffixesadd=.js,.jsx
+set includeexpr=LoadMainNodeModule(v:fname)
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -357,8 +361,14 @@ let delimitMate_jump_expansion = 1
 " FZF position.
 let g:fzf_layout = { 'window': '-tabnew' }
 
+"command! -bang -nargs=* Ag
+"      \ call fzf#vim#ag(<q-args>,
+"      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
+"      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+"      \                 <bang>0)
+
 command! -bang -nargs=? -complete=dir Files
-      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " FZF mappings.
 nnoremap <A-t> :Ag<CR><C-\><C-n>0i
@@ -385,10 +395,10 @@ let g:gundo_close_on_revert = 1
 "/
 " enable ncm2 for all buffer
 function s:ncm2_start(...)
-    if v:vim_did_enter
-        call ncm2#enable_for_buffer()
-    endif
-    autocmd BufEnter * call ncm2#enable_for_buffer()
+  if v:vim_did_enter
+      call ncm2#enable_for_buffer()
+  endif
+  autocmd BufEnter * call ncm2#enable_for_buffer()
 endfunc
 
 call timer_start(500, function('s:ncm2_start'))
@@ -597,6 +607,28 @@ function! DeleteWindowIfNotLast()
   echo "Only one window or buffer."
   return 0
 endfunction
+
+function! LoadMainNodeModule(fname)
+  let nodeModules = "./node_modules/"
+  let packageJsonPath = nodeModules . a:fname . "/package.json"
+  let currentFilePath = expand('%:h')
+  let currentFilePathArray = split(l:currentFilePath, '/')
+
+  let i = len(l:currentFilePathArray)
+
+  " [frontend, src, jsx, views, draftingLayer]
+  for dir in l:currentFilePathArray
+    "echo l:currentFilePathArray[0:i-2]
+    echo finddir('node_modules', l:currentFilePath)
+  endfor
+
+  if filereadable(packageJsonPath)
+    return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
+  else
+    return nodeModules . a:fname
+  endif
+endfunction
+
 "--------------------------------End Functions---------------------------------"
 "}}}
 
