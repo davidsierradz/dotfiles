@@ -15,7 +15,7 @@ Plug 'sjl/gundo.vim'
 
 " Automatic closing of quotes, parenthesis, brackets
 " also expands spaces and enters.
-Plug 'Raimondi/delimitMate'
+Plug 'tmsvg/pear-tree'
 
 " Change or add pair of chars surrouding an object.
 Plug 'tpope/vim-surround'
@@ -348,11 +348,23 @@ let g:ale_fix_on_save = 1
 " Call close-buffers.vim plugin to list an options menu.
 nnoremap <silent> <leader>bd :CloseBuffersMenu<CR>
 "}}}
-""/ delimitMate {{{
+""/ pear-tree {{{
 "/
-let delimitMate_expand_cr = 1
+let g:pear_tree_pairs = {
+      \ '(': {'closer': ')'},
+      \ '[': {'closer': ']'},
+      \ '{': {'closer': '}'},
+      \ "'": {'closer': "'"},
+      \ '"': {'closer': '"'},
+      \ '`': {'closer': '`'},
+      \ '"""': {'closer': '"""'},
+      \ "'''": {'closer': "'''"},
+      \ '<!--': {'closer': '-->'},
+      \ }
 
-let delimitMate_jump_expansion = 1
+let g:pear_tree_repeatable_expand = 0
+
+imap <C-g><C-g> <Plug>(PearTreeJump)
 "}}}
 ""/ fzf.vim {{{
 "/
@@ -425,7 +437,7 @@ inoremap <c-c> <ESC>
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
-imap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<Plug>delimitMateCR")
+imap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<Plug>(PearTreeExpand)")
 
 " Use <TAB> to select the popup menu:
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
