@@ -405,7 +405,7 @@ let g:gundo_close_on_revert = 1
 ""/ ncm2 {{{
 "/
 " enable ncm2 for all buffer
-function s:ncm2_start(...)
+function! s:ncm2_start(...)
   if v:vim_did_enter
       call ncm2#enable_for_buffer()
   endif
@@ -565,23 +565,20 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
 
 "--------------------------------Auto Commands---------------------------------"{{{
-" Return to last edit position when opening files (You want this!).
-augroup line_return
+augroup initvim
   au!
-  au BufReadPost *
+  " Return to last edit position when opening files (You want this!).
+  autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \     execute 'normal! g`"zvzz' |
         \ endif
-augroup END
 
-" Update the auto read of a file after 4 seconds.
-augroup autoRead
-  autocmd!
+  " Update the auto read of a file after 4 seconds.
   autocmd CursorHold * silent! checktime
-augroup END
 
-" Set folding method
-autocmd FileType json setlocal foldmethod=syntax
+  " Set folding method
+  autocmd FileType json setlocal foldmethod=syntax
+augroup END
 "--------------------------------End Auto Commands-----------------------------"
 "}}}
 
@@ -639,7 +636,6 @@ function! LoadMainNodeModule(fname)
     return nodeModules . a:fname
   endif
 endfunction
-
 "--------------------------------End Functions---------------------------------"
 "}}}
 
