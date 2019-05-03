@@ -142,9 +142,8 @@ set clipboard=unnamedplus
 " Remove tags from completions.
 set complete=.,w,b,u
 
-set path=.,src
-set suffixesadd=.js,.jsx
-set includeexpr=LoadMainNodeModule(v:fname)
+" Set the title for current terminal instance.
+set title
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -614,27 +613,6 @@ function! DeleteWindowIfNotLast()
 
   echo "Only one window or buffer."
   return 0
-endfunction
-
-function! LoadMainNodeModule(fname)
-  let nodeModules = "./node_modules/"
-  let packageJsonPath = nodeModules . a:fname . "/package.json"
-  let currentFilePath = expand('%:h')
-  let currentFilePathArray = split(l:currentFilePath, '/')
-
-  let i = len(l:currentFilePathArray)
-
-  " [frontend, src, jsx, views, draftingLayer]
-  for dir in l:currentFilePathArray
-    "echo l:currentFilePathArray[0:i-2]
-    echo finddir('node_modules', l:currentFilePath)
-  endfor
-
-  if filereadable(packageJsonPath)
-    return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
-  else
-    return nodeModules . a:fname
-  endif
 endfunction
 "--------------------------------End Functions---------------------------------"
 "}}}
