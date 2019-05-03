@@ -1,18 +1,4 @@
-#
-# ~/.xprofile
-#
-# sourced by /etc/lxdm/Xsession
-#
-
-if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-    eval "$(dbus-launch --sh-syntax --exit-with-session)"
-fi
-
 # Environment variables
-#
-#export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-#export NVIM_GTK_NO_HEADERBAR=1
-
 # NPM
 export PATH=~/.npm-global/bin:$PATH
 
@@ -30,19 +16,8 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # Other stuff
 #
 
-# Switch Caps Lock and Esc.
-#/usr/bin/setxkbmap -option "caps:swapescape"
-
 # Switch Caps Lock for Ctrl if using as a modifier and Esc if pressed and released.
 /usr/bin/setxkbmap -option 'caps:ctrl_modifier' && /usr/bin/xcape -t 2000 -e 'Caps_Lock=Escape' &
 
 # Start keynav-git
-/usr/bin/keynav
-
-# Alt-Gr+, to <.
-#xmodmap -e "keycode 59 = comma less comma less less"
-
-# iso less and greater than to < and >.
-#xmodmap -e "keycode 94 = less greater"
-
-#xset b off
+#/usr/bin/keynav

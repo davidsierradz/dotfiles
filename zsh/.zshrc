@@ -1,36 +1,36 @@
 #th to your oh-my-zsh installation.
-ZSH=/usr/share/oh-my-zsh
+ZSH=~/.oh-my-zsh
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vi_mode)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs time command_execution_time)
-#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
-POWERLEVEL9K_SHOW_CHANGESET=true
-POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
-POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=15
-POWERLEVEL9K_VCS_SHORTEN_LENGTH=15
-POWERLEVEL9K_MODE='nerdfont-fontconfig'
-POWERLEVEL9K_VI_INSERT_MODE_STRING=""
-#POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='007'
-#POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='001'
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='007'
-POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='002'
-POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_TIME_BACKGROUND="blue"
-POWERLEVEL9K_TIME_FOREGROUND="white"
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+ZSH_THEME="robbyrussell"
+#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+#POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vi_mode)
+#POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs time command_execution_time)
+##POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
+#POWERLEVEL9K_SHOW_CHANGESET=true
+#POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+#POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
+#POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=15
+#POWERLEVEL9K_VCS_SHORTEN_LENGTH=15
+#POWERLEVEL9K_MODE='nerdfont-fontconfig'
+#POWERLEVEL9K_VI_INSERT_MODE_STRING=""
+##POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='007'
+##POWERLEVEL9K_VI_MODE_INSERT_BACKGROUND='001'
+#POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='007'
+#POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='002'
+#POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+#POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+#POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
+#POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+#POWERLEVEL9K_SHORTEN_DELIMITER=""
+#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+#POWERLEVEL9K_TIME_BACKGROUND="blue"
+#POWERLEVEL9K_TIME_FOREGROUND="white"
+#POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+#DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -42,10 +42,10 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases docker docker-compose git vi-mode yarn zsh-autopair zsh-autosuggestions zsh-completions zsh-system-clipboard zsh-syntax-highlighting)
+plugins=(common-aliases docker docker-compose git yarn)
 
 # User configuration
-DEFAULT_USER=neuromante
+#DEFAULT_USER=neuromante
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -106,7 +106,7 @@ export USE_EDITOR=$EDITOR
 export LC_COLLATE="C"
 
 # dircolors
-eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
+eval "$(dircolors /home/s0056/dotfiles/dir_colors/dircolors.256dark)"
 
 # Use backwards search in vi-mode.
 bindkey '^[[A' up-line-or-search
@@ -235,8 +235,8 @@ fzf-dirr-widget() {
 zle     -N   fzf-dirr-widget
 bindkey '\ed' fzf-dirr-widget
 
-[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -f ~/.fzf/shell/completion.zsh ] && source ~/.fzf/shell/completion.zsh
+[ -f ~/.fzf/shell/key-bindings.zsh ] && source ~/.fzf/shell/key-bindings.zsh
 
 # Vim Surround see: https://github.com/zsh-users/zsh/blob/master/Functions/Zle/surround
 autoload -Uz surround
@@ -328,3 +328,4 @@ function ol() {
     | fzf --bind "::execute(awk '{print \"+\"NR\" \"FILENAME}' {} | fzf)+abort" \
     | xargs bash -c '</dev/tty nvim "$@"' ignoreme
 }
+fpath+=${ZDOTDIR:-~}/.zsh_functions
