@@ -95,6 +95,15 @@ set mouse=a
 
 " Sync clipboard with +.
 set clipboard=unnamedplus
+
+" Remove tags from completions.
+set complete=.,w,b,u
+
+" Set the title for current terminal instance.
+set title
+
+" Set <Space> as leader key.
+let mapleader = " "
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -240,9 +249,11 @@ nmap <A-x> mz^xg_`z:delmarks z<cr>
 " Split a line.
 nnoremap <silent> K i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w:delmarks w<cr>
 
-" Keep the cursor in place while joining lines
+" Keep the cursor in place while joining lines.
 nnoremap <silent> J mzJ`z:delmarks z<cr>
 
+" Expand spaces from (|) to ( | ).
+inoremap <M-Space> <Space><Space><Left>
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -257,6 +268,9 @@ nnoremap <silent> <leader>bd :CloseBuffersMenu<CR>
 "/
 " Open Goyo.
 nnoremap <F5> :Goyo<CR>
+
+" Mantains set number.
+let g:goyo_linenr=1
 "}}}
 ""/ markdown-preview.nvim {{{
 "/
@@ -269,7 +283,7 @@ augroup pencil
     autocmd!
     autocmd filetype vimwiki call pencil#init()
                 \ | call lexical#init()
-                \ | setl spell spl=es fdl=4 noru nonu nornu
+                \ | setl spell spl=es fdl=4 noru nu nornu cul
                 \ | setl dictionary=/usr/share/dict/words
                 \ | setl fdo+=search
 augroup END
@@ -279,7 +293,7 @@ let g:pencil#textwidth = 74
 let g:pencil#joinspaces = 0
 let g:pencil#cursorwrap = 1
 let g:pencil#conceallevel = 3
-let g:pencil#concealcursor = 'c'
+let g:pencil#concealcursor = 'cn'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 "}}}
@@ -290,7 +304,7 @@ let g:vimwiki_list = [{'path': '~/notes/',
 
 let g:vimwiki_global_ext = 0
 
-let g:vimwiki_folding = 'expr'
+let g:vimwiki_folding = 'list'
 "}}}
 ""/ vim-cutlass {{{
 "/
@@ -412,6 +426,8 @@ function! MyHighlights() abort
   highlight MatchParen guibg=NONE
   highlight SpellBad gui=undercurl guifg=NONE
   highlight VimwikiLink guifg=#cb4b16
+  highlight CursorLine ctermbg=NONE guibg=NONE
+  highlight CursorLineNr ctermbg=NONE guibg=NONE
 endfunction
 
 augroup MyColors
@@ -419,6 +435,7 @@ augroup MyColors
   autocmd ColorScheme * call MyHighlights()
 augroup END
 
+set background=dark
 colorscheme pencil
 "--------------------------------End Colors------------------------------------"
 "}}}

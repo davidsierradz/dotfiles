@@ -144,6 +144,9 @@ set complete=.,w,b,u
 
 " Set the title for current terminal instance.
 set title
+
+" Set <Space> as leader key.
+let mapleader = " "
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -289,9 +292,11 @@ nmap <A-x> mz^xg_`z:delmarks z<cr>
 " Split a line.
 nnoremap <silent> K i<cr><esc>^mwgk:silent! s/\v +$//<cr>:noh<cr>`w:delmarks w<cr>
 
-" Keep the cursor in place while joining lines
+" Keep the cursor in place while joining lines.
 nnoremap <silent> J mzJ`z:delmarks z<cr>
 
+" Expand spaces from (|) to ( | ).
+inoremap <M-Space> <Space><Space><Left>
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -300,7 +305,8 @@ nnoremap <silent> J mzJ`z:delmarks z<cr>
 ""/ ale.vim {{{
 "/
 " Don't use the sign column/gutter for ALE.
-let g:ale_set_signs = 0
+let g:ale_set_signs = 1
+set signcolumn=no
 
 " Lint always in Normal Mode.
 let g:ale_lint_on_text_changed = 'normal'
@@ -340,7 +346,8 @@ let g:ale_fixers = {
       \ }
 
 let g:ale_fix_on_save = 1
-"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all'
+
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --no-semi'
 "}}}
 ""/ close-buffers.vim {{{
 "/
@@ -385,7 +392,7 @@ nnoremap <A-t> :Ag<CR><C-\><C-n>0i
 nnoremap <A-e> :History<CR><C-\><C-n>0i
 nnoremap <A-c> :Snippets<CR><C-\><C-n>0i
 nnoremap <A-b> :Buffers<CR><C-\><C-n>0i
-nnoremap <Space> :Buffers<CR><C-\><C-n>0i
+nnoremap <Space><Space> :Buffers<CR><C-\><C-n>0i
 nnoremap <C-p> :Files<CR><C-\><C-n>0i
 "}}}
 ""/ Gundo.vim {{{
@@ -443,7 +450,7 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Open the popup menu completion.
-imap <C-space> <Plug>(ncm2_manual_trigger)
+"imap <C-space> <Plug>(ncm2_manual_trigger)
 "}}}
 ""/ Ultisnips.vim {{{
 "/
@@ -629,6 +636,7 @@ augroup MyColors
   autocmd ColorScheme * call MyHighlights()
 augroup END
 
+set background=dark
 colorscheme solarized8_flat
 "--------------------------------End Colors------------------------------------"
 "}}}
