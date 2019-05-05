@@ -319,8 +319,12 @@ alias -g lastbranch='$(cat .git/lastbranch)'
 
 # Terminal color scheme
 function terminal-scheme() {
-  config_file=~/dotfiles/alacritty/alacritty.yml
-  sed -i "s/\(^colors: \*\).*/\1$1/g" $config_file
+  alacritty_config_file=~/dotfiles/alacritty/alacritty.yml
+  sed -i "s/\(^colors: \*\).*/\1$1/g" $alacritty_config_file
+  nvim_config_file=~/dotfiles/neovim/init-mini.vim
+  sed -i "s/\(^set background=\).*/\1$1/g" $nvim_config_file
+  wiki_config_file=~/dotfiles/neovim/wiki-init.vim
+  sed -i "s/\(^set background=\).*/\1$1/g" $wiki_config_file
 }
 
 function ol() {
