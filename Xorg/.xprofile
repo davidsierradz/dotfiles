@@ -16,6 +16,8 @@ fi
 # NPM
 export PATH=~/.npm-global/bin:$PATH
 
+export LS_COLORS=`cat ~/dotfiles/Xorg/colors`
+
 # fzf + ag configuration
 export FZF_DEFAULT_COMMAND='ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
 #export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
@@ -28,21 +30,12 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 
 # Other stuff
-#
-
-# Switch Caps Lock and Esc.
-#/usr/bin/setxkbmap -option "caps:swapescape"
 
 # Switch Caps Lock for Ctrl if using as a modifier and Esc if pressed and released.
-/usr/bin/setxkbmap -option 'caps:ctrl_modifier' && /usr/bin/xcape -t 2000 -e 'Caps_Lock=Escape' &
+/usr/bin/setxkbmap -model 'pc105' -layout 'us' -variant 'altgr-intl' -option 'caps:ctrl_modifier' && \
+    /usr/bin/xcape -t 2000 -e 'Caps_Lock=Escape' &
 
 # Start keynav-git
 /usr/bin/keynav
-
-# Alt-Gr+, to <.
-#xmodmap -e "keycode 59 = comma less comma less less"
-
-# iso less and greater than to < and >.
-#xmodmap -e "keycode 94 = less greater"
 
 #xset b off

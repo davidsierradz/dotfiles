@@ -61,6 +61,9 @@ Plug 'zhimsel/vim-stay'
 " Already installed on Manjaro-i3.
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'
+
+" Editorconfig.
+Plug 'editorconfig/editorconfig-vim'
 "}}}
 
 "-------Completions and omnifuncs------- {{{
@@ -353,6 +356,11 @@ let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --n
 "/
 " Call close-buffers.vim plugin to list an options menu.
 nnoremap <silent> <leader>bd :CloseBuffersMenu<CR>
+"}}}
+""/ editorconfig/editorconfig-vim {{{
+"/
+" Don't output 'cursorcolumn'.
+let g:EditorConfig_max_line_indicator = "none"
 "}}}
 ""/ pear-tree {{{
 "/

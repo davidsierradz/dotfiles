@@ -7,10 +7,10 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vi_mode)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs time command_execution_time)
 #POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
 POWERLEVEL9K_SHOW_CHANGESET=true
-POWERLEVEL9K_CHANGESET_HASH_LENGTH=6
+POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
 POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=15
-POWERLEVEL9K_VCS_SHORTEN_LENGTH=15
+POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=25
+POWERLEVEL9K_VCS_SHORTEN_LENGTH=25
 POWERLEVEL9K_MODE='nerdfont-fontconfig'
 POWERLEVEL9K_VI_INSERT_MODE_STRING=""
 #POWERLEVEL9K_VI_MODE_INSERT_FOREGROUND='007'
@@ -106,7 +106,7 @@ export USE_EDITOR=$EDITOR
 export LC_COLLATE="C"
 
 # dircolors
-eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
+#eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
 
 # Use backwards search in vi-mode.
 bindkey '^[[A' up-line-or-search
@@ -325,6 +325,13 @@ function terminal-scheme() {
   sed -i "s/\(^set background=\).*/\1$1/g" $nvim_config_file
   wiki_config_file=~/dotfiles/neovim/wiki-init.vim
   sed -i "s/\(^set background=\).*/\1$1/g" $wiki_config_file
+  bat_config_file=~/dotfiles/bat/config
+
+  if [[ $1 == 'light' ]]; then
+    echo '--theme="OneHalfLight"' > $bat_config_file
+  else
+    echo '--theme="OneHalfDark"' > $bat_config_file
+  fi
 }
 
 function ol() {
