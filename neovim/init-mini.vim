@@ -95,7 +95,7 @@ Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 
 " React JSX syntax highlighting and indenting for vim.
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 "}}}
 
 " Initialize plugin system
@@ -526,9 +526,6 @@ highlight link HighlightedyankRegion ErrorMsg
 let g:matchup_surround_enabled = 1
 
 let g:matchup_matchparen_status_offscreen = 0
-
-autocmd Filetype javascript.jsx setlocal matchpairs=(:),{:},[:],<:>
-autocmd Filetype javascript.jsx let b:match_words = '<\@<=\([^/][^ \t>]*\)\g{hlend}[^>]*\%(/\@<!>\|$\):<\@<=/\1>'
 
 nmap <silent> <F7> <plug>(matchup-hi-surround)
 "}}}
