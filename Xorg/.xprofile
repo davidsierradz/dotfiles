@@ -18,6 +18,9 @@ export PATH=~/.npm-global/bin:$PATH
 
 export LS_COLORS=`cat ~/dotfiles/Xorg/colors`
 
+export GIT_PAGER=/usr/bin/bat
+export BAT_PAGER="less -RF"
+
 # fzf + ag configuration
 export FZF_DEFAULT_COMMAND='ag -il --nocolor --nogroup --path-to-ignore ~/.agignore --skip-vcs-ignores --hidden -g ""'
 #export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
