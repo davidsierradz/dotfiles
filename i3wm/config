@@ -537,8 +537,9 @@ mode "$mode_spotify" {
 }
 
 # Open a terminal in floating mode.
-bindsym $mod+shift+Return exec --no-startup-id /usr/bin/alacritty --title "floating_alacritty" --dimensions 80 20
-for_window [class="Alacritty" title="floating_alacritty$"] floating enable, move right 215px, move down 240px
+bindsym $mod+shift+Return exec --no-startup-id /usr/bin/alacritty --title "floating_alacritty" --dimensions 100 25
+for_window [class="Alacritty" title="floating_alacritty$"] floating enable, move absolute position center
+for_window [class="Alacritty" title="floating_alacritty$"] move scratchpad, scratchpad show
 bindsym $mod+c move absolute position center
 
 #bindsym $mod+apostrophe exec --no-startup-id xdotool mousemove 1350 10000 && xinput-toggle -r "SynPS/2 Synaptics TouchPad" -n

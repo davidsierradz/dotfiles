@@ -54,6 +54,9 @@ Plug 'machakann/vim-highlightedyank'
 
 " Persist folds in sessions.
 Plug 'zhimsel/vim-stay'
+
+" Draw boxes and arrows in ascii.
+Plug 'gyim/vim-boxdraw', { 'for': 'markdown' }
 "}}}
 
 "-------------Integrations-------------- {{{
@@ -300,6 +303,9 @@ nnoremap <silent> J mzJ`z:delmarks z<cr>
 
 " Expand spaces from (|) to ( | ).
 inoremap <M-Space> <Space><Space><Left>
+
+" (|) -> (|.
+inoremap <M-BS> <Right><BS>
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -488,6 +494,14 @@ map gz# <Plug>(asterisk-gz#)
 " Enable keepCursor feature.
 let g:asterisk#keeppos = 1
 "}}}
+""/ vim-boxdraw {{{
+" The cursor can go nuts.
+augroup setvirtualedit
+  autocmd!
+  autocmd BufLeave *.md setlocal virtualedit-=all
+  autocmd BufEnter *.md setlocal virtualedit+=all
+augroup end
+"}}}
 ""/ vim-cutlass {{{
 "/
 
@@ -528,6 +542,11 @@ let g:matchup_surround_enabled = 1
 let g:matchup_matchparen_status_offscreen = 0
 
 nmap <silent> <F7> <plug>(matchup-hi-surround)
+"}}}
+""/ vim-rsi {{{
+"/
+" Disable <M-*> mappings.
+let g:rsi_no_meta = 1
 "}}}
 ""/ vim-subversive {{{
 "/

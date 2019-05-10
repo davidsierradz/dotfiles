@@ -1547,8 +1547,10 @@ c.url.default_page = 'about:blank'
 c.url.searchengines = {
     'DEFAULT': 'https://www.google.com/search?q={}',
     'g': 'https://www.google.com/search?q={}',
-    'npm': 'https://www.npmjs.com/package/{}',
+    'npmp': 'https://www.npmjs.com/package/{}',
+    'npms': 'https://www.npmjs.com/search?q={}',
     'ddg': 'https://duckduckgo.com/?q={}',
+    'dockers': 'https://hub.docker.com/search?q={}&type=image',
     'translate': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=es&text={}',
     'entranslate': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text={}'
 }
