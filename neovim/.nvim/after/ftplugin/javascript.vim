@@ -23,7 +23,3 @@ let b:pear_tree_pairs = extend(deepcopy(g:pear_tree_pairs), {
       \         'not_like': '/$'
       \        }
       \ }, 'keep')
-
-setlocal matchpairs=(:),{:},[:],<:>
-let b:match_words = '<\@<=\([^/][^ \t>]*\)\g{hlend}[^>]*\%(/\@<!>\|$\):<\@<=/\1>'
-let b:match_skip = 's:comment\|string'

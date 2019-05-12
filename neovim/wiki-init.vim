@@ -3,6 +3,14 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 "----------------Basics----------------- {{{
+" Allows you to configure % to match more than just single characters.
+Plug 'andymass/vim-matchup'
+let g:loaded_matchit = 1
+
+" Automatic closing of quotes, parenthesis, brackets
+" also expands spaces and enters.
+Plug 'tmsvg/pear-tree'
+
 " Change or add pair of chars surrouding an object.
 Plug 'tpope/vim-surround'
 
@@ -27,7 +35,6 @@ Plug 'svermeulen/vim-cutlass'
 " Super-powered writing things.
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-lexical'
-
 "}}}
 
 "--------------Interface---------------- {{{
@@ -43,13 +50,30 @@ Plug 'haya14busa/vim-asterisk'
 " Make the yanked region apparent.
 Plug 'machakann/vim-highlightedyank'
 
+" Persist folds in sessions.
+Plug 'zhimsel/vim-stay'
+
+" Draw boxes and arrows in ascii.
+Plug 'gyim/vim-boxdraw', { 'for': 'markdown' }
+
+" Distraction-free writing in Vim.
 Plug 'junegunn/goyo.vim'
 "}}}
 
 "-------------Integrations-------------- {{{
+" Personal Wiki for Vim.
 Plug 'vimwiki/vimwiki'
 
+" markdown preview plugin for (neo)vim.
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+"}}}
+
+"-------Completions and omnifuncs------- {{{
+" Snippet Engine.
+Plug 'SirVer/ultisnips'
+
+" List of snippets for Ultisnips.
+Plug 'honza/vim-snippets'
 "}}}
 
 " Initialize plugin system
@@ -254,6 +278,9 @@ nnoremap <silent> J mzJ`z:delmarks z<cr>
 
 " Expand spaces from (|) to ( | ).
 inoremap <M-Space> <Space><Space><Left>
+
+" (|) -> (|.
+inoremap <M-BS> <Right><BS>
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -271,10 +298,58 @@ nnoremap <F5> :Goyo<CR>
 
 " Mantains set number.
 let g:goyo_linenr=1
+
+function! s:goyo_enter()
+  let b:quitting = 0
+  let b:quitting_bang = 0
+  autocmd QuitPre <buffer> let b:quitting = 1
+  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
+endfunction
+
+function! s:goyo_leave()
+  " Quit Vim if this is the only remaining buffer
+  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
+    if b:quitting_bang
+      qa!
+    else
+      qa
+    endif
+  endif
+endfunction
+
+autocmd! User GoyoEnter call <SID>goyo_enter()
+autocmd! User GoyoLeave call <SID>goyo_leave()
+
+function! s:goyo_start(...)
+  if v:vim_did_enter
+    Goyo
+  endif
+endfunc
+
+call timer_start(10, function('s:goyo_start'))
 "}}}
 ""/ markdown-preview.nvim {{{
 "/
 let g:mkdp_browser = '/usr/bin/qutebrowser'
+"}}}
+""/ pear-tree {{{
+"/
+let g:pear_tree_pairs = {
+      \ '(': {'closer': ')'},
+      \ '[': {'closer': ']'},
+      \ '{': {'closer': '}'},
+      \ "'": {'closer': "'"},
+      \ '"': {'closer': '"'},
+      \ '`': {'closer': '`'},
+      \ '```': {'closer': '```'},
+      \ '"""': {'closer': '"""'},
+      \ "'''": {'closer': "'''"},
+      \ '<!--': {'closer': '-->'},
+      \ }
+
+let g:pear_tree_repeatable_expand = 0
+
+imap <C-g><C-g> <Plug>(PearTreeJump)
 "}}}
 ""/ Pencil {{{
 "/
@@ -291,11 +366,25 @@ augroup END
 let g:pencil#wrapModeDefault = 'soft'
 let g:pencil#textwidth = 74
 let g:pencil#joinspaces = 0
-let g:pencil#cursorwrap = 1
+let g:pencil#cursorwrap = 0
 let g:pencil#conceallevel = 3
 let g:pencil#concealcursor = 'cn'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
+"}}}
+""/ Ultisnips.vim {{{
+"/
+
+set runtimepath+=~/dotfiles/snips
+
+let g:UltiSnipsExpandTrigger        = "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger   = "<M-j>"
+let g:UltiSnipsJumpBackwardTrigger  = "<M-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
+
+" Expand the snippet.
+imap <M-u> <Plug>(ultisnips_expand)
+vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
 "}}}
 ""/ vimwiki {{{
 "/
@@ -312,6 +401,14 @@ nnoremap <F4> "=strftime("%Y-%m-%d_%H:%M:%S")<CR>P
 inoremap <F4> <C-R>=strftime("%Y-%m-%d_%H:%M:%S")<CR>
 iab <expr> dts strftime("%Y-%m-%d_%H:%M:%S")
 "}}}
+""/ vim-boxdraw {{{
+" The cursor can go nuts.
+augroup setvirtualedit
+  autocmd!
+  autocmd BufLeave *.md setlocal virtualedit-=all
+  autocmd BufEnter *.md setlocal virtualedit+=all
+augroup end
+"}}}
 ""/ vim-cutlass {{{
 "/
 
@@ -324,6 +421,21 @@ nnoremap X D
 ""/ vim-highlightedyank {{{
 "/
 highlight link HighlightedyankRegion ErrorMsg
+"}}}
+""/ vim-matchup {{{
+"/
+
+" To enable the delete surrounding (ds%) and change surrounding (cs%) maps.
+let g:matchup_surround_enabled = 1
+
+let g:matchup_matchparen_status_offscreen = 0
+
+nmap <silent> <F7> <plug>(matchup-hi-surround)
+"}}}
+""/ vim-rsi {{{
+"/
+" Disable <M-*> mappings.
+let g:rsi_no_meta = 1
 "}}}
 ""/ vim-subversive {{{
 "/
@@ -372,18 +484,15 @@ command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
 
 "--------------------------------Auto Commands---------------------------------"{{{
-" Return to last edit position when opening files (You want this!).
-augroup line_return
+augroup initvim
   au!
-  au BufReadPost *
+  " Return to last edit position when opening files (You want this!).
+  autocmd BufReadPost *
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \     execute 'normal! g`"zvzz' |
         \ endif
-augroup END
 
-" Update the auto read of a file after 4 seconds.
-augroup autoRead
-  autocmd!
+  " Update the auto read of a file after 4 seconds.
   autocmd CursorHold * silent! checktime
 augroup END
 "--------------------------------End Auto Commands-----------------------------"

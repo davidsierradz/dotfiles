@@ -368,24 +368,6 @@ nnoremap <silent> <leader>bd :CloseBuffersMenu<CR>
 " Don't output 'cursorcolumn'.
 let g:EditorConfig_max_line_indicator = "none"
 "}}}
-""/ pear-tree {{{
-"/
-let g:pear_tree_pairs = {
-      \ '(': {'closer': ')'},
-      \ '[': {'closer': ']'},
-      \ '{': {'closer': '}'},
-      \ "'": {'closer': "'"},
-      \ '"': {'closer': '"'},
-      \ '`': {'closer': '`'},
-      \ '"""': {'closer': '"""'},
-      \ "'''": {'closer': "'''"},
-      \ '<!--': {'closer': '-->'},
-      \ }
-
-let g:pear_tree_repeatable_expand = 0
-
-imap <C-g><C-g> <Plug>(PearTreeJump)
-"}}}
 ""/ fzf.vim {{{
 "/
 
@@ -465,6 +447,24 @@ inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Open the popup menu completion.
 "imap <C-space> <Plug>(ncm2_manual_trigger)
+"}}}
+""/ pear-tree {{{
+"/
+let g:pear_tree_pairs = {
+      \ '(': {'closer': ')'},
+      \ '[': {'closer': ']'},
+      \ '{': {'closer': '}'},
+      \ "'": {'closer': "'"},
+      \ '"': {'closer': '"'},
+      \ '`': {'closer': '`'},
+      \ '"""': {'closer': '"""'},
+      \ "'''": {'closer': "'''"},
+      \ '<!--': {'closer': '-->'},
+      \ }
+
+let g:pear_tree_repeatable_expand = 0
+
+imap <C-g><C-g> <Plug>(PearTreeJump)
 "}}}
 ""/ Ultisnips.vim {{{
 "/
