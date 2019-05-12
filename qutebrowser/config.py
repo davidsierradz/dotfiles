@@ -1852,6 +1852,7 @@ config.bind('ä', 'config-cycle -t tabs.show always never ;; config-cycle -t sta
 config.bind('<Alt-k>', 'tab-next', mode='passthrough')
 config.bind('<Alt-j>', 'tab-prev', mode='passthrough')
 config.bind('<Ctrl-t>', 'open -t', mode='passthrough')
+config.bind('<Ctrl-w>', 'tab-close', mode='passthrough')
 
 ## Bindings for prompt mode
 # config.bind('<Alt-B>', 'rl-backward-word', mode='prompt')
