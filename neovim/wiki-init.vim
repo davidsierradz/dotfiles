@@ -358,9 +358,8 @@ augroup pencil
     autocmd!
     autocmd filetype vimwiki call pencil#init()
                 \ | call lexical#init()
-                \ | setl spell spl=es fdl=4 noru nu nornu cul
+                \ | setl spell spl=es noru nu nornu cul
                 \ | setl dictionary=/usr/share/dict/words
-                \ | setl fdo+=search
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
@@ -393,13 +392,15 @@ let g:vimwiki_list = [{'path': '~/notes/',
 
 let g:vimwiki_global_ext = 0
 
-let g:vimwiki_folding = 'list'
+let g:vimwiki_folding = 'custom'
 
 let g:vimwiki_use_mouse = 1
 
 nnoremap <F4> "=strftime("%Y-%m-%d_%H:%M:%S")<CR>P
 inoremap <F4> <C-R>=strftime("%Y-%m-%d_%H:%M:%S")<CR>
 iab <expr> dts strftime("%Y-%m-%d_%H:%M:%S")
+
+autocmd FileType vimwiki setlocal fdm=marker fmr={{{,}}}
 "}}}
 ""/ vim-boxdraw {{{
 " The cursor can go nuts.

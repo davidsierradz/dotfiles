@@ -82,7 +82,8 @@ alias -g X='| xsel -bi'
 alias d='docker'
 
 # Neovim alias
-alias vimwiki='nvim -u ~/dotfiles/neovim/wiki-init.vim -c VimwikiIndex'
+alias vw='nvim -u ~/dotfiles/neovim/wiki-init.vim -c VimwikiIndex'
+alias v='nvim'
 
 # Fuzzy find all files to send to git add.
 gafzf() {
