@@ -62,7 +62,7 @@ Plug 'junegunn/goyo.vim'
 
 "-------------Integrations-------------- {{{
 " Personal Wiki for Vim.
-Plug 'vimwiki/vimwiki'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
 
 " markdown preview plugin for (neo)vim.
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
@@ -367,7 +367,7 @@ let g:pencil#textwidth = 74
 let g:pencil#joinspaces = 0
 let g:pencil#cursorwrap = 0
 let g:pencil#conceallevel = 3
-let g:pencil#concealcursor = 'cn'
+let g:pencil#concealcursor = 'c'
 let g:pencil#softDetectSample = 20
 let g:pencil#softDetectThreshold = 130
 "}}}
@@ -387,14 +387,16 @@ vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
 "}}}
 ""/ vimwiki {{{
 "/
-let g:vimwiki_list = [{'path': '~/notes/',
-                    \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [
+      \ {'path': '~/notes/',
+      \ 'links_space_char': '-',
+      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 let g:vimwiki_global_ext = 0
 
 let g:vimwiki_folding = 'custom'
 
-let g:vimwiki_use_mouse = 1
+let g:vimwiki_auto_header = 1
 
 nnoremap <F4> "=strftime("%Y-%m-%d_%H:%M:%S")<CR>P
 inoremap <F4> <C-R>=strftime("%Y-%m-%d_%H:%M:%S")<CR>
