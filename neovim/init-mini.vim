@@ -10,6 +10,9 @@ Plug 'justinmk/vim-dirvish'
 Plug 'andymass/vim-matchup'
 let g:loaded_matchit = 1
 
+" Jump anywhere in current screen.
+Plug 'easymotion/vim-easymotion'
+
 " Visualize your Vim undo tree.
 Plug 'sjl/gundo.vim'
 
@@ -67,6 +70,9 @@ Plug 'junegunn/fzf.vim'
 
 " Editorconfig.
 Plug 'editorconfig/editorconfig-vim'
+
+" markdown preview plugin for (neo)vim.
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 "}}}
 
 "-------Completions and omnifuncs------- {{{
@@ -349,6 +355,7 @@ let g:ale_linters = {
       \}
 
 let g:ale_fixers = {
+      \ 'html': ['prettier'],
       \ 'javascript': ['prettier'],
       \ 'json': ['prettier'],
       \ 'typescript': ['prettier']
@@ -403,6 +410,10 @@ let g:gundo_preview_bottom = 1
 let g:gundo_help = 0
 
 let g:gundo_close_on_revert = 1
+"}}}
+""/ markdown-preview.nvim {{{
+"/
+let g:mkdp_browser = '/usr/bin/qutebrowser'
 "}}}
 ""/ ncm2 {{{
 "/
@@ -528,6 +539,30 @@ augroup dirvish_events
   autocmd FileType dirvish
         \ nnoremap <nowait><buffer><silent> <M-n> <C-\><C-n>k:call feedkeys("p")<CR>
 augroup END
+"}}}
+""/ vim-easymotion {{{
+"/
+" Disable default mappings.
+let g:EasyMotion_do_mapping=0
+
+" One char search.
+nmap <C-Space> <Plug>(easymotion-s)
+vmap <C-Space> <Plug>(easymotion-s)
+omap <C-Space> <Plug>(easymotion-s)
+nmap å <Plug>(easymotion-s)
+vmap å <Plug>(easymotion-s)
+omap å <Plug>(easymotion-s)
+
+let g:EasyMotion_smartcase = 1
+
+let g:EasyMotion_use_upper = 1
+
+let g:EasyMotion_keys = 'ASDGHKLQWERTYUIOPZXCVBNMFJ;'
+
+" Search last motion used and disable highlight.
+let g:EasyMotion_move_highlight = 0
+nmap <leader>; <Plug>(easymotion-next)
+nmap <leader>, <Plug>(easymotion-prev)
 "}}}
 ""/ vim-highlightedyank {{{
 "/

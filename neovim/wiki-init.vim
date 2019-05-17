@@ -208,10 +208,10 @@ nnoremap <leader>bw :call DeleteWindowIfNotLast()<CR>
 nnoremap <BS> <C-^>
 
 "Better window navigation.
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+nnoremap <C-h> zh
+nnoremap <C-l> zl
 
 " Y yanks from current cursor position to end of line, more logical.
 nnoremap Y y$
