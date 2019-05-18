@@ -326,8 +326,9 @@ function terminal-scheme() {
   sed -i "s/\(^set background=\).*/\1$1/g" $nvim_config_file
   wiki_config_file=~/dotfiles/neovim/wiki-init.vim
   sed -i "s/\(^set background=\).*/\1$1/g" $wiki_config_file
+  vim_config_file=~/dotfiles/vim/.vimrc-mini
+  sed -i "s/\(^source \/home\/neuromante\/dotfiles\/vim\/flattened_\).*/\1$1.vim/g" $vim_config_file
   bat_config_file=~/dotfiles/bat/config
-
   if [[ $1 == 'light' ]]; then
     echo '--theme="OneHalfLight"' > $bat_config_file
   else

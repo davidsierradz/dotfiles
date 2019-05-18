@@ -95,18 +95,13 @@ inoremap <C-U> <C-G>u<C-U>
 
 " Custom Settings
 
-set background=dark
 source /home/neuromante/dotfiles/vim/flattened_dark.vim
-"colorscheme flattened_light
 
 set hidden
 
-hi PreProc ctermfg=1
 hi SpecialKey ctermfg=1 ctermbg=NONE
 hi NonText ctermfg=5
 hi Special ctermfg=2
-hi LineNr ctermbg=8
-hi CursorLine ctermbg=0
 hi Search cterm=standout ctermfg=15
 hi IncSearch cterm=standout ctermfg=15
 
@@ -153,8 +148,4 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let g:netrw_banner = 0
 
 autocmd FileType netrw setl bufhidden=wipe
-
-"autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-"autocmd VimLeave * silent exec "! echo -ne '\e[5 q'"
-
 " vim:set ft=vim et sw=2:
