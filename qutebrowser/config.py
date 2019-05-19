@@ -1593,6 +1593,8 @@ c.url.start_pages = ['about:blank']
 # config.bind("'", 'enter-mode jump_mark')
 # config.bind('+', 'zoom-in')
 # config.bind('-', 'zoom-out')
+config.bind('zi', 'run-with-count 3 zoom-in')
+config.bind('zo', 'run-with-count 3 zoom-out')
 # config.bind('.', 'repeat-command')
 # config.bind('/', 'set-cmd-text /')
 # config.bind(':', 'set-cmd-text :')
