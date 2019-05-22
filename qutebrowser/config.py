@@ -1003,6 +1003,7 @@ c.hints.min_chars = 2
 ## hints.
 ## Type: Dict
 c.hints.selectors['hn'] = ['[class*="togg"]']
+c.hints.selectors['kill'] = ['div']
 
 # For Hacker News
 config.bind('`', 'hint hn')
@@ -1551,8 +1552,8 @@ c.url.searchengines = {
     'npms': 'https://www.npmjs.com/search?q={}',
     'ddg': 'https://duckduckgo.com/?q={}',
     'dockers': 'https://hub.docker.com/search?q={}&type=image',
-    'translate': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=es&text={}',
-    'entranslate': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=auto&tl=en&text={}'
+    'translatetoes': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=en&tl=es&text={}',
+    'translatetoen': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=es&tl=en&text={}'
 }
 
 ## Page(s) to open at the start.
@@ -1611,6 +1612,7 @@ config.bind(',o', 'hint links fill :open {hint-url}')
 config.bind(',r', 'hint --rapid links tab-bg')
 config.bind(',t', 'hint inputs')
 config.bind(',y', 'hint links yank')
+config.bind(',k', 'hint kill delete')
 # config.bind('<Alt-1>', 'tab-focus 1')
 # config.bind('<Alt-2>', 'tab-focus 2')
 # config.bind('<Alt-3>', 'tab-focus 3')
@@ -1705,9 +1707,11 @@ config.bind('J', 'tab-prev')
 # config.bind('gg', 'scroll-to-perc 0')
 config.bind('gi', 'hint inputs')
 # config.bind('gl', 'tab-move -')
+config.bind('<less>', 'tab-move -')
 # config.bind('gm', 'tab-move')
 # config.bind('go', 'set-cmd-text :open {url:pretty}')
 # config.bind('gr', 'tab-move +')
+config.bind('<greater>', 'tab-move +')
 config.bind('<Space>', 'set-cmd-text -s :buffer')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')

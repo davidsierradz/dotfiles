@@ -170,14 +170,14 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 bindkey '^ ' autosuggest-execute
 
 # Press <M-q> to autocomplete the next WORD.
-bindkey '^[q' vi-forward-blank-word
+bindkey '^[q' vi-forward-blank-word-end
 
 # Press <C-q> to autocomplete the next word.
 bindkey '^q' forward-word
 #bindkey '^[q' vi-forward-word
 
 function _backward-kill-capital-word {
-    local WORDCHARS="*?_-.:[]~=&;!#$%^(){}<>\\/"
+    local WORDCHARS="*?_-.:[]~=&;!#$%^(){}<>\\/\"'"
     zle backward-kill-word
 }
 

@@ -358,8 +358,8 @@ augroup pencil
     autocmd!
     autocmd filetype vimwiki call pencil#init()
                 \ | call lexical#init()
-                \ | setl spell spl=es noru nu nornu cul
-                \ | setl dictionary=/usr/share/dict/words
+                \ | setl spell spl=es,en noru nu nornu cul spf=~/.config/nvim/spell/es.utf-8.add
+                \ | setl dictionary+=/usr/share/dict/words,/usr/share/dict/spanish
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
