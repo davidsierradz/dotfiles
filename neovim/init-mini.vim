@@ -459,7 +459,14 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Open the popup menu completion.
-"imap <C-space> <Plug>(ncm2_manual_trigger)
+imap <M-Space> <c-r>=ncm2#force_trigger()<cr>
+
+" Only complete files with . or /
+call ncm2#override_source('bufpath', {'complete_length': -1})
+call ncm2#override_source('rootpath', {'complete_length': -1})
+
+" Disable current working directory completion.
+call ncm2#override_source('cwdpath', {'complete_length': -1, 'enable': 0})
 "}}}
 ""/ pear-tree {{{
 "/
@@ -577,6 +584,9 @@ highlight link HighlightedyankRegion ErrorMsg
 let g:matchup_surround_enabled = 1
 
 let g:matchup_matchparen_status_offscreen = 0
+
+let g:matchup_matchparen_deferred = 1
+let g:matchup_matchparen_hi_surround_always = 1
 
 nmap <silent> <F7> <plug>(matchup-hi-surround)
 "}}}
@@ -701,4 +711,4 @@ set background=dark
 colorscheme solarized8_flat
 "--------------------------------End Colors------------------------------------"
 "}}}
-" vim: set fdm=marker fmr={{{,}}} :
+" vim: set fdm=marker fmr={{{,}}} fdl=0 :

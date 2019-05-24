@@ -19,6 +19,11 @@ export PATH=~/.npm-global/bin:$PATH
 export LS_COLORS=`cat ~/dotfiles/Xorg/colors`
 
 export GIT_PAGER="/usr/bin/bat --style=\"plain\""
+
+# X flag to not use altscreen (keep content inside terminal buffer)
+#export BAT_PAGER="less -RFX"
+
+# X flag break scrollwheel
 export BAT_PAGER="less -RF"
 
 # fzf + ag configuration

@@ -30,3 +30,15 @@ console.log(
 console.log('\n\n\n\n\n')
 console.log(${0})
 endsnippet
+
+snippet cln "console.log nodejs"
+const util = require('util')
+console.log(
+  util.inspect(${VISUAL}${0}, {
+    showHidden: false,
+    depth: null,
+    compact: false,
+    colors: true,
+  }),
+)
+endsnippet

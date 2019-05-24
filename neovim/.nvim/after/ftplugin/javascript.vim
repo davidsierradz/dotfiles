@@ -1,6 +1,8 @@
 set path=.,src
 set suffixesadd=.js,.jsx
 set includeexpr=LoadMainNodeModule(v:fname)
+set foldmethod=syntax
+set foldlevel=5
 
 function! LoadMainNodeModule(fname)
   let nodeModules = "./node_modules/"
