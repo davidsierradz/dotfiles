@@ -19,3 +19,5 @@ dist/
 *.bak
 public/
 build/
+coverage/
+.vscode/

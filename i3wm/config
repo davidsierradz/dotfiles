@@ -6,7 +6,7 @@ set $mod Mod4
 set $mod1 Mod1
 
 # set default desktop layout (default is tiling)
-# workspace_layout tabbed <stacking|tabbed>
+workspace_layout tabbed
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 3
@@ -322,7 +322,7 @@ exec_always --no-startup-id fix_xcursor
 #exec --no-startup-id redshift-gtk &
 exec --no-startup-id unclutter --ignore-scrolling --timeout 2 --jitter 15 --exclude-root --fork
 #exec --no-startup-id synergy-core --server
-exec_always /home/neuromante/dotfiles/i3wm/per-workspace-layout.pl
+#exec_always /home/neuromante/dotfiles/i3wm/per-workspace-layout.pl
 
 # Color palette used for i3
 # Variables are set based on the documentation:

@@ -1,7 +1,7 @@
 # Maintainer: David Sierra DiazGranados <davidsierradz at gmail dot com>
 _name='zsh-completions'
 pkgname="${_name}-git"
-pkgver=0.30.0.r0.gcf56525
+pkgver=0.30.0.r11.g4f939ad
 pkgrel=1
 pkgdesc='Additional completion definitions for Zsh'
 url='https://github.com/zsh-users/zsh-completions'

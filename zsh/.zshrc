@@ -173,28 +173,30 @@ ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 # Press <C-Space> to autocomplete and execute command.
 bindkey '^ ' autosuggest-execute
 
-# Press <M-q> to autocomplete the next WORD.
-bindkey '^[q' vi-forward-blank-word-end
+# Press <C-q> to autocomplete the next WORD.
+function _emacs-forward-capital-word {
+    local WORDCHARS="*?_-.:[]~=&;!#$%^(){}<>\\/\"'|@"
+    zle emacs-forward-word
+}
+zle -N _emacs-forward-capital-word
+bindkey '^q' _emacs-forward-capital-word
 
-# Press <C-q> to autocomplete the next word.
-bindkey '^q' forward-word
-#bindkey '^[q' vi-forward-word
+# Press <M-q> to autocomplete the next word.
+bindkey '^[q' forward-word
 
+# Press <C-w> to delete the current WORD.
 function _backward-kill-capital-word {
-    local WORDCHARS="*?_-.:[]~=&;!#$%^(){}<>\\/\"'"
+    local WORDCHARS="*?_-.:[]~=&;!#$%^(){}<>\\/\"'|@"
     zle backward-kill-word
 }
-
 zle -N _backward-kill-capital-word
+bindkey '^w' _backward-kill-capital-word
 
-# Press <M-w> to delete the current WORD.
-bindkey '^[w' _backward-kill-capital-word
+# Press <M-w> to delete the current word.
+bindkey '^[w' backward-kill-word
 
-# Press <C-w> to delete the current word.
-bindkey '^w' backward-kill-word
-
-# Press <M-t> to switch current char with last one.
-bindkey '^[t' transpose-chars
+# Press <M-s> to switch current char with last one.
+bindkey '^[s' transpose-chars
 
 # go - cd into the directory of the selected file
 go() {

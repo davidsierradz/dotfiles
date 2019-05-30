@@ -262,6 +262,9 @@ inoremap <A-1> =>
 " Use <AltGr-Q>(right shift) to save current file.
 nnoremap ä :w<CR>
 
+" Transpose two chars in insert mode <Alt-s>.
+inoremap <M-s> <ESC>Xpa
+
 " Select text inside line.
 nnoremap vv ^vg_
 
@@ -459,7 +462,7 @@ inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
 inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
 " Open the popup menu completion.
-imap <M-Space> <c-r>=ncm2#force_trigger()<cr>
+imap <C-Space> <c-r>=ncm2#force_trigger()<cr>
 
 " Only complete files with . or /
 call ncm2#override_source('bufpath', {'complete_length': -1})
@@ -497,7 +500,7 @@ let g:UltiSnipsJumpBackwardTrigger  = "<M-k>"
 let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " Expand the snippet.
-imap <C-u> <Plug>(ultisnips_expand)
+imap <M-u> <Plug>(ultisnips_expand)
 vmap <silent> <C-x><C-s> <Plug>(ultisnips_expand)
 "}}}
 ""/ vim-asterisk {{{

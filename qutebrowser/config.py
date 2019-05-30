@@ -319,7 +319,7 @@ c.auto_save.session = True
 # c.colors.statusbar.url.warn.fg = 'yellow'
 
 ## Background color of the tab bar.
-## Type: QtColor
+## Type: QssColor
 # c.colors.tabs.bar.bg = '#555555'
 
 ## Background color of unselected even tabs.
@@ -359,9 +359,41 @@ c.auto_save.session = True
 ## Type: QtColor
 # c.colors.tabs.odd.fg = 'white'
 
+## Background color of pinned unselected even tabs.
+## Type: QtColor
+# c.colors.tabs.pinned.even.bg = 'darkseagreen'
+
+## Foreground color of pinned unselected even tabs.
+## Type: QtColor
+# c.colors.tabs.pinned.even.fg = 'white'
+
+## Background color of pinned unselected odd tabs.
+## Type: QtColor
+# c.colors.tabs.pinned.odd.bg = 'seagreen'
+
+## Foreground color of pinned unselected odd tabs.
+## Type: QtColor
+# c.colors.tabs.pinned.odd.fg = 'white'
+
+## Background color of pinned selected even tabs.
+## Type: QtColor
+c.colors.tabs.pinned.selected.even.bg = '#cb4b16'
+
+## Foreground color of pinned selected even tabs.
+## Type: QtColor
+# c.colors.tabs.pinned.selected.even.fg = 'white'
+
+## Background color of pinned selected odd tabs.
+## Type: QtColor
+c.colors.tabs.pinned.selected.odd.bg = '#cb4b16'
+
+## Foreground color of pinned selected odd tabs.
+## Type: QtColor
+# c.colors.tabs.pinned.selected.odd.fg = 'white'
+
 ## Background color of selected even tabs.
 ## Type: QtColor
-# c.colors.tabs.selected.even.bg = 'black'
+c.colors.tabs.selected.even.bg = '#cb4b16'
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
@@ -369,7 +401,7 @@ c.auto_save.session = True
 
 ## Background color of selected odd tabs.
 ## Type: QtColor
-# c.colors.tabs.selected.odd.bg = 'black'
+c.colors.tabs.selected.odd.bg = '#cb4b16'
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor
@@ -433,8 +465,9 @@ c.completion.height = '30%'
 ## Type: Bool
 # c.completion.shrink = False
 
-## Format of timestamps (e.g. for the history completion).
-## Type: TimestampTemplate
+## Format of timestamps (e.g. for the history completion). See
+## https://sqlite.org/lang_datefunc.html for allowed substitutions.
+## Type: String
 # c.completion.timestamp_format = '%Y-%m-%d'
 
 ## Execute the best-matching command on a partial match.
@@ -446,6 +479,7 @@ c.completion.height = '30%'
 ## (and visible on the qute://history page), but hidden in the
 ## completion. Changing this setting will cause the completion history to
 ## be regenerated on the next start, which will take a short while.
+## Type: List of UrlPattern
 # c.completion.web_history.exclude = []
 
 ## Number of URLs to show in the web history. 0: no history / -1:
@@ -622,7 +656,7 @@ c.content.default_encoding = 'utf-8'
 
 ## Enable JavaScript.
 ## Type: Bool
-#c.content.javascript.enabled = False
+# c.content.javascript.enabled = True
 
 #js_whitelist = [
 #        "*://localhost/*",
@@ -637,7 +671,6 @@ c.content.default_encoding = 'utf-8'
 #for site in js_whitelist:
 #    with config.pattern(site) as p:
 #        p.content.javascript.enabled = True
-
 
 ## Log levels to use for JavaScript console logging messages. When a
 ## JavaScript message with the level given in the dictionary key is
@@ -906,27 +939,27 @@ c.fonts.tabs = '10pt DejaVu Sans Mono'
 
 ## Font family for fixed fonts.
 ## Type: FontFamily
-c.fonts.web.family.fixed = "DejaVu Sans Mono"
+# c.fonts.web.family.fixed = ''
 
 ## Font family for sans-serif fonts.
 ## Type: FontFamily
-c.fonts.web.family.sans_serif = "DejaVu Sans"
+# c.fonts.web.family.sans_serif = ''
 
 ## Font family for serif fonts.
 ## Type: FontFamily
-c.fonts.web.family.serif = "DejaVu Serif"
+# c.fonts.web.family.serif = ''
 
 ## Font family for standard fonts.
 ## Type: FontFamily
-c.fonts.web.family.standard = "DejaVu Sans"
+# c.fonts.web.family.standard = ''
 
 ## Default font size (in pixels) for regular text.
 ## Type: Int
-c.fonts.web.size.default = 14
+# c.fonts.web.size.default = 16
 
 ## Default font size (in pixels) for fixed-pitch text.
 ## Type: Int
-c.fonts.web.size.default_fixed = 11
+# c.fonts.web.size.default_fixed = 13
 
 ## Hard minimum font size (in pixels).
 ## Type: Int
@@ -957,7 +990,7 @@ c.hints.auto_follow = 'always'
 
 ## Characters used for hint strings.
 ## Type: UniqueCharString
-c.hints.chars = 'asdfghjkl'
+# c.hints.chars = 'asdfghjkl'
 
 ## Dictionary file to be used by the word hints.
 ## Type: File
@@ -973,6 +1006,10 @@ c.hints.chars = 'asdfghjkl'
 ## Hide unmatched hints in rapid mode.
 ## Type: Bool
 # c.hints.hide_unmatched_rapid_hints = True
+
+## Leave hint mode when starting a new page load.
+## Type: Bool
+# c.hints.leave_on_load = True
 
 ## Minimum number of characters used for hint strings.
 ## Type: Int
@@ -1002,6 +1039,8 @@ c.hints.min_chars = 2
 ## CSS selectors used to determine which elements on a page should have
 ## hints.
 ## Type: Dict
+# c.hints.selectors = {'all': ['a', 'area', 'textarea', 'select', 'input:not([type="hidden"])', 'button', 'frame', 'iframe', 'img', 'link', 'summary', '[onclick]', '[onmousedown]', '[role="link"]', '[role="option"]', '[role="button"]', '[ng-click]', '[ngClick]', '[data-ng-click]', '[x-ng-click]', '[tabindex]'], 'links': ['a[href]', 'area[href]', 'link[href]', '[role="link"][href]'], 'images': ['img'], 'media': ['audio', 'img', 'video'], 'url': ['[src]', '[href]'], 'inputs': ['input[type="text"]', 'input[type="date"]', 'input[type="datetime-local"]', 'input[type="email"]', 'input[type="month"]', 'input[type="number"]', 'input[type="password"]', 'input[type="search"]', 'input[type="tel"]', 'input[type="time"]', 'input[type="url"]', 'input[type="week"]', 'input:not([type])', 'textarea']}
+
 c.hints.selectors['hn'] = ['[class*="togg"]']
 c.hints.selectors['kill'] = ['div']
 
@@ -1481,17 +1520,17 @@ c.tabs.select_on_remove = 'last-used'
 
 ## Format to use for the tab title. The following placeholders are
 ## defined:  * `{perc}`: Percentage as a string like `[10%]`. *
-## `{perc_raw}`: Raw percentage, e.g. `10`. * `{title}`: Title of the
-## current web page. * `{title_sep}`: The string ` - ` if a title is set,
-## empty otherwise. * `{index}`: Index of this tab. * `{id}`: Internal
-## tab ID of this tab. * `{scroll_pos}`: Page scroll position. *
+## `{perc_raw}`: Raw percentage, e.g. `10`. * `{current_title}`: Title of
+## the current web page. * `{title_sep}`: The string ` - ` if a title is
+## set, empty otherwise. * `{index}`: Index of this tab. * `{id}`:
+## Internal tab ID of this tab. * `{scroll_pos}`: Page scroll position. *
 ## `{host}`: Host of the current web page. * `{backend}`: Either
 ## ''webkit'' or ''webengine'' * `{private}`: Indicates when private mode
 ## is enabled. * `{current_url}`: URL of the current web page. *
 ## `{protocol}`: Protocol (http/https/...) of the current web page. *
 ## `{audio}`: Indicator for audio/mute status.
 ## Type: FormatString
-# c.tabs.title.format = '{audio}{index}: {title}'
+c.tabs.title.format = '{index}:{current_title} {audio}'
 
 ## Format to use for the tab title for pinned tabs. The same placeholders
 ## like for `tabs.title.format` are defined.
@@ -1513,7 +1552,7 @@ c.tabs.select_on_remove = 'last-used'
 ##   - naive: Use simple/naive check.
 ##   - dns: Use DNS requests (might be slow!).
 ##   - never: Never search automatically.
-c.url.auto_search = 'naive'
+# c.url.auto_search = 'naive'
 
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
@@ -1572,7 +1611,7 @@ c.url.start_pages = ['about:blank']
 ## Format to use for the window title. The same placeholders like for
 ## `tabs.title.format` are defined.
 ## Type: FormatString
-# c.window.title_format = '{perc}{title}{title_sep}qutebrowser'
+# c.window.title_format = '{perc}{current_title}{title_sep}qutebrowser'
 
 ## Default zoom level.
 ## Type: Perc
@@ -1599,20 +1638,21 @@ config.bind('zo', 'run-with-count 3 zoom-out')
 # config.bind('.', 'repeat-command')
 # config.bind('/', 'set-cmd-text /')
 # config.bind(':', 'set-cmd-text :')
-config.bind(',I', 'hint images tab')
-config.bind(',O', 'hint links fill :open -t -r {hint-url}')
-config.bind(',R', 'hint --rapid links window')
-config.bind(',Y', 'hint links yank-primary')
-config.bind(',b', 'hint all tab-bg')
-config.bind(',d', 'hint links download')
-config.bind(',f', 'hint all tab-fg')
-config.bind(',,', 'hint all hover')
-config.bind(',i', 'hint images')
-config.bind(',o', 'hint links fill :open {hint-url}')
-config.bind(',r', 'hint --rapid links tab-bg')
-config.bind(',t', 'hint inputs')
-config.bind(',y', 'hint links yank')
-config.bind(',k', 'hint kill delete')
+# config.bind(';I', 'hint images tab')
+# config.bind(';O', 'hint links fill :open -t -r {hint-url}')
+# config.bind(';R', 'hint --rapid links window')
+# config.bind(';Y', 'hint links yank-primary')
+# config.bind(';b', 'hint all tab-bg')
+# config.bind(';d', 'hint links download')
+# config.bind(';f', 'hint all tab-fg')
+# config.bind(';h', 'hint all hover')
+# config.bind(';i', 'hint images')
+# config.bind(';o', 'hint links fill :open {hint-url}')
+# config.bind(';r', 'hint --rapid links tab-bg')
+# config.bind(';t', 'hint inputs')
+# config.bind(';y', 'hint links yank')
+config.bind(';k', 'hint kill delete')
+config.bind(';;', 'hint all hover')
 # config.bind('<Alt-1>', 'tab-focus 1')
 # config.bind('<Alt-2>', 'tab-focus 2')
 # config.bind('<Alt-3>', 'tab-focus 3')
@@ -1625,32 +1665,39 @@ config.bind(',k', 'hint kill delete')
 # config.bind('<Alt-m>', 'tab-mute')
 # config.bind('<Ctrl-A>', 'navigate increment')
 # config.bind('<Ctrl-Alt-p>', 'print')
-#config.bind('U', 'scroll-page 0 -1')
 config.bind('<Ctrl-u>', 'run-with-count 11 scroll up')
 config.bind('d', 'scroll-page 0 0.6')
+# config.bind('<Ctrl-B>', 'scroll-page 0 -1')
+# config.bind('<Ctrl-D>', 'scroll-page 0 0.5')
 # config.bind('<Ctrl-F5>', 'reload -f')
-#config.bind('D', 'scroll-page 0 1')
 config.bind('<Ctrl-d>', 'run-with-count 11 scroll down')
+# config.bind('<Ctrl-F>', 'scroll-page 0 1')
 # config.bind('<Ctrl-N>', 'open -w')
 # config.bind('<Ctrl-PgDown>', 'tab-next')
 # config.bind('<Ctrl-PgUp>', 'tab-prev')
 config.bind('<Ctrl-Q>', 'nop')
+# config.bind('<Ctrl-Q>', 'quit')
 # config.bind('<Ctrl-Return>', 'follow-selected -t')
 # config.bind('<Ctrl-Shift-N>', 'open -p')
 config.bind('X', 'undo')
+# config.bind('<Ctrl-Shift-T>', 'undo')
 # config.bind('<Ctrl-Shift-Tab>', 'nop')
 # config.bind('<Ctrl-Shift-W>', 'close')
 # config.bind('<Ctrl-T>', 'open -t')
 config.bind('<Backspace>', 'tab-focus last')
 config.bind('u', 'scroll-page 0 -0.6')
+# config.bind('<Ctrl-Tab>', 'tab-focus last')
+# config.bind('<Ctrl-U>', 'scroll-page 0 -0.5')
 # config.bind('<Ctrl-V>', 'enter-mode passthrough')
 config.bind('x', 'tab-close')
+# config.bind('<Ctrl-W>', 'tab-close')
 # config.bind('<Ctrl-X>', 'navigate decrement')
 # config.bind('<Ctrl-^>', 'tab-focus last')
 # config.bind('<Ctrl-h>', 'home')
 # config.bind('<Ctrl-p>', 'tab-pin')
 # config.bind('<Ctrl-s>', 'stop')
 config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave;; jseval -q document.activeElement.blur()')
+# config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave')
 # config.bind('<F11>', 'fullscreen')
 # config.bind('<F5>', 'reload')
 # config.bind('<Return>', 'follow-selected')
@@ -1662,6 +1709,7 @@ config.bind('<Escape>', 'clear-keychain ;; search ;; fullscreen --leave;; jseval
 # config.bind('B', 'set-cmd-text -s :quickmark-load -t')
 config.bind('c', 'tab-close --prev')
 config.bind('C', 'tab-close --next')
+# config.bind('D', 'tab-close -o')
 # config.bind('F', 'hint all tab')
 # config.bind('G', 'scroll-to-perc')
 # config.bind('H', 'back')
@@ -1669,6 +1717,8 @@ config.bind('<Alt-k>', 'tab-next')
 config.bind('K', 'tab-next')
 config.bind('<Alt-j>', 'tab-prev')
 config.bind('J', 'tab-prev')
+# config.bind('J', 'tab-next')
+# config.bind('K', 'tab-prev')
 # config.bind('L', 'forward')
 # config.bind('M', 'bookmark-add')
 # config.bind('N', 'search-prev')
@@ -1706,6 +1756,7 @@ config.bind('J', 'tab-prev')
 # config.bind('gf', 'view-source')
 # config.bind('gg', 'scroll-to-perc 0')
 config.bind('gi', 'hint inputs')
+# config.bind('gi', 'hint inputs --first')
 # config.bind('gl', 'tab-move -')
 config.bind('<less>', 'tab-move -')
 # config.bind('gm', 'tab-move')
@@ -1713,6 +1764,7 @@ config.bind('<less>', 'tab-move -')
 # config.bind('gr', 'tab-move +')
 config.bind('<greater>', 'tab-move +')
 config.bind('<Space>', 'set-cmd-text -s :buffer')
+# config.bind('gt', 'set-cmd-text -s :buffer')
 # config.bind('gu', 'navigate up')
 # config.bind('h', 'scroll left')
 # config.bind('i', 'enter-mode insert')
@@ -1720,6 +1772,8 @@ config.bind('<Ctrl-j>', 'scroll down')
 config.bind('<Ctrl-k>', 'scroll up')
 config.bind('j', 'scroll-px 0 40')
 config.bind('k', 'scroll-px 0 -40')
+# config.bind('j', 'scroll down')
+# config.bind('k', 'scroll up')
 # config.bind('l', 'scroll right')
 # config.bind('m', 'quickmark-save')
 # config.bind('n', 'search-next')
@@ -1769,12 +1823,12 @@ config.bind('ä', 'config-cycle -t tabs.show always never ;; config-cycle -t sta
 # config.bind('xO', 'set-cmd-text :open -b -r {url:pretty}')
 # config.bind('xo', 'set-cmd-text -s :open -b')
 # config.bind('yD', 'yank domain -s')
-# config.bind('yM', 'yank markdown -s')
+# config.bind('yM', 'yank inline [{title}]({url}) -s')
 # config.bind('yP', 'yank pretty-url -s')
 # config.bind('yT', 'yank title -s')
 # config.bind('yY', 'yank -s')
 # config.bind('yd', 'yank domain')
-# config.bind('ym', 'yank markdown')
+# config.bind('ym', 'yank inline [{title}]({url})')
 # config.bind('yp', 'yank pretty-url')
 # config.bind('yt', 'yank title')
 # config.bind('yy', 'yank')
@@ -1804,6 +1858,7 @@ config.bind('ä', 'config-cycle -t tabs.show always never ;; config-cycle -t sta
 # config.bind('j', 'move-to-next-line', mode='caret')
 # config.bind('k', 'move-to-prev-line', mode='caret')
 # config.bind('l', 'move-to-next-char', mode='caret')
+# config.bind('o', 'reverse-selection', mode='caret')
 # config.bind('v', 'toggle-selection', mode='caret')
 # config.bind('w', 'move-to-next-word', mode='caret')
 # config.bind('y', 'yank selection', mode='caret')

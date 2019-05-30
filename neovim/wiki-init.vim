@@ -231,6 +231,9 @@ inoremap <A-1> =>
 " Use <AltGr-Q>(right shift) to save current file.
 nnoremap ä :w<CR>
 
+" Transpose two chars in insert mode <Alt-s>.
+inoremap <M-s> <ESC>Xpa
+
 " Select text inside line.
 nnoremap vv ^vg_
 
@@ -358,8 +361,8 @@ augroup pencil
     autocmd!
     autocmd filetype vimwiki call pencil#init()
                 \ | call lexical#init()
-                \ | setl spell spl=es,en noru nu nornu cul spf=~/.config/nvim/spell/es.utf-8.add
-                \ | setl dictionary+=/usr/share/dict/words,/usr/share/dict/spanish
+                \ | setl spell spl=es,en noru nu rnu cul spf=~/.config/nvim/spell/es.utf-8.add
+                \ | setl dictionary+=/usr/share/dict/words,/usr/share/dict/spanish complete+=kspell
 augroup END
 
 let g:pencil#wrapModeDefault = 'soft'
