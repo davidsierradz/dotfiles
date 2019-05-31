@@ -113,9 +113,9 @@ export LC_COLLATE="C"
 # dircolors
 #eval "$(dircolors /home/neuromante/dotfiles/dir_colors/dircolors.256dark)"
 
-# Use backwards search in vi-mode.
-bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
+# Use backwards search in vi-mode (arrows?).
+bindkey '^[[A' up-line-or-beginning-search
+bindkey '^[[B' down-line-or-beginning-search
 
 # Ctrl-S to insert sudo in front of command in normal mode.
 function prepend-sudo { # Insert "sudo " at the beginning of the line
@@ -138,8 +138,8 @@ bindkey "^s" sudo_
 
 
 # More bindkeys for insert vi-mode.
-bindkey -M viins '^P' up-history
-bindkey -M viins '^N' down-history
+bindkey -M viins '^P' up-line-or-beginning-search
+bindkey -M viins '^N' down-line-or-beginning-search
 bindkey -M viins "^[[3~" delete-char
 bindkey -M viins "^k" kill-line
 bindkey -M viins "^b" backward-char
@@ -147,7 +147,8 @@ bindkey -M viins "^f" forward-char
 bindkey -M viins "^u" kill-whole-line
 
 # More responsive toggle from normal to insert mode in vi-mode.
-export KEYTIMEOUT=5
+# We need a value not so low, to give surround commands time to fire.
+export KEYTIMEOUT=40
 
 # Reload completions.
 autoload -U compinit && compinit
@@ -285,6 +286,13 @@ bindkey "^[OA" up-line-or-beginning-search
 bindkey "^[OB" down-line-or-beginning-search
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
+
+# Shift-Tab to go back in menus.
+bindkey -M menuselect '^[[Z' reverse-menu-complete
+
+# Ctr-P and Ctrl-N to move in complete menus.
+bindkey -M menuselect '^P' up-line-or-history
+bindkey -M menuselect '^N' down-line-or-history
 
 # Change cursor shape for different vi modes.
 #function zle-keymap-select {

@@ -315,6 +315,11 @@ inoremap <M-Space> <Space><Space><Left>
 
 " (|) -> (|.
 inoremap <M-BS> <Right><BS>
+
+" Echo syntax group of word under cursor.
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+      \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+      \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 "--------------------------------End General Mappings--------------------------"
 "}}}
 
@@ -538,7 +543,10 @@ nnoremap X D
 "/
 
 " Put dirs first.
-let g:dirvish_mode = ':sort ,^.*[\/],'
+let g:dirvish_mode = ':sort | sort ,^.*[^/]$, r'
+
+" Doesnt work with g:dirvish_mode dirs first.
+let g:dirvish_relative_paths = 1
 
 " Set <leader>cd to change directories in dirvish buffers.
 augroup dirvish_events
