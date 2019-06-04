@@ -1046,7 +1046,7 @@ c.hints.selectors['kill'] = ['div']
 
 # For Hacker News
 config.bind('`', 'hint hn')
-config.bind('<Ctrl-2>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'40\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
+config.bind('<Ctrl-2>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'80\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
 
 # For YouTube
 config.bind(',m', 'spawn nohup mpv {url}')
