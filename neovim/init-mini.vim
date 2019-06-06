@@ -40,11 +40,14 @@ Plug 'svermeulen/vim-yoink'
 
 " Plugin that adds a 'cut' operation separate from 'delete'.
 Plug 'svermeulen/vim-cutlass'
+
+" Toggle comments.
+Plug 'tpope/vim-commentary'
 "}}}
 
 "--------------Interface---------------- {{{
-" Solarized colorscheme for NeoVim.
-Plug 'lifepillar/vim-solarized8'
+" Minimal colorscheme for vim.
+Plug 'davidsierradz/vim-colors-plain'
 
 " Smart close of buffers.
 Plug 'Asheq/close-buffers.vim'
@@ -159,6 +162,8 @@ set title
 
 " Set <Space> as leader key.
 let mapleader = " "
+
+set foldlevel=3
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -391,14 +396,20 @@ let g:EditorConfig_max_line_indicator = "none"
 " FZF position.
 let g:fzf_layout = { 'window': '-tabnew' }
 
-"command! -bang -nargs=* Ag
-"      \ call fzf#vim#ag(<q-args>,
-"      \                 <bang>0 ? fzf#vim#with_preview('up:60%')
-"      \                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-"      \                 <bang>0)
-
+" Show preview window with "?".
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+    \ call fzf#vim#files(<q-args>, 
+    \ <bang>0 ? fzf#vim#with_preview('up:60%')
+    \         : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \ <bang>0)
+
+" Show preview window with "?".
+command! -bang -nargs=* Ag 
+    \ call fzf#vim#ag(<q-args>, 
+    \ '--color-path 400 --color-line-number 400 --color-match 400',
+    \ <bang>0 ? fzf#vim#with_preview('up:60%')
+    \         : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \ <bang>0)
 
 " FZF mappings.
 nnoremap <A-t> :Ag<CR><C-\><C-n>0i
@@ -493,6 +504,7 @@ let g:pear_tree_pairs = {
 let g:pear_tree_repeatable_expand = 0
 
 imap <C-g><C-g> <Plug>(PearTreeJump)
+imap <Space> <Plug>(PearTreeSpace)
 "}}}
 ""/ Ultisnips.vim {{{
 "/
@@ -591,13 +603,15 @@ highlight link HighlightedyankRegion ErrorMsg
 ""/ vim-matchup {{{
 "/
 
+let g:matchup_matchparen_enabled = 0
+
 " To enable the delete surrounding (ds%) and change surrounding (cs%) maps.
 let g:matchup_surround_enabled = 1
 
 let g:matchup_matchparen_status_offscreen = 0
 
-let g:matchup_matchparen_deferred = 1
-let g:matchup_matchparen_hi_surround_always = 1
+"let g:matchup_matchparen_deferred = 1
+"let g:matchup_matchparen_hi_surround_always = 1
 
 nmap <silent> <F7> <plug>(matchup-hi-surround)
 "}}}
@@ -681,7 +695,7 @@ function! TabMessage(cmd)
   if empty(message)
     echoerr "no output"
   else
-    " use "new" instead of "tabnew" below if you prefer split windows instead of tabs
+    " use 'new' instead of 'tabnew' below if you prefer split windows instead of tabs
     tabnew
     setlocal buftype=nofile bufhidden=wipe noswapfile nobuflisted nomodified
     silent put=message
@@ -711,6 +725,8 @@ endfunction
 " Custom Highlight groups.
 function! MyHighlights() abort
   highlight MatchParen guibg=NONE
+  highlight ErrorMsg gui=reverse guifg=#dc322f guibg=#fdf6e3
+  highlight CursorLine guibg=NONE
 endfunction
 
 augroup MyColors
@@ -719,7 +735,8 @@ augroup MyColors
 augroup END
 
 set background=dark
-colorscheme solarized8_flat
+colorscheme plain
+set nohlsearch
 "--------------------------------End Colors------------------------------------"
 "}}}
 " vim: set fdm=marker fmr={{{,}}} fdl=0 :
