@@ -302,6 +302,9 @@ nnoremap <F5> :Goyo<CR>
 " Mantains set number.
 let g:goyo_linenr=1
 
+" Width.
+let g:goyo_width=120
+
 function! s:goyo_enter()
   let b:quitting = 0
   let b:quitting_bang = 0
@@ -500,6 +503,9 @@ augroup initvim
 
   " Update the auto read of a file after 4 seconds.
   autocmd CursorHold * silent! checktime
+
+  " Surround ** with ä (Right Shift).
+  autocmd FileType vimwiki let b:surround_228 = "**\r**"
 augroup END
 "--------------------------------End Auto Commands-----------------------------"
 "}}}

@@ -148,4 +148,5 @@ let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
 let g:netrw_banner = 0
 
 autocmd FileType netrw setl bufhidden=wipe
+autocmd FileType gitcommit setlocal spell spl=es,en nocul spf=~/.config/nvim/spell/es.utf-8.add dictionary+=/usr/share/dict/words,/usr/share/dict/spanish complete+=kspell
 " vim:set ft=vim et sw=2:

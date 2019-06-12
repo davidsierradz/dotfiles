@@ -89,6 +89,9 @@ alias v='nvim'
 alias b='bat'
 alias -g B='| /usr/bin/bat --style="plain"'
 
+# Yarn alias
+alias yl='yarn lint'
+
 # Fuzzy find all files to send to git add.
 gafzf() {
     git add $(git status -s | awk '{$1=""; print $0}' | fzf --height 50% --reverse --multi "$@")

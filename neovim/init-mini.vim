@@ -43,6 +43,9 @@ Plug 'svermeulen/vim-cutlass'
 
 " Toggle comments.
 Plug 'tpope/vim-commentary'
+
+" Set the 'path' option for miscellaneous file types.
+Plug 'tpope/vim-apathy'
 "}}}
 
 "--------------Interface---------------- {{{
@@ -164,6 +167,43 @@ set title
 let mapleader = " "
 
 set foldlevel=3
+
+set laststatus=2
+set statusline=
+" Relative file path
+set statusline=%f
+" Separator
+set statusline+=\ 
+" Filetype of the file
+set statusline+=%y
+" Separator
+set statusline+=\ 
+" Format of the file Unix or DOS
+set statusline+=[%{&ff}
+" Separator
+set statusline+=\ 
+"file encoding
+set statusline+=%{strlen(&fenc)?&fenc:'none'}]
+" Separator
+set statusline+=\ 
+" Help, Modified and Read Only flags
+set statusline+=%h%m%r%w%q
+" Separation point between left and right items
+set statusline+=%=
+" Space Separator
+set statusline+=\ 
+" Foldlevel
+set statusline+=%{strlen(&foldlevel)?&foldlevel:''}
+" Space Separator
+set statusline+=\ 
+" Column number and Virtual Column number
+set statusline+=%P
+" Space Separator
+set statusline+=\ 
+" Current line count, max and percentage
+set statusline+=%([%l-%c%V]%)
+" ALE Errors
+set statusline+=%{LinterStatus()}
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -504,7 +544,7 @@ let g:pear_tree_pairs = {
 let g:pear_tree_repeatable_expand = 0
 
 imap <C-g><C-g> <Plug>(PearTreeJump)
-imap <Space> <Plug>(PearTreeSpace)
+"imap <Space> <Plug>(PearTreeSpace)
 "}}}
 ""/ Ultisnips.vim {{{
 "/
@@ -716,6 +756,20 @@ function! DeleteWindowIfNotLast()
 
   echo "Only one window or buffer."
   return 0
+endfunction
+
+" Function: display errors from Ale in statusline
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? '' : printf(
+    \   ' %dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
 endfunction
 "--------------------------------End Functions---------------------------------"
 "}}}
