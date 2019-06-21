@@ -14,7 +14,7 @@ let g:loaded_matchit = 1
 Plug 'easymotion/vim-easymotion'
 
 " Visualize your Vim undo tree.
-Plug 'sjl/gundo.vim'
+Plug 'simnalamburt/vim-mundo'
 
 " Automatic closing of quotes, parenthesis, brackets
 " also expands spaces and enters.
@@ -204,6 +204,13 @@ set statusline+=\
 set statusline+=%([%l-%c%V]%)
 " ALE Errors
 set statusline+=%{LinterStatus()}
+
+" Allow local .nvimrc files.
+set exrc
+set secure
+
+" Enable persistent undo so that undo history persists across vim sessions.
+set undofile
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -379,9 +386,6 @@ set signcolumn=no
 " Lint always in Normal Mode.
 let g:ale_lint_on_text_changed = 'normal'
 
-" Lint when leaving Insert Mode but don't lint when in Insert Mode.
-let g:ale_lint_on_insert_leave = 1
-
 " Set ALE's 200ms delay to zero.
 let g:ale_lint_delay = 0
 
@@ -459,17 +463,15 @@ nnoremap <A-b> :Buffers<CR><C-\><C-n>0i
 nnoremap <Space><Space> :Buffers<CR><C-\><C-n>0i
 nnoremap <C-p> :Files<CR><C-\><C-n>0i
 "}}}
-""/ Gundo.vim {{{
+""/ vim-mundo {{{
 "/
 " Start plugin.
-nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :MundoToggle<CR>
 
 " Put preview window below current window.
-let g:gundo_preview_bottom = 1
+let g:mundo_preview_bottom = 1
 
-" Disable help.
-let g:gundo_help = 0
-
+" Automatically close the Mundo windows when reverting.
 let g:gundo_close_on_revert = 1
 "}}}
 ""/ markdown-preview.nvim {{{

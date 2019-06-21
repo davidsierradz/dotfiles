@@ -364,6 +364,7 @@ augroup pencil
     autocmd!
     autocmd filetype vimwiki call pencil#init()
                 \ | call lexical#init()
+                \ | setl iskeyword+=-
                 \ | setl spell spl=es,en noru nu rnu cul spf=~/.config/nvim/spell/es.utf-8.add
                 \ | setl dictionary+=/usr/share/dict/words,/usr/share/dict/spanish complete+=kspell
 augroup END
