@@ -319,10 +319,11 @@ exec --no-startup-id /home/neuromante/dotfiles/scripts/conky/start_conky_maia
 # exec --no-startup-id start_conky_green
 exec --no-startup-id xautolock -time 30 -locker blurlock
 exec_always --no-startup-id fix_xcursor
-#exec --no-startup-id redshift-gtk &
+exec --no-startup-id redshift-gtk
 exec --no-startup-id unclutter --ignore-scrolling --timeout 2 --jitter 15 --exclude-root --fork
 #exec --no-startup-id synergy-core --server
 #exec_always /home/neuromante/dotfiles/i3wm/per-workspace-layout.pl
+exec --no-startup-id /usr/bin/xiccd
 
 # Color palette used for i3
 # Variables are set based on the documentation:
