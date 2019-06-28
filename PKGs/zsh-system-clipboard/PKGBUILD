@@ -1,7 +1,7 @@
 # Maintainer: David Sierra DiazGranados <davidsierradz at gmail dot com>
 _name='zsh-system-clipboard'
 pkgname="${_name}-git"
-pkgver=95
+pkgver=99
 pkgrel=1
 pkgdesc='System clipboard key bindings for Zsh Line Editor with vi mode.'
 url='https://github.com/kutsan/zsh-system-clipboard.git'

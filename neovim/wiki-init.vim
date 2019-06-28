@@ -51,7 +51,7 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'machakann/vim-highlightedyank'
 
 " Persist folds in sessions.
-Plug 'zhimsel/vim-stay'
+" Plug 'zhimsel/vim-stay'
 
 " Draw boxes and arrows in ascii.
 Plug 'gyim/vim-boxdraw', { 'for': 'markdown' }

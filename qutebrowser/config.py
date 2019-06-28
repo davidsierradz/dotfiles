@@ -656,7 +656,7 @@ c.content.default_encoding = 'utf-8'
 
 ## Enable JavaScript.
 ## Type: Bool
-# c.content.javascript.enabled = True
+c.content.javascript.enabled = False
 
 #js_whitelist = [
 #        "*://localhost/*",
@@ -1046,7 +1046,8 @@ c.hints.selectors['kill'] = ['div']
 
 # For Hacker News
 config.bind('`', 'hint hn')
-config.bind('<Ctrl-2>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'80\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
+config.bind('<Ctrl-1>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'0\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
+config.bind('<Ctrl-3>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'80\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
 
 # For YouTube
 config.bind(',m', 'spawn nohup mpv {url}')

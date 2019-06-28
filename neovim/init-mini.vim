@@ -62,7 +62,7 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'machakann/vim-highlightedyank'
 
 " Persist folds in sessions.
-Plug 'zhimsel/vim-stay'
+"Plug 'zhimsel/vim-stay'
 
 " Draw boxes and arrows in ascii.
 Plug 'gyim/vim-boxdraw', { 'for': 'markdown' }
@@ -145,8 +145,8 @@ set confirm
 " Make ~ an operator.
 set tildeop
 
-" Only save folds and cursor position with :mksession.
-set viewoptions=cursor,folds
+" Only save folds with :mksession.
+set viewoptions=folds
 
 " Round indenting with < and > to shiftwidth.
 set shiftround

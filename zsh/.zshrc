@@ -94,7 +94,7 @@ alias yl='yarn lint'
 
 # Fuzzy find all files to send to git add.
 gafzf() {
-    git add $(git status -s | awk '{$1=""; print $0}' | fzf --height 50% --reverse --multi "$@")
+    git add $(git status --untracked-files=all --porcelain=v1 | grep --perl-regexp "^ M|MM| D|\?{2}" | awk '{$1=""; print $0}' | fzf --height 90% --reverse --multi "$@")
 }
 
 # Using xargs to pass arguments to git patch for some reason is
