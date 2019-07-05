@@ -420,7 +420,7 @@ let g:ale_fixers = {
       \ 'typescript': ['prettier']
       \ }
 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --no-semi'
 "}}}

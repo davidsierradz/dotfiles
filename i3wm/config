@@ -16,9 +16,7 @@ default_floating_border normal
 hide_edge_borders smart
 
 # change borders
-bindsym $mod+u border none
-bindsym $mod+y border pixel 2
-bindsym $mod+n border normal
+bindsym $mod+n border toggle
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -449,7 +447,7 @@ client.background       $i3_background
 #############################
 
 # Set inner/outer gaps
-gaps inner 2
+gaps inner 0
 gaps outer 0
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.

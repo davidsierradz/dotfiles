@@ -5,7 +5,7 @@
 
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
-# config.load_autoconfig()
+config.load_autoconfig()
 
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
@@ -658,19 +658,20 @@ c.content.default_encoding = 'utf-8'
 ## Type: Bool
 c.content.javascript.enabled = False
 
-#js_whitelist = [
-#        "*://localhost/*",
-#        "*://127.0.0.1/*",
-#        "*://github.com/*",
-#        "*://news.ycombinator.com/*",
-#        "*://*.youtube.com/*",
-#        "*://translate.google.com/*",
-#        "*://*.qutebrowser.org/*",
-#        ]
-#
-#for site in js_whitelist:
-#    with config.pattern(site) as p:
-#        p.content.javascript.enabled = True
+js_whitelist = [
+        "*://localhost/*",
+        "*://127.0.0.1/*",
+        "*://github.com/*",
+        "*://news.ycombinator.com/*",
+        "*://*.youtube.com/*",
+        "*://translate.google.com/*",
+        "*://*.qutebrowser.org/*",
+        "*://hckrnews.com/*",
+        ]
+
+for site in js_whitelist:
+    with config.pattern(site) as p:
+        p.content.javascript.enabled = True
 
 ## Log levels to use for JavaScript console logging messages. When a
 ## JavaScript message with the level given in the dictionary key is
@@ -1050,7 +1051,7 @@ config.bind('<Ctrl-1>', 'jseval javascript:[...document.querySelectorAll(\'tr.at
 config.bind('<Ctrl-3>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'80\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
 
 # For YouTube
-config.bind(',m', 'spawn nohup mpv {url}')
+config.bind(',m', 'spawn nohup mpv --ytdl-format="bestvideo[height<=480]+bestaudio/best[height<=480]" {url}')
 
 
 #with config.pattern('*://news.ycombinator.com/item') as p:
@@ -1798,6 +1799,8 @@ config.bind('ä', 'config-cycle -t tabs.show always never ;; config-cycle -t sta
 # config.bind('tSH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tSh', 'config-cycle -p -u *://{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tSu', 'config-cycle -p -u {url} content.javascript.enabled ;; reload')
+config.bind('tt', 'config-cycle -p -t -u {url:domain}/* content.javascript.enabled ;; reload')
+config.bind('tT', 'config-cycle -p -u {url:domain}/* content.javascript.enabled ;; reload')
 # config.bind('th', 'back -t')
 # config.bind('tiH', 'config-cycle -p -t -u *://*.{url:host}/* content.images ;; reload')
 # config.bind('tih', 'config-cycle -p -t -u *://{url:host}/* content.images ;; reload')
