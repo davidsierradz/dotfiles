@@ -1594,7 +1594,9 @@ c.url.searchengines = {
     'ddg': 'https://duckduckgo.com/?q={}',
     'dockers': 'https://hub.docker.com/search?q={}&type=image',
     'translatetoes': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=en&tl=es&text={}',
-    'translatetoen': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=es&tl=en&text={}'
+    'translatetoen': 'https://translate.google.com/?hl=en#view=home&op=translate&sl=es&tl=en&text={}',
+    'definitiones': 'https://www.wordreference.com/definicion/{}',
+    'definitionen': 'https://www.wordreference.com/definition/{}',
 }
 
 ## Page(s) to open at the start.

@@ -10,7 +10,7 @@ workspace_layout tabbed
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 default_border pixel 3
-default_floating_border normal
+default_floating_border pixel 3
 
 # Hide borders
 hide_edge_borders smart
@@ -52,8 +52,8 @@ exec --no-startup-id pa-applet
 ################################################################################################
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec "xbacklight -inc 5; dunstify -r 1 \\"brightness up \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
-bindsym XF86MonBrightnessDown exec "xbacklight -dec 5; dunstify -r 1 \\"brightness down \\"$(cat /sys/class/backlight/intel_backlight/brightness)\\"\\""
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 2; dunstify -r 1 \\"brightness up \\"$(xbacklight -getf)\\"\\""
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 2; dunstify -r 1 \\"brightness down \\"$(xbacklight -getf)\\"\\""
 
 # Start Applications
 bindsym $mod+Ctrl+b exec terminal -e 'bmenu'

@@ -8,5 +8,8 @@ settings:
     '*://*.bitbucket.org/*': true
     '*://*.confluence.atlassian.com/*': true
     '*://*.developer.atlassian.com/*': true
+    '*://*.docs.google.com/*': true
+    '*://*.drive.google.com/*': true
+    '*://*.registro.pse.com.co/*': true
     '*://*.www.reddit.com/*': true
     https://confluence.atlassian.com/*: true

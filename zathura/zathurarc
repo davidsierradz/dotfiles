@@ -2,4 +2,6 @@ set recolor true
 set recolor-darkcolor "#dcdccc"
 set recolor-lightcolor "#1f1f1f"
 set selection-clipboard clipboard
-set first-page-column 1:1
+#set first-page-column 1:1
+map d scroll half-down
+map u scroll half-up
