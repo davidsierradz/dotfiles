@@ -82,15 +82,15 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 "}}}
 
 "-------Completions and omnifuncs------- {{{
-" Autocompletion framework.
-Plug 'ncm2/ncm2'
-" ncm2 requires nvim-yarp
-Plug 'roxma/nvim-yarp'
-" Some completions
-Plug 'ncm2/ncm2-bufword'
-Plug 'ncm2/ncm2-path'
-Plug 'ncm2/ncm2-ultisnips'
-Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
+" " Autocompletion framework.
+" Plug 'ncm2/ncm2'
+" " ncm2 requires nvim-yarp
+" Plug 'roxma/nvim-yarp'
+" " Some completions
+" Plug 'ncm2/ncm2-bufword'
+" Plug 'ncm2/ncm2-path'
+" Plug 'ncm2/ncm2-ultisnips'
+" Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
 
 " Snippet Engine.
 Plug 'SirVer/ultisnips'
@@ -110,7 +110,7 @@ Plug 'othree/yajs.vim'
 Plug 'othree/es.next.syntax.vim'
 
 " React JSX syntax highlighting and indenting for vim.
-Plug 'maxmellon/vim-jsx-pretty'
+" Plug 'maxmellon/vim-jsx-pretty'
 "}}}
 
 " Initialize plugin system
@@ -481,53 +481,53 @@ let g:mkdp_browser = '/usr/bin/qutebrowser'
 ""/ ncm2 {{{
 "/
 " enable ncm2 for all buffer
-function! s:ncm2_start(...)
-  if v:vim_did_enter
-      call ncm2#enable_for_buffer()
-  endif
-  autocmd BufEnter * call ncm2#enable_for_buffer()
-endfunc
+"function! s:ncm2_start(...)
+"  if v:vim_did_enter
+"      call ncm2#enable_for_buffer()
+"  endif
+"  autocmd BufEnter * call ncm2#enable_for_buffer()
+"endfunc
 
-call timer_start(500, function('s:ncm2_start'))
+"call timer_start(500, function('s:ncm2_start'))
 
-" note that must keep noinsert in completeopt, the others is optional
-"set completeopt=noinsert,menuone,noselect
+"" note that must keep noinsert in completeopt, the others is optional
+""set completeopt=noinsert,menuone,noselect
 
-"set completeopt=menuone
+""set completeopt=menuone
 
-au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
-au User Ncm2PopupClose set completeopt=menuone
+"au User Ncm2PopupOpen set completeopt=noinsert,menuone,noselect
+"au User Ncm2PopupClose set completeopt=menuone
 
-" supress the annoying 'match x of y', 'The only match' and 'Pattern not
-" found' messages
-set shortmess+=c
+"" supress the annoying 'match x of y', 'The only match' and 'Pattern not
+"" found' messages
+"set shortmess+=c
 
-" use a sorter that's more friendly for fuzzy match
-let g:ncm2#sorter = 'abbrfuzzy'
-let g:ncm2#matcher = 'substrfuzzy'
+"" use a sorter that's more friendly for fuzzy match
+"let g:ncm2#sorter = 'abbrfuzzy'
+"let g:ncm2#matcher = 'substrfuzzy'
 
-" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
-inoremap <c-c> <ESC>
+"" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+"inoremap <c-c> <ESC>
 
-" Conflicts with delimitMate_expand_cr.
-" When the <Enter> key is pressed while the popup menu is visible, it only
-" hides the menu. Use this mapping to close the menu and also start a new
-" line.
-imap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<Plug>(PearTreeExpand)")
+"" Conflicts with delimitMate_expand_cr.
+"" When the <Enter> key is pressed while the popup menu is visible, it only
+"" hides the menu. Use this mapping to close the menu and also start a new
+"" line.
+"imap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<Plug>(PearTreeExpand)")
 
-" Use <TAB> to select the popup menu:
-inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
-inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+"" Use <TAB> to select the popup menu:
+"inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+"inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
 
-" Open the popup menu completion.
-imap <C-Space> <c-r>=ncm2#force_trigger()<cr>
+"" Open the popup menu completion.
+"imap <C-Space> <c-r>=ncm2#force_trigger()<cr>
 
-" Only complete files with . or /
-call ncm2#override_source('bufpath', {'complete_length': -1})
-call ncm2#override_source('rootpath', {'complete_length': -1})
+"" Only complete files with . or /
+"call ncm2#override_source('bufpath', {'complete_length': -1})
+"call ncm2#override_source('rootpath', {'complete_length': -1})
 
-" Disable current working directory completion.
-call ncm2#override_source('cwdpath', {'complete_length': -1, 'enable': 0})
+"" Disable current working directory completion.
+"call ncm2#override_source('cwdpath', {'complete_length': -1, 'enable': 0})
 "}}}
 ""/ pear-tree {{{
 "/
