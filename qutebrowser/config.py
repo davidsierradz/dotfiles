@@ -3,10 +3,6 @@
 ##   qute://help/configuring.html
 ##   qute://help/settings.html
 
-## This is here so configs done via the GUI are still loaded.
-## Remove it to not load settings done via the GUI.
-config.load_autoconfig()
-
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
 ## Type: Dict
@@ -1048,6 +1044,7 @@ c.hints.selectors['kill'] = ['div']
 # For Hacker News
 config.bind('`', 'hint hn')
 config.bind('<Ctrl-1>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'0\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
+config.bind('<Ctrl-2>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'40\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
 config.bind('<Ctrl-3>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'80\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
 
 # For YouTube
@@ -1811,7 +1808,7 @@ config.bind('tT', 'config-cycle -p -u {url:domain}/* content.javascript.enabled 
 # config.bind('tpH', 'config-cycle -p -t -u *://*.{url:host}/* content.plugins ;; reload')
 # config.bind('tph', 'config-cycle -p -t -u *://{url:host}/* content.plugins ;; reload')
 # config.bind('tpu', 'config-cycle -p -t -u {url} content.plugins ;; reload')
-# config.bind('tsH', 'config-cycle -p -t -u *://*.{url:host}/* content.javascript.enabled ;; reload')
+config.bind('tsH', 'config-cycle -p -u *://*.{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tsh', 'config-cycle -p -t -u *://{url:host}/* content.javascript.enabled ;; reload')
 # config.bind('tsu', 'config-cycle -p -t -u {url} content.javascript.enabled ;; reload')
 # config.bind('u', 'undo')
@@ -1957,3 +1954,7 @@ config.bind('<Ctrl-w>', 'tab-close', mode='passthrough')
 # config.bind('<Return>', 'prompt-accept', mode='yesno')
 # config.bind('n', 'prompt-accept no', mode='yesno')
 # config.bind('y', 'prompt-accept yes', mode='yesno')
+
+## This is here so configs done via the GUI are still loaded.
+## Remove it to not load settings done via the GUI.
+config.load_autoconfig()

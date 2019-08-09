@@ -1,32 +1,8 @@
 #th to your oh-my-zsh installation.
 ZSH=/usr/share/oh-my-zsh
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_COLOR_SCHEME='dark'
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir dir_writable vi_mode)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs background_jobs)
-#POWERLEVEL9K_TIME_FORMAT="%D{\uf017 %H:%M:%S \uf073 %d.%m.%y}"
-POWERLEVEL9K_SHOW_CHANGESET=true
-POWERLEVEL9K_CHANGESET_HASH_LENGTH=7
-POWERLEVEL9K_VCS_SHORTEN_STRATEGY="truncate_from_right"
-POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=25
-POWERLEVEL9K_VCS_SHORTEN_LENGTH=25
-# POWERLEVEL9K_MODE='nerdfont-fontconfig'
-POWERLEVEL9K_VI_INSERT_MODE_STRING=""
-POWERLEVEL9K_VI_MODE_NORMAL_FOREGROUND='255'
-POWERLEVEL9K_VI_MODE_NORMAL_BACKGROUND='002'
-POWERLEVEL9K_STATUS_OK=false
-# POWERLEVEL9K_STATUS_OK_BACKGROUND='blue'
-# POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
-# POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
-# POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
-POWERLEVEL9K_SHORTEN_DELIMITER=""
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-# POWERLEVEL9K_TIME_BACKGROUND="blue"
-# POWERLEVEL9K_TIME_FOREGROUND="white"
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+ZSH_THEME="simple"
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -299,26 +275,26 @@ bindkey -M menuselect '^P' up-line-or-history
 bindkey -M menuselect '^N' down-line-or-history
 
 # Change cursor shape for different vi modes.
-#function zle-keymap-select {
-#    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
-#        echo -ne '\e[1 q'
-#
-#    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
-#        echo -ne '\e[5 q'
-#    fi
-#
-#    zle reset-prompt
-#    zle -R
-#}
-#zle -N zle-keymap-select
+function zle-keymap-select {
+    if [[ ${KEYMAP} == vicmd ]] || [[ $1 = 'block' ]]; then
+        echo -ne '\e[1 q'
+
+    elif [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} = '' ]] || [[ $1 = 'beam' ]]; then
+        echo -ne '\e[5 q'
+    fi
+
+    zle reset-prompt
+    zle -R
+}
+zle -N zle-keymap-select
 
 # Use beam shape cursor on startup.
-#echo -ne '\e[5 q'
+echo -ne '\e[5 q'
 
 # Use beam shape cursor for each new prompt.
-#preexec() {
-#    echo -ne '\e[5 q'
-#}
+preexec() {
+    echo -ne '\e[5 q'
+}
 
 # Use like this: git log -- file GHFZF file
 gh() {
@@ -352,6 +328,9 @@ function terminal-scheme() {
   else
     echo '--theme="OneHalfDark"' > $bat_config_file
   fi
+  kitty_config_file=~/dotfiles/kitty/kitty.conf
+  sed -i "s#^\(include\s\./kitty-themes/gruvbox_*\).*#\1$1.conf#g" $kitty_config_file
+  kitty @ set-colors ~/dotfiles/kitty/kitty-themes/gruvbox_$1.conf
 }
 
 function ol() {
@@ -359,3 +338,9 @@ function ol() {
     | fzf --bind "::execute(awk '{print \"+\"NR\" \"FILENAME}' {} | fzf)+abort" \
     | xargs bash -c '</dev/tty nvim "$@"' ignoreme
 }
+
+# Completion for kitty
+kitty + complete setup zsh | source /dev/stdin
+
+
+[ -f /usr/share/stderred/stderred.sh ] && source /usr/share/stderred/stderred.sh

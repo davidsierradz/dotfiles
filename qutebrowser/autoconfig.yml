@@ -10,6 +10,10 @@ settings:
     '*://*.developer.atlassian.com/*': true
     '*://*.docs.google.com/*': true
     '*://*.drive.google.com/*': true
+    '*://*.hub.docker.com/*': true
     '*://*.registro.pse.com.co/*': true
+    '*://*.www.npmjs.com/*': true
     '*://*.www.reddit.com/*': true
     https://confluence.atlassian.com/*: true
+  content.notifications:
+    https://www.reddit.com: false

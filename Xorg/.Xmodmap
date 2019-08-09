@@ -13,10 +13,10 @@ keycode 46 = l L NoSymbol NoSymbol Right
 keycode 58 = m M m M Return
 
 ! Use Right Shift (Shift_R) to Alt-Gr+q (ä).
-keycode 62 = adiaeresis
+! keycode 105 = adiaeresis
 
 ! Use Right Control (Ctrl_R) to Alt-Gr+w (å).
-keycode 105 = aring
+! keycode 62 = aring
 
 keycode 173 = XF86MonBrightnessDown
 keycode 172 = XF86MonBrightnessUp

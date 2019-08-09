@@ -7,6 +7,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'andymass/vim-matchup'
 let g:loaded_matchit = 1
 
+" Visualize your Vim undo tree.
+Plug 'simnalamburt/vim-mundo'
+
 " Automatic closing of quotes, parenthesis, brackets
 " also expands spaces and enters.
 Plug 'tmsvg/pear-tree'
@@ -49,9 +52,6 @@ Plug 'haya14busa/vim-asterisk'
 
 " Make the yanked region apparent.
 Plug 'machakann/vim-highlightedyank'
-
-" Persist folds in sessions.
-" Plug 'zhimsel/vim-stay'
 
 " Draw boxes and arrows in ascii.
 Plug 'gyim/vim-boxdraw', { 'for': 'markdown' }
@@ -128,6 +128,11 @@ set title
 
 " Set <Space> as leader key.
 let mapleader = " "
+
+set foldlevel=1
+
+" Enable persistent undo so that undo history persists across vim sessions.
+set undofile
 "--------------------------------End General-----------------------------------"
 "}}}
 
@@ -441,6 +446,19 @@ let g:matchup_surround_enabled = 1
 let g:matchup_matchparen_status_offscreen = 0
 
 nmap <silent> <F7> <plug>(matchup-hi-surround)
+"}}}
+""/ vim-mundo {{{
+"/
+" Start plugin.
+nnoremap <leader>u :MundoToggle<CR>
+
+" Put preview window below current window.
+let g:mundo_preview_bottom = 1
+
+" Automatically close the Mundo windows when reverting.
+let g:gundo_close_on_revert = 1
+
+" let g:mundo_auto_preview = 0
 "}}}
 ""/ vim-rsi {{{
 "/

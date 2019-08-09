@@ -61,11 +61,8 @@ Plug 'haya14busa/vim-asterisk'
 " Make the yanked region apparent.
 Plug 'machakann/vim-highlightedyank'
 
-" Persist folds in sessions.
-"Plug 'zhimsel/vim-stay'
-
 " Draw boxes and arrows in ascii.
-Plug 'gyim/vim-boxdraw', { 'for': 'markdown' }
+" Plug 'gyim/vim-boxdraw', { 'for': 'markdown' }
 "}}}
 
 "-------------Integrations-------------- {{{
@@ -78,7 +75,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'editorconfig/editorconfig-vim'
 
 " markdown preview plugin for (neo)vim.
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 "}}}
 
 "-------Completions and omnifuncs------- {{{
@@ -100,14 +97,17 @@ Plug 'honza/vim-snippets'
 
 " Syntax checker and linter.
 Plug 'w0rp/ale'
+
+" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 "}}}
 
 "------Syntax files and Languages------- {{{
 " Yet Another JavaScript Syntax for Vim.
-Plug 'othree/yajs.vim'
+" Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript'
 
 " ES.Next syntax for Vim.
-Plug 'othree/es.next.syntax.vim'
+" Plug 'othree/es.next.syntax.vim'
 
 " React JSX syntax highlighting and indenting for vim.
 " Plug 'maxmellon/vim-jsx-pretty'
@@ -313,6 +313,7 @@ inoremap <A-1> =>
 
 " Use <AltGr-Q>(right shift) to save current file.
 nnoremap ä :w<CR>
+nnoremap <M-w> :w<CR>
 
 " Transpose two chars in insert mode <Alt-s>.
 inoremap <M-s> <ESC>Xpa
@@ -404,7 +405,7 @@ au VimEnter,BufEnter,ColorScheme *
 
 let g:ale_echo_msg_format = "%s - %linter%"
 
-let g:ale_set_quickfix = 1
+"let g:ale_set_quickfix = 1
 
 let g:ale_linters = {
       \ 'javascript': ['eslint'],
@@ -422,7 +423,11 @@ let g:ale_fixers = {
 
 let g:ale_fix_on_save = 0
 
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --no-semi'
+"let g:ale_javascript_prettier_options = '--single-quote --trailing-comma all --no-semi'
+
+" Navigate ALE errors.
+nmap <silent> [c <Plug>(ale_previous_wrap)
+nmap <silent> ]c <Plug>(ale_next_wrap)
 "}}}
 ""/ close-buffers.vim {{{
 "/
@@ -436,6 +441,23 @@ let g:EditorConfig_max_line_indicator = "none"
 "}}}
 ""/ fzf.vim {{{
 "/
+
+function! s:goto_def(lines) abort
+  silent! exe 'e +BTags '.a:lines[0]
+  call timer_start(10, {-> execute('startinsert') })
+endfunction
+function! s:goto_line(lines) abort
+  silent! exe 'e '.a:lines[0]
+  call timer_start(10, {-> feedkeys(':') })
+endfunction
+
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit',
+  \ '@': function('s:goto_def'),
+  \ ':': function('s:goto_line')
+  \  }
 
 " FZF position.
 let g:fzf_layout = { 'window': '-tabnew' }
@@ -463,20 +485,9 @@ nnoremap <A-b> :Buffers<CR><C-\><C-n>0i
 nnoremap <Space><Space> :Buffers<CR><C-\><C-n>0i
 nnoremap <C-p> :Files<CR><C-\><C-n>0i
 "}}}
-""/ vim-mundo {{{
-"/
-" Start plugin.
-nnoremap <leader>u :MundoToggle<CR>
-
-" Put preview window below current window.
-let g:mundo_preview_bottom = 1
-
-" Automatically close the Mundo windows when reverting.
-let g:gundo_close_on_revert = 1
-"}}}
 ""/ markdown-preview.nvim {{{
 "/
-let g:mkdp_browser = '/usr/bin/qutebrowser'
+" let g:mkdp_browser = '/usr/bin/qutebrowser'
 "}}}
 ""/ ncm2 {{{
 "/
@@ -578,11 +589,11 @@ let g:asterisk#keeppos = 1
 "}}}
 ""/ vim-boxdraw {{{
 " The cursor can go nuts.
-augroup setvirtualedit
-  autocmd!
-  autocmd BufLeave *.md setlocal virtualedit-=all
-  autocmd BufEnter *.md setlocal virtualedit+=all
-augroup end
+" augroup setvirtualedit
+"   autocmd!
+"   autocmd BufLeave *.md setlocal virtualedit-=all
+"   autocmd BufEnter *.md setlocal virtualedit+=all
+" augroup end
 "}}}
 ""/ vim-cutlass {{{
 "/
@@ -656,6 +667,19 @@ let g:matchup_matchparen_status_offscreen = 0
 "let g:matchup_matchparen_hi_surround_always = 1
 
 nmap <silent> <F7> <plug>(matchup-hi-surround)
+"}}}
+""/ vim-mundo {{{
+"/
+" Start plugin.
+nnoremap <leader>u :MundoToggle<CR>
+
+" Put preview window below current window.
+let g:mundo_preview_bottom = 1
+
+" Automatically close the Mundo windows when reverting.
+let g:gundo_close_on_revert = 1
+
+" let g:mundo_auto_preview = 0
 "}}}
 ""/ vim-rsi {{{
 "/
@@ -783,6 +807,7 @@ function! MyHighlights() abort
   highlight MatchParen guibg=NONE
   highlight ErrorMsg gui=reverse guifg=#dc322f guibg=#fdf6e3
   highlight CursorLine guibg=NONE
+  " highlight clear Normal
 endfunction
 
 augroup MyColors
