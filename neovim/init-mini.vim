@@ -455,8 +455,8 @@ let g:fzf_action = {
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit',
-  \ '@': function('s:goto_def'),
-  \ ':': function('s:goto_line')
+  \ 'ctrl-g': function('s:goto_def'),
+  \ 'ctrl-f': function('s:goto_line')
   \  }
 
 " FZF position.
@@ -472,9 +472,9 @@ command! -bang -nargs=? -complete=dir Files
 " Show preview window with "?".
 command! -bang -nargs=* Ag 
     \ call fzf#vim#ag(<q-args>, 
-    \ '--color-path 400 --color-line-number 400 --color-match 400',
-    \ <bang>0 ? fzf#vim#with_preview('up:60%')
-    \         : fzf#vim#with_preview('right:50%:hidden', '?'),
+    \ '--color-path 400 --color-line-number 400 --color-match 400 --hidden',
+    \ <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+    \         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
     \ <bang>0)
 
 " FZF mappings.
