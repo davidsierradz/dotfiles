@@ -1,0 +1,32 @@
+# Maintainer: Francisco Lopes <francisco@oblita.com>
+pkgname=interception-caps2esc
+pkgver=0.1.3
+pkgrel=2
+pkgdesc='caps2esc: transforming the most useless key ever in the most useful one'
+arch=('x86_64')
+license=('MIT')
+url='https://gitlab.com/interception/linux/plugins/caps2esc'
+groups=('modified')
+depends=('interception-tools')
+makedepends=('cmake' 'gcc' 'git')
+conflicts=('caps2esc')
+source=("git+https://gitlab.com/interception/linux/plugins/caps2esc" "add-toggle-to-remap-esc.patch")
+md5sums=('SKIP' '974cfa8964fb8a543f706cd438ca517f')
+
+prepare() {
+    tree
+    cd ${srcdir}/caps2esc
+    git apply ../add-toggle-to-remap-esc.patch
+    cat caps2esc.c
+}
+
+build() {
+    cd ${srcdir}/caps2esc
+    cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+}
+
+package() {
+    cd ${srcdir}/caps2esc/build
+    make DESTDIR="$pkgdir/" install
+}

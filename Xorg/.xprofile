@@ -42,9 +42,7 @@ export FZF_ALT_C_OPTS="--preview-window wrap --preview 'tree -aC {} | head -200'
 # Other stuff
 
 # Switch Caps Lock for Ctrl if using as a modifier and Esc if pressed and released.
-/usr/bin/setxkbmap -model 'pc105' -layout 'us' -variant 'altgr-intl' -option 'caps:ctrl_modifier' && \
-    /usr/bin/xcape -t 2000 -e 'Caps_Lock=Escape' &
-
+/usr/bin/setxkbmap -model 'pc105' -layout 'us' -variant 'altgr-intl' -option 'caps:ctrl_modifier'
 # Start keynav-git
 /usr/bin/keynav
 

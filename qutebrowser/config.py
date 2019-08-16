@@ -1045,7 +1045,8 @@ c.hints.selectors['kill'] = ['div']
 config.bind('`', 'hint hn')
 config.bind('<Ctrl-1>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'0\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
 config.bind('<Ctrl-2>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'40\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
-config.bind('<Ctrl-3>', 'jseval javascript:[...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'80\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
+config.bind('<Ctrl-3>', 'jseval javascript:document.getElementById("hnmain").width = "100%"; [...document.querySelectorAll(\'tr.athing.comtr:not(.noshow):not(.coll)\')].filter(e => e.querySelector(\'td.ind img\').attributes.width.value === \'80\').forEach(e => setTimeout(() => {e.querySelector(\'.togg\').click()}, 1));')
+#var style = document.createElement('style'); style.innerText = ''; document.head.appendChild(style)
 
 # For YouTube
 config.bind(',m', 'spawn nohup mpv --ytdl-format="bestvideo[height<=480]+bestaudio/best[height<=480]" {url}')

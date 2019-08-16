@@ -45,7 +45,8 @@ Plug 'svermeulen/vim-cutlass'
 Plug 'tpope/vim-commentary'
 
 " Set the 'path' option for miscellaneous file types.
-Plug 'tpope/vim-apathy'
+"Plug 'tpope/vim-apathy'
+Plug 'kkoomen/gfi.vim'
 "}}}
 
 "--------------Interface---------------- {{{
