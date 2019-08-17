@@ -1,0 +1,31 @@
+# Maintainer: Francisco Lopes <francisco@oblita.com>
+pkgname=interception-tools-git
+pkgver=0.1.1
+pkgrel=7
+pkgdesc='A minimal composable infrastructure on top of libudev and libevdev'
+arch=('x86_64')
+license=('GPL3')
+url='https://gitlab.com/interception/linux/tools'
+groups=('modified')
+depends=('libevdev' 'yaml-cpp')
+makedepends=('cmake' 'gcc' 'git')
+conflicts=('interception-tools')
+source=('git+https://gitlab.com/interception/linux/tools.git' 'udevmon.service')
+md5sums=('SKIP' 'dcbbb73258945188d319cdc3598662e7')
+
+prepare() {
+    sed -i "s/\/etc\/udevmon\.yaml/\/home\/$name\/\.config\/interception-tools\/udevmon\.yaml/g" udevmon.service
+}
+
+build() {
+    cd ${srcdir}/tools
+    cmake -Bbuild -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+    cmake --build build
+}
+
+package() {
+    cd ${srcdir}/tools/build
+    mkdir -p "${pkgdir}/usr/lib/systemd/system"
+    install -m 644 "${srcdir}/udevmon.service" "${pkgdir}/usr/lib/systemd/system"
+    make DESTDIR="$pkgdir/" install
+}
