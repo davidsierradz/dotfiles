@@ -14,10 +14,8 @@ source=("git+https://gitlab.com/interception/linux/plugins/caps2esc" "add-toggle
 md5sums=('SKIP' '974cfa8964fb8a543f706cd438ca517f')
 
 prepare() {
-    tree
     cd ${srcdir}/caps2esc
     git apply ../add-toggle-to-remap-esc.patch
-    cat caps2esc.c
 }
 
 build() {
